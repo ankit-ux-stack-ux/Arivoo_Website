@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/ums-hero.gif" data-resource-id="ums">
+<meta name="ext-resource-dependency" content="assets/sms-hero.png" data-resource-id="sms">
+<meta name="ext-resource-dependency" content="assets/lms-hero.png" data-resource-id="lms">
+<meta name="ext-resource-dependency" content="assets/testguard-hero.png" data-resource-id="testguard">
+<meta name="ext-resource-dependency" content="assets/arivoo-logo.png" data-resource-id="logo">
+<meta name="ext-resource-dependency" content="assets/neotia-testimonial.mp4" data-resource-id="vidNeotia">
+<meta name="ext-resource-dependency" content="assets/dps-testimonial.mp4" data-resource-id="vidDps">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="./i18n.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Hanken Grotesk','Noto Sans Devanagari','Noto Sans Arabic',system-ui,sans-serif;background:#fbfaf7;color:#14151a;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:#0e5a96}
+  h1,h2,h3,h4{font-family:'Bricolage Grotesque','Noto Sans Devanagari','Noto Sans Arabic',sans-serif;line-height:1.04;letter-spacing:-0.02em}
+  ::selection{background:#126FB8;color:#fff}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes spinslow{to{transform:rotate(360deg)}}
+  @keyframes pulsedot{0%,100%{opacity:1}50%{opacity:.35}}
+  @keyframes testiprog{from{width:0}to{width:100%}}
+</style>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
+    <rect width="120" height="120" fill="#fbfaf7"/>
+    <rect x="30" y="30" width="60" height="60" rx="16" fill="#126FB8"/>
+    <text x="60" y="78" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">a</text>
+  </svg>
+</template>
+</helmet>
+
+<div style="width:100%;overflow-x:clip;background:#fbfaf7">
+
+<!-- ============ NAV ============ -->
+<nav style="{{ navStyle }}">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:center">
+      <img src="assets/arivoo-logo-powered.png" alt="arivoo — powered by Adamas Tech Consulting" style="height:42px;width:auto;display:block">
+    </a>
+    <div style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#3a3d47">
+      <div style="position:relative" onMouseEnter="{{ hoverOn }}" onMouseLeave="{{ hoverOff }}">
+        <a href="#products" style="display:flex;align-items:center;gap:6px;padding:24px 0;color:{{ navMenuFg }};transition:color .2s">{{ ui.products }}
+          <span style="display:inline-flex;transition:transform .25s;transform:rotate({{ navChevron }})">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.25L6 7.75l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <div style="{{ navPanelStyle }}">
+          <div style="background:#fff;border:1px solid #eceae4;border-radius:20px;box-shadow:0 34px 80px -18px rgba(20,21,26,.32);overflow:hidden;padding:28px 30px">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.09em;color:#9a9ea9;text-transform:uppercase">{{ ui.featured }}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:12px">
+              <sc-for list="{{ navProducts }}" as="p" hint-placeholder-count="4">
+                <a href="{{ p.href }}" onClick="{{ closeNav }}" style="display:flex;align-items:center;gap:13px;padding:12px;border-radius:12px;transition:background .18s" style-hover="background:#f6f5f1">
+                  <span style="flex:none;width:70px;height:46px;border-radius:10px;display:grid;place-items:center;background:#ffffff;padding:0 9px"><img data-src="{{ p.logo }}" alt="{{ p.name }}" style="max-width:100%;max-height:26px;width:auto;height:auto;display:block;object-fit:contain"></span>
+                  <span style="display:flex;flex-direction:column;gap:2px">
+                    <span style="font-size:14.5px;font-weight:700;color:#14151a;line-height:1.15">{{ p.name }}</span>
+                    <span style="font-size:12.5px;font-weight:500;color:#8a8e99;line-height:1.2">{{ p.tag }}</span>
+                  </span>
+                </a>
+              </sc-for>
+            </div>
+            <div style="margin-top:22px;padding-top:22px;border-top:1px solid #f0efe9;display:flex;align-items:flex-start;gap:14px">
+              <span style="font-family:'Bricolage Grotesque';font-size:40px;font-weight:800;line-height:.7;color:#126FB8;flex:none">“</span>
+              <p style="font-size:16px;font-weight:600;color:#2b2e37;line-height:1.5;text-wrap:pretty;margin:0">{{ ui.quote }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <label style="position:relative;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#14151a;cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14151a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>
+        <select aria-label="Language" style="appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;color:inherit;cursor:pointer;padding-right:15px;outline:none" value="{{ lang }}" onChange="{{ setLang }}">
+          <option value="en">EN</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ar">العربية</option>
+        </select>
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#14151a" stroke-width="1.6" style="position:absolute;right:0;pointer-events:none"><path d="M2.5 4.5L6 8l3.5-3.5"></path></svg>
+      </label>
+      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" style="position:relative;max-width:1240px;margin:0 auto;padding:132px 32px 40px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center">
+  <div data-parallax="0.18" style="position:absolute;top:60px;left:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(18,111,184,0.16),transparent 70%);filter:blur(10px);pointer-events:none;will-change:transform"></div>
+  
+
+  <!-- hero visual: 3-slide feature carousel -->
+  <div style="position:relative">
+    <h1 style="font-size:54px;font-weight:700;margin:0;color:#14151a;max-width:560px">{{ heroLead }}<span style="color:#126FB8">{{ heroWord }}</span>{{ heroTail }}</h1><p style="font-size:18px;line-height:1.55;color:#4b4f5c;margin:20px 0 0;max-width:500px;text-wrap:pretty">{{ heroSubHome }}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px">
+      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#126FB8;color:#fff;font-weight:600;font-size:16px;padding:15px 26px;border-radius:13px;box-shadow:0 10px 24px rgba(18,111,184,.28);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 16px 34px rgba(18,111,184,.36)">{{ ui.bookDemo }} <span>→</span></a>
+      <a href="#products" style="display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #e5e3dc;color:#14151a;font-weight:600;font-size:16px;padding:15px 24px;border-radius:13px;transition:border-color .2s,transform .2s" style-hover="border-color:#14151a;transform:translateY(-2px)">{{ exploreSuite }}</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:26px;margin-top:40px">
+      <sc-for list="{{ heroPills }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:9px">
+          <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:#e4f0f9;color:#126FB8;align-items:center;justify-content:center;font-size:12px;font-weight:700">✓</span>
+          <span style="font-size:14.5px;font-weight:600;color:#3a3d47">{{ p }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div><div data-parallax="-0.05" style="position:relative;height:544px;will-change:transform">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:48px;background:#fff;border:1px solid #eceae4;border-radius:22px;box-shadow:0 30px 70px rgba(20,21,26,.12);overflow:hidden;animation:floaty 7s ease-in-out infinite">
+      <div style="display:flex;height:100%;width:300%;transform:{{ heroTransform }};transition:transform .6s cubic-bezier(.16,1,.3,1)">
+
+        <!-- SLIDE 1 · Unified dashboard -->
+        <div style="width:33.3333%;height:100%;flex:none;display:flex;flex-direction:column">
+          <div style="height:44px;border-bottom:1px solid #f0efe9;display:flex;align-items:center;gap:7px;padding:0 16px;flex:none">
+            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></span><span style="width:11px;height:11px;border-radius:50%;background:#febc2e"></span><span style="width:11px;height:11px;border-radius:50%;background:#28c840"></span>
+            <span style="margin-left:12px;font-size:12px;color:#9a9ea9;font-weight:600">arivoo · dashboard</span>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;flex:1;min-height:0">
+            <div style="border-right:1px solid #f0efe9;padding:16px 12px;display:flex;flex-direction:column;gap:7px">
+              <sc-for list="{{ heroNav }}" as="n" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:9px;background:{{ n.bg }};font-size:12.5px;font-weight:600;color:{{ n.fg }}"><span style="width:7px;height:7px;border-radius:2px;background:{{ n.dot }}"></span>{{ n.label }}</div>
+              </sc-for>
+            </div>
+            <div style="padding:18px">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div style="background:#f7f6f2;border-radius:13px;padding:14px"><div style="font-size:11px;color:#8b8f9a;font-weight:600">Enrolled</div><div style="font-family:'Bricolage Grotesque';font-size:26px;font-weight:700;margin-top:4px">12,480</div><div style="font-size:11px;color:#1f9d6b;font-weight:700;margin-top:2px">▲ 8.2%</div></div>
+                <div style="background:#e4f0f9;border-radius:13px;padding:14px"><div style="font-size:11px;color:#2b6a9c;font-weight:600">Fees collected</div><div style="font-family:'Bricolage Grotesque';font-size:26px;font-weight:700;margin-top:4px;color:#0e5a96">₹4.2Cr</div><div style="font-size:11px;color:#126FB8;font-weight:700;margin-top:2px">94% cleared</div></div>
+              </div>
+              <div style="background:#f7f6f2;border-radius:13px;padding:15px;margin-top:12px">
+                <div style="font-size:11.5px;color:#8b8f9a;font-weight:600;margin-bottom:12px">Attendance this week</div>
+                <div style="display:flex;align-items:flex-end;gap:9px;height:96px">
+                  <sc-for list="{{ heroBars }}" as="b" hint-placeholder-count="7">
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end">
+                      <div style="width:100%;border-radius:6px 6px 3px 3px;background:linear-gradient(#3f96cf,#126FB8);height:{{ b.h }}"></div>
+                      <span style="font-size:9px;color:#a7abb5;font-weight:600">{{ b.d }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 · Admissions pipeline -->
+        <div style="width:33.3333%;height:100%;flex:none;display:flex;flex-direction:column">
+          <div style="height:44px;border-bottom:1px solid #f0efe9;display:flex;align-items:center;gap:7px;padding:0 16px;flex:none">
+            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></span><span style="width:11px;height:11px;border-radius:50%;background:#febc2e"></span><span style="width:11px;height:11px;border-radius:50%;background:#28c840"></span>
+            <span style="margin-left:12px;font-size:12px;color:#9a9ea9;font-weight:600">arivoo · admissions</span>
+          </div>
+          <div style="padding:20px 22px;flex:1;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <div style="font-family:'Bricolage Grotesque';font-size:17px;font-weight:700;color:#14151a">Admissions pipeline</div>
+              <div style="font-size:11.5px;color:#8b8f9a;font-weight:600">Fall 2026</div>
+            </div>
+            <div style="margin-top:18px;display:flex;flex-direction:column;gap:15px">
+              <sc-for list="{{ admitStages }}" as="s" hint-placeholder-count="5">
+                <div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+                    <span style="font-size:13px;font-weight:600;color:#3a3d47">{{ s.stage }}</span>
+                    <span style="font-family:'Bricolage Grotesque';font-size:14px;font-weight:700;color:#14151a">{{ s.count }}</span>
+                  </div>
+                  <div style="height:9px;border-radius:100px;background:#f0efe9;overflow:hidden">
+                    <div style="height:100%;border-radius:100px;width:{{ s.pct }};background:{{ s.color }}"></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 · AI exam proctoring -->
+        <div style="width:33.3333%;height:100%;flex:none;display:flex;flex-direction:column">
+          <div style="height:44px;border-bottom:1px solid #f0efe9;display:flex;align-items:center;gap:7px;padding:0 16px;flex:none">
+            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></span><span style="width:11px;height:11px;border-radius:50%;background:#febc2e"></span><span style="width:11px;height:11px;border-radius:50%;background:#28c840"></span>
+            <span style="margin-left:12px;font-size:12px;color:#9a9ea9;font-weight:600">arivoo · testguard</span>
+          </div>
+          <div style="padding:20px 22px;flex:1;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="font-family:'Bricolage Grotesque';font-size:17px;font-weight:700;color:#14151a">Live proctoring</div>
+              <div style="display:inline-flex;align-items:center;gap:7px;background:#eafaf3;color:#1f9d6b;font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:100px"><span style="width:8px;height:8px;border-radius:50%;background:#1f9d6b;animation:pulsedot 1.6s infinite"></span>238 live exams</div>
+            </div>
+            <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px">
+              <sc-for list="{{ proctorTiles }}" as="t" hint-placeholder-count="6">
+                <div style="background:#f7f6f2;border-radius:12px;padding:11px;display:flex;flex-direction:column;align-items:center;gap:8px">
+                  <div style="position:relative;width:46px;height:46px;border-radius:12px;background:{{ t.bg }};display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:700;font-size:15px;color:{{ t.fg }}">{{ t.init }}<span style="position:absolute;bottom:-3px;right:-3px;width:12px;height:12px;border-radius:50%;border:2px solid #f7f6f2;background:{{ t.dot }}"></span></div>
+                  <span style="font-size:11px;font-weight:600;color:#3a3d47">{{ t.name }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- persistent floating accents -->
+    <div style="position:absolute;top:-14px;right:-8px;background:#14151a;color:#fff;border-radius:15px;padding:13px 16px;box-shadow:0 16px 34px rgba(20,21,26,.28);animation:floaty2 6s ease-in-out infinite;z-index:2">
+      <div style="font-size:11px;color:#9a9ea9;font-weight:600">AI proctoring</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:4px"><span style="width:9px;height:9px;border-radius:50%;background:#1f9d6b;animation:pulsedot 1.6s infinite"></span><span style="font-family:'Bricolage Grotesque';font-weight:700;font-size:15px">238 live exams</span></div>
+    </div>
+    <div style="position:absolute;bottom:66px;left:-24px;background:#fff;border:1px solid #eceae4;border-radius:15px;padding:12px 15px;box-shadow:0 16px 34px rgba(20,21,26,.14);display:flex;align-items:center;gap:11px;animation:floaty 8s ease-in-out infinite;z-index:2">
+      <div style="width:38px;height:38px;border-radius:11px;overflow:hidden;flex:none;background:#eee"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=120&amp;q=80" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+      <div><div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:14px">Result published</div><div style="font-size:11.5px;color:#8b8f9a;font-weight:600">Semester V · 1,204 students</div></div>
+    </div>
+
+    <!-- carousel dots -->
+    <div style="position:absolute;bottom:12px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:12px">
+      <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="3">
+        <button type="button" onClick="{{ d.go }}" aria-label="{{ d.label }}" style="{{ d.dotStyle }}"></button>
+      </sc-for>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LOGO CLOUD ============ -->
+<section id="clients-strip" style="max-width:1240px;margin:44px auto 0;padding:0 32px">
+  <p style="text-align:center;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9a9ea9">{{ trustedBy }}</p>
+  <div style="margin-top:22px;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+    <div style="{{ marqueeStyle }}">
+      <sc-for list="{{ marqueeLogos }}" as="c" hint-placeholder-count="16">
+        <img data-src="{{ c }}" alt="" style="height:48px;width:auto;object-fit:contain;flex:none;mix-blend-mode:multiply">
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTEXT / PROBLEM ============ -->
+<section style="position:relative;margin:120px auto 0">
+  <div data-problem-stage style="height:230vh">
+    <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <div style="position:relative;width:100vw;height:660px;background-image:linear-gradient(rgba(20,21,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,21,26,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(120% 92% at 50% 46%,#000 55%,transparent 100%);mask-image:radial-gradient(120% 92% at 50% 46%,#000 55%,transparent 100%)">
+
+        <div data-problem-cards style="position:absolute;left:50%;top:50%;width:1100px;height:660px;margin:-330px 0 0 -550px;transform-origin:center">
+        <sc-for list="{{ problemCards }}" as="c" hint-placeholder-count="6">
+          <div data-problem-card data-tx="{{ c.tx }}" data-ty="{{ c.ty }}" data-rot="{{ c.rot }}" style="{{ c.baseStyle }}">
+            <div style="font-size:12px;font-weight:700;color:#9a9ea9;letter-spacing:.02em">{{ c.name }}</div>
+            <div style="height:8px;border-radius:100px;background:#eceae4;margin-top:12px;width:92%"></div>
+            <div style="height:8px;border-radius:100px;background:#f0efe9;margin-top:8px;width:70%"></div>
+            <div style="display:flex;align-items:center;gap:7px;margin-top:15px">
+              <span style="width:8px;height:8px;border-radius:50%;background:{{ c.dot }};flex:none"></span>
+              <span style="font-size:12px;font-weight:700;color:#6b6f7d">{{ c.via }}</span>
+            </div>
+          </div>
+        </sc-for>
+        </div>
+
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(640px,88%);text-align:center;z-index:5">
+          <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ problemEyebrow }}</div>
+          <h2 style="font-size:clamp(28px,5.4vw,46px);font-weight:700;margin-top:18px;line-height:1.08;text-wrap:balance">
+            <sc-for list="{{ problemWords }}" as="w" hint-placeholder-count="8"><span data-hl data-accent="{{ w.accent }}" style="color:#cfcfd6;transition:color .12s ease">{{ w.t }} </span></sc-for>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT SUITE (interactive) ============ -->
+<section id="products" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
+  <div data-reveal="" style="{{ revealBase }};text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ suiteEyebrow }}</div>
+    <h2 style="font-size:44px;font-weight:700;margin-top:16px">{{ suiteHeading }}</h2>
+  </div>
+
+  <!-- scroll-driven product story -->
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1.06fr 20px;gap:44px">
+
+    <!-- scrolling text steps -->
+    <div>
+      <sc-for list="{{ productSteps }}" as="s" hint-placeholder-count="4">
+        <div data-product-step="" data-index="{{ s.idx }}" style="{{ s.stepStyle }}">
+          <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:9px;background:{{ s.tint }};color:{{ s.accent }};font-weight:700;font-size:13px;padding:7px 14px;border-radius:100px">{{ s.name }}</div>
+          <h3 style="font-size:38px;font-weight:700;margin-top:20px;color:#14151a;text-wrap:balance;max-width:480px">{{ s.headline }}</h3>
+          <p style="font-size:17px;color:#4b4f5c;margin-top:14px;line-height:1.55;max-width:460px;text-wrap:pretty">{{ s.blurb }}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;max-width:480px">
+            <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:10px;background:#faf9f5;border:1px solid #f0efe9;border-radius:12px;padding:12px 14px">
+                <span style="display:inline-flex;width:22px;height:22px;border-radius:6px;background:{{ s.tint }};color:{{ s.accent }};align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none">✓</span>
+                <span style="font-size:14px;font-weight:600;color:#2b2e37;line-height:1.25">{{ f }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+            <a href="{{ s.href }}" style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:600;font-size:15px;padding:13px 24px;border-radius:12px;background:#126FB8;transition:transform .2s,background .2s" style-hover="background:#0c5896;transform:translateY(-2px)">{{ exploreLabel }} <span>→</span></a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- sticky mock screen, accent-tinted -->
+    <div>
+    <div style="position:sticky;top:96px;height:calc(100vh - 150px);display:flex;align-items:center">
+      <div style="position:relative;width:100%">
+        <div style="position:absolute;inset:-7% -5% -9% -5%;border-radius:44px;background:{{ mockBlob }};transition:background .45s;z-index:0;{{ synthDisp }}"></div>
+        <div style="position:absolute;top:-24px;right:40px;z-index:3;pointer-events:none;animation:floaty 5s ease-in-out infinite;filter:drop-shadow(0 5px 10px rgba(246,183,59,.45));{{ synthDisp }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="#f6b93b"><path d="M12 2c.5 6 3.5 9.5 9.5 10-6 .5-9 4-9.5 10-.5-6-3.5-9.5-9.5-10 6-.5 9-4 9.5-10z"/></svg></div>
+        <div style="position:absolute;bottom:6px;left:-16px;z-index:3;pointer-events:none;animation:floaty2 6s ease-in-out infinite;filter:drop-shadow(0 5px 10px rgba(246,183,59,.45));{{ synthDisp }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="#f6b93b"><path d="M12 2c.5 6 3.5 9.5 9.5 10-6 .5-9 4-9.5 10-.5-6-3.5-9.5-9.5-10 6-.5 9-4 9.5-10z"/></svg></div>
+        <div style="position:relative;z-index:2;width:100%;aspect-ratio:678 / 553">
+          <sc-for list="{{ mockImgs }}" as="m" hint-placeholder-count="4">
+            <img data-src="{{ m.src }}" alt="" style="{{ m.imgStyle }}">
+          </sc-for>
+        </div>
+      <div style="position:relative;z-index:2;width:100%;background:{{ active.screenBg }};border:1px solid #eceae4;border-radius:24px;padding:30px;box-shadow:0 34px 74px rgba(20,21,26,.18);transition:background .45s;{{ synthDisp }}">
+      <div style="width:100%;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(20,21,26,.14);overflow:hidden;{{ mockInnerStyle }}">
+        <div style="position:relative;height:132px;overflow:hidden">
+          <img data-src="{{ active.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,21,26,.06),{{ active.accent }}e6)"></div>
+          <div style="position:absolute;left:16px;right:16px;bottom:12px;display:flex;align-items:center;gap:8px;color:#fff">
+            <span style="display:inline-flex;width:24px;height:24px;border-radius:7px;background:rgba(255,255,255,.26);align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none">{{ active.mark }}</span>
+            <span style="font-size:13px;font-weight:700">{{ active.screenTitle }}</span>
+            <span style="margin-left:auto;font-size:11px;font-weight:700;background:rgba(255,255,255,.26);padding:4px 10px;border-radius:100px;white-space:nowrap">{{ active.metric }}</span>
+          </div>
+        </div>
+        <div style="padding:18px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <sc-for list="{{ active.kpis }}" as="k" hint-placeholder-count="3">
+              <div style="background:#f7f6f2;border-radius:11px;padding:12px"><div style="font-size:10.5px;color:#8b8f9a;font-weight:600">{{ k.label }}</div><div style="font-family:'Bricolage Grotesque';font-size:20px;font-weight:700;margin-top:3px;color:#14151a">{{ k.value }}</div></div>
+            </sc-for>
+          </div>
+          <div style="margin-top:12px;background:#f7f6f2;border-radius:11px;padding:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px"><span style="font-size:11.5px;font-weight:700;color:#5b5f6b">{{ active.listTitle }}</span><span style="font-size:11px;font-weight:600;color:{{ active.accent }}">View all</span></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ active.rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:10px;background:#fff;border-radius:9px;padding:9px 11px">
+                  <span style="width:26px;height:26px;border-radius:8px;background:{{ active.tint }};color:{{ active.accent }};display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">{{ r.i }}</span>
+                  <span style="font-size:12.5px;font-weight:600;color:#2b2e37;flex:1">{{ r.t }}</span>
+                  <span style="font-size:10.5px;font-weight:700;color:{{ r.sc }};background:{{ r.sb }};padding:3px 8px;border-radius:100px">{{ r.s }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+        <div style="position:absolute;top:-28px;left:-34px;z-index:4;display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #eceae4;border-radius:16px;padding:12px 15px;box-shadow:0 18px 42px rgba(20,21,26,.17);max-width:270px;animation:floaty 6.5s ease-in-out infinite;{{ calloutStyle }};{{ synthDisp }}">
+          <span style="width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:16px;background:{{ active.tint }};color:{{ active.accent }}">{{ active.mark }}</span>
+          <span style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:12px;font-weight:800;color:{{ active.accent }}">{{ active.f1.who }}</span>
+            <span style="font-size:13px;font-weight:600;color:#2b2e37;line-height:1.25;text-wrap:pretty">{{ active.f1.msg }}</span>
+          </span>
+        </div>
+        <div style="position:absolute;top:34px;right:-30px;z-index:4;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #eceae4;border-radius:100px;padding:8px 12px 8px 11px;box-shadow:0 16px 36px rgba(20,21,26,.15);animation:floaty2 7.5s ease-in-out infinite;{{ calloutStyle }};{{ synthDisp }}">
+          <span style="font-size:13px;font-weight:700;color:#14151a;white-space:nowrap">{{ active.f2 }}</span>
+          <span style="width:20px;height:20px;border-radius:50%;flex:none;background:#1f9d6b;color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700">✓</span>
+        </div>
+        <div style="position:absolute;bottom:-26px;right:26px;z-index:4;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #eceae4;border-radius:16px;padding:12px 18px;box-shadow:0 18px 42px rgba(20,21,26,.17);animation:floaty 8s ease-in-out infinite;{{ calloutStyle }};{{ synthDisp }}">
+          <span style="width:9px;height:9px;border-radius:50%;flex:none;background:{{ active.accent }};animation:pulsedot 1.4s infinite"></span>
+          <span style="font-size:14px;font-weight:700;color:#14151a;white-space:nowrap">{{ active.f3 }}</span>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- progress rail (sticky, right) -->
+    <div>
+    <div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+      <sc-for list="{{ productDots }}" as="d" hint-placeholder-count="4">
+        <button type="button" onClick="{{ d.go }}" aria-label="{{ d.abbr }}" title="{{ d.abbr }}" style="{{ d.dotStyle }}"></button>
+      </sc-for>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ARIVOO / FEATURES ============ -->
+<section style="max-width:1240px;margin:120px auto 0;padding:0 32px">
+  <div data-reveal="" style="{{ revealBase }};text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ whyEyebrow }}</div>
+    <h2 style="font-size:44px;font-weight:700;margin-top:16px">{{ whyHeading2 }}</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px">
+    <sc-for list="{{ whyCards }}" as="w" hint-placeholder-count="6">
+      <div data-reveal="" style="{{ revealBase }};background:#fff;border:1px solid #eceae4;border-radius:20px;padding:28px;transition:transform .25s,box-shadow .25s,border-color .25s" style-hover="transform:translateY(-4px);box-shadow:0 20px 44px rgba(20,21,26,.1);border-color:#e2e0d8">
+        <div style="width:46px;height:46px;border-radius:13px;background:{{ w.bg }};color:{{ w.fg }};display:flex;align-items:center;justify-content:center;font-size:22px">{{ w.icon }}</div>
+        <h3 style="font-size:21px;font-weight:700;margin-top:18px">{{ w.title }}</h3>
+        <p style="font-size:15px;color:#5b5f6b;margin-top:9px;line-height:1.55">{{ w.body }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES (interactive) ============ -->
+<section id="industries" style="max-width:1240px;margin:120px auto 0;padding:0 32px">
+  <div style="background:#14151a;border-radius:30px;padding:64px 56px;color:#fff;position:relative;overflow:hidden">
+    <div data-parallax="0.16" style="position:absolute;top:-80px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(18,111,184,.35),transparent 70%);pointer-events:none;will-change:transform"></div>
+    <div data-reveal="" style="{{ revealBase }};position:relative">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#86bce0"><span style="width:6px;height:6px;border-radius:50%;background:#3f96cf"></span>{{ serveEyebrow }}</div>
+      <h2 style="font-size:42px;font-weight:700;margin-top:16px;max-width:640px">{{ serveHeading }}</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;position:relative">
+      <sc-for list="{{ industries }}" as="i" hint-placeholder-count="3">
+        <button onClick="{{ i.select }}" style="{{ i.tabStyle }}">{{ i.name }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;position:relative">
+      <sc-for list="{{ activeIndustryItems }}" as="it" hint-placeholder-count="12">
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:14px 15px;transition:background .2s" style-hover="background:rgba(255,255,255,.1)">
+          <span style="width:20px;height:20px;border-radius:50%;background:rgba(122,122,224,.22);color:#b9b9f7;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>
+          <span style="font-size:13.5px;font-weight:600;color:#e6e6ee;line-height:1.25">{{ it }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:1240px;margin:100px auto 0;padding:0 32px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+      <div data-reveal="" style="{{ revealBase }};text-align:center;padding:8px">
+        <div data-count-to="{{ s.to }}" data-prefix="{{ s.prefix }}" data-suffix="{{ s.suffix }}" style="font-family:'Bricolage Grotesque';font-size:52px;font-weight:700;color:#126FB8;letter-spacing:-0.03em">{{ s.prefix }}0{{ s.suffix }}</div>
+        <div style="font-size:15px;font-weight:600;color:#4b4f5c;margin-top:4px">{{ s.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section style="max-width:1240px;margin:120px auto 0;padding:0 32px">
+  <div data-reveal="" style="{{ revealBase }};text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ testiEyebrow }}</div>
+    <h2 style="font-size:44px;font-weight:700;margin-top:16px;text-wrap:balance;max-width:840px;margin-inline:auto">{{ testiBig }}</h2>
+    <p style="font-size:18px;color:#5b5f6b;margin:14px auto 0;max-width:660px;line-height:1.55;text-wrap:pretty">{{ testiSub }}</p>
+  </div>
+
+  <div data-reveal="" style="{{ revealBase }};margin-top:44px;display:grid;grid-template-columns:{{ testiGridCols }};gap:20px;align-items:center;transition:grid-template-columns .55s cubic-bezier(.16,1,.3,1)">
+    <sc-for list="{{ testiCards }}" as="c" hint-placeholder-count="3">
+      <button type="button" onClick="{{ c.go }}" aria-label="{{ c.company }}" style="{{ c.cardStyle }}">
+        <sc-if value="{{ c.hasVideo }}" hint-placeholder-val="{{ false }}">
+          <video data-src="{{ c.src }}" poster="{{ c.poster }}" muted loop playsinline data-testi-idx="{{ c.idx }}" style="width:100%;height:100%;object-fit:cover;display:block"></video>
+        </sc-if>
+        <sc-if value="{{ c.noVideo }}" hint-placeholder-val="{{ true }}">
+          <img data-src="{{ c.poster }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+        </sc-if>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,13,17,.06) 38%,rgba(12,13,17,.72))"></div>
+        <span style="position:absolute;left:16px;top:14px;font-size:13px;font-weight:700;color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.55)">{{ c.company }}</span>
+        <sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}">
+          <span style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:rgba(0,0,0,.2);backdrop-filter:blur(2px);display:grid;place-items:center;pointer-events:none">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span style="position:absolute;left:18px;right:18px;bottom:24px;color:#fff;font-size:16px;font-weight:700;line-height:1.25;text-wrap:pretty;text-shadow:0 1px 7px rgba(0,0,0,.55);display:block">{{ c.caption }}</span>
+          <span style="position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.22);display:block"><span style="display:block;height:100%;background:#fff;width:0;animation:testiprog 8s linear infinite"></span></span>
+        </sc-if>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ============ CLIENTS GRID ============ -->
+<section id="clients" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
+  <div data-reveal="" style="{{ revealBase }};text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ clientsEyebrow }}</div>
+    <h2 style="font-size:38px;font-weight:700;margin-top:16px">{{ clientsHeading }}</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px">
+    <sc-for list="{{ clientLogos }}" as="c" hint-placeholder-count="8">
+      <div style="background:#fff;border:1px solid #eceae4;border-radius:16px;height:104px;display:flex;align-items:center;justify-content:center;padding:20px;transition:border-color .2s,transform .2s" style-hover="border-color:#d9d6cc;transform:translateY(-3px)">
+        <img data-src="{{ c.src }}" alt="{{ c.name }}" style="max-height:60px;max-width:100%;object-fit:contain;mix-blend-mode:multiply">
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section id="integrations" style="max-width:1240px;margin:110px auto 0;padding:0 32px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div data-reveal="" style="{{ revealBase }};background:#fff;border:1px solid #eceae4;border-radius:22px;padding:38px">
+      <h3 style="font-size:24px;font-weight:700">{{ cloudTitle }}</h3>
+      <p style="font-size:15px;color:#5b5f6b;margin-top:10px;line-height:1.55">{{ cloudBody }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
+        <sc-for list="{{ cloud }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #f0efe9;border-radius:13px;overflow:hidden;height:96px"><img data-src="{{ c.logo }}" alt="{{ c.name }}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="" style="{{ revealBase }};background:#fff;border:1px solid #eceae4;border-radius:22px;padding:38px">
+      <h3 style="font-size:24px;font-weight:700">{{ payTitle }}</h3>
+      <p style="font-size:15px;color:#5b5f6b;margin-top:10px;line-height:1.55">{{ payBody }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
+        <sc-for list="{{ payments }}" as="p" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #f0efe9;border-radius:12px;overflow:hidden;height:80px"><img data-src="{{ p.logo }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeVideo }}" style="position:fixed;inset:0;z-index:200;background:rgba(8,9,12,.84);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div onClick="{{ stopProp }}" style="position:relative;width:min(980px,94vw);aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6)">
+      <iframe src="{{ modalVideoUrl }}" title="Testimonial video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+    </div>
+    <button type="button" onClick="{{ closeVideo }}" aria-label="Close video" style="position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.16);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center;transition:background .2s" style-hover="background:rgba(255,255,255,.3)">✕</button>
+  </div>
+</sc-if>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="demo" style="max-width:1240px;margin:120px auto 0;padding:0 32px">
+  <div style="background:linear-gradient(135deg,#126FB8,#0c4f85);border-radius:30px;padding:72px 56px;text-align:center;color:#fff;position:relative;overflow:hidden">
+    <div data-parallax="0.13" style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(255,255,255,.14);border-radius:50%;will-change:transform"></div>
+    <div data-parallax="-0.13" style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(255,255,255,.14);border-radius:50%;will-change:transform"></div>
+    <div style="position:relative">
+      <h2 style="font-size:48px;font-weight:700;text-wrap:balance;max-width:720px;margin-inline:auto">{{ ctaHeading }}</h2>
+      <p style="font-size:18px;color:rgba(255,255,255,.86);margin-top:16px;max-width:560px;margin-inline:auto">{{ ctaSubHome }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px">
+        <a href="Arivoo%20Book%20a%20Demo.dc.html" data-cta-book style="background:#fff;color:#0c4f85;font-weight:700;font-size:16px;padding:16px 30px;border-radius:13px;transition:transform .2s" style-hover="transform:translateY(-2px)">{{ ctaBook }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background:#0b0c10;color:#fff;margin-top:110px">
+  <div style="max-width:1240px;margin:0 auto;padding:76px 32px 0">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px">
+      <div>
+        <p style="font-size:14px;color:#8a8f9c;max-width:260px;line-height:1.6;text-wrap:pretty">{{ footerTagline }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+          <sc-for list="{{ offices }}" as="o" hint-placeholder-count="4">
+            <span style="font-size:12px;font-weight:600;color:#b7bcc7;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);padding:6px 12px;border-radius:100px">{{ o }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#f3f4f6">{{ col.head }}</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-top:18px">
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+              <a href="#top" style="font-size:14.5px;color:#9297a3;font-weight:500;transition:color .2s;width:fit-content" style-hover="color:#ffffff">{{ l }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:52px">
+      <a href="#top" aria-label="LinkedIn" style="width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:#b7bcc7;transition:background .2s,color .2s" style-hover="background:rgba(255,255,255,.12);color:#ffffff">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.32 8.06h4.33V24H.32V8.06zM8.34 8.06h4.15v2.18h.06c.58-1.1 2-2.26 4.12-2.26 4.4 0 5.22 2.9 5.22 6.67V24h-4.33v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V24H8.34V8.06z"/></svg>
+      </a>
+      <a href="#top" aria-label="X" style="width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:#b7bcc7;transition:background .2s,color .2s" style-hover="background:rgba(255,255,255,.12);color:#ffffff">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26L22.82 21.75h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.83L1.15 2.25h6.83l4.72 6.24 5.54-6.24zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg>
+      </a>
+      <a href="#top" aria-label="Instagram" style="width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:#b7bcc7;transition:background .2s,color .2s" style-hover="background:rgba(255,255,255,.12);color:#ffffff">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+      </a>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:22px;padding:22px 0 30px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center">
+      <span style="font-size:13px;color:#7c8290;font-weight:500">{{ ui.copyright }}</span>
+      <div style="display:flex;gap:26px;font-size:13px;font-weight:500"><sc-for list="{{ legal }}" as="lg" hint-placeholder-count="3"><a href="#top" style="color:#7c8290;transition:color .2s" style-hover="color:#ffffff">{{ lg }}</a></sc-for></div>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden">
+    <svg aria-hidden="true" viewBox="0 0 265.69 64.56" preserveAspectRatio="xMidYMax meet" style="display:block;width:min(70%,860px);margin:0 auto -1.6%;fill:#ffffff;opacity:.055;user-select:none;pointer-events:none">
+      <path d="M176.54,11.04c3.76,0,13.02,1.5,19.28,7.76,1.5,1.5,3,2.75,4.51,3.76,11.02,7.01,23.54,3,30.3-3.76,2.75-3,5.26-4.76,7.51-6.01s4.76-1.75,8.01-1.75,5.01-2.25,5.01-5.01-2.25-5.01-5.01-5.01c-4.51,0-8.51,1-12.27,2.75-3.76,1.75-7.01,4.51-10.27,8.01-4.51,4.76-13.52,7.01-20.53,0-8.76-8.76-21.29-10.77-26.54-10.77-2.75,0-5.01,2.25-5.01,5.01s2.25,5.01,5.01,5.01Z"></path>
+      <path d="M55.59,36.33v26.29h13.02v-25.79c0-5.51,3-8.76,8.26-8.76s5.01.75,7.26,2v-12.77c-2.25-1-5.51-1.5-8.51-1.5-13.52,0-20.03,9.01-20.03,20.78v-.25Z"></path>
+      <path d="M24.54,15.8C10.77,15.8,0,26.81,0,39.84s9.27,24.04,22.29,24.04,11.27-2.5,14.27-6.51v5.26h12.27v-22.79c0-13.77-10.77-24.04-24.54-24.04h.25ZM24.54,51.36c-6.76,0-11.52-5.26-11.52-11.77s4.76-11.77,11.52-11.77,11.52,5.26,11.52,11.77-5.01,11.77-11.52,11.77Z"></path>
+      <path d="M246.66,16.3h-.5c-2.5,0-4.01.5-5.51,1.25-1.5.75-3.51,2.25-6.01,5.01-4.01,4.26-10.02,7.51-16.53,8.76-1,2.75-1.5,5.51-1.5,8.51,0,13.27,10.52,24.04,24.54,24.04s24.54-11.02,24.54-24.04-8.01-20.78-18.78-23.29l-.25-.25ZM240.9,51.36c-6.76,0-11.52-5.26-11.52-11.77s4.76-11.77,11.52-11.77,11.52,5.26,11.52,11.77-5.01,11.77-11.52,11.77Z"></path>
+      <path d="M178.45,16.98h.5c2.5,0,4.01.5,5.51,1.25,1.5.75,3.51,2.25,6.01,5.01,4.01,4.26,10.02,7.51,16.53,8.76,1,2.75,1.5,5.51,1.5,8.51,0,13.27-10.52,24.04-24.54,24.04s-24.54-11.02-24.54-24.04,7.57-20.89,18.34-23.39l.69-.14ZM184.21,52.04c6.76,0,11.52-5.26,11.52-11.77s-4.76-11.77-11.52-11.77-11.52,5.26-11.52,11.77,5.01,11.77,11.52,11.77Z"></path>
+      <path d="M134.22,51.1l-11.77-34.06h-13.77l13.77,38.06c2,6.01,6.26,8.76,11.77,8.76s9.52-3,11.77-8.76l14.02-38.06h-13.77l-11.77,34.06h-.25Z"></path>
+      <rect x="89.65" y="17.05" width="13.02" height="45.57"></rect>
+      <path d="M187.06.27l-.5,2.5c2,.5,7.51,1.75,16.53,9.52,10.77,9.52,18.78,1.5,24.04-3.26,4.01-4.01,8.01-5.51,10.27-6.51l-1-2.25c-2-.5-6.26,0-13.02,3-7.01,3.26-10.02,6.51-11.02,8.26-.75-1-3-5.26-9.52-8.26-6.51-3-13.27-3.76-16.03-3h.25Z"></path>
+    </svg>
+  </div>
+</footer>
+
+<!-- floating fly-to-CTA button -->
+<a href="Arivoo%20Book%20a%20Demo.dc.html" data-fly-cta style="position:fixed;left:50%;bottom:40px;z-index:45;transform:translateX(-50%);opacity:0;pointer-events:none;display:inline-flex;align-items:center;gap:9px;background:#126FB8;color:#fff;font-weight:600;font-size:16px;padding:15px 30px;border-radius:14px;box-shadow:0 18px 40px rgba(18,111,184,.42);transition:top .5s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),opacity .4s ease">{{ ctaBook }} <span>→</span></a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled:false, active:0, industry:0, heroSlide:0, testiActive:0, modalVideo:null, unified:false, demoOpen:false, demoProducts:[], lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
+
+  componentDidMount(){
+    this._applyImgs();
+    this._syncTestiVideo();
+    this._applyDir();
+    if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0);
+    const reduce = !!this.props.reduceMotion;
+    // nav shadow on scroll
+    this._onScroll = () => {
+      const s = window.scrollY > 20;
+      if (s !== this.state.scrolled) this.setState({ scrolled:s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive:true });
+    if(!reduce){
+      this._parallax = Array.from(document.querySelectorAll('[data-parallax]')).map(el=>({el, s:parseFloat(el.getAttribute('data-parallax'))||0}));
+      let ticking=false;
+      this._onPar = ()=>{
+        if(ticking) return; ticking=true;
+        requestAnimationFrame(()=>{
+          const vh=window.innerHeight;
+          this._parallax.forEach(({el,s})=>{
+            const r=el.getBoundingClientRect();
+            const d=(r.top + r.height/2) - vh/2;
+            el.style.transform='translate3d(0,'+(d*s).toFixed(1)+'px,0)';
+          });
+          ticking=false;
+        });
+      };
+      window.addEventListener('scroll', this._onPar, { passive:true });
+      window.addEventListener('resize', this._onPar);
+      this._onPar();
+    }
+
+    // reveal + counters via IntersectionObserver
+    setTimeout(() => {
+      const reveals = Array.from(document.querySelectorAll('[data-reveal]'));
+      const counters = Array.from(document.querySelectorAll('[data-count-to]'));
+      if (reduce){
+        reveals.forEach(el=>{ el.style.opacity='1'; el.style.transform='none'; });
+        counters.forEach(el=>this.setCount(el, Number(el.getAttribute('data-count-to'))));
+        return;
+      }
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.style.opacity='1';
+            e.target.style.transform='translateY(0)';
+            io.unobserve(e.target);
+          }
+        });
+      },{ threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+      reveals.forEach(el=>io.observe(el));
+
+      const cio = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ this.animateCount(e.target); cio.unobserve(e.target); }
+        });
+      },{ threshold:0.5 });
+      counters.forEach(el=>cio.observe(el));
+
+      // scroll-driven product suite (nearest-to-center; smooth both directions)
+      const steps = Array.from(document.querySelectorAll('[data-product-step]'));
+      if(steps.length){
+        let pTick=false;
+        this._onProd = ()=>{
+          if(pTick) return; pTick=true;
+          requestAnimationFrame(()=>{
+            const c = window.innerHeight/2;
+            let best=0, bestD=Infinity;
+            steps.forEach((el,idx)=>{
+              const r=el.getBoundingClientRect();
+              const d=Math.abs((r.top + r.height/2) - c);
+              if(d<bestD){ bestD=d; best=idx; }
+            });
+            if(best!==this.state.active){
+              this.setState({ active:best, mockFading:true });
+              requestAnimationFrame(()=>requestAnimationFrame(()=>this.setState({ mockFading:false })));
+            }
+            pTick=false;
+          });
+        };
+        window.addEventListener('scroll', this._onProd, { passive:true });
+        window.addEventListener('resize', this._onProd);
+        this._onProd();
+      }
+
+      // scroll-driven problem section
+      const track = document.querySelector('[data-problem-stage]');
+      const words = Array.from(document.querySelectorAll('[data-hl]'));
+      const cards = Array.from(document.querySelectorAll('[data-problem-card]'));
+      const book = document.querySelector('[data-book]');
+      const scene = document.querySelector('[data-problem-cards]');
+      const fitScene = ()=>{ if(scene){ const s=Math.min(1,(window.innerWidth-24)/1100); scene.style.transform='scale('+s.toFixed(3)+')'; } };
+      fitScene();
+      window.addEventListener('resize', fitScene);
+      this._fitScene = fitScene;
+      if(track && words.length){
+        const clamp = (v)=>Math.max(0,Math.min(1,v));
+        if(reduce){
+          words.forEach(w=>w.style.color = w.getAttribute('data-accent')==='1' ? '#126FB8' : '#14151a');
+          cards.forEach(c=>{ c.style.opacity='0'; });
+          if(book){ book.style.opacity='1'; book.style.transform='none'; book.style.pointerEvents='auto'; }
+        } else {
+          let tickingP=false;
+          this._problemUpdate = ()=>{
+            if(tickingP) return; tickingP=true;
+            requestAnimationFrame(()=>{
+              const rect = track.getBoundingClientRect();
+              const total = track.offsetHeight - window.innerHeight;
+              const p = clamp(total>0 ? (-rect.top)/total : 0);
+              const lit = Math.round(clamp(p/0.6)*words.length);
+              words.forEach((w,i)=>{ w.style.color = i<lit ? (w.getAttribute('data-accent')==='1'?'#126FB8':'#14151a') : '#cfcfd6'; });
+              const u = clamp((p-0.45)/0.4);
+              cards.forEach(c=>{
+                const tx=+c.getAttribute('data-tx'), ty=+c.getAttribute('data-ty'), rot=+c.getAttribute('data-rot');
+                c.style.transform='translate('+(tx*u)+'px,'+(ty*u)+'px) scale('+(1-0.6*u)+') rotate('+(rot*(1-u))+'deg)';
+                c.style.opacity=String(1-u);
+              });
+              if(book){ const b=clamp((p-0.82)/0.15); book.style.opacity=String(b); book.style.transform='translateY('+((1-b)*10)+'px)'; book.style.pointerEvents=b>0.5?'auto':'none'; }
+              tickingP=false;
+            });
+          };
+          window.addEventListener('scroll', this._problemUpdate, { passive:true });
+          window.addEventListener('resize', this._problemUpdate);
+          this._problemUpdate();
+        }
+      }
+    }, 60);
+    this.startHeroTimer();
+    this.startTestiTimer();
+    this._setupFlyCta(reduce);
+  }
+  toggleDemoProduct(k){ this.setState(s=>{ const cur=s.demoProducts||[]; return {demoProducts: cur.indexOf(k)>-1 ? cur.filter(x=>x!==k) : cur.concat(k)}; }); }
+  componentWillUnmount(){ window.removeEventListener('scroll', this._onScroll); if(this._onPar){ window.removeEventListener('scroll', this._onPar); window.removeEventListener('resize', this._onPar); } if(this._heroTimer) clearInterval(this._heroTimer); if(this._testiTimer) clearInterval(this._testiTimer); if(this._onFly){ window.removeEventListener('scroll', this._onFly); window.removeEventListener('resize', this._onFly); } if(this._onProd){ window.removeEventListener('scroll', this._onProd); window.removeEventListener('resize', this._onProd); } if(this._fitScene){ window.removeEventListener('resize', this._fitScene); }
+    if(this._problemUpdate){ window.removeEventListener('scroll', this._problemUpdate); window.removeEventListener('resize', this._problemUpdate); } }
+
+  componentDidUpdate(){ this._applyImgs(); this._syncTestiVideo(); }
+  _syncTestiVideo(){ try{ document.querySelectorAll('video[data-testi-idx]').forEach(function(v){ v.pause&&v.pause(); try{v.currentTime=0;}catch(e){} }); }catch(e){} }
+  _applyImgs(){ try{ document.querySelectorAll('img[data-src],video[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v) el.setAttribute('src', v); }); }catch(e){} }
+  _applyDir(){ try{ var rtl=this.state.lang==='ar'; document.documentElement.setAttribute('dir', rtl?'rtl':'ltr'); document.documentElement.setAttribute('lang', this.state.lang); }catch(e){} }
+  setLang(l){ try{ localStorage.setItem('arivoo_lang', l); }catch(e){} this.setState({lang:l}, ()=>this._applyDir()); }
+  startHeroTimer(){
+    if(this._heroTimer) clearInterval(this._heroTimer);
+    if(this.props.reduceMotion) return;
+    this._heroTimer = setInterval(()=>{ this.setState(s=>({ heroSlide:(s.heroSlide+1)%3 })); }, 4200);
+  }
+  goHero(i){ this.setState({ heroSlide:i }); this.startHeroTimer(); }
+
+  startTestiTimer(){
+    if(this._testiTimer) clearInterval(this._testiTimer);
+    if(this.props.reduceMotion) return;
+    this._testiTimer = setInterval(()=>{ this.setState(s=>({ testiActive:(s.testiActive+1)%(this._testiN||1) })); }, 8000);
+  }
+  goTesti(i, yt){ this.setState({ testiActive:i, modalVideo: yt||null }); this.startTestiTimer(); }
+  closeVideo(){ this.setState({ modalVideo:null }); }
+
+  _setupFlyCta(reduce){
+    const fly=document.querySelector('[data-fly-cta]');
+    const stage=document.querySelector('[data-problem-stage]');
+    const ctaBtn=document.querySelector('[data-cta-book]');
+    if(!fly||!ctaBtn) return;
+    if(reduce){ fly.style.display='none'; return; }
+    ctaBtn.style.transition='opacity .4s ease';
+    fly.style.bottom='auto';
+    const clamp=(v)=>Math.max(0,Math.min(1,v));
+    let ft=false;
+    this._onFly=()=>{
+      const vw=window.innerWidth, vh=window.innerHeight;
+        const h=fly.offsetHeight||52;
+        const bottomTop=vh-40-h;
+        const centerY=vh*0.58-h/2;
+        const sr=stage?stage.getBoundingClientRect():null;
+        const cr=ctaBtn.getBoundingClientRect();
+        const targetCenterY=cr.top+cr.height/2;
+        let p=0;
+        if(sr){ const total=stage.offsetHeight-vh; p=clamp(total>0?(-sr.top)/total:0); }
+        const a=clamp((p-0.8)/0.15);
+        const merging = targetCenterY <= bottomTop+h/2+2;
+        if(merging){
+          fly.style.top=bottomTop+'px';
+          const dx=(cr.left+cr.width/2)-(vw/2);
+          const dy=targetCenterY-(bottomTop+h/2);
+          fly.style.transform='translateX(-50%) translate('+dx+'px,'+dy+'px)';
+          fly.style.opacity='0'; fly.style.pointerEvents='none';
+          ctaBtn.style.opacity='1'; ctaBtn.style.pointerEvents='auto';
+        } else if(a<=0){
+          fly.style.opacity='0'; fly.style.pointerEvents='none';
+          fly.style.transform='translateX(-50%)';
+          ctaBtn.style.opacity='0'; ctaBtn.style.pointerEvents='none';
+        } else {
+          let d=0;
+          if(sr){ d=clamp((vh-sr.bottom)/(vh*0.55)); }
+          const topPos=centerY+(bottomTop-centerY)*d;
+          fly.style.top=topPos+'px';
+          fly.style.transform='translateX(-50%)';
+          fly.style.opacity=String(a);
+          fly.style.pointerEvents='auto';
+          ctaBtn.style.opacity='0'; ctaBtn.style.pointerEvents='none';
+        }
+    };
+    window.addEventListener('scroll',this._onFly,{passive:true});
+    window.addEventListener('resize',this._onFly);
+    this._onFly();
+  }
+
+  toggleUnify(){ this.setState(s=>({ unified:!s.unified })); }
+
+  goProduct(i){
+    const el = document.querySelectorAll('[data-product-step]')[i];
+    if(!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 130;
+    window.scrollTo({ top:y, behavior:'smooth' });
+  }
+
+  setCount(el, val){
+    const pre = el.getAttribute('data-prefix')||'';
+    const suf = el.getAttribute('data-suffix')||'';
+    el.textContent = pre + this.fmt(val) + suf;
+  }
+  fmt(n){
+    if(n>=1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'')+'M';
+    if(n>=1000) return n%1000===0 ? (n/1000)+'K' : (n/1000).toFixed(1).replace(/\.0$/,'')+'K';
+    return String(n);
+  }
+  animateCount(el){
+    const to = Number(el.getAttribute('data-count-to'))||0;
+    const dur = 1400, start = performance.now();
+    const tick = (now)=>{
+      const p = Math.min(1,(now-start)/dur);
+      const e = 1-Math.pow(1-p,3);
+      this.setCount(el, Math.round(to*e));
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  renderVals(){
+    const lang = this.state.lang || 'en';
+    const I18 = window.ARIVOO_I18N || {};
+    const homeTr = (I18.pages&&I18.pages.home&&I18.pages.home[lang]) || {};
+    const uiT = (I18.ui&&I18.ui[lang]) || {};
+    const ui = Object.assign({ products:'Products', featured:'Featured products', quote:'One platform instead of ten. Admissions, teaching, exams and finance finally speak the same language \u2014 so your team spends time on students, not spreadsheets.', bookDemo:'Book a demo', requestDemo:'Request a demo', copyright:'\u00A9 2026 Adamas Tech Consulting \u2014 All Rights Reserved' }, uiT);
+    const showStats = this.props.showStats !== false;
+    const reduce = !!this.props.reduceMotion;
+    const revealBase = reduce
+      ? 'opacity:1'
+      : 'opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)';
+
+    const navStyle = 'position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s,backdrop-filter .3s;'
+      + (this.state.scrolled
+        ? 'background:rgba(251,250,247,.82);backdrop-filter:saturate(180%) blur(14px);box-shadow:0 1px 0 rgba(20,21,26,.06)'
+        : 'background:transparent');
+
+    const marqueeStyle = 'display:flex;gap:56px;width:max-content;align-items:center;'
+      + (reduce ? '' : 'animation:marquee 34s linear infinite');
+
+    // ---- products ----
+    const PROD = [
+      { abbr:'UMS', short:'University', name:'University Management System', mark:'U',
+        accent:'#126FB8', tint:'#e4f0f9', screenBg:'#e9f2fa', img:'https://images.unsplash.com/photo-1562774053-701939374585?w=680&q=80&auto=format&fit=crop',
+        headline:'Run the entire university on one system.',
+        blurb:'Every department, from admissions to finance, on one connected record.',
+        features:['Admissions & Registration','Examination (Pre & Post)','Finance & Fee Management','Hostel, Library & Alumni'],
+        screenTitle:'Admissions · 2026 intake', metric:'18 modules', f1:{who:'Arivoo Assistant',msg:'24 new applications this morning'}, f2:'Synced to Finance', f3:'Verifying documents…',
+        kpis:[{label:'Applications',value:'8,942'},{label:'Confirmed',value:'6,110'},{label:'Seats left',value:'318'}],
+        listTitle:'Recent applications',
+        rows:[{i:'AR',t:'Ananya Roy — B.Tech CSE',s:'Verified',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'KV',t:'Kabir Verma — MBA',s:'Fee due',sc:'#d9822b',sb:'#fdf1e3'},{i:'MS',t:'Meera Shah — B.Com',s:'Verified',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'RD',t:'Rohan Das — M.Sc',s:'Review',sc:'#126FB8',sb:'#e4f0f9'}] },
+      { abbr:'SMS', short:'School', name:'School Management System', mark:'S',
+        accent:'#1f9d6b', tint:'#e6f6ef', screenBg:'#eef8f2', img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=680&q=80&auto=format&fit=crop',
+        headline:'School operations, simplified end to end.',
+        blurb:'Attendance, fees and homework in one place, with a parent app.',
+        features:['Attendance & Timetable','Fee & Due Management','Homework & Assignments','Report Cards & Grading'],
+        screenTitle:'Class overview · Grade 8', metric:'Parent app', f1:{who:'Arivoo Assistant',msg:'Attendance marked — 96% present'}, f2:'Parent app live', f3:'Sending fee reminders…',
+        kpis:[{label:'Present',value:'96%'},{label:'Fees due',value:'12'},{label:'Homework',value:'4'}],
+        listTitle:"Today's timetable",
+        rows:[{i:'01',t:'Mathematics — Room 204',s:'Done',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'02',t:'Science Lab — Block B',s:'Live',sc:'#126FB8',sb:'#e4f0f9'},{i:'03',t:'English — Room 118',s:'Next',sc:'#d9822b',sb:'#fdf1e3'},{i:'04',t:'Physical Education',s:'2:30',sc:'#8b8f9a',sb:'#f2f1ec'}] },
+      { abbr:'LMS', short:'Learning', name:'Learning Management System', mark:'L',
+        accent:'#d9822b', tint:'#fdf1e3', screenBg:'#fdf5ec', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=680&q=80&auto=format&fit=crop',
+        headline:'Deliver, manage and track learning.',
+        blurb:'Courses, quizzes and live classes with full progress tracking.',
+        features:['Course Delivery','Assignments & Quizzes','Progress Tracking','Live Classes & Library'],
+        screenTitle:'Course · Data Structures', metric:'SCORM', f1:{who:'Arivoo Assistant',msg:'New module unlocked for 1,204'}, f2:'Synced to gradebook', f3:'Grading 214 quizzes…',
+        kpis:[{label:'Enrolled',value:'1,204'},{label:'Completion',value:'78%'},{label:'Avg score',value:'82'}],
+        listTitle:'Modules',
+        rows:[{i:'M1',t:'Arrays & Linked Lists',s:'Complete',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'M2',t:'Stacks & Queues',s:'92% done',sc:'#126FB8',sb:'#e4f0f9'},{i:'M3',t:'Trees & Graphs',s:'Active',sc:'#d9822b',sb:'#fdf1e3'},{i:'M4',t:'Sorting — Quiz due',s:'Locked',sc:'#8b8f9a',sb:'#f2f1ec'}] },
+      { abbr:'TestGUARD', short:'Assessment', name:'TestGUARD — Online Assessment', mark:'T',
+        accent:'#6366f1', tint:'#eceefe', screenBg:'#f0f1fe', img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=680&q=80&auto=format&fit=crop',
+        headline:'Secure online exams with AI proctoring.',
+        blurb:'Schedule, auto-evaluate and keep every exam honest with AI proctoring.',
+        features:['AI Proctoring','Question Banks','Auto Evaluation','Anti-cheat Lockdown'],
+        screenTitle:'Live exam · Semester V', metric:'AI-monitored', f1:{who:'Arivoo Assistant',msg:'3 flags ready for your review'}, f2:'AI proctoring on', f3:'Scanning 238 candidates…',
+        kpis:[{label:'Live now',value:'238'},{label:'Flags',value:'3'},{label:'Submitted',value:'966'}],
+        listTitle:'Proctoring feed',
+        rows:[{i:'✓',t:'Zone A — 84 candidates',s:'Clear',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'!',t:'Candidate #4471 — gaze',s:'Flagged',sc:'#6366f1',sb:'#eceefe'},{i:'✓',t:'Zone B — 72 candidates',s:'Clear',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'✓',t:'Zone C — 82 candidates',s:'Clear',sc:'#1f9d6b',sb:'#e6f6ef'}] },
+    ];
+    if(homeTr.PROD){ PROD.forEach((p,i)=>{ if(homeTr.PROD[i]) Object.assign(p, homeTr.PROD[i]); }); }
+    const ai = this.state.active;
+    const products = PROD.map((p,i)=>({
+      abbr:p.abbr, short:p.short, mark:p.mark,
+      chipBg: i===ai ? '#ffffff' : p.tint,
+      chipFg: i===ai ? p.accent : p.accent,
+      select: ()=>this.setState({ active:i }),
+      tabStyle: 'display:flex;align-items:center;gap:11px;padding:11px 18px 11px 12px;border-radius:14px;cursor:pointer;border:1px solid '
+        + (i===ai ? p.accent : '#e5e3dc') + ';background:' + (i===ai ? p.accent : '#fff')
+        + ';color:' + (i===ai ? '#fff' : '#14151a')
+        + ';transition:all .2s;box-shadow:' + (i===ai ? '0 10px 24px '+p.accent+'44' : 'none'),
+    }));
+    const active = PROD[ai];
+
+    const productSteps = PROD.map((p,i)=>({
+      idx:i, name:p.name, headline:p.headline, blurb:p.blurb, features:p.features, accent:p.accent, tint:p.tint,
+      href: ({UMS:'Arivoo%20UMS.dc.html',SMS:'Arivoo%20SMS.dc.html',LMS:'Arivoo%20LMS.dc.html',TestGUARD:'Arivoo%20TestGUARD.dc.html'})[p.abbr],
+      stepStyle:'min-height:74vh;display:flex;flex-direction:column;justify-content:center;padding:44px 0;transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),filter .55s;'
+        + (i===ai ? 'opacity:1;transform:translateY(0);filter:none' : 'opacity:.26;transform:translateY(10px);filter:saturate(.55)'),
+    }));
+    const productDots = PROD.map((p,i)=>({
+      abbr:p.abbr, go:()=>this.goProduct(i),
+      dotStyle:'border:none;padding:0;cursor:pointer;border-radius:100px;width:9px;transition:all .35s;'
+        + (i===ai ? 'height:30px;background:'+p.accent : 'height:9px;background:#d4d2ca'),
+    }));
+
+    // ---- industries ----
+    const IND = [
+      { name:'Schools', items:['Pre-Enquiry & Admission','Student Information','Attendance','Fee & Due Management','Timetable & Routine','Homework & Assignment','Exam & Grading','Transport Management','Report Cards','Event Calendar','Notifications & Alerts','Analytical Reports'] },
+      { name:'Universities', items:['Admission & Registration','Academic Management','Examination & Scrutiny','Certificate & Convocation','Finance & Accounting','HRMS & Payroll','Library Management','Hostel Management','Inventory & Purchase','Placement Cell','Alumni Portal','Student & Employee Portal'] },
+      { name:'Corporates', items:['Employee Management','Course Management','Exam & Assessment','Reporting & Analytics','Library Management','Communication Tools','Asset Management','Cab Management','Employee Portal'] },
+    ];
+    if(homeTr.IND){ IND.forEach((x,i)=>{ if(homeTr.IND[i]) Object.assign(x, homeTr.IND[i]); }); }
+    const industries = IND.map((x,i)=>({
+      name:x.name,
+      select: ()=>this.setState({ industry:i }),
+      tabStyle: 'padding:11px 22px;border-radius:100px;cursor:pointer;font-weight:600;font-size:15px;transition:all .2s;border:1px solid '
+        + (i===this.state.industry ? 'transparent' : 'rgba(255,255,255,.22)')
+        + ';background:' + (i===this.state.industry ? '#fff' : 'transparent')
+        + ';color:' + (i===this.state.industry ? '#14151a' : '#c9c9d6'),
+    }));
+    const activeIndustryItems = IND[this.state.industry].items;
+
+    // ---- problem: scattered silos (scroll-driven) ----
+    const cardDefs = [
+      {name:'Admissions', via:'Google Forms', dot:'#126FB8', L:0,   T:80,  rot:-5, tx:435, ty:175},
+      {name:'Fee Management', via:'Legacy ERP', dot:'#1f9d6b', L:870, T:30,  rot:4,  tx:-435,ty:225},
+      {name:'Attendance', via:'Paper register', dot:'#d9822b', L:-20, T:350, rot:3,  tx:455, ty:-95},
+      {name:'Examinations', via:'Excel sheets', dot:'#6366f1', L:880, T:330, rot:-4, tx:-445,ty:-75},
+      {name:'Library', via:'Desktop app', dot:'#126FB8', L:120, T:480, rot:5,  tx:315, ty:-225},
+      {name:'Messaging', via:'WhatsApp groups', dot:'#1f9d6b', L:780, T:490, rot:-3, tx:-345,ty:-235},
+    ];
+    const problemCards = cardDefs.map(c=>({
+      name:c.name, via:c.via, dot:c.dot, tx:c.tx, ty:c.ty, rot:c.rot,
+      baseStyle:'position:absolute;left:'+c.L+'px;top:'+c.T+'px;width:230px;background:#fff;border:1px solid #eceae4;border-radius:16px;padding:16px 16px 15px;box-shadow:0 14px 34px rgba(20,21,26,.08);transform:rotate('+c.rot+'deg);will-change:transform,opacity',
+    }));
+    const problemPhrase = homeTr.problemText || 'A dozen disconnected tools. Arivoo makes them one.';
+    const _pw = problemPhrase.split(' ');
+    const problemWords = _pw.map((t,i)=>({ t, accent: (lang==='en' ? (t.indexOf('one')===0 ? '1' : '0') : (i===_pw.length-1 ? '1' : '0')) }));
+
+    const VT = [
+      {company:'City Engineering College', caption:'Five tools retired — admissions, fees & exams on one record', poster:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80', src:((window.__resources||{}).vidNeotia||'assets/neotia-testimonial.mp4'), youtube:'y-ASXdoMPk0'},
+      {company:'Serampore College', caption:'Parents track attendance and pay fees from their phones', poster:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80', src:((window.__resources||{}).vidDps||'assets/dps-testimonial.mp4'), youtube:'kqGoydegp5Q'},
+      {company:'RCC Institute of IT', caption:'Semester exams run online with AI proctoring', poster:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=900&q=80', src:''},
+    ];
+    this._testiN = VT.length;
+    const _ti = this.state.testiActive % VT.length;
+    const testiCards = VT.map((it,i)=>({
+      company:it.company, caption:it.caption, poster:it.poster, src:it.src||'', idx:i,
+      hasVideo:!!it.src, noVideo:!it.src, active:(i===_ti),
+      go:()=>this.goTesti(i, it.youtube||''),
+      cardStyle:'position:relative;border:none;padding:0;cursor:pointer;text-align:left;width:100%;height:440px;border-radius:20px;overflow:hidden;background:#0c0d11;transition:opacity .5s ease,box-shadow .5s ease;'
+        + (i===_ti ? 'opacity:1;z-index:2;box-shadow:0 34px 70px rgba(20,21,26,.24)' : 'opacity:.86;z-index:1;box-shadow:0 14px 32px rgba(20,21,26,.12)'),
+    }));
+    const testiGridCols = VT.map((_,i)=> i===_ti ? '1.7fr' : '1fr').join(' ');
+
+    const RV = {
+      navStyle, marqueeStyle, revealBase, showStats,
+      products, active, productSteps, productDots,
+      mockBlob: 'linear-gradient(135deg,'+PROD[ai].accent+'33,'+PROD[ai].tint+' 70%)',
+      calloutStyle: this.state.mockFading ? 'opacity:0;transition:none' : 'opacity:1;transition:opacity .5s ease',
+      isGif: true,
+      mockImgs: PROD.map((p,i)=>({
+        src: ((window.__resources||{})[{UMS:'ums',SMS:'sms',LMS:'lms',TestGUARD:'testguard'}[p.abbr]]) || ({UMS:'assets/ums-hero.gif',SMS:'assets/sms-hero.png',LMS:'assets/lms-hero.png',TestGUARD:'assets/testguard-hero.png'})[p.abbr],
+        imgStyle:'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .5s ease;will-change:opacity;'
+          + (i===ai ? 'opacity:1;z-index:2' : 'opacity:0;z-index:1'),
+      })),
+      synthDisp: 'display:none',
+      gifDisp: '',
+      mockInnerStyle: this.state.mockFading
+        ? 'opacity:0;transform:translateY(12px) scale(.985);transition:none'
+        : 'opacity:1;transform:translateY(0) scale(1);transition:opacity .5s ease,transform .55s cubic-bezier(.16,1,.3,1)',
+      navProducts: PROD.map((p,i)=>({
+        abbr:p.abbr, name:p.name, mark:p.mark, tint:p.tint, accent:p.accent,
+        logo: ({UMS:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png',SMS:'https://arivoo.in/wp-content/uploads/2023/11/Arivo_Buzzed_Rebranding-02-02-1.png',LMS:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png',TestGUARD:'https://arivoo.in/wp-content/uploads/2024/09/arivoo-TestGUARD-5-1.png'})[p.abbr],
+        href: ({UMS:'Arivoo%20UMS.dc.html',SMS:'Arivoo%20SMS.dc.html',LMS:'Arivoo%20LMS.dc.html',TestGUARD:'Arivoo%20TestGUARD.dc.html'})[p.abbr],
+        tag: ({UMS:'Run the entire campus on one system',SMS:'School operations, simplified',LMS:'Deliver, manage & track learning',TestGUARD:'Secure exams with AI proctoring'})[p.abbr],
+        go:(e)=>{ this.goProduct(i); this.setState({navOpen:false}); },
+      })),
+      navCats: [
+        {label:'Featured', href:'#products', active:true},
+        {label:'Schools', href:'#industries'},
+        {label:'Universities', href:'#industries'},
+        {label:'Corporates', href:'#industries'},
+      ].map(c=>({ label:c.label, href:c.href,
+        style:'font-size:14.5px;font-weight:700;padding:9px 13px;border-radius:10px;transition:background .18s;color:'+(c.active?'#126FB8':'#3a3d47')+';'+(c.active?'background:#eaf2fa':'') })),
+      navSolutions: [
+        {title:'Admissions', sub:'From first enquiry to enrolled student', items:'UMS · SMS', accent:'#126FB8'},
+        {title:'Assessments', sub:'Question banks, online exams & proctoring', items:'TestGUARD · LMS', accent:'#6366f1'},
+        {title:'Finance & Fees', sub:'Billing, dues and reconciliation', items:'UMS · SMS', accent:'#1f9d6b'},
+        {title:'Learning', sub:'Courses, quizzes and live classes', items:'LMS', accent:'#d9822b'},
+      ],
+      closeNav: (e)=>this.setState({navOpen:false}),
+      navMenuFg: this.state.navOpen ? '#126FB8' : '#3a3d47',
+      navChevron: this.state.navOpen ? '180deg' : '0deg',
+      navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(720px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
+        + (this.state.navOpen ? 'opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto' : 'opacity:0;transform:translateX(-50%) translateY(-6px);pointer-events:none'),
+      problemCards, problemWords,      industries, activeIndustryItems,
+      hoverOn: (e)=>this.setState({navOpen:true}), hoverOff: (e)=>this.setState({navOpen:false}),
+
+      heroTransform:'translateX(-'+(this.state.heroSlide*(100/3)).toFixed(4)+'%)',
+      heroDots:[0,1,2].map(i=>({
+        go:()=>this.goHero(i),
+        label:['Unified dashboard','Admissions pipeline','AI exam proctoring'][i],
+        dotStyle:'border:none;padding:0;cursor:pointer;border-radius:100px;transition:all .3s;'
+          + (i===this.state.heroSlide ? 'width:26px;height:7px;background:#126FB8' : 'width:7px;height:7px;background:#d4d2ca'),
+      })),
+      admitStages:[
+        {stage:'Applied',count:'8,240',pct:'100%',color:'#126FB8'},
+        {stage:'Screening',count:'5,110',pct:'62%',color:'#3080bf'},
+        {stage:'Interview',count:'2,980',pct:'36%',color:'#4f97cc'},
+        {stage:'Offers',count:'1,540',pct:'19%',color:'#7fb4db'},
+        {stage:'Enrolled',count:'1,204',pct:'15%',color:'#1f9d6b'},
+      ],
+      proctorTiles:[
+        {name:'A. Rao',dot:'#1f9d6b',bg:'#e4f0f9',fg:'#126FB8',init:'AR'},
+        {name:'S. Iyer',dot:'#1f9d6b',bg:'#eafaf3',fg:'#1f9d6b',init:'SI'},
+        {name:'M. Khan',dot:'#f0a92e',bg:'#fdf3e2',fg:'#c98a1e',init:'MK'},
+        {name:'P. Das',dot:'#1f9d6b',bg:'#e4f0f9',fg:'#126FB8',init:'PD'},
+        {name:'R. Nair',dot:'#e5533c',bg:'#fbeae7',fg:'#c0432f',init:'RN'},
+        {name:'T. Bose',dot:'#1f9d6b',bg:'#eafaf3',fg:'#1f9d6b',init:'TB'},
+      ],
+
+      heroPills: homeTr.heroPills || ['200+ institutions','1.2M+ students & staff','99.9% uptime'],
+      heroNav:[
+        {label:'Dashboard',bg:'#e4f0f9',fg:'#0e5a96',dot:'#126FB8'},
+        {label:'Admissions',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
+        {label:'Attendance',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
+        {label:'Finance',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
+        {label:'Exams',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
+        {label:'Reports',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
+      ],
+      heroBars:[{d:'M',h:'52%'},{d:'T',h:'74%'},{d:'W',h:'61%'},{d:'T',h:'88%'},{d:'F',h:'70%'},{d:'S',h:'44%'},{d:'S',h:'30%'}],
+
+      marqueeLogos:['https://arivoo.in/wp-content/uploads/2024/05/IISc.png','https://arivoo.in/wp-content/uploads/2024/05/RCCIIT.png','https://arivoo.in/wp-content/uploads/2024/05/Serampore-college-logo.png','https://arivoo.in/wp-content/uploads/2024/04/tnu.png','https://arivoo.in/wp-content/uploads/2025/11/mit-university-new.jpg','https://arivoo.in/wp-content/uploads/2025/11/kalyani-university.jpg','https://arivoo.in/wp-content/uploads/2025/06/Frame-2462.png','https://arivoo.in/wp-content/uploads/2025/06/Frame-2463-1.png','https://arivoo.in/wp-content/uploads/2024/05/IISc.png','https://arivoo.in/wp-content/uploads/2024/05/RCCIIT.png','https://arivoo.in/wp-content/uploads/2024/05/Serampore-college-logo.png','https://arivoo.in/wp-content/uploads/2024/04/tnu.png','https://arivoo.in/wp-content/uploads/2025/11/mit-university-new.jpg','https://arivoo.in/wp-content/uploads/2025/11/kalyani-university.jpg','https://arivoo.in/wp-content/uploads/2025/06/Frame-2462.png','https://arivoo.in/wp-content/uploads/2025/06/Frame-2463-1.png'],
+
+      whyCards:[
+        {icon:'⚡',bg:'#e4f0f9',fg:'#126FB8',title:'Digital-first academics',body:'Admissions to records, fully online.'},
+        {icon:'↗',bg:'#e6f6ef',fg:'#1f9d6b',title:'Scales with you',body:'From one school to many campuses.'},
+        {icon:'🔒',bg:'#eceefe',fg:'#6366f1',title:'Secure on the cloud',body:'Encrypted, backed up, role-based access.'},
+        {icon:'⤢',bg:'#fdf1e3',fg:'#d9822b',title:'One connected record',body:'One student profile across every module.'},
+        {icon:'◷',bg:'#e4f0f9',fg:'#126FB8',title:'Live reporting',body:'Real-time dashboards for leadership.'},
+        {icon:'⇄',bg:'#e6f6ef',fg:'#1f9d6b',title:'Integrations included',body:'Payments, storage and SSO, built in.'},
+      ],
+
+      stats: showStats ? [
+        {to:200, prefix:'', suffix:'+', label:'Institutions live'},
+        {to:1200000, prefix:'', suffix:'+', label:'Students & staff'},
+        {to:18, prefix:'', suffix:'', label:'Integrated modules'},
+        {to:4, prefix:'', suffix:'', label:'Global offices'},
+      ] : [],
+
+      testimonials:[
+        {quote:'We retired five separate tools. Admissions, fees and exams finally reconcile without a single spreadsheet.', name:'Dr. A. Sen', role:'Registrar, University', img:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=160&q=80'},
+        {quote:'Parents track attendance and pay fees from their phones. Support calls to the office dropped noticeably.', name:'Priya Nair', role:'Principal, School', img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&q=80'},
+        {quote:'TestGUARD let us run semester exams online with confidence — the AI proctoring flags are genuinely useful.', name:'R. Banerjee', role:'Controller of Exams', img:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&q=80'},
+      ],
+
+      clientLogos:[
+        {src:'https://arivoo.in/wp-content/uploads/2024/05/IISc.png',name:'IISc Bengaluru'},
+        {src:'https://arivoo.in/wp-content/uploads/2024/05/RCCIIT.png',name:'RCC Institute of IT'},
+        {src:'https://arivoo.in/wp-content/uploads/2024/05/Serampore-college-logo.png',name:'Serampore College'},
+        {src:'https://arivoo.in/wp-content/uploads/2024/04/tnu.png',name:'The Neotia University'},
+        {src:'https://arivoo.in/wp-content/uploads/2025/11/mit-university-new.jpg',name:'MIT University'},
+        {src:'https://arivoo.in/wp-content/uploads/2025/11/kalyani-university.jpg',name:'Kalyani University'},
+        {src:'https://arivoo.in/wp-content/uploads/2025/06/Frame-2462.png',name:'Client'},
+        {src:'https://arivoo.in/wp-content/uploads/2025/06/Frame-2463-1.png',name:'Client'},
+      ],
+
+      cloud:[
+        {name:'AWS',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS.png'},
+        {name:'Microsoft Azure',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-1.png'},
+        {name:'Google Cloud',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-2.png'},
+      ],
+      payments:[
+        {name:'CCAvenue',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-3.png'},{name:'Stripe',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-4.png'},{name:'Razorpay',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-5.png'},{name:'PayU',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-6.png'},{name:'Paytm',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-7.png'},
+      ],
+
+      offices:['Bengaluru','Kolkata','London','San Francisco'],
+      footerCols:[
+        {head:'Products', links:['University Management','School Management','Learning Management','TestGUARD']},
+        {head:'Company', links:['About Adamas Tech','Who are we?','Careers','Contact']},
+        {head:'Resources', links:['Request a demo','Documentation','Support','Status']},
+      ],
+    };
+    if(homeTr.whyCards) RV.whyCards.forEach((w,i)=>{ if(homeTr.whyCards[i]) Object.assign(w, homeTr.whyCards[i]); });
+    if(homeTr.testimonials) RV.testimonials.forEach((t,i)=>{ if(homeTr.testimonials[i]) Object.assign(t, homeTr.testimonials[i]); });
+    if(homeTr.statsLabels) RV.stats.forEach((st,i)=>{ if(homeTr.statsLabels[i]) st.label = homeTr.statsLabels[i]; });
+    if(homeTr.offices) RV.offices = homeTr.offices;
+    if(homeTr.footerCols) RV.footerCols.forEach((c,i)=>{ if(homeTr.footerCols[i]){ c.head=homeTr.footerCols[i].head; c.links=homeTr.footerCols[i].links; } });
+    RV.navProducts.forEach((p,i)=>{ if(uiT.navProducts&&uiT.navProducts[i]){ p.name=uiT.navProducts[i].name; p.tag=uiT.navProducts[i].tag; } });
+    RV.ui = ui; RV.lang = lang; RV.setLang = (e)=>this.setLang(e.target.value);
+    RV.heroLead = homeTr.heroLead || 'Run your whole institution on ';
+    RV.heroWord = homeTr.heroWord || 'one';
+    RV.heroTail = homeTr.heroTail || ' platform.';
+    RV.heroSubHome = homeTr.heroSub || 'Arivoo unifies universities, schools, learning and assessments \u2014 so admissions, teaching, exams and operations finally speak the same language.';
+    RV.exploreSuite = homeTr.exploreSuite || 'Explore the suite';
+    RV.trustedBy = homeTr.trustedBy || 'Trusted by institutions across 4 continents';
+    RV.problemEyebrow = homeTr.problemEyebrow || 'The problem';
+    RV.suiteEyebrow = homeTr.suiteEyebrow || 'The suite';
+    RV.suiteHeading = homeTr.suiteHeading || 'Four products. One connected platform.';
+    RV.exploreLabel = homeTr.explore || 'Explore';
+    RV.whyEyebrow = homeTr.whyEyebrow || 'Why arivoo';
+    RV.whyHeading2 = homeTr.whyHeading || 'Built for the way institutions actually run.';
+    RV.serveEyebrow = homeTr.serveEyebrow || 'Who we serve';
+    RV.serveHeading = homeTr.serveHeading || 'One platform, tailored to every kind of institution.';
+    RV.testiEyebrow = homeTr.testiEyebrow || 'In their words';
+    RV.testiHeading = homeTr.testiHeading || 'What campus teams say.';
+    RV.testiBig = homeTr.testiBig || 'See what changes when Arivoo starts running.';
+    RV.testiSub = homeTr.testiSub || 'Real outcomes from institutions that turned admissions, learning and exams into one connected system.';
+    RV.testiCards = testiCards;
+    RV.testiGridCols = testiGridCols;
+    RV.modalOpen = !!this.state.modalVideo;
+    RV.modalVideoUrl = this.state.modalVideo ? ('https://www.youtube-nocookie.com/embed/'+this.state.modalVideo+'?autoplay=1&rel=0&playsinline=1') : '';
+    RV.closeVideo = ()=>this.closeVideo();
+    RV.stopProp = (e)=>e.stopPropagation();
+    RV.clientsEyebrow = homeTr.clientsEyebrow || 'Our clients';
+    RV.clientsHeading = homeTr.clientsHeading || 'Chosen by universities and colleges you know.';
+    RV.cloudTitle = homeTr.cloudTitle || 'Effortless cloud integration';
+    RV.cloudBody = homeTr.cloudBody || 'Deploy on the cloud you already trust, with security and scale built in.';
+    RV.payTitle = homeTr.payTitle || 'Payment gateways, built in';
+    RV.payBody = homeTr.payBody || 'Collect fees online with the gateways parents and students already use.';
+    RV.ctaHeading = homeTr.ctaHeading || 'See Arivoo running your institution.';
+    RV.ctaSubHome = homeTr.ctaSub || 'Book a walkthrough and we\'ll map your admissions, fees, learning and exams onto one platform.';
+    RV.ctaBook = homeTr.ctaBook || 'Book a demo';
+    RV.ctaSales = homeTr.ctaSales || 'Talk to sales';
+    RV.footerTagline = homeTr.footerTagline || 'Education management, unified. A product of Adamas Tech Consulting.';
+    RV.legal = homeTr.legal || ['Privacy Policy','Terms of use','Cookie Policy'];
+    return RV;
+  }
+}
+</script>
+<script src="./chatbot-widget.js"></script>
+</body>
+</html>
