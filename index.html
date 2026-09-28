@@ -36,10 +36,9 @@
   .arv-int-title{font-size:clamp(30px,3.6vw,42px);font-weight:700;text-wrap:balance}
   .arv-int-sub{font-size:17px;color:#6b6f7d;line-height:1.55;margin:14px auto 0;max-width:760px;text-wrap:pretty}
   .arv-int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:56px 24px;max-width:880px;margin:64px auto 0}
-  .arv-int-item{display:flex;flex-direction:column;align-items:center;gap:22px}
+  .arv-int-item{display:flex;justify-content:center}
   .arv-int-logo{height:72px;width:100%;max-width:170px;display:flex;align-items:center;justify-content:center}
   .arv-int-logo img{display:block;max-height:100%;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
-  .arv-int-name{font-size:17px;font-weight:600;color:#14151a}
   @media (max-width:760px){ .arv-int-grid{grid-template-columns:repeat(2,1fr);gap:40px 16px} .arv-int-sub{font-size:15.5px} }
   /* client logo grid (Figma 4027:21827 "School network proof", 1460 x 674 frame) */
   .arv-logo-grid-wrap{position:relative;isolation:isolate;overflow:hidden;background:#fbfaf7;padding:64px 0 187px}
@@ -491,8 +490,7 @@
   <div class="arv-int-grid">
     <sc-for list="{{ integrations }}" as="t" hint-placeholder-count="8">
       <div class="arv-int-item">
-        <span class="arv-int-logo"><img data-src="{{ t.logo }}" alt=""></span>
-        <span class="arv-int-name">{{ t.name }}</span>
+        <span class="arv-int-logo"><img data-src="{{ t.logo }}" alt="{{ t.name }}"></span>
       </div>
     </sc-for>
   </div>
