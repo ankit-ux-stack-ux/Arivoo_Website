@@ -18,7 +18,7 @@
 <meta name="ext-resource-dependency" content="assets/dps-testimonial.mp4" data-resource-id="vidDps">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Inter:wght@800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script src="./i18n.js"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -30,14 +30,21 @@
   ::selection{background:#14151a;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
-  /* client logo grid (under the hero) */
-  .arv-logo-grid-wrap{position:relative;isolation:isolate;max-width:1240px;margin:56px auto 0;padding:0 32px;text-align:center}
-  .arv-logo-grid-wrap::before{content:"";position:absolute;left:8%;right:8%;top:60px;bottom:-60px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,#efeee8,rgba(239,238,232,0));pointer-events:none}
-  .arv-logo-grid-title{font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.08;color:#252525;max-width:1100px;margin:0 auto;text-wrap:balance}
-  .arv-logo-grid{display:grid;grid-template-columns:repeat(7,136px);gap:28px 30px;justify-content:center;margin-top:56px}
-  .arv-logo-tile{width:136px;height:136px;padding:10px;border-radius:17px;background:#fff;box-shadow:0 2px 8px rgba(20,21,26,.05),0 0 0 1px rgba(20,21,26,.04);display:grid;place-items:center;overflow:hidden}
-  .arv-logo-tile img{display:block;max-width:116px;max-height:96px;width:auto;height:auto;object-fit:contain}
-  @media (max-width:1180px){ .arv-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:980px;margin-inline:auto} .arv-logo-tile{width:calc((100% - 96px) / 7);height:auto;aspect-ratio:1;padding:8%} .arv-logo-tile img{max-width:100%;max-height:78%} }
+  /* client logo grid (Figma 4027:21827 "School network proof", 1460 x 674 frame) */
+  .arv-logo-grid-wrap{position:relative;isolation:isolate;overflow:hidden;background:#fff;padding:64px 0 187px}
+  .arv-logo-grid-glow{position:absolute;z-index:-1;left:calc(50% - 632px);top:33px;width:1260px;height:672px;pointer-events:none}
+  .arv-logo-grid-title{width:1100px;max-width:calc(100% - 64px);margin:0 0 0 calc(50% - 545px);font-family:'Inter',sans-serif;font-weight:800;font-size:34px;line-height:1.08;letter-spacing:-1.1px;color:#252525;text-align:center}
+  .arv-logo-grid{display:grid;grid-template-columns:repeat(7,136px);gap:28px 30px;width:1132px;margin:86px 0 0 calc(50% - 566px)}
+  .arv-logo-tile{width:136px;height:136px;padding:10px;border-radius:17px;background:#fff;box-shadow:0 2px 8px rgba(107,170,180,.04);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .arv-logo-tile img{flex:none;display:block;object-fit:cover}
+  /* below the 1132px grid width the frame scales down: tiles keep their square, logos keep their Figma proportions */
+  @media (max-width:1196px){
+    .arv-logo-grid-wrap{padding:56px 32px 120px}
+    .arv-logo-grid-glow{left:-5%;top:20px;width:110%;height:90%}
+    .arv-logo-grid-title{width:auto;max-width:1100px;margin:0 auto;font-size:clamp(24px,3vw,34px)}
+    .arv-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;width:auto;max-width:980px;margin:56px auto 0}
+    .arv-logo-tile{width:calc((100% - 96px) / 7);height:auto;aspect-ratio:1;padding:7.35%}
+  }
   @media (max-width:760px){ .arv-logo-grid{gap:12px} .arv-logo-tile{width:calc((100% - 36px) / 4);border-radius:14px} }
   @keyframes spinslow{to{transform:rotate(360deg)}}
   @keyframes pulsedot{0%,100%{opacity:1}50%{opacity:.35}}
@@ -234,10 +241,11 @@
 
 <!-- ============ CLIENT LOGO GRID ============ -->
 <section id="clients-strip" class="arv-logo-grid-wrap">
+  <img class="arv-logo-grid-glow" src="assets/clients/glow.svg" alt="" aria-hidden="true">
   <h2 class="arv-logo-grid-title">{{ trustedBy }}</h2>
   <div class="arv-logo-grid">
     <sc-for list="{{ gridLogos }}" as="c" hint-placeholder-count="14">
-      <div class="arv-logo-tile"><img data-src="{{ c.src }}" alt="{{ c.name }}"></div>
+      <div class="arv-logo-tile"><img data-src="{{ c.src }}" alt="{{ c.name }}" style="{{ c.style }}"></div>
     </sc-for>
   </div>
 </section>
@@ -1040,20 +1048,20 @@ class Component extends DCLogic {
       heroReportRows:[{dot:'#14151a',label:'Attendance'},{dot:'#1f9d6b',label:'Finance'},{dot:'#d9822b',label:'Exams'}],
 
       gridLogos:[
-        {src:'assets/clients/arizona.png', name:'The University of Arizona'},
-        {src:'assets/clients/mit.png', name:'MIT University'},
-        {src:'assets/clients/neotia.png', name:'The Neotia University'},
-        {src:'assets/clients/rcciit.png', name:'RCCIIT'},
-        {src:'assets/clients/pisquare.jpg', name:'QNX Pi-Square'},
-        {src:'assets/clients/navneet.png', name:'Navneet'},
-        {src:'assets/clients/vels.png', name:'VELS'},
-        {src:'assets/clients/kalyani.png', name:'University of Kalyani'},
-        {src:'assets/clients/istem.png', name:'I-STEM'},
-        {src:'assets/clients/crest.png', name:'Client institution'},
-        {src:'assets/clients/ricesmart.png', name:'RiceSmart'},
-        {src:'assets/clients/bengal.png', name:'Client institution'},
-        {src:'assets/clients/adamas.png', name:'Adamas University'},
-        {src:'assets/clients/city.png', name:'City Engineering College'},
+        {src:'assets/clients/arizona.png', name:'The University of Arizona', style:'width:81.035%;height:75.862%'},
+        {src:'assets/clients/mit.png', name:'MIT University', style:'width:74.138%;height:75.862%'},
+        {src:'assets/clients/neotia.png', name:'The Neotia University', style:'width:100%;height:100%'},
+        {src:'assets/clients/rcciit.png', name:'RCCIIT', style:'width:89.656%;height:61.207%'},
+        {src:'assets/clients/pisquare.jpg', name:'QNX Pi-Square', style:'width:100%;height:20.69%'},
+        {src:'assets/clients/navneet.png', name:'Navneet', style:'width:100%;height:56.034%'},
+        {src:'assets/clients/vels.png', name:'VELS', style:'width:100%;height:32.758%'},
+        {src:'assets/clients/kalyani.png', name:'University of Kalyani', style:'width:125%;height:56.034%'},
+        {src:'assets/clients/istem.png', name:'I-STEM', style:'width:89.656%;height:40.517%'},
+        {src:'assets/clients/crest.png', name:'Client institution', style:'width:138.793%;height:62.069%'},
+        {src:'assets/clients/ricesmart.png', name:'RiceSmart', style:'width:89.656%;height:40.517%'},
+        {src:'assets/clients/bengal.png', name:'Client institution', style:'width:61.207%;height:60.345%'},
+        {src:'assets/clients/adamas.png', name:'Adamas University', style:'width:93.104%;height:68.103%'},
+        {src:'assets/clients/city.png', name:'City Engineering College', style:'width:93.104%;height:32.758%'},
       ],
 
       whyCards:[
