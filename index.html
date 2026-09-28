@@ -473,21 +473,6 @@
   </div>
 </section>
 
-<!-- ============ CLIENTS GRID ============ -->
-<section id="clients" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
-  <div data-reveal="" style="{{ revealBase }};text-align:center">
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14151a">{{ clientsEyebrow }}</div>
-    <h2 style="font-size:38px;font-weight:700;margin-top:16px">{{ clientsHeading }}</h2>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px">
-    <sc-for list="{{ clientLogos }}" as="c" hint-placeholder-count="8">
-      <div style="background:#fff;border:1px solid #eceae4;border-radius:16px;height:104px;display:flex;align-items:center;justify-content:center;padding:20px;transition:border-color .2s,transform .2s" style-hover="border-color:#d9d6cc;transform:translateY(-3px)">
-        <img data-src="{{ c.src }}" alt="{{ c.name }}" style="max-height:60px;max-width:100%;object-fit:contain;mix-blend-mode:multiply">
-      </div>
-    </sc-for>
-  </div>
-</section>
-
 <!-- ============ INTEGRATIONS ============ -->
 <section id="integrations" style="max-width:1240px;margin:110px auto 0;padding:0 32px">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
@@ -1034,16 +1019,6 @@ class Component extends DCLogic {
         {quote:'TestGUARD let us run semester exams online with confidence — the AI proctoring flags are genuinely useful.', name:'R. Banerjee', role:'Controller of Exams', img:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&q=80'},
       ],
 
-      clientLogos:[
-        {src:'https://arivoo.in/wp-content/uploads/2024/05/IISc.png',name:'IISc Bengaluru'},
-        {src:'https://arivoo.in/wp-content/uploads/2024/05/RCCIIT.png',name:'RCC Institute of IT'},
-        {src:'https://arivoo.in/wp-content/uploads/2024/05/Serampore-college-logo.png',name:'Serampore College'},
-        {src:'https://arivoo.in/wp-content/uploads/2024/04/tnu.png',name:'The Neotia University'},
-        {src:'https://arivoo.in/wp-content/uploads/2025/11/mit-university-new.jpg',name:'MIT University'},
-        {src:'https://arivoo.in/wp-content/uploads/2025/11/kalyani-university.jpg',name:'Kalyani University'},
-        {src:'https://arivoo.in/wp-content/uploads/2025/06/Frame-2462.png',name:'Client'},
-        {src:'https://arivoo.in/wp-content/uploads/2025/06/Frame-2463-1.png',name:'Client'},
-      ],
 
       cloud:[
         {name:'AWS',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS.png'},
@@ -1092,8 +1067,6 @@ class Component extends DCLogic {
     RV.modalVideoUrl = this.state.modalVideo ? ('https://www.youtube-nocookie.com/embed/'+this.state.modalVideo+'?autoplay=1&rel=0&playsinline=1') : '';
     RV.closeVideo = ()=>this.closeVideo();
     RV.stopProp = (e)=>e.stopPropagation();
-    RV.clientsEyebrow = homeTr.clientsEyebrow || 'Our clients';
-    RV.clientsHeading = homeTr.clientsHeading || 'Chosen by universities and colleges you know.';
     RV.cloudTitle = homeTr.cloudTitle || 'Effortless cloud integration';
     RV.cloudBody = homeTr.cloudBody || 'Deploy on the cloud you already trust, with security and scale built in.';
     RV.payTitle = homeTr.payTitle || 'Payment gateways, built in';
