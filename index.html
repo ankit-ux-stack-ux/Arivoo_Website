@@ -530,7 +530,7 @@
       <h2 style="font-size:48px;font-weight:700;text-wrap:balance;max-width:720px;margin-inline:auto">{{ ctaHeading }}</h2>
       <p style="font-size:18px;color:#5b5f6b;margin-top:16px;max-width:560px;margin-inline:auto">{{ ctaSubHome }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px">
-        <a href="Arivoo%20Book%20a%20Demo.dc.html" data-cta-book style="background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:16px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ctaBook }}</a>
+        <a href="Arivoo%20Book%20a%20Demo.dc.html" style="background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:16px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ctaBook }}</a>
       </div>
     </div>
   </div>
@@ -589,8 +589,6 @@
   </div>
 </footer>
 
-<!-- floating fly-to-CTA button -->
-<a href="Arivoo%20Book%20a%20Demo.dc.html" data-fly-cta style="position:fixed;left:50%;bottom:40px;z-index:45;transform:translateX(-50%);opacity:0;pointer-events:none;display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:600;font-size:16px;padding:15px 30px;border-radius:14px;box-shadow:0 18px 40px rgba(20,21,26,.32);transition:top .5s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),opacity .4s ease">{{ ctaBook }} <span>→</span></a>
 
 </div>
 </x-dc>
@@ -727,10 +725,9 @@ class Component extends DCLogic {
     }, 60);
     this.startHeroTimer();
     this.startTestiTimer();
-    this._setupFlyCta(reduce);
   }
   toggleDemoProduct(k){ this.setState(s=>{ const cur=s.demoProducts||[]; return {demoProducts: cur.indexOf(k)>-1 ? cur.filter(x=>x!==k) : cur.concat(k)}; }); }
-  componentWillUnmount(){ window.removeEventListener('scroll', this._onScroll); if(this._onPar){ window.removeEventListener('scroll', this._onPar); window.removeEventListener('resize', this._onPar); } if(this._heroTimer) clearInterval(this._heroTimer); if(this._testiTimer) clearInterval(this._testiTimer); if(this._onFly){ window.removeEventListener('scroll', this._onFly); window.removeEventListener('resize', this._onFly); } if(this._onProd){ window.removeEventListener('scroll', this._onProd); window.removeEventListener('resize', this._onProd); } if(this._fitScene){ window.removeEventListener('resize', this._fitScene); }
+  componentWillUnmount(){ window.removeEventListener('scroll', this._onScroll); if(this._onPar){ window.removeEventListener('scroll', this._onPar); window.removeEventListener('resize', this._onPar); } if(this._heroTimer) clearInterval(this._heroTimer); if(this._testiTimer) clearInterval(this._testiTimer); if(this._onProd){ window.removeEventListener('scroll', this._onProd); window.removeEventListener('resize', this._onProd); } if(this._fitScene){ window.removeEventListener('resize', this._fitScene); }
     if(this._problemUpdate){ window.removeEventListener('scroll', this._problemUpdate); window.removeEventListener('resize', this._problemUpdate); } }
 
   componentDidUpdate(){ this._applyImgs(); this._syncTestiVideo(); }
@@ -752,55 +749,6 @@ class Component extends DCLogic {
   }
   goTesti(i, yt){ this.setState({ testiActive:i, modalVideo: yt||null }); this.startTestiTimer(); }
   closeVideo(){ this.setState({ modalVideo:null }); }
-
-  _setupFlyCta(reduce){
-    const fly=document.querySelector('[data-fly-cta]');
-    const stage=document.querySelector('[data-problem-stage]');
-    const ctaBtn=document.querySelector('[data-cta-book]');
-    if(!fly||!ctaBtn) return;
-    if(reduce){ fly.style.display='none'; return; }
-    ctaBtn.style.transition='opacity .4s ease';
-    fly.style.bottom='auto';
-    const clamp=(v)=>Math.max(0,Math.min(1,v));
-    let ft=false;
-    this._onFly=()=>{
-      const vw=window.innerWidth, vh=window.innerHeight;
-        const h=fly.offsetHeight||52;
-        const bottomTop=vh-40-h;
-        const centerY=vh*0.58-h/2;
-        const sr=stage?stage.getBoundingClientRect():null;
-        const cr=ctaBtn.getBoundingClientRect();
-        const targetCenterY=cr.top+cr.height/2;
-        let p=0;
-        if(sr){ const total=stage.offsetHeight-vh; p=clamp(total>0?(-sr.top)/total:0); }
-        const a=clamp((p-0.8)/0.15);
-        const merging = targetCenterY <= bottomTop+h/2+2;
-        if(merging){
-          fly.style.top=bottomTop+'px';
-          const dx=(cr.left+cr.width/2)-(vw/2);
-          const dy=targetCenterY-(bottomTop+h/2);
-          fly.style.transform='translateX(-50%) translate('+dx+'px,'+dy+'px)';
-          fly.style.opacity='0'; fly.style.pointerEvents='none';
-          ctaBtn.style.opacity='1'; ctaBtn.style.pointerEvents='auto';
-        } else if(a<=0){
-          fly.style.opacity='0'; fly.style.pointerEvents='none';
-          fly.style.transform='translateX(-50%)';
-          ctaBtn.style.opacity='0'; ctaBtn.style.pointerEvents='none';
-        } else {
-          let d=0;
-          if(sr){ d=clamp((vh-sr.bottom)/(vh*0.55)); }
-          const topPos=centerY+(bottomTop-centerY)*d;
-          fly.style.top=topPos+'px';
-          fly.style.transform='translateX(-50%)';
-          fly.style.opacity=String(a);
-          fly.style.pointerEvents='auto';
-          ctaBtn.style.opacity='0'; ctaBtn.style.pointerEvents='none';
-        }
-    };
-    window.addEventListener('scroll',this._onFly,{passive:true});
-    window.addEventListener('resize',this._onFly);
-    this._onFly();
-  }
 
   toggleUnify(){ this.setState(s=>({ unified:!s.unified })); }
 
