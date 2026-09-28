@@ -30,6 +30,17 @@
   ::selection{background:#14151a;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+  /* integrations: logo + name grid */
+  .arv-int{position:relative;isolation:isolate;background:#fbfaf7;max-width:1240px;margin:110px auto 0;padding:40px 32px;text-align:center}
+  .arv-int::before{content:"";position:absolute;z-index:-1;left:-12%;top:0;width:46%;height:100%;background:radial-gradient(closest-side,#e7f9fb,rgba(231,249,251,0));pointer-events:none}
+  .arv-int-title{font-size:clamp(30px,3.6vw,42px);font-weight:700;text-wrap:balance}
+  .arv-int-sub{font-size:17px;color:#6b6f7d;line-height:1.55;margin:14px auto 0;max-width:760px;text-wrap:pretty}
+  .arv-int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:56px 24px;max-width:880px;margin:64px auto 0}
+  .arv-int-item{display:flex;flex-direction:column;align-items:center;gap:22px}
+  .arv-int-logo{height:72px;width:100%;max-width:170px;display:flex;align-items:center;justify-content:center}
+  .arv-int-logo img{display:block;max-height:100%;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
+  .arv-int-name{font-size:17px;font-weight:600;color:#14151a}
+  @media (max-width:760px){ .arv-int-grid{grid-template-columns:repeat(2,1fr);gap:40px 16px} .arv-int-sub{font-size:15.5px} }
   /* client logo grid (Figma 4027:21827 "School network proof", 1460 x 674 frame) */
   .arv-logo-grid-wrap{position:relative;isolation:isolate;overflow:hidden;background:#fbfaf7;padding:64px 0 187px}
   .arv-logo-grid-glow{position:absolute;z-index:-1;left:calc(50% - 632px);top:33px;width:1260px;height:672px;pointer-events:none}
@@ -474,26 +485,16 @@
 </section>
 
 <!-- ============ INTEGRATIONS ============ -->
-<section id="integrations" style="max-width:1240px;margin:110px auto 0;padding:0 32px">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-    <div data-reveal="" style="{{ revealBase }};background:#fff;border:1px solid #eceae4;border-radius:22px;padding:38px">
-      <h3 style="font-size:24px;font-weight:700">{{ cloudTitle }}</h3>
-      <p style="font-size:15px;color:#5b5f6b;margin-top:10px;line-height:1.55">{{ cloudBody }}</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
-        <sc-for list="{{ cloud }}" as="c" hint-placeholder-count="3">
-          <div style="display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #f0efe9;border-radius:13px;overflow:hidden;height:96px"><img data-src="{{ c.logo }}" alt="{{ c.name }}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-        </sc-for>
+<section id="integrations" class="arv-int">
+  <h2 class="arv-int-title">{{ intHeading }}</h2>
+  <p class="arv-int-sub">{{ intSub }}</p>
+  <div class="arv-int-grid">
+    <sc-for list="{{ integrations }}" as="t" hint-placeholder-count="8">
+      <div class="arv-int-item">
+        <span class="arv-int-logo"><img data-src="{{ t.logo }}" alt=""></span>
+        <span class="arv-int-name">{{ t.name }}</span>
       </div>
-    </div>
-    <div data-reveal="" style="{{ revealBase }};background:#fff;border:1px solid #eceae4;border-radius:22px;padding:38px">
-      <h3 style="font-size:24px;font-weight:700">{{ payTitle }}</h3>
-      <p style="font-size:15px;color:#5b5f6b;margin-top:10px;line-height:1.55">{{ payBody }}</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
-        <sc-for list="{{ payments }}" as="p" hint-placeholder-count="5">
-          <div style="display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #f0efe9;border-radius:12px;overflow:hidden;height:80px"><img data-src="{{ p.logo }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-        </sc-for>
-      </div>
-    </div>
+    </sc-for>
   </div>
 </section>
 
@@ -1020,13 +1021,15 @@ class Component extends DCLogic {
       ],
 
 
-      cloud:[
-        {name:'AWS',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS.png'},
-        {name:'Microsoft Azure',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-1.png'},
-        {name:'Google Cloud',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-2.png'},
-      ],
-      payments:[
-        {name:'CCAvenue',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-3.png'},{name:'Stripe',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-4.png'},{name:'Razorpay',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-5.png'},{name:'PayU',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-6.png'},{name:'Paytm',logo:'https://arivoo.in/wp-content/uploads/2023/10/AWS-7.png'},
+      integrations:[
+        {name:'AWS', logo:'assets/integrations/aws.png'},
+        {name:'Microsoft Azure', logo:'assets/integrations/azure.png'},
+        {name:'Google Cloud', logo:'assets/integrations/google-cloud.png'},
+        {name:'CCAvenue', logo:'assets/integrations/ccavenue.png'},
+        {name:'Stripe', logo:'assets/integrations/stripe.png'},
+        {name:'BillDesk', logo:'assets/integrations/billdesk.png'},
+        {name:'PayU', logo:'assets/integrations/payu.png'},
+        {name:'Razorpay', logo:'assets/integrations/razorpay.png'},
       ],
 
       offices:['Bengaluru','Kolkata','London','San Francisco'],
@@ -1067,10 +1070,8 @@ class Component extends DCLogic {
     RV.modalVideoUrl = this.state.modalVideo ? ('https://www.youtube-nocookie.com/embed/'+this.state.modalVideo+'?autoplay=1&rel=0&playsinline=1') : '';
     RV.closeVideo = ()=>this.closeVideo();
     RV.stopProp = (e)=>e.stopPropagation();
-    RV.cloudTitle = homeTr.cloudTitle || 'Effortless cloud integration';
-    RV.cloudBody = homeTr.cloudBody || 'Deploy on the cloud you already trust, with security and scale built in.';
-    RV.payTitle = homeTr.payTitle || 'Payment gateways, built in';
-    RV.payBody = homeTr.payBody || 'Collect fees online with the gateways parents and students already use.';
+    RV.intHeading = homeTr.intHeading || 'Integrate with all your favourite tools';
+    RV.intSub = homeTr.intSub || 'We’re building the most integrated school technology ecosystem so you can work in a state of flow. 50+ integrations & counting.';
     RV.ctaHeading = homeTr.ctaHeading || 'See Arivoo running your institution.';
     RV.ctaSubHome = homeTr.ctaSub || 'Book a walkthrough and we\'ll map your admissions, fees, learning and exams onto one platform.';
     RV.ctaBook = homeTr.ctaBook || 'Book a demo';
