@@ -23,15 +23,15 @@
   html{scroll-behavior:smooth}
   body{font-family:'Hanken Grotesk','Noto Sans Devanagari','Noto Sans Arabic',system-ui,sans-serif;background:#fbfaf7;color:#14151a;-webkit-font-smoothing:antialiased;line-height:1.5}
   a{color:inherit;text-decoration:none}
-  a:hover{color:#0e5a96}
+  a:hover{color:#3a3d47}
   h1,h2,h3,h4{font-family:'Bricolage Grotesque','Noto Sans Devanagari','Noto Sans Arabic',sans-serif;line-height:1.04;letter-spacing:-0.02em}
-  ::selection{background:#126FB8;color:#fff}
+  ::selection{background:#14151a;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
     <rect width="120" height="120" fill="#fbfaf7"/>
-    <rect x="30" y="30" width="60" height="60" rx="16" fill="#126FB8"/>
+    <rect x="30" y="30" width="60" height="60" rx="16" fill="#14151a"/>
     <text x="60" y="78" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">a</text>
   </svg>
 </template>
@@ -67,7 +67,7 @@
               </sc-for>
             </div>
             <div style="margin-top:22px;padding-top:22px;border-top:1px solid #f0efe9;display:flex;align-items:flex-start;gap:14px">
-              <span style="font-family:'Bricolage Grotesque';font-size:40px;font-weight:800;line-height:.7;color:#126FB8;flex:none">“</span>
+              <span style="font-family:'Bricolage Grotesque';font-size:40px;font-weight:800;line-height:.7;color:#14151a;flex:none">“</span>
               <p style="font-size:16px;font-weight:600;color:#2b2e37;line-height:1.5;text-wrap:pretty;margin:0">{{ ui.quote }}</p>
             </div>
           </div>
@@ -84,7 +84,7 @@
         </select>
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#14151a" stroke-width="1.6" style="position:absolute;right:0;pointer-events:none"><path d="M2.5 4.5L6 8l3.5-3.5"></path></svg>
       </label>
-      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
+      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
     </div>
   </div>
 </nav>
@@ -96,8 +96,8 @@
     <h1 style="font-size:clamp(36px,5vw,58px);font-weight:700;margin-top:22px;text-wrap:balance;line-height:1.02">{{ heroTitle }}</h1>
     <p style="font-size:19px;color:#4b4f5c;margin-top:20px;line-height:1.55;max-width:520px;text-wrap:pretty">{{ heroSub }}</p>
     <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
-      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;box-shadow:0 12px 28px rgba(20,21,26,.24);transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-2px)">{{ ui.getDemo }} <span>→</span></a>
-      <a href="https://proctordemo.adamastech.org/TestGUARD_Question_AI_Powered_Proctoring_Tool.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#126FB8;font-weight:600;font-size:16px;padding:15px 26px;border-radius:13px;border:1.5px solid #d3e3f1;transition:border-color .2s,transform .2s" style-hover="border-color:#126FB8;transform:translateY(-2px)">{{ ui.howItWorks }}</a>
+      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;box-shadow:0 12px 28px rgba(20,21,26,.24);transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ui.getDemo }} <span>→</span></a>
+      <a href="https://proctordemo.adamastech.org/TestGUARD_Question_AI_Powered_Proctoring_Tool.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#14151a;font-weight:600;font-size:16px;padding:15px 26px;border-radius:13px;border:1.5px solid #dcdad3;transition:border-color .2s,transform .2s" style-hover="border-color:#14151a;transform:translateY(-2px)">{{ ui.howItWorks }}</a>
     </div>
   </div>
   <div style="position:relative">
@@ -159,15 +159,15 @@
 
 <!-- CTA -->
 <section id="demo" style="max-width:1240px;margin:110px auto 0;padding:0 32px">
-  <div style="background:linear-gradient(135deg,#126FB8,#0c4f85);border-radius:30px;padding:72px 56px;text-align:center;color:#fff;position:relative;overflow:hidden">
-    <div style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(255,255,255,.14);border-radius:50%"></div>
-    <div style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(255,255,255,.14);border-radius:50%"></div>
+  <div style="background:#f0efe9;border-radius:30px;padding:72px 56px;text-align:center;color:#14151a;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(20,21,26,.08);border-radius:50%"></div>
+    <div style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(20,21,26,.08);border-radius:50%"></div>
     <div style="position:relative">
       <h2 style="font-size:clamp(30px,4vw,48px);font-weight:700;text-wrap:balance;max-width:720px;margin-inline:auto">{{ ctaTitle }}</h2>
-      <p style="font-size:18px;color:rgba(255,255,255,.82);margin-top:16px;max-width:540px;margin-inline:auto">{{ ctaSub }}</p>
+      <p style="font-size:18px;color:#5b5f6b;margin-top:16px;max-width:540px;margin-inline:auto">{{ ctaSub }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:34px">
-        <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-2px)">{{ ui.requestDemo }} <span>→</span></a>
-        <a href="Arivoo%20Home.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;border:1px solid rgba(255,255,255,.28);transition:background .2s" style-hover="background:rgba(255,255,255,.2)">{{ ui.exploreAll }}</a>
+        <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ui.requestDemo }} <span>→</span></a>
+        <a href="Arivoo%20Home.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#14151a;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;border:1px solid #dcdad3;transition:background .2s" style-hover="background:#f6f5f1">{{ ui.exploreAll }}</a>
       </div>
     </div>
   </div>
@@ -263,7 +263,7 @@ class Component extends DCLogic {
   renderVals(){
     const P = {
       name:'TestGUARD — Online Assessment', short:'TestGUARD', mark:'T',
-      accent:'#126FB8', tint:'#e4f0f9', logo:'https://arivoo.in/wp-content/uploads/2024/09/arivoo-TestGUARD-5-1.png',
+      accent:'#14151a', tint:'#f0efe9', logo:'https://arivoo.in/wp-content/uploads/2024/09/arivoo-TestGUARD-5-1.png',
       heroImg:(window.__resources&&window.__resources.testguard)||'assets/testguard-hero.png',
       heroTitle:'Proctor exams anywhere, anytime.',
       heroSub:'A remote proctoring system that combines advanced AI with human oversight to keep every online exam secure, fair and flexible.',
@@ -288,7 +288,7 @@ class Component extends DCLogic {
     };
 
     const navProducts = [
-      {name:'University Management System', mark:'U', logo:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png', tint:'#e4f0f9', accent:'#126FB8', tag:'Run the entire campus on one system', href:'Arivoo%20UMS.dc.html'},
+      {name:'University Management System', mark:'U', logo:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png', tint:'#f0efe9', accent:'#14151a', tag:'Run the entire campus on one system', href:'Arivoo%20UMS.dc.html'},
       {name:'School Management System', mark:'S', logo:'https://arivoo.in/wp-content/uploads/2023/11/Arivo_Buzzed_Rebranding-02-02-1.png', tint:'#e6f6ef', accent:'#1f9d6b', tag:'School operations, simplified', href:'Arivoo%20SMS.dc.html'},
       {name:'Learning Management System', mark:'L', logo:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png', tint:'#fdf1e3', accent:'#d9822b', tag:'Deliver, manage & track learning', href:'Arivoo%20LMS.dc.html'},
       {name:'TestGUARD — Online Assessment', mark:'T', logo:'https://arivoo.in/wp-content/uploads/2024/09/arivoo-TestGUARD-5-1.png', tint:'#eceefe', accent:'#6366f1', tag:'Secure exams with AI proctoring', href:'Arivoo%20TestGUARD.dc.html'},
@@ -311,7 +311,7 @@ class Component extends DCLogic {
       hoverOn: ()=>this.setState({navOpen:true}),
       hoverOff: ()=>this.setState({navOpen:false}),
       closeNav: ()=>this.setState({navOpen:false}),
-      navMenuFg: this.state.navOpen ? '#126FB8' : '#3a3d47',
+      navMenuFg: this.state.navOpen ? '#14151a' : '#3a3d47',
       navChevron: this.state.navOpen ? '180deg' : '0deg',
       navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(720px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
         + (this.state.navOpen ? 'opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto' : 'opacity:0;transform:translateX(-50%) translateY(-6px);pointer-events:none'),

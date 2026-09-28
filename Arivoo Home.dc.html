@@ -25,9 +25,9 @@
   html{scroll-behavior:smooth}
   body{font-family:'Hanken Grotesk','Noto Sans Devanagari','Noto Sans Arabic',system-ui,sans-serif;background:#fbfaf7;color:#14151a;-webkit-font-smoothing:antialiased;line-height:1.5}
   a{color:inherit;text-decoration:none}
-  a:hover{color:#0e5a96}
+  a:hover{color:#3a3d47}
   h1,h2,h3,h4{font-family:'Bricolage Grotesque','Noto Sans Devanagari','Noto Sans Arabic',sans-serif;line-height:1.04;letter-spacing:-0.02em}
-  ::selection{background:#126FB8;color:#fff}
+  ::selection{background:#14151a;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
   @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -39,7 +39,7 @@
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
     <rect width="120" height="120" fill="#fbfaf7"/>
-    <rect x="30" y="30" width="60" height="60" rx="16" fill="#126FB8"/>
+    <rect x="30" y="30" width="60" height="60" rx="16" fill="#14151a"/>
     <text x="60" y="78" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">a</text>
   </svg>
 </template>
@@ -75,7 +75,7 @@
               </sc-for>
             </div>
             <div style="margin-top:22px;padding-top:22px;border-top:1px solid #f0efe9;display:flex;align-items:flex-start;gap:14px">
-              <span style="font-family:'Bricolage Grotesque';font-size:40px;font-weight:800;line-height:.7;color:#126FB8;flex:none">“</span>
+              <span style="font-family:'Bricolage Grotesque';font-size:40px;font-weight:800;line-height:.7;color:#14151a;flex:none">“</span>
               <p style="font-size:16px;font-weight:600;color:#2b2e37;line-height:1.5;text-wrap:pretty;margin:0">{{ ui.quote }}</p>
             </div>
           </div>
@@ -92,7 +92,7 @@
         </select>
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#14151a" stroke-width="1.6" style="position:absolute;right:0;pointer-events:none"><path d="M2.5 4.5L6 8l3.5-3.5"></path></svg>
       </label>
-      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
+      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
     </div>
   </div>
 </nav>
@@ -102,7 +102,7 @@
 
   <!-- soft multi-hue blob — one hue per product (UMS/SMS/LMS/TestGUARD), same tokens used across the rest of the site -->
   <div aria-hidden="true" style="position:absolute;inset:-60px -10% auto -10%;height:900px;pointer-events:none;z-index:0;background:
-      radial-gradient(circle at 18% 22%, rgba(18,111,184,.20), transparent 42%),
+      radial-gradient(circle at 18% 22%, rgba(20,21,26,.20), transparent 42%),
       radial-gradient(circle at 82% 14%, rgba(99,102,241,.16), transparent 42%),
       radial-gradient(circle at 12% 78%, rgba(31,157,107,.15), transparent 42%),
       radial-gradient(circle at 86% 80%, rgba(217,130,43,.15), transparent 42%);
@@ -110,7 +110,7 @@
 
   <!-- centered headline / subhead / CTA -->
   <div style="position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center">
-    <h1 style="font-size:clamp(38px,5.6vw,62px);font-weight:700;margin:0;color:#14151a;text-wrap:balance">{{ heroLead }}<span style="color:#126FB8">{{ heroWord }}</span>{{ heroTail }}</h1>
+    <h1 style="font-size:clamp(38px,5.6vw,62px);font-weight:700;margin:0;color:#14151a;text-wrap:balance">{{ heroLead }}<span style="color:#14151a">{{ heroWord }}</span>{{ heroTail }}</h1>
     <p style="font-size:18px;line-height:1.55;color:#4b4f5c;margin:20px auto 0;max-width:560px;text-wrap:pretty">{{ heroSubHome }}</p>
     <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;justify-content:center">
       <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:600;font-size:16px;padding:15px 26px;border-radius:13px;box-shadow:0 16px 34px rgba(20,21,26,.24);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 20px 42px rgba(20,21,26,.3)">{{ ui.bookDemo }} <span>→</span></a>
@@ -118,7 +118,7 @@
     <div style="display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;justify-content:center">
       <sc-for list="{{ heroPills }}" as="p" hint-placeholder-count="3">
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:#e4f0f9;color:#126FB8;align-items:center;justify-content:center;font-size:12px;font-weight:700">✓</span>
+          <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:#f0efe9;color:#14151a;align-items:center;justify-content:center;font-size:12px;font-weight:700">✓</span>
           <span style="font-size:14.5px;font-weight:600;color:#3a3d47">{{ p }}</span>
         </div>
       </sc-for>
@@ -150,7 +150,7 @@
         <div><div style="font-size:12px;font-weight:700;color:#14151a">Fee reminder sent</div><div style="font-size:11px;color:#9a9ea9">312 parents</div></div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-top:1px solid #f2efe9">
-        <span style="width:6px;height:6px;border-radius:50%;background:#126FB8;margin-top:6px;flex:none"></span>
+        <span style="width:6px;height:6px;border-radius:50%;background:#14151a;margin-top:6px;flex:none"></span>
         <div><div style="font-size:12px;font-weight:700;color:#14151a">Timetable published</div><div style="font-size:11px;color:#9a9ea9">Grade 8–10</div></div>
       </div>
     </div>
@@ -166,13 +166,13 @@
     </div>
 
     <!-- decorative icon tile -->
-    <div style="position:absolute;top:6%;left:24%;width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,#e4f0f9,#cfe6f6);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(18,111,184,.16);animation:floaty 6.5s ease-in-out infinite">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#126FB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 3 5-8"/></svg>
+    <div style="position:absolute;top:6%;left:24%;width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,#f0efe9,#cfe6f6);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(20,21,26,.16);animation:floaty 6.5s ease-in-out infinite">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14151a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 3 5-8"/></svg>
     </div>
 
     <!-- central focal card: Arivoo AI chat bubble (mirrors the real widget at the bottom of every page) -->
     <div style="position:absolute;top:2%;left:50%;transform:translateX(-50%);width:300px;background:#fff;border:1px solid #eceae4;border-radius:18px;padding:14px 16px;box-shadow:0 20px 46px rgba(20,21,26,.16);display:flex;gap:11px;align-items:flex-start;animation:floaty2 6s ease-in-out infinite;z-index:3">
-      <span style="width:28px;height:28px;border-radius:50%;flex:none;margin-top:1px;background:radial-gradient(circle at 32% 28%,#fff,#bfe0ff 28%,#126FB8 62%,#6C4CD8 100%)"></span>
+      <span style="width:28px;height:28px;border-radius:50%;flex:none;margin-top:1px;background:radial-gradient(circle at 32% 28%,#fff,#d9d6cc 28%,#14151a 62%,#2b2e37 100%)"></span>
       <div>
         <div style="font-size:13.5px;font-weight:700;color:#14151a">Arivoo AI</div>
         <div style="font-size:12.5px;color:#5c606b;margin-top:2px;line-height:1.4">Hi! 👋 What would you like to know about Arivoo?</div>
@@ -184,7 +184,7 @@
       <div style="font-size:11px;color:#8b8f9a;font-weight:600;margin-bottom:10px">Attendance this week</div>
       <div style="display:flex;align-items:flex-end;gap:6px;height:56px">
         <sc-for list="{{ heroBars }}" as="b" hint-placeholder-count="7">
-          <div style="flex:1;border-radius:4px 4px 2px 2px;background:linear-gradient(#3f96cf,#126FB8);height:{{ b.h }}"></div>
+          <div style="flex:1;border-radius:4px 4px 2px 2px;background:linear-gradient(#5b5f6b,#14151a);height:{{ b.h }}"></div>
         </sc-for>
       </div>
     </div>
@@ -197,8 +197,8 @@
     <!-- fees collected trend -->
     <div style="position:absolute;top:22%;right:2%;width:200px;background:#fff;border:1px solid #eceae4;border-radius:16px;padding:14px;box-shadow:0 18px 38px rgba(20,21,26,.12);animation:floaty 8s ease-in-out infinite">
       <div style="font-size:11px;color:#8b8f9a;font-weight:600">Fees collected</div>
-      <div style="font-family:'Bricolage Grotesque';font-size:20px;font-weight:700;margin-top:2px;color:#0e5a96">₹4.2Cr <span style="font-size:11px;font-weight:700;color:#1f9d6b">94%</span></div>
-      <svg viewBox="0 0 160 40" style="width:100%;height:32px;margin-top:6px" preserveAspectRatio="none"><polyline points="0,32 24,26 48,28 72,16 96,20 120,8 144,12 160,4" fill="none" stroke="#126FB8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Bricolage Grotesque';font-size:20px;font-weight:700;margin-top:2px;color:#3a3d47">₹4.2Cr <span style="font-size:11px;font-weight:700;color:#1f9d6b">94%</span></div>
+      <svg viewBox="0 0 160 40" style="width:100%;height:32px;margin-top:6px" preserveAspectRatio="none"><polyline points="0,32 24,26 48,28 72,16 96,20 120,8 144,12 160,4" fill="none" stroke="#14151a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
 
     <!-- live proctoring badge -->
@@ -257,7 +257,7 @@
         </div>
 
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(640px,88%);text-align:center;z-index:5">
-          <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ problemEyebrow }}</div>
+          <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14151a">{{ problemEyebrow }}</div>
           <h2 style="font-size:clamp(28px,5.4vw,46px);font-weight:700;margin-top:18px;line-height:1.08;text-wrap:balance">
             <sc-for list="{{ problemWords }}" as="w" hint-placeholder-count="8"><span data-hl data-accent="{{ w.accent }}" style="color:#cfcfd6;transition:color .12s ease">{{ w.t }} </span></sc-for>
           </h2>
@@ -270,7 +270,7 @@
 <!-- ============ PRODUCT SUITE (interactive) ============ -->
 <section id="products" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
   <div data-reveal="" style="{{ revealBase }};text-align:center">
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ suiteEyebrow }}</div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14151a">{{ suiteEyebrow }}</div>
     <h2 style="font-size:44px;font-weight:700;margin-top:16px">{{ suiteHeading }}</h2>
   </div>
 
@@ -293,7 +293,7 @@
             </sc-for>
           </div>
           <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
-            <a href="{{ s.href }}" style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:600;font-size:15px;padding:13px 24px;border-radius:12px;background:#14151a;transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-2px)">{{ exploreLabel }} <span>→</span></a>
+            <a href="{{ s.href }}" style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:600;font-size:15px;padding:13px 24px;border-radius:12px;background:#14151a;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ exploreLabel }} <span>→</span></a>
           </div>
         </div>
       </sc-for>
@@ -376,7 +376,7 @@
 <!-- ============ WHY ARIVOO / FEATURES ============ -->
 <section style="max-width:1240px;margin:120px auto 0;padding:0 32px">
   <div data-reveal="" style="{{ revealBase }};text-align:center">
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ whyEyebrow }}</div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14151a">{{ whyEyebrow }}</div>
     <h2 style="font-size:44px;font-weight:700;margin-top:16px">{{ whyHeading2 }}</h2>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px">
@@ -393,9 +393,9 @@
 <!-- ============ INDUSTRIES (interactive) ============ -->
 <section id="industries" style="max-width:1240px;margin:120px auto 0;padding:0 32px">
   <div style="background:#14151a;border-radius:30px;padding:64px 56px;color:#fff;position:relative;overflow:hidden">
-    <div data-parallax="0.16" style="position:absolute;top:-80px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(18,111,184,.35),transparent 70%);pointer-events:none;will-change:transform"></div>
+    <div data-parallax="0.16" style="position:absolute;top:-80px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(20,21,26,.35),transparent 70%);pointer-events:none;will-change:transform"></div>
     <div data-reveal="" style="{{ revealBase }};position:relative">
-      <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#86bce0"><span style="width:6px;height:6px;border-radius:50%;background:#3f96cf"></span>{{ serveEyebrow }}</div>
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#b7bcc7"><span style="width:6px;height:6px;border-radius:50%;background:#5b5f6b"></span>{{ serveEyebrow }}</div>
       <h2 style="font-size:42px;font-weight:700;margin-top:16px;max-width:640px">{{ serveHeading }}</h2>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;position:relative">
@@ -406,7 +406,7 @@
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;position:relative">
       <sc-for list="{{ activeIndustryItems }}" as="it" hint-placeholder-count="12">
         <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:14px 15px;transition:background .2s" style-hover="background:rgba(255,255,255,.1)">
-          <span style="width:20px;height:20px;border-radius:50%;background:rgba(122,122,224,.22);color:#b9b9f7;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>
+          <span style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.14);color:#e6e8ec;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>
           <span style="font-size:13.5px;font-weight:600;color:#e6e6ee;line-height:1.25">{{ it }}</span>
         </div>
       </sc-for>
@@ -420,7 +420,7 @@
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
     <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
       <div data-reveal="" style="{{ revealBase }};text-align:center;padding:8px">
-        <div data-count-to="{{ s.to }}" data-prefix="{{ s.prefix }}" data-suffix="{{ s.suffix }}" style="font-family:'Bricolage Grotesque';font-size:52px;font-weight:700;color:#126FB8;letter-spacing:-0.03em">{{ s.prefix }}0{{ s.suffix }}</div>
+        <div data-count-to="{{ s.to }}" data-prefix="{{ s.prefix }}" data-suffix="{{ s.suffix }}" style="font-family:'Bricolage Grotesque';font-size:52px;font-weight:700;color:#14151a;letter-spacing:-0.03em">{{ s.prefix }}0{{ s.suffix }}</div>
         <div style="font-size:15px;font-weight:600;color:#4b4f5c;margin-top:4px">{{ s.label }}</div>
       </div>
     </sc-for>
@@ -431,7 +431,7 @@
 <!-- ============ TESTIMONIALS ============ -->
 <section style="max-width:1240px;margin:120px auto 0;padding:0 32px">
   <div data-reveal="" style="{{ revealBase }};text-align:center">
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ testiEyebrow }}</div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14151a">{{ testiEyebrow }}</div>
     <h2 style="font-size:44px;font-weight:700;margin-top:16px;text-wrap:balance;max-width:840px;margin-inline:auto">{{ testiBig }}</h2>
     <p style="font-size:18px;color:#5b5f6b;margin:14px auto 0;max-width:660px;line-height:1.55;text-wrap:pretty">{{ testiSub }}</p>
   </div>
@@ -462,7 +462,7 @@
 <!-- ============ CLIENTS GRID ============ -->
 <section id="clients" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
   <div data-reveal="" style="{{ revealBase }};text-align:center">
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#126FB8">{{ clientsEyebrow }}</div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14151a">{{ clientsEyebrow }}</div>
     <h2 style="font-size:38px;font-weight:700;margin-top:16px">{{ clientsHeading }}</h2>
   </div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px">
@@ -509,14 +509,14 @@
 
 <!-- ============ FINAL CTA ============ -->
 <section id="demo" style="max-width:1240px;margin:120px auto 0;padding:0 32px">
-  <div style="background:linear-gradient(135deg,#126FB8,#0c4f85);border-radius:30px;padding:72px 56px;text-align:center;color:#fff;position:relative;overflow:hidden">
-    <div data-parallax="0.13" style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(255,255,255,.14);border-radius:50%;will-change:transform"></div>
-    <div data-parallax="-0.13" style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(255,255,255,.14);border-radius:50%;will-change:transform"></div>
+  <div style="background:#f0efe9;border-radius:30px;padding:72px 56px;text-align:center;color:#14151a;position:relative;overflow:hidden">
+    <div data-parallax="0.13" style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(20,21,26,.08);border-radius:50%;will-change:transform"></div>
+    <div data-parallax="-0.13" style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(20,21,26,.08);border-radius:50%;will-change:transform"></div>
     <div style="position:relative">
       <h2 style="font-size:48px;font-weight:700;text-wrap:balance;max-width:720px;margin-inline:auto">{{ ctaHeading }}</h2>
-      <p style="font-size:18px;color:rgba(255,255,255,.86);margin-top:16px;max-width:560px;margin-inline:auto">{{ ctaSubHome }}</p>
+      <p style="font-size:18px;color:#5b5f6b;margin-top:16px;max-width:560px;margin-inline:auto">{{ ctaSubHome }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px">
-        <a href="Arivoo%20Book%20a%20Demo.dc.html" data-cta-book style="background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:16px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#126FB8;transform:translateY(-2px)">{{ ctaBook }}</a>
+        <a href="Arivoo%20Book%20a%20Demo.dc.html" data-cta-book style="background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:16px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ctaBook }}</a>
       </div>
     </div>
   </div>
@@ -682,7 +682,7 @@ class Component extends DCLogic {
       if(track && words.length){
         const clamp = (v)=>Math.max(0,Math.min(1,v));
         if(reduce){
-          words.forEach(w=>w.style.color = w.getAttribute('data-accent')==='1' ? '#126FB8' : '#14151a');
+          words.forEach(w=>w.style.color = w.getAttribute('data-accent')==='1' ? '#14151a' : '#14151a');
           cards.forEach(c=>{ c.style.opacity='0'; });
           if(book){ book.style.opacity='1'; book.style.transform='none'; book.style.pointerEvents='auto'; }
         } else {
@@ -694,7 +694,7 @@ class Component extends DCLogic {
               const total = track.offsetHeight - window.innerHeight;
               const p = clamp(total>0 ? (-rect.top)/total : 0);
               const lit = Math.round(clamp(p/0.6)*words.length);
-              words.forEach((w,i)=>{ w.style.color = i<lit ? (w.getAttribute('data-accent')==='1'?'#126FB8':'#14151a') : '#cfcfd6'; });
+              words.forEach((w,i)=>{ w.style.color = i<lit ? (w.getAttribute('data-accent')==='1'?'#14151a':'#14151a') : '#cfcfd6'; });
               const u = clamp((p-0.45)/0.4);
               cards.forEach(c=>{
                 const tx=+c.getAttribute('data-tx'), ty=+c.getAttribute('data-ty'), rot=+c.getAttribute('data-rot');
@@ -842,34 +842,34 @@ class Component extends DCLogic {
     // ---- products ----
     const PROD = [
       { abbr:'UMS', short:'University', name:'University Management System', mark:'U',
-        accent:'#126FB8', tint:'#e4f0f9', screenBg:'#e9f2fa', img:'https://images.unsplash.com/photo-1562774053-701939374585?w=680&q=80&auto=format&fit=crop',
+        accent:'#14151a', tint:'#f0efe9', screenBg:'#f3f2ee', img:'https://images.unsplash.com/photo-1562774053-701939374585?w=680&q=80&auto=format&fit=crop',
         headline:'Run the entire university on one system.',
         blurb:'Every department, from admissions to finance, on one connected record.',
         features:['Admissions & Registration','Examination (Pre & Post)','Finance & Fee Management','Hostel, Library & Alumni'],
         screenTitle:'Admissions · 2026 intake', metric:'18 modules', f1:{who:'Arivoo Assistant',msg:'24 new applications this morning'}, f2:'Synced to Finance', f3:'Verifying documents…',
         kpis:[{label:'Applications',value:'8,942'},{label:'Confirmed',value:'6,110'},{label:'Seats left',value:'318'}],
         listTitle:'Recent applications',
-        rows:[{i:'AR',t:'Ananya Roy — B.Tech CSE',s:'Verified',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'KV',t:'Kabir Verma — MBA',s:'Fee due',sc:'#d9822b',sb:'#fdf1e3'},{i:'MS',t:'Meera Shah — B.Com',s:'Verified',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'RD',t:'Rohan Das — M.Sc',s:'Review',sc:'#126FB8',sb:'#e4f0f9'}] },
+        rows:[{i:'AR',t:'Ananya Roy — B.Tech CSE',s:'Verified',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'KV',t:'Kabir Verma — MBA',s:'Fee due',sc:'#d9822b',sb:'#fdf1e3'},{i:'MS',t:'Meera Shah — B.Com',s:'Verified',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'RD',t:'Rohan Das — M.Sc',s:'Review',sc:'#14151a',sb:'#f0efe9'}] },
       { abbr:'SMS', short:'School', name:'School Management System', mark:'S',
-        accent:'#126FB8', tint:'#e4f0f9', screenBg:'#e9f2fa', img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=680&q=80&auto=format&fit=crop',
+        accent:'#14151a', tint:'#f0efe9', screenBg:'#f3f2ee', img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=680&q=80&auto=format&fit=crop',
         headline:'School operations, simplified end to end.',
         blurb:'Attendance, fees and homework in one place, with a parent app.',
         features:['Attendance & Timetable','Fee & Due Management','Homework & Assignments','Report Cards & Grading'],
         screenTitle:'Class overview · Grade 8', metric:'Parent app', f1:{who:'Arivoo Assistant',msg:'Attendance marked — 96% present'}, f2:'Parent app live', f3:'Sending fee reminders…',
         kpis:[{label:'Present',value:'96%'},{label:'Fees due',value:'12'},{label:'Homework',value:'4'}],
         listTitle:"Today's timetable",
-        rows:[{i:'01',t:'Mathematics — Room 204',s:'Done',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'02',t:'Science Lab — Block B',s:'Live',sc:'#126FB8',sb:'#e4f0f9'},{i:'03',t:'English — Room 118',s:'Next',sc:'#d9822b',sb:'#fdf1e3'},{i:'04',t:'Physical Education',s:'2:30',sc:'#8b8f9a',sb:'#f2f1ec'}] },
+        rows:[{i:'01',t:'Mathematics — Room 204',s:'Done',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'02',t:'Science Lab — Block B',s:'Live',sc:'#14151a',sb:'#f0efe9'},{i:'03',t:'English — Room 118',s:'Next',sc:'#d9822b',sb:'#fdf1e3'},{i:'04',t:'Physical Education',s:'2:30',sc:'#8b8f9a',sb:'#f2f1ec'}] },
       { abbr:'LMS', short:'Learning', name:'Learning Management System', mark:'L',
-        accent:'#126FB8', tint:'#e4f0f9', screenBg:'#e9f2fa', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=680&q=80&auto=format&fit=crop',
+        accent:'#14151a', tint:'#f0efe9', screenBg:'#f3f2ee', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=680&q=80&auto=format&fit=crop',
         headline:'Deliver, manage and track learning.',
         blurb:'Courses, quizzes and live classes with full progress tracking.',
         features:['Course Delivery','Assignments & Quizzes','Progress Tracking','Live Classes & Library'],
         screenTitle:'Course · Data Structures', metric:'SCORM', f1:{who:'Arivoo Assistant',msg:'New module unlocked for 1,204'}, f2:'Synced to gradebook', f3:'Grading 214 quizzes…',
         kpis:[{label:'Enrolled',value:'1,204'},{label:'Completion',value:'78%'},{label:'Avg score',value:'82'}],
         listTitle:'Modules',
-        rows:[{i:'M1',t:'Arrays & Linked Lists',s:'Complete',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'M2',t:'Stacks & Queues',s:'92% done',sc:'#126FB8',sb:'#e4f0f9'},{i:'M3',t:'Trees & Graphs',s:'Active',sc:'#d9822b',sb:'#fdf1e3'},{i:'M4',t:'Sorting — Quiz due',s:'Locked',sc:'#8b8f9a',sb:'#f2f1ec'}] },
+        rows:[{i:'M1',t:'Arrays & Linked Lists',s:'Complete',sc:'#1f9d6b',sb:'#e6f6ef'},{i:'M2',t:'Stacks & Queues',s:'92% done',sc:'#14151a',sb:'#f0efe9'},{i:'M3',t:'Trees & Graphs',s:'Active',sc:'#d9822b',sb:'#fdf1e3'},{i:'M4',t:'Sorting — Quiz due',s:'Locked',sc:'#8b8f9a',sb:'#f2f1ec'}] },
       { abbr:'TestGUARD', short:'Assessment', name:'TestGUARD — Online Assessment', mark:'T',
-        accent:'#126FB8', tint:'#e4f0f9', screenBg:'#e9f2fa', img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=680&q=80&auto=format&fit=crop',
+        accent:'#14151a', tint:'#f0efe9', screenBg:'#f3f2ee', img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=680&q=80&auto=format&fit=crop',
         headline:'Secure online exams with AI proctoring.',
         blurb:'Schedule, auto-evaluate and keep every exam honest with AI proctoring.',
         features:['AI Proctoring','Question Banks','Auto Evaluation','Anti-cheat Lockdown'],
@@ -923,11 +923,11 @@ class Component extends DCLogic {
 
     // ---- problem: scattered silos (scroll-driven) ----
     const cardDefs = [
-      {name:'Admissions', via:'Google Forms', dot:'#126FB8', L:0,   T:80,  rot:-5, tx:435, ty:175},
+      {name:'Admissions', via:'Google Forms', dot:'#14151a', L:0,   T:80,  rot:-5, tx:435, ty:175},
       {name:'Fee Management', via:'Legacy ERP', dot:'#1f9d6b', L:870, T:30,  rot:4,  tx:-435,ty:225},
       {name:'Attendance', via:'Paper register', dot:'#d9822b', L:-20, T:350, rot:3,  tx:455, ty:-95},
       {name:'Examinations', via:'Excel sheets', dot:'#6366f1', L:880, T:330, rot:-4, tx:-445,ty:-75},
-      {name:'Library', via:'Desktop app', dot:'#126FB8', L:120, T:480, rot:5,  tx:315, ty:-225},
+      {name:'Library', via:'Desktop app', dot:'#14151a', L:120, T:480, rot:5,  tx:315, ty:-225},
       {name:'Messaging', via:'WhatsApp groups', dot:'#1f9d6b', L:780, T:490, rot:-3, tx:-345,ty:-235},
     ];
     const problemCards = cardDefs.map(c=>({
@@ -983,15 +983,15 @@ class Component extends DCLogic {
         {label:'Universities', href:'#industries'},
         {label:'Corporates', href:'#industries'},
       ].map(c=>({ label:c.label, href:c.href,
-        style:'font-size:14.5px;font-weight:700;padding:9px 13px;border-radius:10px;transition:background .18s;color:'+(c.active?'#126FB8':'#3a3d47')+';'+(c.active?'background:#eaf2fa':'') })),
+        style:'font-size:14.5px;font-weight:700;padding:9px 13px;border-radius:10px;transition:background .18s;color:'+(c.active?'#14151a':'#3a3d47')+';'+(c.active?'background:#eaf2fa':'') })),
       navSolutions: [
-        {title:'Admissions', sub:'From first enquiry to enrolled student', items:'UMS · SMS', accent:'#126FB8'},
+        {title:'Admissions', sub:'From first enquiry to enrolled student', items:'UMS · SMS', accent:'#14151a'},
         {title:'Assessments', sub:'Question banks, online exams & proctoring', items:'TestGUARD · LMS', accent:'#6366f1'},
         {title:'Finance & Fees', sub:'Billing, dues and reconciliation', items:'UMS · SMS', accent:'#1f9d6b'},
         {title:'Learning', sub:'Courses, quizzes and live classes', items:'LMS', accent:'#d9822b'},
       ],
       closeNav: (e)=>this.setState({navOpen:false}),
-      navMenuFg: this.state.navOpen ? '#126FB8' : '#3a3d47',
+      navMenuFg: this.state.navOpen ? '#14151a' : '#3a3d47',
       navChevron: this.state.navOpen ? '180deg' : '0deg',
       navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(720px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
         + (this.state.navOpen ? 'opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto' : 'opacity:0;transform:translateX(-50%) translateY(-6px);pointer-events:none'),
@@ -1003,27 +1003,27 @@ class Component extends DCLogic {
         go:()=>this.goHero(i),
         label:['Unified dashboard','Admissions pipeline','AI exam proctoring'][i],
         dotStyle:'border:none;padding:0;cursor:pointer;border-radius:100px;transition:all .3s;'
-          + (i===this.state.heroSlide ? 'width:26px;height:7px;background:#126FB8' : 'width:7px;height:7px;background:#d4d2ca'),
+          + (i===this.state.heroSlide ? 'width:26px;height:7px;background:#14151a' : 'width:7px;height:7px;background:#d4d2ca'),
       })),
       admitStages:[
-        {stage:'Applied',count:'8,240',pct:'100%',color:'#126FB8'},
+        {stage:'Applied',count:'8,240',pct:'100%',color:'#14151a'},
         {stage:'Screening',count:'5,110',pct:'62%',color:'#3080bf'},
         {stage:'Interview',count:'2,980',pct:'36%',color:'#4f97cc'},
         {stage:'Offers',count:'1,540',pct:'19%',color:'#7fb4db'},
         {stage:'Enrolled',count:'1,204',pct:'15%',color:'#1f9d6b'},
       ],
       proctorTiles:[
-        {name:'A. Rao',dot:'#1f9d6b',bg:'#e4f0f9',fg:'#126FB8',init:'AR'},
+        {name:'A. Rao',dot:'#1f9d6b',bg:'#f0efe9',fg:'#14151a',init:'AR'},
         {name:'S. Iyer',dot:'#1f9d6b',bg:'#eafaf3',fg:'#1f9d6b',init:'SI'},
         {name:'M. Khan',dot:'#f0a92e',bg:'#fdf3e2',fg:'#c98a1e',init:'MK'},
-        {name:'P. Das',dot:'#1f9d6b',bg:'#e4f0f9',fg:'#126FB8',init:'PD'},
+        {name:'P. Das',dot:'#1f9d6b',bg:'#f0efe9',fg:'#14151a',init:'PD'},
         {name:'R. Nair',dot:'#e5533c',bg:'#fbeae7',fg:'#c0432f',init:'RN'},
         {name:'T. Bose',dot:'#1f9d6b',bg:'#eafaf3',fg:'#1f9d6b',init:'TB'},
       ],
 
       heroPills: homeTr.heroPills || ['200+ institutions','1.2M+ students & staff','99.9% uptime'],
       heroNav:[
-        {label:'Dashboard',bg:'#e4f0f9',fg:'#0e5a96',dot:'#126FB8'},
+        {label:'Dashboard',bg:'#f0efe9',fg:'#3a3d47',dot:'#14151a'},
         {label:'Admissions',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
         {label:'Attendance',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
         {label:'Finance',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
@@ -1031,18 +1031,18 @@ class Component extends DCLogic {
         {label:'Reports',bg:'transparent',fg:'#6b6f7d',dot:'#c9cdd6'},
       ],
       heroBars:[{d:'M',h:'52%'},{d:'T',h:'74%'},{d:'W',h:'61%'},{d:'T',h:'88%'},{d:'F',h:'70%'},{d:'S',h:'44%'},{d:'S',h:'30%'}],
-      heroGrid:['#e4f0f9','#126FB8','#eafaf3','#1f9d6b','#fdf1e3','#d9822b','#eceefe','#6366f1','#e4f0f9','#1f9d6b'],
+      heroGrid:['#f0efe9','#14151a','#eafaf3','#1f9d6b','#fdf1e3','#d9822b','#eceefe','#6366f1','#f0efe9','#1f9d6b'],
       heroAvatars:['https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&q=80','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&q=80','https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&q=80'],
-      heroReportRows:[{dot:'#126FB8',label:'Attendance'},{dot:'#1f9d6b',label:'Finance'},{dot:'#d9822b',label:'Exams'}],
+      heroReportRows:[{dot:'#14151a',label:'Attendance'},{dot:'#1f9d6b',label:'Finance'},{dot:'#d9822b',label:'Exams'}],
 
       marqueeLogos:['https://arivoo.in/wp-content/uploads/2024/05/IISc.png','https://arivoo.in/wp-content/uploads/2024/05/RCCIIT.png','https://arivoo.in/wp-content/uploads/2024/05/Serampore-college-logo.png','https://arivoo.in/wp-content/uploads/2024/04/tnu.png','https://arivoo.in/wp-content/uploads/2025/11/mit-university-new.jpg','https://arivoo.in/wp-content/uploads/2025/11/kalyani-university.jpg','https://arivoo.in/wp-content/uploads/2025/06/Frame-2462.png','https://arivoo.in/wp-content/uploads/2025/06/Frame-2463-1.png','https://arivoo.in/wp-content/uploads/2024/05/IISc.png','https://arivoo.in/wp-content/uploads/2024/05/RCCIIT.png','https://arivoo.in/wp-content/uploads/2024/05/Serampore-college-logo.png','https://arivoo.in/wp-content/uploads/2024/04/tnu.png','https://arivoo.in/wp-content/uploads/2025/11/mit-university-new.jpg','https://arivoo.in/wp-content/uploads/2025/11/kalyani-university.jpg','https://arivoo.in/wp-content/uploads/2025/06/Frame-2462.png','https://arivoo.in/wp-content/uploads/2025/06/Frame-2463-1.png'],
 
       whyCards:[
-        {icon:'⚡',bg:'#e4f0f9',fg:'#126FB8',title:'Digital-first academics',body:'Admissions to records, fully online.'},
+        {icon:'⚡',bg:'#f0efe9',fg:'#14151a',title:'Digital-first academics',body:'Admissions to records, fully online.'},
         {icon:'↗',bg:'#e6f6ef',fg:'#1f9d6b',title:'Scales with you',body:'From one school to many campuses.'},
         {icon:'🔒',bg:'#eceefe',fg:'#6366f1',title:'Secure on the cloud',body:'Encrypted, backed up, role-based access.'},
         {icon:'⤢',bg:'#fdf1e3',fg:'#d9822b',title:'One connected record',body:'One student profile across every module.'},
-        {icon:'◷',bg:'#e4f0f9',fg:'#126FB8',title:'Live reporting',body:'Real-time dashboards for leadership.'},
+        {icon:'◷',bg:'#f0efe9',fg:'#14151a',title:'Live reporting',body:'Real-time dashboards for leadership.'},
         {icon:'⇄',bg:'#e6f6ef',fg:'#1f9d6b',title:'Integrations included',body:'Payments, storage and SSO, built in.'},
       ],
 

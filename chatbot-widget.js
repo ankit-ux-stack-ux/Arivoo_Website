@@ -11,12 +11,12 @@ function mountArivooChatWidget() {
     // Collapsed = just the pill-shaped ask bar. Opening it does not pop up a
     // separate overlay — this same element grows in place into the full
     // chat panel, anchored to the same bottom-center spot.
-    '.arv-chat-widget{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;width:420px;max-width:calc(100vw - 32px);height:60px;background:linear-gradient(135deg,#2f8fe0,#126FB8 48%,#6C4CD8);background-size:160% 160%;border-radius:999px;box-shadow:0 10px 30px rgba(31,52,110,.4);overflow:hidden;z-index:99998;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:width .32s cubic-bezier(.2,.9,.25,1.1),height .32s cubic-bezier(.2,.9,.25,1.1),border-radius .32s ease,background-color .32s ease,background-position .5s ease,box-shadow .32s ease}' +
+    '.arv-chat-widget{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;width:420px;max-width:calc(100vw - 32px);height:60px;background:linear-gradient(135deg,#3a3d47,#14151a 48%,#2b2e37);background-size:160% 160%;border-radius:999px;box-shadow:0 10px 30px rgba(20,21,26,.4);overflow:hidden;z-index:99998;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:width .32s cubic-bezier(.2,.9,.25,1.1),height .32s cubic-bezier(.2,.9,.25,1.1),border-radius .32s ease,background-color .32s ease,background-position .5s ease,box-shadow .32s ease}' +
     '.arv-chat-widget.arv-open{width:600px;height:680px;max-height:calc(100vh - 56px);border-radius:26px;background:#fdfcfa;box-shadow:0 40px 100px rgba(10,12,20,.45)}' +
     '.arv-chat-top{flex:1;min-height:0;max-height:0;display:flex;flex-direction:column;opacity:0;overflow:hidden;pointer-events:none;transition:opacity .15s ease,max-height .32s ease}' +
     '.arv-chat-widget.arv-open .arv-chat-top{max-height:2000px;opacity:1;pointer-events:auto;transition:opacity .25s ease .14s,max-height .32s ease}' +
     '.arv-chat-head{background:linear-gradient(120deg,#14151a,#1c2340 65%,#2b2160);color:#fff;padding:22px 22px 20px;display:flex;align-items:flex-start;gap:14px;flex:none}' +
-    '.arv-chat-head .arv-orb-lg{width:38px;height:38px;border-radius:50%;flex:none;margin-top:1px;background:radial-gradient(circle at 32% 28%,#fff,#bfe0ff 28%,#126FB8 62%,#6C4CD8 100%);box-shadow:0 0 0 5px rgba(255,255,255,.08)}' +
+    '.arv-chat-head .arv-orb-lg{width:38px;height:38px;border-radius:50%;flex:none;margin-top:1px;background:radial-gradient(circle at 32% 28%,#fff,#d9d6cc 28%,#14151a 62%,#2b2e37 100%);box-shadow:0 0 0 5px rgba(255,255,255,.08)}' +
     '.arv-chat-head-text{flex:1;min-width:0}' +
     '.arv-chat-head strong{display:block;font-size:16.5px;letter-spacing:-.01em}' +
     '.arv-chat-head span{display:block;font-size:12.5px;color:#aab0c8;margin-top:3px}' +
@@ -25,9 +25,9 @@ function mountArivooChatWidget() {
     '.arv-chat-body{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column;gap:18px}' +
     '.arv-msg-row{display:flex;gap:11px;max-width:92%}' +
     '.arv-msg-row.arv-user{align-self:flex-end;flex-direction:row-reverse;max-width:80%}' +
-    '.arv-avatar{width:26px;height:26px;border-radius:50%;flex:none;margin-top:2px;background:radial-gradient(circle at 32% 28%,#fff,#bfe0ff 28%,#126FB8 62%,#6C4CD8 100%)}' +
+    '.arv-avatar{width:26px;height:26px;border-radius:50%;flex:none;margin-top:2px;background:radial-gradient(circle at 32% 28%,#fff,#d9d6cc 28%,#14151a 62%,#2b2e37 100%)}' +
     '.arv-msg-text{font-size:14.5px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word;padding-top:2px}' +
-    '.arv-msg-row.arv-user .arv-msg-text{background:linear-gradient(135deg,#126FB8,#6C4CD8);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px}' +
+    '.arv-msg-row.arv-user .arv-msg-text{background:linear-gradient(135deg,#14151a,#2b2e37);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px}' +
     '.arv-msg-row.arv-bot .arv-msg-text{color:#20222b}' +
     '.arv-typing-row{display:flex;gap:11px;align-items:center}' +
     '.arv-typing{display:flex;gap:4px;padding:8px 0}' +
@@ -43,7 +43,7 @@ function mountArivooChatWidget() {
     '.arv-ask-input-wrap{flex:1;min-width:0;background:#fff;border-radius:999px;padding:0 20px;box-shadow:0 2px 8px rgba(20,20,30,.05)}' +
     '.arv-ask-input{width:100%;border:none;outline:none;background:transparent;font:15px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#14151a;padding:13px 0}' +
     '.arv-ask-input::placeholder{color:#a9adb6}' +
-    '.arv-ask-send{flex:none;width:44px;height:44px;border-radius:50%;border:none;background:linear-gradient(135deg,#2f8fe0,#126FB8 55%,#6C4CD8);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:filter .15s ease,transform .1s ease}' +
+    '.arv-ask-send{flex:none;width:44px;height:44px;border-radius:50%;border:none;background:linear-gradient(135deg,#3a3d47,#14151a 55%,#2b2e37);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:filter .15s ease,transform .1s ease}' +
     '.arv-ask-send:hover{filter:brightness(1.08)}' +
     '.arv-ask-send:active{transform:scale(.94)}' +
     '.arv-chat-widget:not(.arv-open):hover{background-position:60% 40%}' +
