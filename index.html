@@ -299,7 +299,7 @@
   </div>
 
   <!-- scroll-driven product story -->
-  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1.06fr 20px;gap:44px">
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1.06fr;gap:44px">
 
     <!-- scrolling text steps -->
     <div>
@@ -386,14 +386,6 @@
     </div>
     </div>
 
-    <!-- progress rail (sticky, right) -->
-    <div>
-    <div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
-      <sc-for list="{{ productDots }}" as="d" hint-placeholder-count="4">
-        <button type="button" onClick="{{ d.go }}" aria-label="{{ d.abbr }}" title="{{ d.abbr }}" style="{{ d.dotStyle }}"></button>
-      </sc-for>
-    </div>
-    </div>
   </div>
 </section>
 
@@ -842,11 +834,6 @@ class Component extends DCLogic {
       stepStyle:'min-height:74vh;display:flex;flex-direction:column;justify-content:center;padding:44px 0;transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),filter .55s;'
         + (i===ai ? 'opacity:1;transform:translateY(0);filter:none' : 'opacity:.26;transform:translateY(10px);filter:saturate(.55)'),
     }));
-    const productDots = PROD.map((p,i)=>({
-      abbr:p.abbr, go:()=>this.goProduct(i),
-      dotStyle:'border:none;padding:0;cursor:pointer;border-radius:100px;width:9px;transition:all .35s;'
-        + (i===ai ? 'height:30px;background:'+p.accent : 'height:9px;background:#d4d2ca'),
-    }));
 
     // ---- industries ----
     const IND = [
@@ -900,7 +887,7 @@ class Component extends DCLogic {
 
     const RV = {
       navStyle, revealBase, showStats,
-      products, active, productSteps, productDots,
+      products, active, productSteps,
       mockBlob: 'linear-gradient(135deg,'+PROD[ai].accent+'33,'+PROD[ai].tint+' 70%)',
       calloutStyle: this.state.mockFading ? 'opacity:0;transition:none' : 'opacity:1;transition:opacity .5s ease',
       isGif: true,
