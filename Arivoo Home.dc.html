@@ -129,6 +129,29 @@
   .hx-sc-copy em{font-style:normal;font-size:7.241px;color:#7c91b1;white-space:pre-wrap}
   .hx-sc-chev{width:10.025px;height:10.025px}
 
+  /* hero widget motion: staggered entrance, then a slow float; rings draw in; rows cascade */
+  @property --hx-a{syntax:'<angle>';inherits:false;initial-value:360deg}
+  @keyframes hx-in{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes hx-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes hx-row{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+  @keyframes hx-pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+  @keyframes hx-ring{from{--hx-a:0deg}to{--hx-a:360deg}}
+  @keyframes hx-ping{0%{box-shadow:0 0 0 0 rgba(8,123,193,.45)}70%,100%{box-shadow:0 0 0 5px rgba(8,123,193,0)}}
+  .hx-card,.hx-quote{--d:0s;--f:6.5s;animation:hx-in .9s cubic-bezier(.2,.8,.2,1) var(--d) both,hx-float var(--f) ease-in-out calc(var(--d) + .9s) infinite;transition:box-shadow .3s}
+  .hx-card:hover{box-shadow:0 16px 36px rgba(57,121,176,.18)}
+  .hx-at{--d:.15s;--f:6.2s} .hx-pr{--d:.3s;--f:7s} .hx-sc{--d:.45s;--f:6.6s} .hx-quote{--d:.6s;--f:7.4s}
+  .hx-ra{--d:.75s;--f:6.8s} .hx-ql{--d:.9s;--f:7.2s} .hx-nt{--d:1.05s;--f:6.4s}
+  .hx-at-chart>img:last-child{-webkit-mask:conic-gradient(#000 var(--hx-a),transparent 0);mask:conic-gradient(#000 var(--hx-a),transparent 0);animation:hx-ring 1.4s cubic-bezier(.3,.7,.2,1) .6s both}
+  .hx-nt-row,.hx-sc-row,.hx-ra-row{animation:hx-row .5s ease-out both}
+  .hx-ql-tile{animation:hx-pop .5s cubic-bezier(.2,.8,.2,1) both}
+  .hx-nt-row:nth-child(1){animation-delay:1.35s} .hx-nt-row:nth-child(2){animation-delay:1.45s} .hx-nt-row:nth-child(3){animation-delay:1.55s} .hx-nt-row:nth-child(4){animation-delay:1.65s}
+  .hx-sc-row:nth-child(1){animation-delay:.75s} .hx-sc-row:nth-child(2){animation-delay:.85s} .hx-sc-row:nth-child(3){animation-delay:.95s} .hx-sc-row:nth-child(4){animation-delay:1.05s}
+  .hx-ra-row:nth-child(1){animation-delay:1.05s} .hx-ra-row:nth-child(2){animation-delay:1.15s} .hx-ra-row:nth-child(3){animation-delay:1.25s}
+  .hx-ql-tile:nth-child(1){animation-delay:1.2s} .hx-ql-tile:nth-child(2){animation-delay:1.28s} .hx-ql-tile:nth-child(3){animation-delay:1.36s} .hx-ql-tile:nth-child(4){animation-delay:1.44s}
+  .hx-sc-row:first-child .hx-sc-dot{border-radius:50%;animation:hx-ping 1.8s ease-out 1.6s infinite}
+  @media (prefers-reduced-motion:reduce){
+    .hx-card,.hx-quote,.hx-nt-row,.hx-sc-row,.hx-ra-row,.hx-ql-tile,.hx-at-chart>img:last-child,.hx-sc-dot{animation:none}
+  }
   /* phones/small tablets: the 1460px frame would shrink the copy below legibility, so the copy reflows and the collage is hidden */
   @media (max-width:900px){
     .hx{height:auto;padding:128px 20px 64px}
