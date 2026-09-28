@@ -28,6 +28,94 @@
   ::selection{background:#7c3aed;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes lmsPulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,.5)}70%{box-shadow:0 0 0 6px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+  /* platform tour carousel */
+  .lfc-tabs{max-width:1240px;margin:34px auto 0;padding:0 32px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;scrollbar-width:none}
+  .lfc-tabs::-webkit-scrollbar{display:none}
+  .lfc-view{--fc-w:min(1121px,calc(100vw - 120px));--fc-gap:39px;overflow:hidden;margin-top:30px;padding:6px 0 18px}
+  .lfc-track{display:flex;align-items:stretch;gap:var(--fc-gap);width:max-content;position:relative;left:50%;margin-left:calc(var(--fc-w) / -2);transition:transform .6s cubic-bezier(.22,.8,.24,1)}
+  .lfc-slide{flex:none;width:var(--fc-w);min-height:481px;border-radius:20px;padding:40px 41px;display:grid;grid-template-columns:minmax(0,1fr) 61.6%;gap:9px;align-items:stretch;transition:opacity .4s}
+  .lfc-copy{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-width:0}
+  .lfc-title{font-size:clamp(30px,3.4vw,40px);font-weight:700;line-height:1.08;color:#14151a;text-wrap:balance}
+  .lfc-sum{font-size:15.5px;color:#3a3d47;line-height:1.55;margin-top:14px;max-width:360px;text-wrap:pretty}
+  .lfc-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:22px}
+  .lfc-list li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;font-weight:500;color:#2b2e37;line-height:1.4}
+  .lfc-tick{flex:none;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:rgba(255,255,255,.66);margin-top:-1px}
+  .lfc-more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#14151a;padding:10px 18px;border-radius:11px;border:1.5px solid rgba(20,21,26,.72);transition:background .2s,color .2s,transform .2s}
+  .lfc-more:hover{background:#14151a;color:#fff;transform:translateY(-1px)}
+  .lfc-ctrl{width:min(1121px,calc(100vw - 120px));margin:22px auto 0;display:flex;align-items:center;gap:22px}
+  .lfc-prog{flex:1;height:2px;background:#e4e2dc;position:relative;border-radius:999px}
+  .lfc-prog>div{position:absolute;top:-.5px;height:3px;border-radius:999px;background:#14151a;transition:left .6s cubic-bezier(.22,.8,.24,1)}
+  .lfc-count{font-size:13px;font-weight:600;color:#8a8e99;font-variant-numeric:tabular-nums;min-width:38px;text-align:center}
+  .lfc-arrows{display:flex;gap:15px}
+  .lfc-arrow{width:49px;height:49px;border-radius:999px;border:0;background:#fff;color:#14151a;display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 9px rgba(20,21,26,.09),0 0 0 1px rgba(20,21,26,.04);transition:transform .2s,background .2s,color .2s}
+  .lfc-arrow:hover{background:#14151a;color:#fff;transform:translateY(-1px)}
+  .lfc-arrow:focus-visible,.lfc-more:focus-visible,.lfc-tabs button:focus-visible{outline:2px solid #7c3aed;outline-offset:2px}
+  /* product mockup: drawn on a 640x400 grid, scaled with its container (--u = 1 design px) */
+  .lfc-mock{position:relative;align-self:center;width:100%;aspect-ratio:640/400;container-type:inline-size;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 6px 13px rgba(23,58,62,.15);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.25}
+  .lfc-mi{--u:calc(100cqw / 640);position:absolute;inset:0;color:#313638}
+  .lfc-mi b{font-weight:700}
+  .lfc-tb{position:absolute;left:0;top:0;right:0;height:calc(var(--u)*35);display:flex;align-items:center;justify-content:space-between;padding:0 calc(var(--u)*12);border-bottom:1px solid #e9ecec}
+  .lfc-crumb{display:flex;align-items:center;gap:calc(var(--u)*10);font-size:calc(var(--u)*6);color:#9da3a5;white-space:nowrap}
+  .lfc-crumb b{font-size:calc(var(--u)*7);font-weight:600}
+  .lfc-acts{display:flex;align-items:center;gap:calc(var(--u)*11);font-size:calc(var(--u)*6.5);color:#60676a;white-space:nowrap}
+  .lfc-acts i{font-style:normal;font-weight:600;color:#fff;padding:calc(var(--u)*6) calc(var(--u)*10);border-radius:calc(var(--u)*2)}
+  .lfc-panel{position:absolute;left:0;top:calc(var(--u)*35);width:calc(var(--u)*242);bottom:0;overflow:hidden;border-right:1px solid #eef0f1}
+  .lfc-intro{padding:calc(var(--u)*14) calc(var(--u)*14) calc(var(--u)*10) calc(var(--u)*13);border-bottom:1px solid #eef0f1}
+  .lfc-intro b{display:block;font-size:calc(var(--u)*8)}
+  .lfc-intro p{font-size:calc(var(--u)*6.2);color:#6b7275;line-height:1.4;margin-top:calc(var(--u)*5)}
+  .lfc-block{padding:calc(var(--u)*10) calc(var(--u)*13);border-bottom:1px solid #eef0f1;display:flex;flex-direction:column;gap:calc(var(--u)*7)}
+  .lfc-block p{font-size:calc(var(--u)*6.1);color:#747a7d;line-height:1.4}
+  .lfc-row2{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--u)*8)}
+  .lfc-block .lfc-row2 b{font-size:calc(var(--u)*7);color:#3a4042}
+  .lfc-block .lfc-row2 strong{font-size:calc(var(--u)*6.5);font-weight:600;color:#454b4d}
+  .lfc-block .lfc-row2 em{font-style:normal;font-size:calc(var(--u)*6);font-weight:600;color:#288890}
+  .lfc-block .lfc-row2 small{font-size:calc(var(--u)*6);color:#6f7577;line-height:1.35}
+  .lfc-sec{height:calc(var(--u)*28);display:flex;align-items:center;padding:0 calc(var(--u)*12);font-size:calc(var(--u)*7);font-weight:700;color:#3a4042}
+  .lfc-fr{height:calc(var(--u)*29);display:flex;align-items:center;justify-content:space-between;padding:0 calc(var(--u)*12);border-bottom:1px solid #eef0f1;font-size:calc(var(--u)*6.4);font-weight:500;color:#41474a;white-space:nowrap}
+  .lfc-cb{flex:none;width:calc(var(--u)*10);height:calc(var(--u)*10);border:1px solid #9ba2a4;border-radius:calc(var(--u)*2);background:#fff}
+  .lfc-cb.lfc-on{width:calc(var(--u)*11);height:calc(var(--u)*11);display:grid;place-items:center;color:#fff;font-size:calc(var(--u)*7);font-weight:800;line-height:1}
+  .lfc-pill{flex:none;font-size:calc(var(--u)*5.6);font-weight:700;padding:calc(var(--u)*2) calc(var(--u)*6);border-radius:999px;white-space:nowrap}
+  .lfc-prev{position:absolute;left:calc(var(--u)*242);top:calc(var(--u)*35);right:0;bottom:0;background:#f6f8f8;overflow:hidden}
+  .lfc-plab{position:absolute;left:calc(var(--u)*49);top:calc(var(--u)*16);font-size:calc(var(--u)*7);color:#a2a7a8}
+  .lfc-pmeta{position:absolute;right:calc(var(--u)*33);top:calc(var(--u)*17);font-size:calc(var(--u)*6);color:#b5b9ba}
+  .lfc-photo{position:absolute;left:calc(var(--u)*48);top:calc(var(--u)*34);width:calc(var(--u)*300);height:calc(var(--u)*331);object-fit:cover;display:block;background:#ddeef1}
+  .lfc-school{position:absolute;left:calc(var(--u)*196);top:calc(var(--u)*48);width:calc(var(--u)*135);background:rgba(255,255,255,.91);padding:calc(var(--u)*5) calc(var(--u)*9) calc(var(--u)*8);display:flex;flex-direction:column;gap:calc(var(--u)*2);white-space:nowrap}
+  .lfc-school b{font-size:calc(var(--u)*14);font-weight:800;color:#4cb7c3;letter-spacing:calc(var(--u)*-1);line-height:1.2}
+  .lfc-school strong{font-size:calc(var(--u)*6.5);color:#2d3335}
+  .lfc-school span{font-size:calc(var(--u)*5.3);color:#6e7476;line-height:1.3}
+  .lfc-cover{position:absolute;left:calc(var(--u)*184);top:calc(var(--u)*137);width:calc(var(--u)*141);height:calc(var(--u)*228);background:#fff;border-radius:calc(var(--u)*4);box-shadow:0 calc(var(--u)*3) calc(var(--u)*7) rgba(29,49,50,.15);padding:calc(var(--u)*13) calc(var(--u)*12) calc(var(--u)*10);display:flex;flex-direction:column;gap:calc(var(--u)*8);overflow:hidden}
+  .lfc-cover>b{font-size:calc(var(--u)*13);font-weight:800;color:#292e30;line-height:1.2}
+  .lfc-csub{font-size:calc(var(--u)*5.5);color:#686f71;line-height:1.35}
+  .lfc-stu{display:flex;align-items:center;gap:calc(var(--u)*7)}
+  .lfc-stu i{width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:50%;background:#a6dde3;flex:none}
+  .lfc-stu span{display:flex;flex-direction:column;gap:1px;white-space:nowrap}
+  .lfc-stu strong{font-size:calc(var(--u)*6);color:#303638}
+  .lfc-stu small{font-size:calc(var(--u)*5);color:#777d7f}
+  .lfc-pf{display:flex;align-items:center;gap:calc(var(--u)*5)}
+  .lfc-pf span{flex:none;width:calc(var(--u)*43);font-size:calc(var(--u)*5.1);font-weight:600;color:#4e5557;line-height:1.2}
+  .lfc-pf hr{flex:1;border:0;border-top:1px solid #d9dddf;margin:0}
+  .lfc-cards{position:absolute;left:calc(var(--u)*48);right:calc(var(--u)*33);top:calc(var(--u)*34);display:flex;flex-direction:column;gap:calc(var(--u)*10)}
+  .lfc-card{background:#fff;border-radius:calc(var(--u)*4);box-shadow:0 calc(var(--u)*3) calc(var(--u)*7) rgba(29,49,50,.1);padding:calc(var(--u)*12) calc(var(--u)*13);display:flex;flex-direction:column;gap:calc(var(--u)*6)}
+  .lfc-card b{font-size:calc(var(--u)*8);color:#292e30}
+  .lfc-card p{font-size:calc(var(--u)*6.4);color:#686f71;line-height:1.45}
+  .lfc-bar{height:calc(var(--u)*4);border-radius:999px;background:#eef0f1;overflow:hidden;margin-top:calc(var(--u)*2)}
+  .lfc-bar>div{height:100%;border-radius:999px}
+  @media (max-width:1000px){
+    .lfc-view{--fc-w:calc(100vw - 72px);--fc-gap:16px}
+    .lfc-ctrl{width:calc(100vw - 72px)}
+    .lfc-slide{grid-template-columns:1fr;gap:30px;padding:32px 28px;min-height:0}
+    .lfc-copy{gap:24px}
+    .lfc-sum{max-width:none}
+  }
+  @media (max-width:760px){
+    .lfc-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:0 20px;-webkit-overflow-scrolling:touch}
+    .lfc-tabs button{flex:none}
+    .lfc-view{--fc-w:calc(100vw - 48px);--fc-gap:12px}
+    .lfc-ctrl{width:calc(100vw - 48px);gap:14px}
+    .lfc-slide{padding:26px 20px;border-radius:18px}
+    .lfc-arrow{width:44px;height:44px}
+  }
+  @media (prefers-reduced-motion:reduce){ .lfc-track,.lfc-prog>div{transition:none} }
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -131,6 +219,109 @@
   </div>
 </section>
 </sc-if>
+
+<!-- PLATFORM TOUR (feature carousel) -->
+<section id="platform" style="margin:96px auto 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px;text-align:center">
+    <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ fcEyebrow }}</div>
+    <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;margin-top:14px;text-wrap:balance">{{ fcHeading }}</h2>
+  </div>
+  <div id="lfc-tabs" class="lfc-tabs" role="tablist" aria-label="{{ fcHeading }}">
+    <sc-for list="{{ fcTabs }}" as="t" hint-placeholder-count="7">
+      <button type="button" role="tab" id="{{ t.tabId }}" aria-selected="{{ t.selected }}" aria-controls="{{ t.panelId }}" onClick="{{ t.go }}" style="{{ t.style }}">{{ t.label }}</button>
+    </sc-for>
+  </div>
+  <div id="lfc-view" class="lfc-view" dir="ltr">
+    <div class="lfc-track" style="{{ fcTrackStyle }}">
+      <sc-for list="{{ fcSlides }}" as="s" hint-placeholder-count="7">
+        <article class="lfc-slide" id="{{ s.panelId }}" role="tabpanel" aria-labelledby="{{ s.tabId }}" aria-hidden="{{ s.hidden }}" onClick="{{ s.go }}" style="{{ s.style }}">
+          <div class="lfc-copy">
+            <div>
+              <h3 class="lfc-title">{{ s.title }}</h3>
+              <p class="lfc-sum">{{ s.summary }}</p>
+              <ul class="lfc-list">
+                <sc-for list="{{ s.points }}" as="pt" hint-placeholder-count="4">
+                  <li><span class="lfc-tick" style="color:{{ s.ink }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span>{{ pt }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+            <a class="lfc-more" href="Arivoo%20Book%20a%20Demo.dc.html" tabindex="{{ s.tab }}">{{ fcLearnMore }} <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="lfc-mock" aria-hidden="true">
+            <div class="lfc-mi">
+              <div class="lfc-tb">
+                <div class="lfc-crumb"><b style="color:{{ s.ink }}">‹ Back</b><span>{{ s.m.path }}</span></div>
+                <div class="lfc-acts"><span>{{ s.m.a1 }}</span><span>{{ s.m.a2 }}</span><i style="background:{{ s.m.btnBg }}">{{ s.m.btn }}</i></div>
+              </div>
+              <div class="lfc-panel">
+                <div class="lfc-intro"><b>{{ s.m.pTitle }}</b><p>{{ s.m.pDesc }}</p></div>
+                <sc-if value="{{ s.isReport }}" hint-placeholder-val="{{ false }}">
+                  <div class="lfc-block">
+                    <div class="lfc-row2"><b>Cover design</b><em>Select</em></div>
+                    <p>Select a design from our collection of pre-designed cover sheets. Once you've made your choice, you can customize it further.</p>
+                    <div class="lfc-row2"><strong>Background image</strong><em>Change</em></div>
+                    <div class="lfc-row2"><small>Allow teachers to change the background image for each student</small><span class="lfc-cb"></span></div>
+                  </div>
+                </sc-if>
+                <div class="lfc-sec">{{ s.m.section }}</div>
+                <sc-for list="{{ s.m.rows }}" as="r" hint-placeholder-count="4">
+                  <div class="lfc-fr">
+                    <span>{{ r.label }}</span>
+                    <sc-if value="{{ r.check }}" hint-placeholder-val="{{ true }}"><span class="lfc-cb lfc-on" style="background:{{ s.m.checkBg }};border-color:{{ s.m.checkBg }}">✓</span></sc-if>
+                    <sc-if value="{{ r.empty }}" hint-placeholder-val="{{ false }}"><span class="lfc-cb"></span></sc-if>
+                    <sc-if value="{{ r.pill }}" hint-placeholder-val="{{ false }}"><span class="lfc-pill" style="background:{{ s.bg }};color:{{ s.ink }}">{{ r.pill }}</span></sc-if>
+                  </div>
+                </sc-for>
+                <div class="lfc-sec">{{ s.m.section2 }}</div>
+              </div>
+              <div class="lfc-prev">
+                <span class="lfc-plab">{{ s.m.pvLabel }}</span>
+                <span class="lfc-pmeta">{{ s.m.pvMeta }}</span>
+                <sc-if value="{{ s.isReport }}" hint-placeholder-val="{{ false }}">
+                  <img class="lfc-photo" src="assets/lms-report-campus.png" alt="">
+                  <div class="lfc-school">
+                    <b>children's den</b><strong>School Name</strong><span>School address<br>Course details</span>
+                  </div>
+                  <div class="lfc-cover">
+                    <b>Title here</b>
+                    <span class="lfc-csub">For the academic year &lt;YYYYYYYY&gt;<br>Term name</span>
+                    <div class="lfc-stu"><i></i><span><strong>Student name</strong><small>Grade</small></span></div>
+                    <div class="lfc-pf"><span>Student UID</span><hr></div>
+                    <div class="lfc-pf"><span>Date of birth</span><hr></div>
+                    <div class="lfc-pf"><span>Homeroom advisor</span><hr></div>
+                    <div class="lfc-pf"><span>Gender</span><hr></div>
+                    <div class="lfc-pf"><span>Address</span><hr></div>
+                    <div class="lfc-pf"><span>Nationality</span><hr></div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ s.isGeneric }}" hint-placeholder-val="{{ true }}">
+                  <div class="lfc-cards">
+                    <sc-for list="{{ s.m.cards }}" as="c" hint-placeholder-count="3">
+                      <div class="lfc-card">
+                        <div class="lfc-row2"><b>{{ c.t }}</b><sc-if value="{{ c.tag }}" hint-placeholder-val="{{ false }}"><span class="lfc-pill" style="background:{{ s.bg }};color:{{ s.ink }}">{{ c.tag }}</span></sc-if></div>
+                        <p>{{ c.s }}</p>
+                        <sc-if value="{{ c.hasBar }}" hint-placeholder-val="{{ false }}"><div class="lfc-bar"><div style="width:{{ c.p }};background:{{ s.ink }}"></div></div></sc-if>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+  <div class="lfc-ctrl">
+    <div class="lfc-prog" aria-hidden="true"><div style="{{ fcThumbStyle }}"></div></div>
+    <span class="lfc-count" aria-live="polite">{{ fcCount }}</span>
+    <div class="lfc-arrows">
+      <button type="button" class="lfc-arrow" aria-label="Previous feature" onClick="{{ fcPrev }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+      <button type="button" class="lfc-arrow" aria-label="Next feature" onClick="{{ fcNext }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+    </div>
+  </div>
+</section>
 
 <!-- ROLES -->
 <section style="max-width:1240px;margin:96px auto 0;padding:0 32px">
@@ -353,9 +544,23 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { navOpen:false, roleActive:0, statNums:[0,0,0], lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
+  state = { navOpen:false, roleActive:0, fcActive:0, statNums:[0,0,0], lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
   _statTargets = [[32,860,12],[18,94,3],[24,6,98]];
-  componentDidMount(){ this._applyImgs(); this._applyDir(); this._animStats(0); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
+  componentDidMount(){ this._applyImgs(); this._applyDir(); this._animStats(0); this._bindCarousel(); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
+  // ---- platform tour carousel ----
+  fcGo(i){ const n=this._fcCount||1; const next=((i%n)+n)%n; if(next===this.state.fcActive) return; this.setState({fcActive:next}, ()=>this._fcScrollTab()); }
+  _fcScrollTab(){ try{ const bar=document.getElementById('lfc-tabs'); const tab=document.getElementById('lfc-tab-'+this.state.fcActive); if(!bar||!tab||bar.scrollWidth<=bar.clientWidth) return; bar.scrollTo({left:tab.offsetLeft-(bar.clientWidth-tab.offsetWidth)/2, behavior:'smooth'}); }catch(e){} }
+  _bindCarousel(){ try{
+    const v=document.getElementById('lfc-view'); if(!v) return;
+    let x0=null, y0=null;
+    v.addEventListener('touchstart',e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; },{passive:true});
+    v.addEventListener('touchend',e=>{ if(x0===null) return; const t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0; x0=null;
+      if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.2) this.fcGo(this.state.fcActive+(dx<0?1:-1)); },{passive:true});
+    const tabs=document.getElementById('lfc-tabs');
+    if(tabs) tabs.addEventListener('keydown',e=>{ if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return; e.preventDefault();
+      const rtl=document.documentElement.getAttribute('dir')==='rtl'; const step=(e.key==='ArrowRight')!==rtl?1:-1;
+      this.fcGo(this.state.fcActive+step); setTimeout(()=>{ const t=document.getElementById('lfc-tab-'+this.state.fcActive); if(t) t.focus(); },0); });
+  }catch(e){} }
   selectRole(i){ if(i===this.state.roleActive) return; this.setState({roleActive:i}); this._animStats(i); }
   _animStats(i){
     if(this._raf) cancelAnimationFrame(this._raf);
@@ -437,6 +642,97 @@ class Component extends DCLogic {
         rows:[['This week','Mon–Sat','#14151a',false,false,''],['Slots filled','96%','#14151a',false,true,'96%'],['Live classes','2 now',P.accent,true,false,'']],
         stats:[{suffix:'',label:'Weekly slots'},{suffix:'',label:'Reschedules needed'},{suffix:'%',label:'Timetable coverage'}] },
     ];
+    // ---- platform tour carousel ----
+    const FC = {
+      eyebrow:'Platform tour',
+      heading:'One platform for all your teaching & learning workflows',
+      learnMore:'Learn more',
+      slides:[
+        { tab:'Curriculum Planning', title:'Curriculum Planning', bg:'#fbdcc4', ink:'#9a4a1c',
+          summary:'Plan units, lessons and learning outcomes together — in one shared space.',
+          points:['Unit and lesson planners built around your curriculum','Map every lesson to standards and outcomes','Collaborate with co-teachers and department heads','Reuse and adapt plans year on year'],
+          m:{ path:'Unit planner  /  Grade 7 Science', a1:'Share', a2:'Preview', btn:'Publish unit',
+              pTitle:'Unit: Ecosystems', pDesc:'Plan lessons, map them to outcomes and share the unit with your department.',
+              section:'Lessons', rows:[['1. Food chains','check'],['2. Energy flow','check'],['3. Decomposers','check'],['4. Human impact','Draft'],['5. Field study','Draft']], section2:'Learning outcomes',
+              pvLabel:'Week 3 of 6', pvMeta:'Term 2',
+              cards:[['Lesson 3 · Decomposers','Ready','Mapped to 3 outcomes · 45 min · 4 resources','100%'],['Lesson 4 · Human impact','Draft','Mapped to 2 outcomes · 45 min','60%'],['Lesson 5 · Field study','Draft','Worksheet attached · 90 min','25%']] } },
+        { tab:'Assessments & Gradebook', title:'Assessments & Gradebook', bg:'#cde3fa', ink:'#1f5c99',
+          summary:'Create, grade and track every assessment — without the spreadsheets.',
+          points:['Quizzes, tests and rubrics from reusable templates','Auto-grade objective questions and publish results','One gradebook across courses, sections and terms','Question-level analytics that surface learning gaps'],
+          m:{ path:'Gradebook  /  Grade 9 Mathematics', a1:'Filter', a2:'Export', btn:'Publish grades',
+              pTitle:'Unit test · Algebra', pDesc:'Objective questions are auto-graded. Review written answers before publishing.',
+              section:'Sections', rows:[['9A','28 / 28'],['9B','30 / 30'],['9C','24 / 29'],['9D','Grading']], section2:'Rubrics',
+              pvLabel:'Question analysis', pvMeta:'Class average 74%',
+              cards:[['Q4 · Linear equations','Review','41% of students answered correctly','41%'],['Q7 · Factorising','On track','82% of students answered correctly','82%'],['Q9 · Word problems','On track','76% of students answered correctly','76%']] } },
+        { tab:'AI Tutors', title:'AI Tutors', bg:'#f6d3e6', ink:'#9b2f6a',
+          summary:'Personalised, always-on learning support for every student.',
+          points:['Guided help that explains, rather than just answers','Practice pitched at each student’s level','Grounded in your own course resources','Teachers see exactly where students get stuck'],
+          m:{ path:'AI Tutor  /  Physics · Motion', a1:'History', a2:'Settings', btn:'Assign to class',
+              pTitle:'Tutor settings', pDesc:'The tutor guides students step by step using the resources in this course.',
+              section:'Guardrails', rows:[['Hints before answers','check'],['Use course resources only','check'],['Share insights with teacher','check'],['Allow calculator','empty']], section2:'Assigned classes',
+              pvLabel:'Student session', pvMeta:'Grade 10',
+              cards:[['Student','','Why doesn’t a heavier object fall faster?',''],['Tutor','Hint 1 of 3','Good question. What does Newton’s second law say about force and mass?',''],['Teacher insight','Flagged','4 students are stuck on free fall — a short recap is suggested.','']] } },
+        { tab:'Student Portfolios', title:'Student Portfolios', bg:'#c9c8fa', ink:'#4338ca',
+          summary:'Capture learning as it happens and share it securely with families.',
+          points:['Collect work, photos and reflections in one place','Tag evidence to skills and outcomes','Student and teacher contributions, side by side','Share progress with parents securely'],
+          m:{ path:'Portfolio  /  Student name', a1:'Filter', a2:'Share', btn:'Add evidence',
+              pTitle:'Evidence', pDesc:'Tag each piece of work to a skill or learning outcome.',
+              section:'Skills', rows:[['Communication','6'],['Critical thinking','4'],['Collaboration','5'],['Creativity','3']], section2:'Reflections',
+              pvLabel:'Recent work', pvMeta:'Term 1',
+              cards:[['Science fair poster','Creativity','Photo · added by teacher',''],['Reading reflection','Communication','Written · added by student',''],['Group debate','Collaboration','Video · 3 min · added by teacher','']] } },
+        { tab:'Progress Reports & Transcripts', title:'Progress Reports and Transcripts', bg:'#bcede2', ink:'#17494a', report:true,
+          summary:'Create visual reports that showcase holistic progress — in minutes.',
+          points:['Customisable templates for every reporting need','Seamless gradebook and portfolios integration','AI-led evidence-based comments in seconds','Pre-built transcripts that adapt to your context'],
+          m:{ path:'Template overview  /  Cover sheet', a1:'✥ Reorder', a2:'↻ Sync', btn:'Save and exit', btnBg:'#c43e50', checkBg:'#338a91',
+              pTitle:'Cover sheet', pDesc:'Click on the icon to include sections on the cover sheet of your progress report. Progress report title and sub-title will be added while generating a progress report set.',
+              section:'School information', rows:[['School logo','check'],['School name','check'],['School address','check'],['Additional image','check']], section2:'Report information',
+              pvLabel:'Cover Sheet', pvMeta:'Page 1 of 12', cards:[] } },
+        { tab:'Communications Hub', title:'Communications Hub', bg:'#ddf0ad', ink:'#3f5a12',
+          summary:'One space to keep your entire school community together.',
+          points:['Chat 1:1 or with groups','Send announcements in seconds','AI that drafts replies and flags messages'],
+          m:{ path:'Messages  /  Grade 6 parents', a1:'Search', a2:'Filter', btn:'New announcement',
+              pTitle:'Inbox', pDesc:'Chats, groups and announcements — all in one place.',
+              section:'Conversations', rows:[['Grade 6 parents','12 new'],['Science department','3 new'],['Transport team','Read'],['Sports club','2 new']], section2:'Announcements',
+              pvLabel:'Grade 6 parents', pvMeta:'184 members',
+              cards:[['Announcement','Sent','Sports day moves to Friday, 9:00 am.',''],['Parent','Reply','Thank you — will the bus timings change?',''],['AI draft','Suggested','Bus timings stay the same; pick-up is at 3:30 pm.','']] } },
+        { tab:'Attendance, Timetables & More', title:'Attendance, Timetables & More', bg:'#f5e3b3', ink:'#7a5a0c',
+          summary:'The everyday essentials of running a class — handled.',
+          points:['AI-powered attendance with real-time insights','Routines and timetables for every course and section','Class recordings students can revisit anytime','Library, events and live classes built in'],
+          m:{ path:'Attendance  /  Grade 8B', a1:'Timetable', a2:'Export', btn:'Submit register',
+              pTitle:'Today · Period 2', pDesc:'Attendance is captured automatically. Confirm and submit the register.',
+              section:'Register', rows:[['Present','27'],['Absent','2'],['Late','1'],['Excused','0']], section2:'Class recordings',
+              pvLabel:'Weekly timetable', pvMeta:'Mon – Sat',
+              cards:[['Period 1 · Mathematics','Done','Room 204 · 28 of 30 present','93%'],['Period 2 · Science','Live','Lab 1 · recording on','60%'],['Period 3 · English','Next','Room 108 · starts 10:40 am','']] } },
+      ],
+    };
+    const FCL = Object.assign({}, FC, (I18.pages&&I18.pages[pageKey]&&I18.pages[pageKey][lang]&&I18.pages[pageKey][lang].tour)||{});
+    const fcN = FCL.slides.length; this._fcCount = fcN;
+    const fa = Math.min(this.state.fcActive||0, fcN-1);
+    const fcTabs = FCL.slides.map((sl,i)=>{ const on=i===fa; return {
+      label:sl.tab, tabId:'lfc-tab-'+i, panelId:'lfc-panel-'+i, selected:on?'true':'false', go:()=>this.fcGo(i),
+      style:'flex:none;cursor:pointer;font:inherit;font-size:13px;line-height:1.2;white-space:nowrap;padding:9px 12px;border-radius:9px;border:1.5px solid '+(on?sl.bg:'#eceae4')+';transition:background .2s,color .2s,border-color .2s;'
+        +(on?('background:'+sl.bg+';color:'+sl.ink+';font-weight:700'):'background:#fff;color:#5b5f6b;font-weight:500'),
+    }; });
+    const fcSlides = FCL.slides.map((sl,i)=>{ const on=i===fa, m=sl.m||{}; return {
+      title:sl.title, summary:sl.summary, points:sl.points, bg:sl.bg, ink:sl.ink,
+      tabId:'lfc-tab-'+i, panelId:'lfc-panel-'+i, hidden:on?'false':'true', tab:on?'0':'-1',
+      isReport:!!sl.report, isGeneric:!sl.report,
+      go:()=>{ if(!on) this.fcGo(i); },
+      style:'background:'+sl.bg+';'+(on?'':'cursor:pointer'),
+      m:Object.assign({}, m, {
+        btnBg:m.btnBg||sl.ink, checkBg:m.checkBg||sl.ink,
+        rows:(m.rows||[]).map(r=>({label:r[0], check:r[1]==='check', empty:r[1]==='empty', pill:(r[1]==='check'||r[1]==='empty')?'':r[1]})),
+        cards:(m.cards||[]).map(c=>({t:c[0], tag:c[1], s:c[2], p:c[3], hasBar:!!c[3]})),
+      }),
+    }; });
+    const fcVals = {
+      fcEyebrow:FCL.eyebrow, fcHeading:FCL.heading, fcLearnMore:FCL.learnMore, fcTabs, fcSlides,
+      fcTrackStyle:'transform:translateX(calc('+(-fa)+' * (var(--fc-w) + var(--fc-gap))))',
+      fcThumbStyle:'width:'+(100/fcN)+'%;left:'+(fa*100/fcN)+'%',
+      fcCount:(fa+1)+' / '+fcN,
+      fcPrev:()=>this.fcGo(fa-1), fcNext:()=>this.fcGo(fa+1),
+    };
+
     const ra = this.state.roleActive||0;
     const nums = this.state.statNums||[0,0,0];
     const mkTab = (i)=>{ const on=(i===ra); return {
@@ -463,6 +759,7 @@ class Component extends DCLogic {
       navProducts: navProductsL,
       whyCards,
       role0, role1, role2, activeRole,
+      ...fcVals,
       ui, whyLabel, ctaSub, lang,
       setLang:(e)=>this.setLang(e.target.value),
       rolesCols: P.roles.length,
