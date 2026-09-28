@@ -264,7 +264,8 @@
 <section style="position:relative;margin:120px auto 0">
   <div data-problem-stage style="height:230vh">
     <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-      <div style="position:relative;width:100vw;height:660px;background-image:linear-gradient(rgba(20,21,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,21,26,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(120% 92% at 50% 46%,#000 55%,transparent 100%);mask-image:radial-gradient(120% 92% at 50% 46%,#000 55%,transparent 100%)">
+      <div style="position:relative;width:100vw;height:660px">
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(20,21,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,21,26,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 26%,#000 74%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 26%,#000 74%,transparent 100%)"></div>
 
         <div data-problem-cards style="position:absolute;left:50%;top:50%;width:1100px;height:660px;margin:-330px 0 0 -550px;transform-origin:center">
         <sc-for list="{{ problemCards }}" as="c" hint-placeholder-count="6">
