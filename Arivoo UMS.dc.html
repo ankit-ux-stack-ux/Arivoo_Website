@@ -206,7 +206,7 @@
     <div style="position:relative;width:min(560px,90vw);aspect-ratio:1">
     <svg viewBox="0 0 600 600" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
       <circle cx="300" cy="300" r="252" fill="none" stroke="{{ tint }}" stroke-width="2"></circle>
-      <circle data-life-arc cx="300" cy="300" r="252" fill="none" stroke="{{ accent }}" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="{{ arcDash }}" stroke-dashoffset="{{ arcDash }}" transform="rotate(-90 300 300)" style="transition:stroke-dashoffset .18s linear,stroke .4s"></circle>
+      <circle data-life-arc cx="300" cy="300" r="252" fill="none" stroke="#14151a" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="{{ arcDash }}" stroke-dashoffset="{{ arcDash }}" transform="rotate(-90 300 300)" style="transition:stroke-dashoffset .18s linear"></circle>
     </svg>
 
     <sc-for list="{{ lifeNodes }}" as="n" hint-placeholder-count="7">
@@ -221,10 +221,10 @@
     <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(320px,58%);z-index:1">
       <div style="background:#fff;border:1px solid #eef0f4;border-radius:22px;box-shadow:0 24px 60px rgba(20,21,26,.13);padding:22px 22px 24px">
         <div style="display:flex;align-items:center;gap:11px">
-          <span style="width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:18px;background:{{ activeStage.tink }};color:#fff;transition:background .4s">{{ persona.initial }}</span>
+          <span style="width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:18px;background:#14151a;color:#fff">{{ persona.initial }}</span>
           <span style="display:flex;flex-direction:column;gap:3px;text-align:left;min-width:0">
             <span style="font-size:14px;font-weight:800;color:#14151a;line-height:1.1">{{ persona.name }}</span>
-            <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:{{ activeStage.tbg }};color:{{ activeStage.tink }};font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">{{ activeStage.status }}</span>
+            <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:#f0efe9;color:#14151a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">{{ activeStage.status }}</span>
           </span>
           <span style="margin-left:auto;font-family:'Bricolage Grotesque';font-size:12px;font-weight:800;color:#c2c6cf;white-space:nowrap">{{ activeStage.step }} / 07</span>
         </div>
@@ -232,10 +232,10 @@
         <p style="font-size:13.5px;color:#5b5f6b;margin-top:7px;line-height:1.5;text-align:left;text-wrap:pretty;min-height:60px">{{ activeStage.body }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:12px">
           <sc-for list="{{ activeStage.mods }}" as="m" hint-placeholder-count="2">
-            <span style="background:{{ activeStage.tbg }};color:{{ activeStage.tink }};font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:100px">{{ m }}</span>
+            <span style="background:#f0efe9;color:#14151a;font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:100px">{{ m }}</span>
           </sc-for>
         </div>
-        <div style="height:5px;border-radius:100px;background:{{ activeStage.tbg }};margin-top:18px;overflow:hidden">
+        <div style="height:5px;border-radius:100px;background:#f0efe9;margin-top:18px;overflow:hidden">
           <div data-life-bar style="{{ activeStage.barStyle }}"></div>
         </div>
       </div>
@@ -370,7 +370,7 @@ class Component extends DCLogic {
       const cont=p*(N-1);
       const active=Math.round(cont);
       const arc=track.querySelector('[data-life-arc]');
-      if(arc){ const C=2*Math.PI*252; arc.style.strokeDashoffset=(C*(1-p)).toFixed(2); const at=(this._lifeTones||[])[active%7]; if(at) arc.style.stroke=at[1]; }
+      if(arc){ const C=2*Math.PI*252; arc.style.strokeDashoffset=(C*(1-p)).toFixed(2); }
       const bar=track.querySelector('[data-life-bar]'); if(bar) bar.style.width=(p*100).toFixed(1)+'%';
       const labels=[...track.querySelectorAll('[data-life-label]')];
       nodes.forEach((n,i)=>{
@@ -485,13 +485,11 @@ class Component extends DCLogic {
     const C = 2*Math.PI*252;
     const arcDash = C.toFixed(2);
     const sectionBg = 'background:radial-gradient(40% 36% at 50% 50%, rgba(233,213,255,.55), transparent 72%), radial-gradient(36% 42% at 18% 40%, rgba(253,215,228,.5), transparent 72%), radial-gradient(36% 42% at 82% 62%, rgba(207,244,236,.55), transparent 72%), #fbfbf9';
-    const [lbg, link] = lifeTones[active%7];
     const progressPct = (active/(N-1)*100).toFixed(1);
     const activeStage = Object.assign({}, stagesSrc[active], {
       step:String(active+1).padStart(2,'0'),
       status:statuses[active],
-      tbg:lbg, tink:link,
-      barStyle:'height:100%;border-radius:100px;background:'+link+';transition:width .3s ease,background .4s;width:0%',
+      barStyle:'height:100%;border-radius:100px;background:#14151a;transition:width .3s ease;width:0%',
     });
     // ---- interactive role explorer ----
     const rolesData = (LP.roles||P.roles||[]);
