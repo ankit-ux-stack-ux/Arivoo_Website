@@ -180,6 +180,8 @@
   .sv-tag{animation:sv-tag .5s ease-out var(--d) both}
   @media (prefers-reduced-motion:reduce){ .sv *{animation:none!important} }
   @keyframes sv-show{from{opacity:0}to{opacity:1}}
+  /* scroll-driven carousel: section pins while scrolling steps through slides */
+  .lfc-pin.on>.lfc-stick{position:sticky;display:flex;flex-direction:column;justify-content:center;padding-top:24px}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -366,6 +368,7 @@
 
 <!-- ROLES (feature carousel, same pattern as the LMS platform tour) -->
 <section id="roles" style="margin:96px auto 0">
+  <div id="lfc-pin" class="lfc-pin"><div id="lfc-stick" class="lfc-stick">
   <div style="max-width:1240px;margin:0 auto;padding:0 32px;text-align:center">
     <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.builtForEveryone }}</div>
     <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;margin-top:14px;text-wrap:balance">{{ rolesHeading }}</h2>
@@ -413,6 +416,7 @@
       <button type="button" class="lfc-arrow" aria-label="Next feature" onClick="{{ fcNext }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
     </div>
   </div>
+  </div></div>
 </section>
 
 <!-- WHY -->
@@ -568,7 +572,33 @@
 class Component extends DCLogic {
   state = { navOpen:false, fcActive:0, lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
   // ---- platform tour carousel ----
-  fcGo(i){ const n=this._fcCount||1; const next=((i%n)+n)%n; if(next===this.state.fcActive) return; this.setState({fcActive:next}, ()=>this._fcScrollTab()); }
+  fcGo(i){ const n=this._fcCount||1; const next=((i%n)+n)%n; if(next===this.state.fcActive) return; if(this._fcSeek) this._fcSeek(next); this.setState({fcActive:next}, ()=>this._fcScrollTab()); }
+  _fcPin(){ try{
+    const pin=document.getElementById('lfc-pin'), st=document.getElementById('lfc-stick'); if(!pin||!st) return;
+    const nav=document.querySelector('nav'); const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const layout=()=>{
+      const n=this._fcCount||1, vh=window.innerHeight, navH=nav?nav.offsetHeight:0;
+      pin.classList.remove('on'); pin.style.height=''; st.style.top=''; st.style.minHeight='';
+      const h=st.offsetHeight;
+      if(reduce || n<2 || window.innerWidth<900 || h>vh+120){ this._fcPinOn=false; return; }
+      this._fcPinOn=true; pin.classList.add('on');
+      st.style.minHeight=(vh-navH)+'px'; st.style.top=navH+'px';
+      this._fcStep=Math.round(vh*0.6);
+      pin.style.height=(vh-navH+(n-1)*this._fcStep)+'px';
+    };
+    this._fcSync=()=>{ if(!this._fcPinOn||this._fcLock) return;
+      const n=this._fcCount||1, navH=nav?nav.offsetHeight:0, y=navH-pin.getBoundingClientRect().top;
+      const i=Math.max(0,Math.min(n-1,Math.floor(y/this._fcStep+0.5)));
+      if(i!==this.state.fcActive) this.setState({fcActive:i}, ()=>this._fcScrollTab()); };
+    this._fcSeek=(i)=>{ if(!this._fcPinOn) return false;
+      const navH=nav?nav.offsetHeight:0, top=pin.getBoundingClientRect().top+window.scrollY-navH;
+      this._fcLock=true; clearTimeout(this._fcLockT); this._fcLockT=setTimeout(()=>{ this._fcLock=false; },900);
+      window.scrollTo({top:top+i*this._fcStep, behavior:'smooth'}); return true; };
+    this._fcLayout=()=>{ layout(); this._fcSync(); };
+    window.addEventListener('scroll',this._fcSync,{passive:true});
+    window.addEventListener('resize',this._fcLayout);
+    layout(); this._fcSync();
+  }catch(e){} }
   _fcScrollTab(){ try{ const bar=document.getElementById('lfc-tabs'); const tab=document.getElementById('lfc-tab-'+this.state.fcActive); if(!bar||!tab||bar.scrollWidth<=bar.clientWidth) return; bar.scrollTo({left:tab.offsetLeft-(bar.clientWidth-tab.offsetWidth)/2, behavior:'smooth'}); }catch(e){} }
   _bindCarousel(){ try{
     const v=document.getElementById('lfc-view'); if(!v) return;
@@ -581,7 +611,7 @@ class Component extends DCLogic {
       const rtl=document.documentElement.getAttribute('dir')==='rtl'; const step=(e.key==='ArrowRight')!==rtl?1:-1;
       this.fcGo(this.state.fcActive+step); setTimeout(()=>{ const t=document.getElementById('lfc-tab-'+this.state.fcActive); if(t) t.focus(); },0); });
   }catch(e){} }
-  componentDidMount(){ this._applyImgs(); this._applyDir(); this._bindCarousel(); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
+  componentDidMount(){ this._applyImgs(); this._applyDir(); this._bindCarousel(); this._fcPin(); setTimeout(()=>this._fcLayout&&this._fcLayout(),400); window.addEventListener("load",()=>this._fcLayout&&this._fcLayout()); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
   _applyDir(){ try{ var rtl=this.state.lang==='ar'; document.documentElement.setAttribute('dir', rtl?'rtl':'ltr'); document.documentElement.setAttribute('lang', this.state.lang); }catch(e){} }
   setLang(l){ try{ localStorage.setItem('arivoo_lang', l); }catch(e){} this.setState({lang:l}, ()=>this._applyDir()); }
   componentDidUpdate(){ this._applyImgs(); }
