@@ -108,6 +108,78 @@
   .amm-mod:hover b,.amm-link:hover b,.amm-mod:focus-visible b,.amm-link:focus-visible b{color:#087bc1}
   .amm-link[style*="width"]{box-sizing:content-box}
   @media (max-width:820px){ .amm{flex-direction:column;gap:22px;padding:24px 22px} .amm-mods{height:auto} .amm-cols{gap:28px} .amm-col{gap:24px;width:auto!important} .amm-div{width:100%;height:1px;align-self:auto} .amm-ai{width:100%} .amm-links{gap:12px} .amm-link{width:auto!important} }
+  /* SMS animated product visual (Figma 4091:3586). Drawn on a 591x539 grid (frame shifted by 55,24); dimensions below are converted to --u */
+  .sv{position:relative;width:100%;aspect-ratio:591/539;container-type:inline-size}
+  .sv-s{--u:calc(100cqw / 591);font-size:calc(var(--u)*5);position:absolute;inset:0;font-family:'Inter',sans-serif;line-height:normal;color:#111820}
+  .sv-s img{display:block;max-width:none}
+  .sv-back{position:absolute;left:0;top:0;width:calc(var(--u)*591);height:calc(var(--u)*538.306);overflow:hidden}
+  .sv-field{position:absolute;left:calc(var(--u)*54.76);top:calc(var(--u)*23.76);width:calc(var(--u)*512.476);height:calc(var(--u)*478.379);border-radius:calc(var(--u)*24.058);background:#93e1cf}
+  .sv-app{position:absolute;left:calc(var(--u)*130.18);top:calc(var(--u)*89.89);width:calc(var(--u)*437.051);height:calc(var(--u)*346.128);border-radius:calc(var(--u)*15.498) 0 0 calc(var(--u)*15.498);background:#fff}
+  .sv-skel{position:absolute;left:calc(var(--u)*144.65);width:calc(var(--u)*422.586);height:calc(var(--u)*130.185);border-radius:calc(var(--u)*13.432) 0 0 calc(var(--u)*13.432);background:#f1f1f1}
+  .sv-navline{position:absolute;left:calc(var(--u)*144.65);top:calc(var(--u)*125.02);width:calc(var(--u)*422.586);height:calc(var(--u)*1.033);background:#eceeef}
+  .sv-logo{position:absolute;left:calc(var(--u)*142.58);top:calc(var(--u)*94.02);width:calc(var(--u)*84.574);height:calc(var(--u)*27.946);overflow:hidden}
+  .sv-logo img{position:absolute;left:0;top:-15.85%;width:100%;height:134.32%}
+
+  .sv-post{position:absolute;width:calc(var(--u)*301.699);border-radius:calc(var(--u)*11.365);background:#fff;box-shadow:0 calc(var(--u)*4.133) calc(var(--u)*10.332) rgba(36,56,77,.14);overflow:hidden}
+  .sv-post>*{position:absolute}
+  .sv-head{left:calc(var(--u)*10.33);top:calc(var(--u)*9.3);width:calc(var(--u)*281.035);height:calc(var(--u)*39.262)}
+  .sv-head>*{position:absolute;white-space:nowrap}
+  .sv-author{left:0;top:0;width:calc(var(--u)*27.897);height:calc(var(--u)*27.897);border-radius:50%}
+  .sv-name{left:calc(var(--u)*35.13);top:calc(var(--u)*2.07);font-weight:700;font-size:calc(var(--u)*7.233);color:#111820}
+  .sv-meta{left:calc(var(--u)*35.13);top:calc(var(--u)*14.47);font-weight:500;font-size:calc(var(--u)*5.373);color:#66717a;white-space:pre}
+  .sv-more{left:calc(var(--u)*272.77);top:calc(var(--u)*-4.13);font-weight:500;font-size:calc(var(--u)*16.531);color:#69737a}
+  .sv-subj{left:calc(var(--u)*10.33);top:calc(var(--u)*45.46);font-weight:700;font-size:calc(var(--u)*7.336);color:#111820;white-space:nowrap}
+  .sv-div{left:calc(var(--u)*10.33);top:calc(var(--u)*59.93);width:calc(var(--u)*281.035);height:calc(var(--u)*1.033);background:#dde1e4}
+  .sv-line{left:calc(var(--u)*10.33);height:calc(var(--u)*3.1);width:var(--lw);border-radius:calc(var(--u)*999);background:#e3e4e5}
+  .sv-event{left:calc(var(--u)*10.33);top:calc(var(--u)*80.59);width:calc(var(--u)*281.035);height:calc(var(--u)*29.963);background:#fafafa;overflow:hidden;white-space:nowrap}
+  .sv-event>*{position:absolute}
+  .sv-date{left:calc(var(--u)*3.1);top:calc(var(--u)*3.1);width:calc(var(--u)*21.698);height:calc(var(--u)*24.797);border-radius:calc(var(--u)*5.166);background:#e1e2e3;border:calc(var(--u)*1.033) solid #cacdcf;font-weight:700;overflow:hidden}
+  .sv-date em{position:absolute;left:calc(var(--u)*2.07);top:0;font-style:normal;font-size:calc(var(--u)*4.649);color:#50565b}
+  .sv-date b{position:absolute;left:calc(var(--u)*4.13);top:calc(var(--u)*8.27);font-size:calc(var(--u)*7.233);color:#30363b}
+  .sv-when{left:calc(var(--u)*28.93);top:calc(var(--u)*10.33);font-weight:700;font-size:calc(var(--u)*5.786);color:#343a3e}
+  .sv-chev{left:calc(var(--u)*268.64);top:calc(var(--u)*4.13);font-size:calc(var(--u)*14.465);color:#5f666b}
+  .sv-actions{left:calc(var(--u)*10.33);width:calc(var(--u)*281.035);height:calc(var(--u)*20.664);overflow:hidden}
+  .sv-actions>*{position:absolute}
+  .sv-actions img{top:calc(var(--u)*3.1);width:calc(var(--u)*9.299);height:calc(var(--u)*9.299)}
+  .sv-count{top:calc(var(--u)*7.23);height:calc(var(--u)*3.1);border-radius:calc(var(--u)*999);background:#e4e5e6}
+  .sv-btn{left:calc(var(--u)*229.37);top:calc(var(--u)*1.03);width:calc(var(--u)*51.661);height:calc(var(--u)*13.432);border-radius:calc(var(--u)*999);background:#fff;border:calc(var(--u)*1.033) solid #c9cdcf}
+  .sv-media{left:calc(var(--u)*16.53);top:calc(var(--u)*83.69);width:calc(var(--u)*268.636);height:calc(var(--u)*140.517);border-radius:calc(var(--u)*2.066);overflow:hidden}
+  .sv-banner{position:absolute;left:0;top:0;width:calc(var(--u)*268.636);height:calc(var(--u)*54.76);background:#43a0f1}
+  .sv-bt{position:absolute;left:calc(var(--u)*9.3);top:calc(var(--u)*13.43);font-size:calc(var(--u)*19.631);letter-spacing:calc(var(--u)*-.5166);color:#fff;white-space:nowrap}
+  .sv-bs{position:absolute;left:calc(var(--u)*9.3);top:calc(var(--u)*37.2);font-weight:500;font-size:calc(var(--u)*5.579);color:#dceeff;white-space:nowrap}
+  .sv-photo{position:absolute;left:calc(var(--u)*7.23);top:calc(var(--u)*61.99);width:calc(var(--u)*254.171);height:calc(var(--u)*78.524);overflow:hidden}
+  .sv-photo img{width:100%;height:100%;object-fit:cover}
+
+  .sv-face{position:absolute}
+  .sv-face img{position:absolute}
+  .sv-tag{position:absolute;height:calc(var(--u)*25.83);border-radius:calc(var(--u)*4.133);box-shadow:0 calc(var(--u)*2.066) calc(var(--u)*4.133) rgba(20,37,58,.13);padding:calc(var(--u)*5.17) 0 0 calc(var(--u)*9.3);font-weight:600;font-size:calc(var(--u)*12.399);color:#24303a;white-space:nowrap;overflow:hidden}
+
+  /* ---- motion ---- */
+  @keyframes sv-rise{from{opacity:0;transform:translateY(calc(var(--u)*18)) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes sv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(var(--u)*-5))}}
+  @keyframes sv-slide{from{opacity:0;transform:translateX(calc(var(--u)*26))}to{opacity:1;transform:none}}
+  @keyframes sv-shimmer{0%,100%{opacity:1}50%{opacity:.55}}
+  @keyframes sv-line{from{width:0}to{width:var(--lw)}}
+  @keyframes sv-pop{0%{opacity:0;transform:scale(.35)}70%{transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}
+  @keyframes sv-tag{from{opacity:0;transform:translateX(calc(var(--u)*-10))}to{opacity:1;transform:none}}
+  @keyframes sv-zoom{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  @keyframes sv-beat{0%,100%{transform:scale(1)}15%{transform:scale(1.35)}30%{transform:scale(1)}}
+  @keyframes sv-fade{from{opacity:0;transform:translateY(calc(var(--u)*5))}to{opacity:1;transform:none}}
+  @keyframes sv-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(var(--u)*-2))}}
+  .sv-field{animation:sv-rise .8s cubic-bezier(.2,.8,.2,1) both}
+  .sv-app,.sv-navline,.sv-logo{animation:sv-slide .8s cubic-bezier(.2,.8,.2,1) .2s both}
+  .sv-skel{animation:sv-slide .8s cubic-bezier(.2,.8,.2,1) .3s both,sv-shimmer 2.8s ease-in-out 1.2s infinite}
+  .sv-post{animation:sv-rise .7s cubic-bezier(.2,.8,.2,1) var(--d) both,sv-float var(--f) ease-in-out calc(var(--d) + .7s) infinite}
+  .sv-line{animation:sv-line .5s ease-out 1s both}
+  .sv-bt,.sv-bs{animation:sv-fade .5s ease-out 1.4s both}
+  .sv-bs{animation-delay:1.55s}
+  .sv-photo img{animation:sv-zoom 12s ease-in-out 1.5s infinite}
+  .sv-date{animation:sv-bob 3.2s ease-in-out 1.6s infinite}
+  .sv-heart{animation:sv-pop .4s ease-out 2.2s both,sv-beat 2.6s ease-in-out 3s infinite}
+  .sv-face{animation:sv-pop .6s cubic-bezier(.2,.8,.2,1) var(--d) both,sv-float var(--f) ease-in-out calc(var(--d) + .6s) infinite}
+  .sv-tag{animation:sv-tag .5s ease-out var(--d) both}
+  @media (prefers-reduced-motion:reduce){ .sv *{animation:none!important} }
+  @keyframes sv-show{from{opacity:0}to{opacity:1}}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -192,7 +264,78 @@
     </div>
   </div>
   <div style="position:relative">
-    <img data-src="{{ heroImg }}" alt="{{ name }}" style="position:relative;z-index:2;width:min(620px, 44vw);max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));aspect-ratio:620/520;height:auto;object-fit:contain;object-position:center;display:block;border-radius:20px;animation:floaty 7s ease-in-out infinite">
+    <div role="img" aria-label="{{ name }} dashboard" style="position:relative;z-index:2;width:min(620px, 44vw);max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));aspect-ratio:620/520;display:flex;align-items:center;justify-content:center">
+<div class="sv" style="width:91.9%" aria-hidden="true"><div class="sv-s">
+  <div class="sv-back">
+    <div class="sv-field"></div>
+    <div class="sv-app"></div>
+    <div class="sv-skel" style="top:calc(var(--u)*291.37)"></div>
+    <div class="sv-skel" style="top:calc(var(--u)*141.55);animation-delay:.6s"></div>
+    <div class="sv-navline"></div>
+    <div class="sv-logo"><img src="assets/sms-viz/logo.png" alt=""></div>
+  </div>
+
+  <div class="sv-post" style="left:calc(var(--u)*238.67);top:calc(var(--u)*48.56);height:calc(var(--u)*146.717);--d:.45s;--f:6.6s">
+    <div class="sv-head">
+      <img class="sv-author" src="assets/sms-viz/author-stephanie.png" alt="">
+      <b class="sv-name">Stephanie Wilson</b>
+      <span class="sv-meta">Jefferson Middle School   •   September 24th</span>
+      <span class="sv-more">⋮</span>
+    </div>
+    <b class="sv-subj">Friday Update &amp; Science Fair News</b>
+    <i class="sv-div"></i>
+    <i class="sv-line" style="top:calc(var(--u)*66.13);--lw:calc(var(--u)*268.636)"></i>
+    <i class="sv-line" style="top:calc(var(--u)*72.33);--lw:calc(var(--u)*242.806);animation-delay:1.05s"></i>
+    <div class="sv-event">
+      <span class="sv-date"><em>SEPT</em><b>24</b></span>
+      <b class="sv-when">Wednesday, September 24th</b>
+      <span class="sv-chev">›</span>
+    </div>
+    <div class="sv-actions" style="top:calc(var(--u)*116.75)">
+      <img class="sv-heart" src="assets/sms-viz/heart.svg" alt="" style="left:0">
+      <i class="sv-count" style="left:calc(var(--u)*13.43);width:calc(var(--u)*39.262)"></i>
+      <img src="assets/sms-viz/comment.svg" alt="" style="left:calc(var(--u)*61.99)">
+      <i class="sv-count" style="left:calc(var(--u)*75.42);width:calc(var(--u)*40.295)"></i>
+      <i class="sv-btn"></i>
+      <i class="sv-count" style="left:calc(var(--u)*237.64);top:calc(var(--u)*6.2);width:calc(var(--u)*35.129);background:#e3e4e4"></i>
+    </div>
+  </div>
+
+  <div class="sv-post" style="left:calc(var(--u)*238.67);top:calc(var(--u)*211.81);height:calc(var(--u)*264.504);--d:.65s;--f:7.2s">
+    <div class="sv-head">
+      <img class="sv-author" src="assets/sms-viz/author-principal.png" alt="">
+      <b class="sv-name">Principal Alvarez</b>
+      <span class="sv-meta">Lincoln High School   •   September 24th</span>
+      <span class="sv-more">⋮</span>
+    </div>
+    <b class="sv-subj">Hello school community,</b>
+    <i class="sv-div"></i>
+    <i class="sv-line" style="top:calc(var(--u)*66.13);--lw:calc(var(--u)*268.636);animation-delay:1.2s"></i>
+    <i class="sv-line" style="top:calc(var(--u)*72.33);--lw:calc(var(--u)*242.806);animation-delay:1.3s"></i>
+    <div class="sv-media">
+      <div class="sv-banner"><span class="sv-bt">School Weekly Update</span><span class="sv-bs">Community newsletter</span></div>
+      <div class="sv-photo"><img src="assets/sms-viz/school.jpg" alt=""></div>
+    </div>
+    <div class="sv-actions" style="top:calc(var(--u)*236.61)">
+      <img class="sv-heart" src="assets/sms-viz/heart.svg" alt="" style="left:0;animation-delay:2.6s,3.4s">
+      <i class="sv-count" style="left:calc(var(--u)*13.43);width:calc(var(--u)*39.262)"></i>
+      <img src="assets/sms-viz/comment.svg" alt="" style="left:calc(var(--u)*61.99)">
+      <i class="sv-count" style="left:calc(var(--u)*75.42);width:calc(var(--u)*40.295)"></i>
+      <i class="sv-btn"></i>
+      <i class="sv-count" style="left:calc(var(--u)*237.64);top:calc(var(--u)*6.2);width:calc(var(--u)*35.129);background:#e3e4e4"></i>
+    </div>
+  </div>
+
+  <div class="sv-face" style="left:calc(var(--u)*21.7);top:calc(var(--u)*376.09);width:calc(var(--u)*104.355);height:calc(var(--u)*104.355);--d:1s;--f:6.4s"><img src="assets/sms-viz/admin.png" alt="" style="left:-9.9%;top:-5.94%;width:119.8%;height:119.8%"></div>
+  <span class="sv-tag" style="left:calc(var(--u)*123.99);top:calc(var(--u)*456.68);width:calc(var(--u)*104.355);background:#fff;--d:1.25s">Administrators</span>
+  <div class="sv-face" style="left:calc(var(--u)*158.08);top:calc(var(--u)*272.77);width:calc(var(--u)*63.026);height:calc(var(--u)*63.026);--d:.9s;--f:5.8s"><img src="assets/sms-viz/teacher.png" alt="" style="left:-16.39%;top:-9.84%;width:132.78%;height:132.78%"></div>
+  <span class="sv-tag" style="left:calc(var(--u)*59.93);top:calc(var(--u)*330.63);width:calc(var(--u)*69.226);background:#8fda73;--d:1.15s">Teachers</span>
+  <div class="sv-face" style="left:calc(var(--u)*79.56);top:calc(var(--u)*95.06);width:calc(var(--u)*64.059);height:calc(var(--u)*64.059);--d:.8s;--f:6.9s"><img src="assets/sms-viz/parent.png" alt="" style="left:-16.13%;top:-9.68%;width:132.26%;height:132.26%"></div>
+  <span class="sv-tag" style="left:calc(var(--u)*114.69);top:calc(var(--u)*221.11);width:calc(var(--u)*61.993);background:#43a0f1;--d:1.05s">Parents</span>
+  <div class="sv-face" style="left:calc(var(--u)*31);top:calc(var(--u)*41.33);width:calc(var(--u)*45.462);height:calc(var(--u)*45.462);--d:.7s;--f:5.4s"><img src="assets/sms-viz/student.png" alt="" style="left:-22.73%;top:-13.64%;width:145.46%;height:145.46%"></div>
+  <span class="sv-tag" style="left:calc(var(--u)*84.72);top:calc(var(--u)*52.69);width:calc(var(--u)*69.226);background:#f2c52c;--d:.95s">Students</span>
+</div></div>
+    </div>
   </div>
 </header>
 
