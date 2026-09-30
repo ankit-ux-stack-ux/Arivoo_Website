@@ -9,9 +9,9 @@
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="ext-resource-dependency" content="assets/ums-hero.png" data-resource-id="ums">
-<meta name="ext-resource-dependency" content="assets/sms-hero.png" data-resource-id="sms">
-<meta name="ext-resource-dependency" content="assets/lms-hero-v5.png" data-resource-id="lms">
+<meta name="ext-resource-dependency" content="assets/ums-hero-v2.png" data-resource-id="ums">
+<meta name="ext-resource-dependency" content="assets/sms-hero-v2.png" data-resource-id="sms">
+<meta name="ext-resource-dependency" content="assets/lms-hero-v6.png" data-resource-id="lms">
 <meta name="ext-resource-dependency" content="assets/testguard-hero.png" data-resource-id="testguard">
 <meta name="ext-resource-dependency" content="assets/arivoo-logo.png" data-resource-id="logo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,8 +102,7 @@
     </div>
   </div>
   <div style="position:relative">
-    <div style="position:absolute;inset:-9% -6%;border-radius:44px;background:linear-gradient(135deg,{{ accent }}2e,{{ tint }} 70%)"></div>
-    <img data-src="{{ heroImg }}" alt="{{ name }}" style="position:relative;z-index:2;width:100%;height:auto;display:block;border-radius:20px;animation:floaty 7s ease-in-out infinite">
+    <img data-src="{{ heroImg }}" alt="{{ name }}" style="position:relative;z-index:2;width:122%;max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));height:auto;display:block;border-radius:20px;animation:floaty 7s ease-in-out infinite">
   </div>
 </header>
 
@@ -432,7 +431,7 @@ class Component extends DCLogic {
     const P = {
       name:'School Management System', short:'SMS', mark:'S',
       accent:'#14151a', tint:'#f0efe9', logo:'https://arivoo.in/wp-content/uploads/2023/11/Arivo_Buzzed_Rebranding-02-02-1.png',
-      heroImg:(window.__resources&&window.__resources.sms)||'assets/sms-hero.png',
+      heroImg:(window.__resources&&window.__resources.sms)||'assets/sms-hero-v2.png',
       heroTitle:'Simplify school management with ease.',
       heroSub:'Attendance, fees, homework and communication in one place — with a parent app that keeps families in the loop.',
       videoId:'aPZujbLqPvM',
