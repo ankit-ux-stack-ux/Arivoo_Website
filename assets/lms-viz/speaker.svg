@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="38.5376" height="17.8814" viewBox="0 0 38.5376 17.8814" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Speaker tile">
+<rect width="38.5376" height="17.8814" rx="2.7747" fill="#FFE8D1"/>
+<g id="Avatar body">
+<path d="M13.2568 14.2727C13.2568 11.4979 15.5062 9.24855 18.2809 9.24855H20.2563C23.0311 9.24855 25.2805 11.4979 25.2805 14.2727V14.2727C25.2805 15.2439 24.4932 16.0312 23.522 16.0312H15.0152C14.0441 16.0312 13.2568 15.2439 13.2568 14.2727V14.2727Z" fill="#FFB36D"/>
+</g>
+<circle id="Avatar head" cx="19.2675" cy="6.31971" r="2.92885" fill="#FFB36D"/>
+</g>
+</svg>

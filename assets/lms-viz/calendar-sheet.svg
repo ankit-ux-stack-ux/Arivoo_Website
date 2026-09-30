@@ -1,0 +1,44 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="60.3333" height="58.3333" viewBox="0 0 60.3333 58.3333" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Calendar sheet" filter="url(#filter0_d_0_57)">
+<g clip-path="url(#clip0_0_57)">
+<rect x="6" y="2" width="48.3333" height="46.3333" rx="5" fill="#FBFAFF"/>
+<path id="Header" d="M6.00017 7.00001C6.00017 4.23859 8.23875 2.00001 11.0002 2.00001H49.3335C52.0949 2.00001 54.3335 4.23858 54.3335 7.00001V12.6667H6.00017V7.00001Z" fill="#E6DEFF"/>
+<rect id="Binding" x="41.0002" y="-2.86102e-05" width="2.66667" height="7" rx="1.33333" fill="#5427B5"/>
+<rect id="Binding_2" x="15.3335" y="-8.29697e-05" width="2.66667" height="7" rx="1.33333" fill="#5427B5"/>
+<circle id="Date" cx="16.4995" cy="19.833" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_2" cx="22.5001" cy="19.8333" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_3" cx="28.4999" cy="19.8332" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_4" cx="34.4997" cy="19.8332" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_5" cx="40.5003" cy="19.8331" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_6" cx="46.5001" cy="19.833" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_7" cx="34.1362" cy="27.5139" r="1.5" fill="#5427B5"/>
+<circle id="Selected date ring" cx="34.0003" cy="27.3331" r="2.5" stroke="#5427B5"/>
+<circle id="Date_8" cx="16.5001" cy="27.8334" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_9" cx="22.4999" cy="27.8333" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_10" cx="28.4998" cy="27.8333" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_11" cx="40.5001" cy="27.8331" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_12" cx="46.5" cy="27.8334" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_13" cx="16.5" cy="35.8334" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_14" cx="22.4998" cy="35.8334" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_15" cx="28.4996" cy="35.8333" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_16" cx="34.5002" cy="35.8332" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_17" cx="40.5" cy="35.8331" r="1.5" fill="#DFDDF2"/>
+<circle id="Date_18" cx="46.4998" cy="35.8331" r="1.5" fill="#DFDDF2"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_57" x="0" y="0" width="60.3333" height="58.3333" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.203922 0 0 0 0 0.360784 0 0 0 0 0.596078 0 0 0 0.14902 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_57"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_57" result="shape"/>
+</filter>
+<clipPath id="clip0_0_57">
+<rect x="6" y="2" width="48.3333" height="46.3333" rx="5" fill="white"/>
+</clipPath>
+</defs>
+</svg>
