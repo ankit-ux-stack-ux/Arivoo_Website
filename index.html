@@ -162,6 +162,11 @@
     .hx-proof{flex-wrap:wrap;justify-content:center;gap:10px 22px}
     .hx-cards{display:none}
   }
+  /* sticky bottom Book a demo (same look as the hero CTA) */
+  .hx-dock{position:fixed;left:50%;bottom:28px;z-index:45;display:flex;align-items:center;justify-content:center;width:171px;height:55px;border-radius:8px;background:#101116;color:#fff;font-family:'Inter',sans-serif;font-size:15px;line-height:normal;white-space:pre;box-shadow:0 14px 24px rgba(17,19,26,.22),0 2px 6px rgba(17,19,26,.12);transform:translate(-50%,140%);opacity:0;pointer-events:none;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s ease,background .2s}
+  .hx-dock.is-on{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+  .hx-dock:hover{color:#fff;background:#3a3d47}
+  @media (prefers-reduced-motion:reduce){ .hx-dock{transition:opacity .2s} }
   /* integrations: logo + name grid */
   .arv-int{position:relative;isolation:isolate;background:#fbfaf7;max-width:1240px;margin:110px auto 0;padding:40px 32px;text-align:center}
   .arv-int::before{content:"";position:absolute;z-index:-1;left:-12%;top:0;width:46%;height:100%;background:radial-gradient(closest-side,#e7f9fb,rgba(231,249,251,0));pointer-events:none}
@@ -690,6 +695,8 @@
   </div>
 </footer>
 
+<!-- sticky Book a demo: docks at the bottom once the hero CTA scrolls away -->
+<a class="hx-dock" data-hero-dock href="Arivoo%20Book%20a%20Demo.dc.html" aria-hidden="true" tabindex="-1">{{ ui.bookDemo }}&nbsp; →</a>
 
 </div>
 </x-dc>
@@ -699,6 +706,7 @@ class Component extends DCLogic {
 
   componentDidMount(){
     this._fitHero();
+    this._setupDock();
     this._applyImgs();
     this._syncTestiVideo();
     this._applyDir();
@@ -829,7 +837,7 @@ class Component extends DCLogic {
     this.startTestiTimer();
   }
   toggleDemoProduct(k){ this.setState(s=>{ const cur=s.demoProducts||[]; return {demoProducts: cur.indexOf(k)>-1 ? cur.filter(x=>x!==k) : cur.concat(k)}; }); }
-  componentWillUnmount(){ window.removeEventListener('scroll', this._onScroll); if(this._onPar){ window.removeEventListener('scroll', this._onPar); window.removeEventListener('resize', this._onPar); } if(this._heroTimer) clearInterval(this._heroTimer); if(this._testiTimer) clearInterval(this._testiTimer); if(this._onProd){ window.removeEventListener('scroll', this._onProd); window.removeEventListener('resize', this._onProd); } if(this._fitScene){ window.removeEventListener('resize', this._fitScene); } if(this._onHeroFit){ window.removeEventListener('resize', this._onHeroFit); }
+  componentWillUnmount(){ window.removeEventListener('scroll', this._onScroll); if(this._onPar){ window.removeEventListener('scroll', this._onPar); window.removeEventListener('resize', this._onPar); } if(this._heroTimer) clearInterval(this._heroTimer); if(this._testiTimer) clearInterval(this._testiTimer); if(this._onProd){ window.removeEventListener('scroll', this._onProd); window.removeEventListener('resize', this._onProd); } if(this._fitScene){ window.removeEventListener('resize', this._fitScene); } if(this._onHeroFit){ window.removeEventListener('resize', this._onHeroFit); } if(this._onDock){ window.removeEventListener('scroll', this._onDock); window.removeEventListener('resize', this._onDock); }
     if(this._problemUpdate){ window.removeEventListener('scroll', this._problemUpdate); window.removeEventListener('resize', this._problemUpdate); } }
 
   componentDidUpdate(){ this._applyImgs(); this._syncTestiVideo(); }
@@ -837,6 +845,20 @@ class Component extends DCLogic {
   _applyImgs(){ try{ document.querySelectorAll('img[data-src],video[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v) el.setAttribute('src', v); }); }catch(e){} }
   _applyDir(){ try{ var rtl=this.state.lang==='ar'; document.documentElement.setAttribute('dir', rtl?'rtl':'ltr'); document.documentElement.setAttribute('lang', this.state.lang); }catch(e){} }
   setLang(l){ try{ localStorage.setItem('arivoo_lang', l); }catch(e){} this.setState({lang:l}, ()=>this._applyDir()); }
+  // sticky bottom CTA: visible after the hero CTA has scrolled off, hidden while the closing CTA band or footer is on screen
+  _setupDock(){
+    const dock=document.querySelector('[data-hero-dock]'), cta=document.querySelector('.hx-cta'); if(!dock||!cta) return;
+    const band=document.querySelector('#demo'), foot=document.querySelector('footer');
+    let raf=0;
+    const update=()=>{ raf=0; const vh=window.innerHeight;
+      const past=cta.getBoundingClientRect().bottom<0;
+      const late=[band,foot].some(el=>el&&el.getBoundingClientRect().top<vh-40);
+      const on=past&&!late;
+      dock.classList.toggle('is-on',on); dock.setAttribute('aria-hidden',on?'false':'true'); dock.tabIndex=on?0:-1; };
+    this._onDock=()=>{ if(!raf) raf=requestAnimationFrame(update); };
+    window.addEventListener('scroll',this._onDock,{passive:true}); window.addEventListener('resize',this._onDock);
+    update();
+  }
   // scale the 1460px Figma hero frame down on narrower screens
   _fitHero(){
     const h=document.querySelector('[data-hero]'); if(!h) return;
