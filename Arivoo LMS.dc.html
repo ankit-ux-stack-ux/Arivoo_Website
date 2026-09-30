@@ -81,7 +81,7 @@
   }
   @media (prefers-reduced-motion:reduce){ .lfc-track,.lfc-prog>div{transition:none} }
   /* Products mega menu (Figma 4031:22256, 779 x 299) */
-  .amm{display:flex;gap:16px;align-items:flex-start;padding:29px 32px;background:#fff;border-radius:18px;box-shadow:0 12px 32px rgba(34,54,74,.08);overflow:hidden;font-family:'Inter',sans-serif;line-height:normal}
+  .amm{display:flex;gap:36px;align-items:flex-start;padding:29px 32px;background:#fff;border-radius:18px;box-shadow:0 12px 32px rgba(34,54,74,.08);overflow:hidden;font-family:'Inter',sans-serif;line-height:normal}
   .amm a,.amm a:hover{color:inherit}
   .amm-label{font-weight:600;font-size:11px;letter-spacing:1.1px;text-transform:uppercase;color:rgba(91,92,94,.8);white-space:nowrap}
   .amm-mods{display:flex;flex-direction:column;gap:34px;height:241px;flex:none}
@@ -110,7 +110,7 @@
   .lv{position:relative;width:100%;aspect-ratio:578/478;container-type:inline-size}
   .lv-s{--u:calc(100cqw / 578);font-size:calc(var(--u)*5);position:absolute;inset:0;font-family:'Inter',sans-serif;line-height:normal;color:#0d1d3c}
   .lv-s img{display:block;max-width:none}
-  .lv-mock{position:absolute;left:calc(var(--u)*50);top:0;width:calc(var(--u)*511);height:calc(var(--u)*477);border-radius:calc(var(--u)*17);background:#ded4f6;overflow:hidden}
+  .lv-mock{position:absolute;left:calc(var(--u)*50);top:0;width:calc(var(--u)*511);height:calc(var(--u)*477);border-radius:calc(var(--u)*17);background:#7a62c2;overflow:hidden}
   .lv-win{position:absolute;left:calc(var(--u)*35);top:calc(var(--u)*46);width:calc(var(--u)*440);height:calc(var(--u)*431);background:#fff;border-radius:calc(var(--u)*15) calc(var(--u)*15) 0 0;overflow:hidden}
   .lv-tint{position:absolute;left:0;top:0;width:calc(var(--u)*440);height:calc(var(--u)*59);background:linear-gradient(to right,#fff,#d4c5f6)}
   .lv-logo{position:absolute;left:calc(var(--u)*15);top:calc(var(--u)*13);width:calc(var(--u)*88);height:calc(var(--u)*38);border-radius:calc(var(--u)*8);overflow:hidden}
@@ -750,7 +750,7 @@ class Component extends DCLogic {
       closeNav: ()=>this.setState({navOpen:false}),
       navMenuFg: this.state.navOpen ? '#14151a' : '#3a3d47',
       navChevron: this.state.navOpen ? '180deg' : '0deg',
-      navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(779px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
+      navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(819px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
         + (this.state.navOpen ? 'opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto' : 'opacity:0;transform:translateX(-50%) translateY(-6px);pointer-events:none'),
     });
   }
