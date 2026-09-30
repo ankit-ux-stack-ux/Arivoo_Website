@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="assets/mobile.css">
 </head>
 <body>
 <x-dc>
@@ -14,8 +15,8 @@
 <meta name="ext-resource-dependency" content="assets/lms-hero-v6.png" data-resource-id="lms">
 <meta name="ext-resource-dependency" content="assets/testguard-hero.png" data-resource-id="testguard">
 <meta name="ext-resource-dependency" content="assets/arivoo-logo.png" data-resource-id="logo">
-<meta name="ext-resource-dependency" content="assets/neotia-testimonial.mp4" data-resource-id="vidNeotia">
-<meta name="ext-resource-dependency" content="assets/dps-testimonial.mp4" data-resource-id="vidDps">
+<meta name="ext-resource-dependency" content="assets/neotia-testimonial-v2.mp4" data-resource-id="vidNeotia">
+<meta name="ext-resource-dependency" content="assets/dps-testimonial-v2.mp4" data-resource-id="vidDps">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Inter:wght@400;500;600;700;800&amp;family=Montserrat:wght@800&amp;family=Public+Sans:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -454,11 +455,11 @@
 
 <!-- ============ NAV ============ -->
 <nav style="{{ navStyle }}">
-  <div style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+  <div data-m="nav" style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <a href="#top" style="display:flex;align-items:center">
       <img src="assets/arivoo-logo-powered.png" alt="arivoo — powered by Adamas Tech Consulting" style="height:42px;width:auto;display:block">
     </a>
-    <div style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#3a3d47">
+    <div data-m="nav-r" style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#3a3d47">
       <div style="position:relative" onMouseEnter="{{ hoverOn }}" onMouseLeave="{{ hoverOff }}">
         <a href="#products" style="display:flex;align-items:center;gap:6px;padding:24px 0;color:{{ navMenuFg }};transition:color .2s">{{ ui.products }}
           <span style="display:inline-flex;transition:transform .25s;transform:rotate({{ navChevron }})">
@@ -471,12 +472,12 @@
               <div class="amm-label">Platforms</div>
               <div class="amm-cols">
                 <div class="amm-col" style="width:212px">
-                  <a class="amm-mod" href="Arivoo%20UMS.dc.html" onClick="{{ closeNav }}"><img src="assets/menu/ums.png" alt="arivoo UMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo UMS</b><small>Run the Entire Campus on One System</small></span></a>
-                  <a class="amm-mod" href="Arivoo%20SMS.dc.html" onClick="{{ closeNav }}"><img src="assets/menu/sms.png" alt="arivoo SMS" style="width:54px;height:24px"><span class="amm-copy"><b>Arivoo SMS</b><small>School Management System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20UMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/ums.png" alt="arivoo UMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo UMS</b><small>Run the Entire Campus on One System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20SMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/sms.png" alt="arivoo SMS" style="width:54px;height:24px"><span class="amm-copy"><b>Arivoo SMS</b><small>School Management System</small></span></a>
                 </div>
                 <div class="amm-col" style="justify-content:center">
-                  <a class="amm-mod" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}"><img src="assets/menu/lms.png" alt="arivoo LMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo LMS</b><small>Learning Management System</small></span></a>
-                  <a class="amm-mod" href="Arivoo%20TestGUARD.dc.html" onClick="{{ closeNav }}"><img src="assets/menu/testguard.png" alt="arivoo TestGUARD" style="width:62px;height:24px"><span class="amm-copy"><b>Arivoo Test guard</b><small>Proctoring System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/lms.png" alt="arivoo LMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo LMS</b><small>Learning Management System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20TestGUARD.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/testguard.png" alt="arivoo TestGUARD" style="width:62px;height:24px"><span class="amm-copy"><b>Arivoo Test guard</b><small>Proctoring System</small></span></a>
                 </div>
               </div>
             </div>
@@ -498,7 +499,7 @@
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:14px">
-      <label style="position:relative;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#14151a;cursor:pointer">
+      <label data-m="nav-lang" style="position:relative;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#14151a;cursor:pointer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14151a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>
         <select aria-label="Language" style="appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;color:inherit;cursor:pointer;padding-right:15px;outline:none" value="{{ lang }}" onChange="{{ setLang }}">
           <option value="en">EN</option>
@@ -507,7 +508,7 @@
         </select>
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#14151a" stroke-width="1.6" style="position:absolute;right:0;pointer-events:none"><path d="M2.5 4.5L6 8l3.5-3.5"></path></svg>
       </label>
-      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
+      <a data-m="nav-cta" href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
     </div>
   </div>
 </nav>
@@ -576,7 +577,7 @@
       </div>
 
       <div class="hx-quote">
-        <img class="hx-quote-img" src="assets/hero/campus-quote.jpg" alt="">
+        <img class="hx-quote-img" src="assets/hero/campus-quote-v2.jpg" alt="">
         <div class="hx-quote-wash"></div>
         <div class="hx-quote-copy"><span class="hx-quote-mark">“</span><p>Small steps every day lead to big results.</p><span class="hx-quote-bar"></span></div>
       </div>
@@ -634,7 +635,7 @@
 
 <!-- ============ CLIENT LOGO GRID ============ -->
 <section id="clients-strip" class="arv-logo-grid-wrap">
-  <img class="arv-logo-grid-glow" src="assets/clients/glow-v2.svg" alt="" aria-hidden="true">
+  <img loading="lazy" decoding="async" class="arv-logo-grid-glow" src="assets/clients/glow-v2.svg" alt="" aria-hidden="true">
   <h2 class="arv-logo-grid-title">{{ trustedBy }}</h2>
   <div class="arv-logo-grid">
     <sc-for list="{{ gridLogos }}" as="c" hint-placeholder-count="14">
@@ -692,7 +693,7 @@
           <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:9px;background:{{ s.tint }};color:{{ s.accent }};font-weight:700;font-size:13px;padding:7px 14px;border-radius:100px">{{ s.name }}</div>
           <h3 style="font-size:38px;font-weight:700;margin-top:20px;color:#14151a;text-wrap:balance;max-width:480px">{{ s.headline }}</h3>
           <p style="font-size:17px;color:#4b4f5c;margin-top:14px;line-height:1.55;max-width:460px;text-wrap:pretty">{{ s.blurb }}</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;max-width:480px">
+          <div data-m="checks" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;max-width:480px">
             <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="4">
               <div style="display:flex;align-items:center;gap:10px;background:#faf9f5;border:1px solid #f0efe9;border-radius:12px;padding:12px 14px">
                 <span style="display:inline-flex;width:22px;height:22px;border-radius:6px;background:{{ s.tint }};color:{{ s.accent }};align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none">✓</span>
@@ -1050,7 +1051,7 @@
         <button onClick="{{ i.select }}" style="{{ i.tabStyle }}">{{ i.name }}</button>
       </sc-for>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;position:relative">
+    <div data-m="chips" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;position:relative">
       <sc-for list="{{ activeIndustryItems }}" as="it" hint-placeholder-count="12">
         <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:14px 15px;transition:background .2s" style-hover="background:rgba(255,255,255,.1)">
           <span style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.14);color:#e6e8ec;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>
@@ -1064,7 +1065,7 @@
 <!-- ============ STATS ============ -->
 <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
 <section style="max-width:1240px;margin:100px auto 0;padding:0 32px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+  <div data-m="stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
     <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
       <div data-reveal="" style="{{ revealBase }};text-align:center;padding:8px">
         <div data-count-to="{{ s.to }}" data-prefix="{{ s.prefix }}" data-suffix="{{ s.suffix }}" style="font-family:'Bricolage Grotesque';font-size:52px;font-weight:700;color:#14151a;letter-spacing:-0.03em">{{ s.prefix }}0{{ s.suffix }}</div>
@@ -1083,11 +1084,11 @@
     <p style="font-size:18px;color:#5b5f6b;margin:14px auto 0;max-width:660px;line-height:1.55;text-wrap:pretty">{{ testiSub }}</p>
   </div>
 
-  <div data-reveal="" style="{{ revealBase }};margin-top:44px;display:grid;grid-template-columns:{{ testiGridCols }};gap:20px;align-items:center;transition:grid-template-columns .55s cubic-bezier(.16,1,.3,1)">
+  <div data-m="testi" data-reveal="" style="{{ revealBase }};margin-top:44px;display:grid;grid-template-columns:{{ testiGridCols }};gap:20px;align-items:center;transition:grid-template-columns .55s cubic-bezier(.16,1,.3,1)">
     <sc-for list="{{ testiCards }}" as="c" hint-placeholder-count="3">
       <button type="button" onClick="{{ c.go }}" aria-label="{{ c.company }}" style="{{ c.cardStyle }}">
         <sc-if value="{{ c.hasVideo }}" hint-placeholder-val="{{ false }}">
-          <video data-src="{{ c.src }}" poster="{{ c.poster }}" muted loop playsinline data-testi-idx="{{ c.idx }}" style="width:100%;height:100%;object-fit:cover;display:block"></video>
+          <video data-src="{{ c.src }}" poster="{{ c.poster }}" preload="none" muted loop playsinline data-testi-idx="{{ c.idx }}" style="width:100%;height:100%;object-fit:cover;display:block"></video>
         </sc-if>
         <sc-if value="{{ c.noVideo }}" hint-placeholder-val="{{ true }}">
           <img data-src="{{ c.poster }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -1146,7 +1147,7 @@
 <!-- ============ FOOTER ============ -->
 <footer style="background:#0b0c10;color:#fff;margin-top:110px">
   <div style="max-width:1240px;margin:0 auto;padding:76px 32px 0">
-    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px">
+    <div data-m="foot" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px">
       <div>
         <p style="font-size:14px;color:#8a8f9c;max-width:260px;line-height:1.6;text-wrap:pretty">{{ footerTagline }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
@@ -1343,7 +1344,7 @@ class Component extends DCLogic {
 
   componentDidUpdate(){ this._applyImgs(); this._syncTestiVideo(); }
   _syncTestiVideo(){ try{ document.querySelectorAll('video[data-testi-idx]').forEach(function(v){ v.pause&&v.pause(); try{v.currentTime=0;}catch(e){} }); }catch(e){} }
-  _applyImgs(){ try{ document.querySelectorAll('img[data-src],video[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v) el.setAttribute('src', v); }); }catch(e){} }
+  _applyImgs(){ try{ const vh=window.innerHeight*1.5; document.querySelectorAll('img[data-src],video[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v){ if(el.tagName==='IMG' && !el.hasAttribute('loading')){ el.decoding='async'; if(el.getBoundingClientRect().top>vh) el.loading='lazy'; } el.setAttribute('src', v); } }); }catch(e){} }
   _applyDir(){ try{ var rtl=this.state.lang==='ar'; document.documentElement.setAttribute('dir', rtl?'rtl':'ltr'); document.documentElement.setAttribute('lang', this.state.lang); }catch(e){} }
   setLang(l){ try{ localStorage.setItem('arivoo_lang', l); }catch(e){} this.setState({lang:l}, ()=>this._applyDir()); }
   // sticky bottom CTA: visible after the hero CTA has scrolled off, hidden while the closing CTA band or footer is on screen
@@ -1526,8 +1527,8 @@ class Component extends DCLogic {
     const problemWords = _pw.map((t,i)=>({ t, accent: (lang==='en' ? (t.indexOf('one')===0 ? '1' : '0') : (i===_pw.length-1 ? '1' : '0')) }));
 
     const VT = [
-      {company:'City Engineering College', caption:'Five tools retired — admissions, fees & exams on one record', poster:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80', src:((window.__resources||{}).vidNeotia||'assets/neotia-testimonial.mp4'), youtube:'y-ASXdoMPk0'},
-      {company:'Serampore College', caption:'Parents track attendance and pay fees from their phones', poster:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80', src:((window.__resources||{}).vidDps||'assets/dps-testimonial.mp4'), youtube:'kqGoydegp5Q'},
+      {company:'City Engineering College', caption:'Five tools retired — admissions, fees & exams on one record', poster:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80', src:((window.__resources||{}).vidNeotia||'assets/neotia-testimonial-v2.mp4'), youtube:'y-ASXdoMPk0'},
+      {company:'Serampore College', caption:'Parents track attendance and pay fees from their phones', poster:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80', src:((window.__resources||{}).vidDps||'assets/dps-testimonial-v2.mp4'), youtube:'kqGoydegp5Q'},
       {company:'RCC Institute of IT', caption:'Semester exams run online with AI proctoring', poster:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=900&q=80', src:''},
     ];
     this._testiN = VT.length;

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="assets/mobile.css">
 </head>
 <body>
 <x-dc>
@@ -54,7 +55,7 @@
 
         <div style="margin-top:16px">
           <div style="font-size:13px;font-weight:700;color:#3a3d47">Which product(s) are you interested in? <span style="color:#14151a">*</span></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+          <div data-m="pick" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
             <sc-for list="{{ demoProductCards }}" as="p" hint-placeholder-count="4">
               <button type="button" onClick="{{ p.toggle }}" style="{{ p.cardStyle }}">
                 <span style="{{ p.checkStyle }}">{{ p.check }}</span>
@@ -97,7 +98,7 @@ class Component extends DCLogic {
     },1000);
   }
   componentWillUnmount(){ if(this._timer){ clearInterval(this._timer); this._timer=null; } }
-  _applyImgs(){ try{ document.querySelectorAll('img[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v) el.setAttribute('src', v); }); }catch(e){} }
+  _applyImgs(){ try{ const vh=window.innerHeight*1.5; document.querySelectorAll('img[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v){ if(!el.hasAttribute('loading')){ el.decoding='async'; if(el.getBoundingClientRect().top>vh) el.loading='lazy'; } el.setAttribute('src', v); } }); }catch(e){} }
   toggle(k){ this.setState(s=>{ const c=s.products||[]; return {products: c.indexOf(k)>-1 ? c.filter(x=>x!==k) : c.concat(k)}; }); }
   renderVals(){
     const defs=[

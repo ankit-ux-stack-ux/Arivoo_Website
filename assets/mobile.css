@@ -1,0 +1,64 @@
+/* Shared tablet / phone overrides for every page.
+   Page layouts are written as inline styles, so these rules need !important.
+   Structural blocks are tagged in the markup with data-m="…"; a few generic
+   spacing rules match the inline style text directly. */
+
+@media (max-width:900px){
+  /* product heroes: copy on top, visual below */
+  [data-m=hero]{grid-template-columns:minmax(0,1fr)!important;gap:40px!important;padding-top:48px!important}
+  [data-m=hero-vis]{width:100%!important;max-width:560px!important;margin-inline:auto!important}
+  [data-m=hero-img]{max-width:560px;margin-inline:auto}
+
+  [data-m=foot]{grid-template-columns:1fr 1fr!important;gap:36px 24px!important}
+  [data-m=foot]>:first-child{grid-column:1/-1}
+  [data-m=grid3]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  [data-m=chips]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  [data-m=stats]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 12px!important}
+}
+
+@media (max-width:760px){
+  /* nav: logo, products, language and demo button all fit on one row */
+  [data-m=nav]{padding:0 16px!important;gap:10px!important;height:64px!important}
+  [data-m=nav]>a img{height:32px!important}
+  [data-m=nav-r]{gap:14px!important;font-size:14px!important}
+  [data-m=nav-r]>div>a{padding:20px 0!important}
+  [data-m=nav-lang]{font-size:14px!important;gap:4px!important}
+  [data-m=nav-lang]>svg:first-child{display:none}
+  [data-m=nav-cta]{padding:9px 13px!important;font-size:14px!important;gap:6px!important;white-space:nowrap}
+
+  /* tighter page gutters and section spacing */
+  /* (inline styles are re-serialised by the page runtime, e.g. "padding: 0px 32px") */
+  [style*="padding: 0px 32px"],[style*="padding:0 32px"]{padding-left:20px!important;padding-right:20px!important}
+  [data-m=hero]{padding-left:20px!important;padding-right:20px!important}
+  [style*="padding: 76px 32px 0px"],[style*="padding:76px 32px 0"]{padding:56px 20px 0!important}
+  [style*="margin: 120px auto 0px"],[style*="margin:120px auto 0"]{margin-top:80px!important}
+  [style*="margin: 110px auto 0px"],[style*="margin: 100px auto 0px"],[style*="margin:110px auto 0"],[style*="margin:100px auto 0"]{margin-top:76px!important}
+
+  /* big rounded bands (industries, closing CTA) */
+  [style*="padding: 72px 56px"],[style*="padding: 64px 56px"],[style*="padding:72px 56px"],[style*="padding:64px 56px"]{padding:44px 22px!important;border-radius:24px!important}
+  [style*="padding: 72px 56px"] h2,[style*="padding: 64px 56px"] h2,[style*="padding:72px 56px"] h2,[style*="padding:64px 56px"] h2{font-size:clamp(28px,8vw,34px)!important}
+
+  [data-m=grid3]{grid-template-columns:minmax(0,1fr)!important}
+  [data-m=stats] [data-count-to]{font-size:40px!important}
+
+  /* testimonials: swipeable row instead of three squeezed columns */
+  [data-m=testi]{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px!important;margin-inline:-20px;padding:0 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  [data-m=testi]::-webkit-scrollbar{display:none}
+  [data-m=testi]>*{flex:0 0 84%!important;height:440px!important;scroll-snap-align:center}
+
+  /* inputs at 16px so iOS doesn't zoom on focus */
+  input,select:not([aria-label="Language"]),textarea{font-size:16px!important}
+}
+
+@media (max-width:480px){
+  [data-m=chips],[data-m=pick],[data-m=checks]{grid-template-columns:minmax(0,1fr)!important}
+  [data-m=nav]{padding:0 14px!important;gap:8px!important}
+  [data-m=nav]>a img{height:27px!important}
+  [data-m=nav-r],[data-m=nav]>div:last-child{gap:10px!important;font-size:13.5px!important}
+  [data-m=nav-lang]{font-size:13.5px!important}
+  [data-m=nav-cta]{padding:8px 11px!important;font-size:13.5px!important}
+  [data-m=nav-cta]>span:last-child{display:none}
+}
+@media (max-width:359px){
+  [data-m=nav-lang]{display:none!important}
+}
