@@ -112,6 +112,66 @@
   .amm-mod:hover b,.amm-link:hover b,.amm-mod:focus-visible b,.amm-link:focus-visible b{color:#087bc1}
   .amm-link[style*="width"]{box-sizing:content-box}
   @media (max-width:820px){ .amm{flex-direction:column;gap:22px;padding:24px 22px} .amm-mods{height:auto} .amm-cols{gap:28px} .amm-col{gap:24px;width:auto!important} .amm-div{width:100%;height:1px;align-self:auto} .amm-ai{width:100%} .amm-links{gap:12px} .amm-link{width:auto!important} }
+  /* UMS animated product visual (Figma 4091:3327). Drawn on a 511x478 grid; dimensions below are converted to --u (1 design unit) */
+  @property --uv-a{syntax:'<angle>';inherits:false;initial-value:360deg}
+  .uv{position:relative;width:100%;aspect-ratio:511/478;container-type:inline-size}
+  .uv-s{--u:calc(100cqw / 511);font-size:calc(var(--u)*5);position:absolute;inset:0;font-family:'Inter',sans-serif;line-height:normal;color:#1f3a5f}
+  .uv-s img{display:block;max-width:none}
+  .uv-mock{position:absolute;left:0;top:0;width:calc(var(--u)*511);height:calc(var(--u)*477.966);border-radius:calc(var(--u)*16.517);background:#cfeaf7;overflow:hidden}
+  .uv-win{position:absolute;left:calc(var(--u)*70.2);top:calc(var(--u)*47.49);width:calc(var(--u)*440.802);height:calc(var(--u)*430.479);background:#fff;border-radius:calc(var(--u)*16.517) 0 0 0;overflow:hidden}
+  .uv-tint{position:absolute;left:0;top:0;width:calc(var(--u)*440.802);height:calc(var(--u)*57.81);background:linear-gradient(to right,#fff,#bdd9e6)}
+  .uv-logo{position:absolute;left:calc(var(--u)*17.55);top:calc(var(--u)*7.23);width:calc(var(--u)*91.797);height:calc(var(--u)*39.262);object-fit:cover}
+  .uv-body{position:absolute;left:0;top:calc(var(--u)*57.81);width:calc(var(--u)*440.802);height:calc(var(--u)*369.572);background:#f7fbff;overflow:hidden}
+  .uv-title{position:absolute;left:calc(var(--u)*22.71);top:calc(var(--u)*30.97);font-weight:600;font-size:calc(var(--u)*18.582);letter-spacing:calc(var(--u)*-.3716);white-space:nowrap}
+  .uv-metrics{position:absolute;left:calc(var(--u)*23.74);top:calc(var(--u)*78.46);display:flex;gap:calc(var(--u)*25.808);white-space:nowrap}
+  .uv-metric{display:flex;flex-direction:column;gap:calc(var(--u)*1.032);width:calc(var(--u)*114.588);height:calc(var(--u)*54.713);padding:calc(var(--u)*10.323) calc(var(--u)*12.388);border-radius:calc(var(--u)*8.259);background:#eaf3ff;border:calc(var(--u)*1.032) solid #d7e8ff;overflow:hidden}
+  .uv-metric b,.uv-leg b{font-weight:700;font-size:calc(var(--u)*17.549);color:#1f3a5f}
+  .uv-metric span,.uv-leg small{font-size:calc(var(--u)*9.291);color:#5f7fa3}
+  .uv-chart{position:absolute;left:calc(var(--u)*13.42);top:calc(var(--u)*168.27);width:calc(var(--u)*407.768);height:calc(var(--u)*181.689);background:#fff;border:calc(var(--u)*1.032) solid #d7e8ff;border-radius:calc(var(--u)*16.517);overflow:hidden}
+  .uv-legend{position:absolute;left:calc(var(--u)*315.9);top:calc(var(--u)*21.68);display:flex;flex-direction:column;gap:calc(var(--u)*14.453);white-space:nowrap}
+  .uv-leg{display:flex;align-items:center;gap:calc(var(--u)*9.291)}
+  .uv-leg i{flex:none;width:calc(var(--u)*4.129);height:calc(var(--u)*34.067);border-radius:calc(var(--u)*41.293)}
+  .uv-leg span{display:flex;flex-direction:column;gap:calc(var(--u)*2.065)}
+  .uv-center{position:absolute;left:calc(var(--u)*169.3);top:calc(var(--u)*45.43);width:calc(var(--u)*85.683);height:calc(var(--u)*85.683)}
+  .uv-center img{position:absolute;left:-4.82%;top:-2.41%;width:109.64%;height:109.64%}
+  .uv-ring{position:absolute;left:calc(var(--u)*134.2);top:calc(var(--u)*10.33);width:calc(var(--u)*155.881);height:calc(var(--u)*155.881)}
+  .uv-conn{position:absolute;left:calc(var(--u)*113.56);top:calc(var(--u)*86.72);width:calc(var(--u)*35.099);height:calc(var(--u)*2.065);border-radius:calc(var(--u)*54.713);background:#555}
+  .uv-total{position:absolute;left:calc(var(--u)*25.81);top:calc(var(--u)*65.04);width:calc(var(--u)*98.071);display:flex;flex-direction:column;gap:calc(var(--u)*4.129)}
+  .uv-total b{font-weight:700;font-size:calc(var(--u)*25.808);color:#262626;white-space:nowrap}
+  .uv-total span{font-size:calc(var(--u)*9.291);line-height:1.35;color:#747474}
+  .uv-point{position:absolute;left:calc(var(--u)*145.56);top:calc(var(--u)*84.65);width:calc(var(--u)*6.194);height:calc(var(--u)*6.194)}
+  .uv-strip{position:absolute;left:calc(var(--u)*13.42);top:calc(var(--u)*360.28);width:calc(var(--u)*407.768);height:calc(var(--u)*33.034);display:flex;align-items:center;gap:calc(var(--u)*8.259);padding:calc(var(--u)*8.259) calc(var(--u)*10.323);border-radius:calc(var(--u)*12.388);background:#fff;border:calc(var(--u)*1.032) solid #d7e8ff;box-shadow:0 calc(var(--u)*7.226) calc(var(--u)*17.549) rgba(29,74,21,.08);overflow:hidden}
+  .uv-st{display:flex;align-items:center;gap:calc(var(--u)*6.194);padding:calc(var(--u)*4.129) calc(var(--u)*8.259);border-radius:calc(var(--u)*999);background:#eaf3ff;border:calc(var(--u)*1.032) solid #d7e8ff;font-weight:500;font-size:calc(var(--u)*9.291);color:#5f7fa3;white-space:nowrap}
+  .uv-st i{display:flex;align-items:center;justify-content:center;flex:none;width:calc(var(--u)*14.453);height:calc(var(--u)*14.453);border-radius:50%;background:#60a5fa;color:#fff;font-style:normal;font-weight:700;font-size:calc(var(--u)*9.291)}
+
+  /* ---- motion ---- */
+  @keyframes uv-rise{from{opacity:0;transform:translateY(calc(var(--u)*16)) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes uv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(var(--u)*-3))}}
+  @keyframes uv-draw{from{--uv-a:0deg}to{--uv-a:360deg}}
+  @keyframes uv-pop{0%{opacity:0;transform:scale(.3)}70%{transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+  @keyframes uv-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes uv-bar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  @keyframes uv-in{from{opacity:0;transform:translateX(calc(var(--u)*10))}to{opacity:1;transform:none}}
+  @keyframes uv-fade{from{opacity:0;transform:translateY(calc(var(--u)*6))}to{opacity:1;transform:none}}
+  @keyframes uv-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+  @keyframes uv-ping{0%{box-shadow:0 0 0 0 rgba(96,165,250,.55)}70%,100%{box-shadow:0 0 0 calc(var(--u)*5) rgba(96,165,250,0)}}
+  .uv-mock{animation:uv-rise .8s cubic-bezier(.2,.8,.2,1) both}
+  .uv-win{animation:uv-rise .8s cubic-bezier(.2,.8,.2,1) .15s both}
+  .uv-title{animation:uv-fade .6s ease-out .35s both}
+  .uv-metric{animation:uv-rise .6s cubic-bezier(.2,.8,.2,1) var(--d) both,uv-float var(--f) ease-in-out calc(var(--d) + .6s) infinite}
+  .uv-chart{animation:uv-rise .7s cubic-bezier(.2,.8,.2,1) .75s both}
+  .uv-ring{-webkit-mask:conic-gradient(#000 var(--uv-a),transparent 0);mask:conic-gradient(#000 var(--uv-a),transparent 0);animation:uv-draw 1.4s cubic-bezier(.3,.7,.2,1) 1s both,uv-breathe 5s ease-in-out 2.6s infinite}
+  .uv-center{animation:uv-pop .6s cubic-bezier(.2,.8,.2,1) 1.1s both}
+  .uv-conn{transform-origin:100% 50%;animation:uv-grow .45s ease-out 2.2s both}
+  .uv-point{animation:uv-pop .4s ease-out 2.1s both}
+  .uv-total{animation:uv-fade .5s ease-out 2.4s both}
+  .uv-leg{animation:uv-in .5s ease-out var(--d) both}
+  .uv-leg i{transform-origin:50% 100%;animation:uv-bar .5s ease-out calc(var(--d) + .1s) both}
+  .uv-strip{animation:uv-fade .6s ease-out 1.8s both}
+  .uv-st{animation:uv-fade .45s ease-out var(--d) both}
+  .uv-st i{animation:uv-pop .4s ease-out calc(var(--d) + .25s) both,uv-ping 2.4s ease-out calc(var(--d) + 1s) infinite}
+  @media (prefers-reduced-motion:reduce){ .uv *,.uv-mock{animation:none!important} }
+  @keyframes uv-show{from{opacity:0}to{opacity:1}}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -196,7 +256,41 @@
     </div>
   </div>
   <div style="position:relative">
-    <img data-src="{{ heroImg }}" alt="{{ name }}" style="position:relative;z-index:2;width:min(620px, 44vw);max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));aspect-ratio:620/520;height:auto;object-fit:contain;object-position:center;display:block;border-radius:20px;animation:floaty 7s ease-in-out infinite">
+    <div role="img" aria-label="{{ name }} dashboard" style="position:relative;z-index:2;width:min(620px, 44vw);max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));aspect-ratio:620/520;display:flex;align-items:center;justify-content:center">
+<div class="uv" style="width:89.6%" aria-hidden="true"><div class="uv-s">
+  <div class="uv-mock">
+    <div class="uv-win">
+      <div class="uv-tint"></div>
+      <img class="uv-logo" src="assets/ums-viz/logo.png" alt="">
+      <div class="uv-body">
+        <div class="uv-title">Student lifecycle</div>
+        <div class="uv-metrics">
+          <div class="uv-metric" style="--d:.45s;--f:6.2s"><b>1,284</b><span>New admits</span></div>
+          <div class="uv-metric" style="--d:.55s;--f:6.8s"><b>2,860</b><span>Enrolled</span></div>
+          <div class="uv-metric" style="--d:.65s;--f:5.9s"><b>98%</b><span>Graduation</span></div>
+        </div>
+        <div class="uv-chart">
+          <div class="uv-legend">
+            <div class="uv-leg" style="--d:1.5s"><i style="background:#60a5fa"></i><span><b>2,804</b><small>Admitted</small></span></div>
+            <div class="uv-leg" style="--d:1.62s"><i style="background:#93c5fd"></i><span><b>56</b><small>Graduated</small></span></div>
+            <div class="uv-leg" style="--d:1.74s"><i style="background:#bfdbfe"></i><span><b>0</b><small>Alumni</small></span></div>
+          </div>
+          <div class="uv-center"><img src="assets/ums-viz/ring-center.svg" alt=""></div>
+          <img class="uv-ring" src="assets/ums-viz/ring.svg" alt="">
+          <div class="uv-conn"></div>
+          <div class="uv-total"><b>98%</b><span>of Fee Amount is<br>collected</span></div>
+          <img class="uv-point" src="assets/ums-viz/point.svg" alt="">
+        </div>
+        <div class="uv-strip">
+          <span class="uv-st" style="--d:1.9s"><i>✓</i>Admissions closed</span>
+          <span class="uv-st" style="--d:2s"><i>✓</i>Enrolments synced</span>
+          <span class="uv-st" style="--d:2.1s"><i>✓</i>Graduation ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </div>
   </div>
 </header>
 
