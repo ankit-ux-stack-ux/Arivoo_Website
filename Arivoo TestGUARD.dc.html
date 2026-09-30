@@ -46,7 +46,12 @@
   .amm-link b{font-weight:600;font-size:14px;line-height:1;color:#292a2d}
   .amm-link small{font-size:10.5px;line-height:1.45;color:#727477}
   .amm-hr{display:block;height:1px;width:100%;background:#ecedee}
-  .amm-mod:hover b,.amm-link:hover b{text-decoration:underline;text-underline-offset:3px}
+  /* hover: soft tint behind the item + title in the brand blue (negative margin keeps the Figma positions) */
+  .amm-mod,.amm-link{margin:-8px -10px;padding:8px 10px;border-radius:10px;transition:background .18s ease}
+  .amm-mod b,.amm-link b{transition:color .18s ease}
+  .amm-mod:hover,.amm-link:hover,.amm-mod:focus-visible,.amm-link:focus-visible{background:#eef5fc;outline:none}
+  .amm-mod:hover b,.amm-link:hover b,.amm-mod:focus-visible b,.amm-link:focus-visible b{color:#087bc1}
+  .amm-link[style*="width"]{box-sizing:content-box}
   @media (max-width:820px){ .amm{flex-direction:column;gap:22px;padding:24px 22px} .amm-mods{height:auto} .amm-cols{gap:28px} .amm-col{gap:24px;width:auto!important} .amm-div{width:100%;height:1px;align-self:auto} .amm-ai{width:100%} .amm-links{gap:12px} .amm-link{width:auto!important} }
 </style>
 <template id="__bundler_thumbnail">
