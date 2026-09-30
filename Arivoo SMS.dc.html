@@ -28,6 +28,60 @@
   ::selection{background:#14151a;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes smsPulse{0%{box-shadow:0 0 0 0 rgba(20,21,26,.5)}70%{box-shadow:0 0 0 6px rgba(20,21,26,0)}100%{box-shadow:0 0 0 0 rgba(20,21,26,0)}}
+  /* platform tour carousel */
+  .lfc-tabs{max-width:1240px;margin:34px auto 0;padding:0 32px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;scrollbar-width:none}
+  .lfc-tabs::-webkit-scrollbar{display:none}
+  .lfc-view{--fc-w:min(1121px,calc(100vw - 120px));--fc-gap:39px;overflow:hidden;margin-top:30px;padding:6px 0 18px}
+  .lfc-track{display:flex;align-items:stretch;gap:var(--fc-gap);width:max-content;position:relative;left:50%;margin-left:calc(var(--fc-w) / -2);transition:transform .6s cubic-bezier(.22,.8,.24,1)}
+  .lfc-slide{flex:none;width:var(--fc-w);min-height:481px;border-radius:20px;padding:40px 41px;display:grid;grid-template-columns:minmax(0,1fr) 61.6%;gap:9px;align-items:stretch;transition:opacity .4s}
+  .lfc-copy{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-width:0}
+  .lfc-title{font-size:clamp(30px,3.4vw,40px);font-weight:700;line-height:1.08;color:#14151a;text-wrap:balance}
+  .lfc-sum{font-size:15.5px;color:#3a3d47;line-height:1.55;margin-top:14px;max-width:360px;text-wrap:pretty}
+  .lfc-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:22px}
+  .lfc-list li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;font-weight:500;color:#2b2e37;line-height:1.4}
+  .lfc-tick{flex:none;width:14px;font-size:15px;line-height:1.3;text-align:center;color:#4b9d8c}
+  .lfc-more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#14151a;padding:10px 18px;border-radius:11px;border:1.5px solid rgba(20,21,26,.72);transition:background .2s,color .2s,transform .2s}
+  .lfc-more:hover{background:#14151a;color:#fff;transform:translateY(-1px)}
+  .lfc-ctrl{width:min(1121px,calc(100vw - 120px));margin:22px auto 0;display:flex;align-items:center;gap:22px}
+  .lfc-prog{flex:1;height:2px;background:#e4e2dc;position:relative;border-radius:999px}
+  .lfc-prog>div{position:absolute;top:-.5px;height:3px;border-radius:999px;background:#14151a;transition:left .6s cubic-bezier(.22,.8,.24,1)}
+  .lfc-count{font-size:13px;font-weight:600;color:#8a8e99;font-variant-numeric:tabular-nums;min-width:38px;text-align:center}
+  .lfc-arrows{display:flex;gap:15px}
+  .lfc-arrow{width:49px;height:49px;border-radius:999px;border:0;background:#fff;color:#14151a;display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 9px rgba(20,21,26,.09),0 0 0 1px rgba(20,21,26,.04);transition:transform .2s,background .2s,color .2s}
+  .lfc-arrow:hover{background:#14151a;color:#fff;transform:translateY(-1px)}
+  .lfc-arrow:focus-visible,.lfc-more:focus-visible,.lfc-tabs button:focus-visible{outline:2px solid #14151a;outline-offset:2px}
+  .lfc-shot{align-self:center;justify-self:end;display:block;width:calc(100% + 26px);max-width:none;height:auto;margin:-13px}
+  @media (max-width:1000px){
+    .lfc-view{--fc-w:calc(100vw - 72px);--fc-gap:16px}
+    .lfc-ctrl{width:calc(100vw - 72px)}
+    .lfc-slide{grid-template-columns:1fr;gap:30px;padding:32px 28px;min-height:0}
+    .lfc-copy{gap:24px}
+    .lfc-sum{max-width:none}
+  }
+  @media (max-width:760px){
+    .lfc-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:0 20px;-webkit-overflow-scrolling:touch}
+    .lfc-tabs button{flex:none}
+    .lfc-view{--fc-w:calc(100vw - 48px);--fc-gap:12px}
+    .lfc-ctrl{width:calc(100vw - 48px);gap:14px}
+    .lfc-slide{padding:26px 20px;border-radius:18px}
+    .lfc-arrow{width:44px;height:44px}
+  }
+  @media (prefers-reduced-motion:reduce){ .lfc-track,.lfc-prog>div{transition:none} }
+  /* role console preview (per-role dashboard card inside each slide) */
+  .ucon{align-self:center;justify-self:center;width:min(430px,100%);background:#fff;border-radius:20px;box-shadow:0 18px 44px rgba(23,58,62,.14);padding:22px 22px 0;overflow:hidden;font-family:'Hanken Grotesk',system-ui,sans-serif}
+  .ucon-head{display:flex;align-items:center;gap:14px}
+  .ucon-badge{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none}
+  .ucon-title{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;color:#14151a}
+  .ucon-dots{margin-left:auto;color:#9aa1ab;font-size:20px;letter-spacing:1px;line-height:1}
+  .ucon-rows{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+  .ucon-row{display:flex;align-items:center;gap:14px;border:1px solid #eef0f3;border-radius:16px;padding:14px 16px}
+  .ucon-ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;flex:none}
+  .ucon-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .ucon-copy small{font-size:13px;font-weight:500;color:#5b6472}
+  .ucon-copy b{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:#14151a;line-height:1.1}
+  .ucon-pill{margin-left:auto;flex:none;font-size:12px;font-weight:700;padding:6px 10px;border-radius:9px;white-space:nowrap}
+  .ucon-foot{display:flex;align-items:center;justify-content:space-between;margin:18px -22px 0;padding:13px 22px;border-top:1px solid #eef0f3;background:#f8f9fb;font-size:12.5px;color:#7a818c}
+  .ucon-foot b{color:#1f6fd1;font-weight:700}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -131,89 +185,53 @@
 </section>
 </sc-if>
 
-<!-- ROLES -->
-<section style="max-width:1240px;margin:96px auto 0;padding:0 32px">
-  <div style="text-align:center">
+<!-- ROLES (feature carousel, same pattern as the LMS platform tour) -->
+<section id="roles" style="margin:96px auto 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px;text-align:center">
     <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.builtForEveryone }}</div>
     <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;margin-top:14px;text-wrap:balance">{{ rolesHeading }}</h2>
   </div>
-  <div style="max-width:1080px;margin:40px auto 0">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-      <button type="button" onClick="{{ role0.go }}" onMouseEnter="{{ role0.go }}" style="{{ role0.tabStyle }}">
-        <span style="{{ role0.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.4"></rect><rect x="14" y="3" width="7" height="5" rx="1.4"></rect><rect x="14" y="12" width="7" height="9" rx="1.4"></rect><rect x="3" y="16" width="7" height="5" rx="1.4"></rect></svg></span>
-        <span style="{{ role0.titleStyle }}">{{ role0.title }}</span>
-        <span style="{{ role0.chevStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
-      </button>
-      <button type="button" onClick="{{ role1.go }}" onMouseEnter="{{ role1.go }}" style="{{ role1.tabStyle }}">
-        <span style="{{ role1.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"></path><circle cx="10" cy="7" r="3.2"></circle><path d="M21 20v-1a4 4 0 0 0-3-3.85"></path><path d="M15.5 3.8a4 4 0 0 1 0 6.4"></path></svg></span>
-        <span style="{{ role1.titleStyle }}">{{ role1.title }}</span>
-        <span style="{{ role1.chevStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
-      </button>
-      <button type="button" onClick="{{ role2.go }}" onMouseEnter="{{ role2.go }}" style="{{ role2.tabStyle }}">
-        <span style="{{ role2.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 9.5l3 3 4.5-5"></path><path d="M12 16v4M8 20h8"></path></svg></span>
-        <span style="{{ role2.titleStyle }}">{{ role2.title }}</span>
-        <span style="{{ role2.chevStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
-      </button>
+  <div id="lfc-tabs" class="lfc-tabs" role="tablist" aria-label="{{ rolesHeading }}">
+    <sc-for list="{{ fcTabs }}" as="t" hint-placeholder-count="3">
+      <button type="button" role="tab" id="{{ t.tabId }}" aria-selected="{{ t.selected }}" aria-controls="{{ t.panelId }}" onClick="{{ t.go }}" style="{{ t.style }}">{{ t.label }}</button>
+    </sc-for>
+  </div>
+  <div id="lfc-view" class="lfc-view" dir="ltr">
+    <div class="lfc-track" style="{{ fcTrackStyle }}">
+      <sc-for list="{{ fcSlides }}" as="s" hint-placeholder-count="4">
+        <article class="lfc-slide" id="{{ s.panelId }}" role="tabpanel" aria-labelledby="{{ s.tabId }}" aria-hidden="{{ s.hidden }}" onClick="{{ s.go }}" style="{{ s.style }}">
+          <div class="lfc-copy">
+            <div>
+              <h3 class="lfc-title">{{ s.title }}</h3>
+              <p class="lfc-sum">{{ s.summary }}</p>
+              <ul class="lfc-list">
+                <sc-for list="{{ s.points }}" as="pt" hint-placeholder-count="4">
+                  <li><span class="lfc-tick" aria-hidden="true">{{ pt.icon }}</span><span>{{ pt.text }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+            <a class="lfc-more" href="Arivoo%20Book%20a%20Demo.dc.html" tabindex="{{ s.tab }}">{{ fcLearnMore }} <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="ucon" aria-hidden="true">
+            <div class="ucon-head"><span class="ucon-badge" style="background:{{ s.soft }};color:{{ s.ink }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="12" width="4" height="8" rx="1.5"></rect><rect x="10" y="8" width="4" height="12" rx="1.5"></rect><rect x="16" y="4" width="4" height="16" rx="1.5"></rect></svg></span><span class="ucon-title">{{ s.screen }}</span><span class="ucon-dots">•••</span></div>
+            <div class="ucon-rows">
+              <sc-for list="{{ s.rows }}" as="r" hint-placeholder-count="3">
+                <div class="ucon-row"><span class="ucon-ico" style="background:{{ r.soft }};color:{{ r.ink }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ r.icon }}"></path></svg></span><span class="ucon-copy"><small>{{ r.label }}</small><b style="color:{{ r.valColor }}">{{ r.val }}</b></span><span class="ucon-pill" style="background:{{ r.soft }};color:{{ r.ink }}">{{ r.pill }}</span></div>
+              </sc-for>
+            </div>
+            <div class="ucon-foot"><span>Last updated: 2 min ago</span><b>Refresh</b></div>
+          </div>
+        </article>
+      </sc-for>
     </div>
-
-    <div style="background:#fff;border:1.5px solid #eceae4;border-radius:22px;padding:30px 32px;margin-top:18px;box-shadow:0 24px 60px rgba(20,21,26,.07)">
-      <div style="display:flex;align-items:center;gap:16px">
-        <span style="{{ activeRole.bigIconStyle }}">
-          <sc-if value="{{ activeRole.isAdmin }}" hint-placeholder-val="{{ true }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.4"></rect><rect x="14" y="3" width="7" height="5" rx="1.4"></rect><rect x="14" y="12" width="7" height="9" rx="1.4"></rect><rect x="3" y="16" width="7" height="5" rx="1.4"></rect></svg></sc-if>
-          <sc-if value="{{ activeRole.isParent }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"></path><circle cx="10" cy="7" r="3.2"></circle><path d="M21 20v-1a4 4 0 0 0-3-3.85"></path><path d="M15.5 3.8a4 4 0 0 1 0 6.4"></path></svg></sc-if>
-          <sc-if value="{{ activeRole.isTeacher }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 9.5l3 3 4.5-5"></path><path d="M12 16v4M8 20h8"></path></svg></sc-if>
-        </span>
-        <div style="min-width:0">
-          <div style="font-family:'Bricolage Grotesque';font-size:24px;font-weight:700">{{ activeRole.title }}</div>
-          <p style="font-size:14.5px;color:#5b5f6b;margin-top:4px;max-width:520px;line-height:1.5;text-wrap:pretty">{{ activeRole.body }}</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 0.86fr;gap:26px;margin-top:26px">
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <div style="font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#9a9ea9">What they get</div>
-          <sc-for list="{{ activeRole.caps }}" as="c" hint-placeholder-count="4">
-            <div style="display:flex;align-items:flex-start;gap:11px">
-              <span style="flex:none;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:{{ tint }};color:{{ accent }};margin-top:1px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span>
-              <span style="font-size:14.5px;color:#2b2e37;font-weight:500;line-height:1.4">{{ c.t }}</span>
-            </div>
-          </sc-for>
-        </div>
-
-        <div style="{{ activeRole.frameStyle }}">
-          <sc-if value="{{ activeRole.isPhone }}" hint-placeholder-val="{{ false }}">
-            <div style="position:relative;padding:12px 14px 10px;border-bottom:1px solid #f0efe9;text-align:center">
-              <div style="width:52px;height:5px;border-radius:100px;background:#dcdbd3;margin:0 auto 9px"></div>
-              <span style="font-size:12px;font-weight:700;color:#8b8f9a">{{ activeRole.screen }}</span>
-            </div>
-          </sc-if>
-          <sc-if value="{{ activeRole.isDesktop }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid #f0efe9">
-              <span style="width:9px;height:9px;border-radius:50%;background:#ff5f57"></span>
-              <span style="width:9px;height:9px;border-radius:50%;background:#febc2e"></span>
-              <span style="width:9px;height:9px;border-radius:50%;background:#28c840"></span>
-              <span style="margin-left:8px;font-size:12px;font-weight:600;color:#9a9ea9">{{ activeRole.screen }}</span>
-            </div>
-          </sc-if>
-          <div style="padding:14px;display:flex;flex-direction:column;gap:10px">
-            <sc-for list="{{ activeRole.rows }}" as="row" hint-placeholder-count="3">
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid #f0efe9;border-radius:11px;padding:11px 13px">
-                <span style="font-size:12.5px;color:#8b8f9a;font-weight:600">{{ row.label }}</span>
-                <span style="display:inline-flex;align-items:center;gap:6px;font-family:'Bricolage Grotesque';font-size:13.5px;font-weight:800;color:{{ row.color }}"><sc-if value="{{ row.live }}" hint-placeholder-val="{{ false }}"><span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};box-shadow:0 0 0 0 {{ accent }};animation:smsPulse 1.6s infinite"></span></sc-if>{{ row.val }}</span>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;padding-top:22px;border-top:1px solid #f0efe9">
-        <sc-for list="{{ activeRole.stats }}" as="s" hint-placeholder-count="3">
-          <div style="background:{{ tint }};border-radius:14px;padding:16px 18px">
-            <div style="font-family:'Bricolage Grotesque';font-size:30px;font-weight:800;color:{{ accent }};line-height:1">{{ s.display }}</div>
-            <div style="font-size:12.5px;color:#5b5f6b;font-weight:600;margin-top:7px">{{ s.label }}</div>
-          </div>
-        </sc-for>
-      </div>
+  </div>
+  <div class="lfc-ctrl">
+    <div class="lfc-prog" aria-hidden="true"><div style="{{ fcThumbStyle }}"></div></div>
+    <span class="lfc-count" aria-live="polite">{{ fcCount }}</span>
+    <div class="lfc-arrows">
+      <button type="button" class="lfc-arrow" aria-label="Previous feature" onClick="{{ fcPrev }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+      <button type="button" class="lfc-arrow" aria-label="Next feature" onClick="{{ fcNext }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
     </div>
   </div>
 </section>
@@ -378,21 +396,22 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { navOpen:false, roleActive:0, statNums:[0,0,0], lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
-  _statTargets = [[92,38,214],[96,18,7],[24,180,5]];
-  componentDidMount(){ this._applyImgs(); this._applyDir(); this._setupHS(); this._animStats(0); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
-  selectRole(i){ if(i===this.state.roleActive) return; this.setState({roleActive:i}); this._animStats(i); }
-  _animStats(i){
-    if(this._raf) cancelAnimationFrame(this._raf);
-    const targets=this._statTargets[i]||[0,0,0];
-    const start=(typeof performance!=='undefined'?performance.now():Date.now()), dur=850;
-    const tick=(now)=>{
-      const p=Math.min(1,(now-start)/dur), e=1-Math.pow(1-p,3);
-      this.setState({statNums:targets.map(t=>t*e)});
-      if(p<1) this._raf=requestAnimationFrame(tick);
-    };
-    this._raf=requestAnimationFrame(tick);
-  }
+  state = { navOpen:false, fcActive:0, lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
+  // ---- platform tour carousel ----
+  fcGo(i){ const n=this._fcCount||1; const next=((i%n)+n)%n; if(next===this.state.fcActive) return; this.setState({fcActive:next}, ()=>this._fcScrollTab()); }
+  _fcScrollTab(){ try{ const bar=document.getElementById('lfc-tabs'); const tab=document.getElementById('lfc-tab-'+this.state.fcActive); if(!bar||!tab||bar.scrollWidth<=bar.clientWidth) return; bar.scrollTo({left:tab.offsetLeft-(bar.clientWidth-tab.offsetWidth)/2, behavior:'smooth'}); }catch(e){} }
+  _bindCarousel(){ try{
+    const v=document.getElementById('lfc-view'); if(!v) return;
+    let x0=null, y0=null;
+    v.addEventListener('touchstart',e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; },{passive:true});
+    v.addEventListener('touchend',e=>{ if(x0===null) return; const t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0; x0=null;
+      if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.2) this.fcGo(this.state.fcActive+(dx<0?1:-1)); },{passive:true});
+    const tabs=document.getElementById('lfc-tabs');
+    if(tabs) tabs.addEventListener('keydown',e=>{ if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return; e.preventDefault();
+      const rtl=document.documentElement.getAttribute('dir')==='rtl'; const step=(e.key==='ArrowRight')!==rtl?1:-1;
+      this.fcGo(this.state.fcActive+step); setTimeout(()=>{ const t=document.getElementById('lfc-tab-'+this.state.fcActive); if(t) t.focus(); },0); });
+  }catch(e){} }
+  componentDidMount(){ this._applyImgs(); this._applyDir(); this._setupHS(); this._bindCarousel(); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
   _applyDir(){ try{ var rtl=this.state.lang==='ar'; document.documentElement.setAttribute('dir', rtl?'rtl':'ltr'); document.documentElement.setAttribute('lang', this.state.lang); }catch(e){} }
   setLang(l){ try{ localStorage.setItem('arivoo_lang', l); }catch(e){} this.setState({lang:l}, ()=>this._applyDir()); }
   componentDidUpdate(){ this._applyImgs(); if(this._onHS) this._onHS(); }
@@ -487,51 +506,67 @@ class Component extends DCLogic {
       is0:i===0, is1:i===1, is2:i===2, is3:i===3, is4:i===4, is5:i===5,
     }));
 
-    // ---- interactive role explorer ----
-    const rolesL = (LP.roles||P.roles||[]);
-    const roleMeta = [
-      { caps:['Fees, dues & transport reports in one view','Live bus tracking across every route','School-wide MIS dashboards & analytics','Role-based access for every staff member'],
-        screen:'Admin dashboard', phone:false,
-        rows:[['Fee collection','92%',P.accent,false],['Buses on route','On time','#14151a',true],['Pending approvals','6','#14151a',false]],
-        stats:[{suffix:'%',label:'Dues cleared this term'},{suffix:'',label:'Buses tracked live'},{suffix:'',label:'Reports auto-built today'}] },
-      { caps:['Attendance, marks & homework, live','Fee history & one-tap online payment','Follow the school bus in real time','One app for every child, one login'],
-        screen:'Parent app', phone:true,
-        rows:[['Aarav · Class 6','Present',P.accent,false],['Homework','2 due','#14151a',false],['Bus 12','7 min away','#14151a',true]],
-        stats:[{suffix:'%',label:'Attendance this term'},{suffix:'',label:'Tasks done this week'},{suffix:' min',label:'Live bus ETA'}] },
-      { caps:['Plan lessons & assign homework fast','Mark attendance in seconds','Auto-grade objective papers','Manage timetables & routines'],
-        screen:'Teacher console', phone:false,
-        rows:[['Classes today','5','#14151a',false],['Papers to grade','0 left',P.accent,false],['Attendance','Live',P.accent,true]],
-        stats:[{suffix:'',label:'Classes planned'},{suffix:'',label:'Papers auto-graded'},{suffix:' sec',label:'To mark a full class'}] },
-    ];
-    const ra = this.state.roleActive||0;
-    const nums = this.state.statNums||[0,0,0];
-    const mkTab = (i)=>{ const on=(i===ra); return {
-      title:(rolesL[i]&&rolesL[i].title)||'',
-      go:()=>this.selectRole(i),
-      tabStyle:'display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;border-radius:16px;padding:15px 16px;transition:all .22s;'+(on?('background:'+P.tint+';border:1.5px solid '+P.accent+';box-shadow:0 14px 30px '+P.accent+'22'):'background:#fff;border:1.5px solid #eceae4'),
-      iconStyle:'width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;transition:all .22s;'+(on?('background:'+P.accent+';color:#fff'):('background:'+P.tint+';color:'+P.accent)),
-      titleStyle:'font-family:\'Bricolage Grotesque\';font-size:16px;font-weight:700;color:#14151a;flex:1;min-width:0',
-      chevStyle:'flex:none;transition:all .22s;color:'+(on?P.accent:'#c2c5cd')+';transform:translateX('+(on?'0':'-5px')+');opacity:'+(on?'1':'0'),
-    }; };
-    const role0=mkTab(0), role1=mkTab(1), role2=mkTab(2);
-    const am = roleMeta[ra]||roleMeta[0];
-    const activeRole = {
-      title:(rolesL[ra]&&rolesL[ra].title)||'',
-      body:(rolesL[ra]&&rolesL[ra].body)||'',
-      screen:am.screen, isPhone:am.phone, isDesktop:!am.phone,
-      isAdmin:ra===0, isParent:ra===1, isTeacher:ra===2,
-      caps:am.caps.map(c=>({t:c})),
-      rows:am.rows.map(r=>({label:r[0], val:r[1], color:r[2], live:r[3]})),
-      stats:am.stats.map((s,i)=>({label:s.label, display:Math.round(nums[i]||0)+(s.suffix||'')})),
-      bigIconStyle:'width:58px;height:58px;border-radius:16px;flex:none;display:grid;place-items:center;background:'+P.tint+';color:'+P.accent,
-      frameStyle:(am.phone
-        ? 'max-width:236px;margin:0 auto;border:1px solid #eceae4;border-radius:26px;overflow:hidden;background:#fbfbf9;box-shadow:0 20px 50px rgba(20,21,26,.1);align-self:start'
-        : 'border:1px solid #eceae4;border-radius:16px;overflow:hidden;background:#fbfbf9;align-self:start'),
+    // ---- roles carousel (same pattern as the LMS platform tour) ----
+    const IC = {
+      users:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+      clock:'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2',
+      heart:'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z',
+      book:'M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z',
+      cal:'M3 5h18v16H3zM16 3v4M8 3v4M3 10h18',
+      trend:'M3 17l6-6 4 4 8-8M14 7h7v7',
+      file:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 15l2 2 4-4',
+      check:'M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4 12 14l-3-3',
+      box:'M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8',
+      rupee:'M6 3h12M6 8h12M6 13l8.5 8M6 13h3a4.5 4.5 0 0 0 0-9',
     };
+    const TONE = { blue:['#e8f3ff','#1f6fd1'], orange:['#fff1e5','#e0802b'], green:['#e3f7ee','#14945f'], purple:['#eeebff','#5b4fd6'] };
+    const row = (label,val,pill,tone,icon,good)=>({label,val,pill,soft:TONE[tone][0],ink:TONE[tone][1],icon:IC[icon],valColor:good?TONE[tone][1]:'#14151a'});
+    const FC = {
+      learnMore:'Learn more',
+      points:[],
+      slides:[
+        { tab:'School Management', title:'Admin dashboard', screen:'Admin dashboard', bg:'#cfeaf7', soft:TONE.blue[0], ink:TONE.blue[1],
+          summary:'Automated reporting for transport, fees and results with graphical analysis and efficient resource use.',
+          points:['Fees, dues & transport reports in one view','Live bus tracking across every route','School-wide MIS dashboards & analytics','Role-based access for every staff member'],
+          rows:[row('Fee collection','92%','↗ 6% this term','blue','rupee'),row('Buses on route','On time','● 38 buses live','green','check',true),row('Pending approvals','6','Needs review','orange','clock')] },
+        { tab:'Parents', title:'Parent app', screen:'Parent app', bg:'#ded4f6', soft:TONE.purple[0], ink:TONE.purple[1],
+          summary:'Academic monitoring, payment history, attendance, live vehicle tracking and multi-child performance.',
+          points:['Attendance, marks & homework, live','Fee history & one-tap online payment','Follow the school bus in real time','One app for every child, one login'],
+          rows:[row('Aarav · Class 6','Present','96% this term','green','check',true),row('Homework','2 due','Due Friday','orange','book'),row('Bus 12','7 min away','● Live','purple','clock')] },
+        { tab:'Teachers', title:'Teacher console', screen:'Teacher console', bg:'#bcede2', soft:TONE.green[0], ink:TONE.green[1],
+          summary:'Plan courses, automate attendance, assign homework, auto-grade and manage timetables.',
+          points:['Plan lessons & assign homework fast','Mark attendance in seconds','Auto-grade objective papers','Manage timetables & routines'],
+          rows:[row('Classes today','5','Next: 10:40 am','blue','cal'),row('Papers to grade','0 left','180 auto-graded','green','file',true),row('Attendance','Live','● Marked in 5 sec','purple','users')] },
+      ],
+    };
+    const FCL = FC;
+    const fcN = FCL.slides.length; this._fcCount = fcN;
+    const fa = Math.min(this.state.fcActive||0, fcN-1);
+    const fcTabs = FCL.slides.map((sl,i)=>{ const on=i===fa; return {
+      label:sl.tab, tabId:'lfc-tab-'+i, panelId:'lfc-panel-'+i, selected:on?'true':'false', go:()=>this.fcGo(i),
+      style:'flex:none;cursor:pointer;font:inherit;font-size:13px;line-height:1.2;white-space:nowrap;padding:9px 12px;border-radius:4px;border:0;transition:background .2s,color .2s;'
+        +(on?('background:'+sl.bg+';color:#17494a;font-weight:600'):'background:#f8f8f8;color:#6f7174;font-weight:500'),
+    }; });
+    const fcIcons = ['⌗','♙','▦','≡'];
+    const fcSlides = FCL.slides.map((sl,i)=>{ const on=i===fa; return {
+      title:sl.title, summary:sl.summary, screen:sl.screen, soft:sl.soft, ink:sl.ink, rows:sl.rows,
+      points:(sl.points||FCL.points).map((t,j)=>({text:t, icon:fcIcons[j%fcIcons.length]})),
+      tabId:'lfc-tab-'+i, panelId:'lfc-panel-'+i, hidden:on?'false':'true', tab:on?'0':'-1',
+      go:()=>{ if(!on) this.fcGo(i); },
+      style:'background:'+sl.bg+';'+(on?'':'cursor:pointer'),
+    }; });
+    const fcVals = {
+      fcLearnMore:FCL.learnMore, fcTabs, fcSlides,
+      fcTrackStyle:'transform:translateX(calc('+(-fa)+' * (var(--fc-w) + var(--fc-gap))))',
+      fcThumbStyle:'width:'+(100/fcN)+'%;left:'+(fa*100/fcN)+'%',
+      fcCount:(fa+1)+' / '+fcN,
+      fcPrev:()=>this.fcGo(fa-1), fcNext:()=>this.fcGo(fa+1),
+    };
+
     return Object.assign({}, LP, {
       navProducts: navProductsL,
       whyCards,
-      role0, role1, role2, activeRole,
+      ...fcVals,
       ui, whyLabel, ctaSub, lang,
       setLang:(e)=>this.setLang(e.target.value),
       rolesCols: P.roles.length,
