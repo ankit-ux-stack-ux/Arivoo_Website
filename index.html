@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="ext-resource-dependency" content="assets/ums-hero.png" data-resource-id="ums">
 <meta name="ext-resource-dependency" content="assets/sms-hero.png" data-resource-id="sms">
-<meta name="ext-resource-dependency" content="assets/lms-hero-v4.png" data-resource-id="lms">
+<meta name="ext-resource-dependency" content="assets/lms-hero-v5.png" data-resource-id="lms">
 <meta name="ext-resource-dependency" content="assets/testguard-hero.png" data-resource-id="testguard">
 <meta name="ext-resource-dependency" content="assets/arivoo-logo.png" data-resource-id="logo">
 <meta name="ext-resource-dependency" content="assets/neotia-testimonial.mp4" data-resource-id="vidNeotia">
@@ -1025,7 +1025,7 @@ class Component extends DCLogic {
       calloutStyle: this.state.mockFading ? 'opacity:0;transition:none' : 'opacity:1;transition:opacity .5s ease',
       isGif: true,
       mockImgs: PROD.map((p,i)=>({
-        src: ((window.__resources||{})[{UMS:'ums',SMS:'sms',LMS:'lms',TestGUARD:'testguard'}[p.abbr]]) || ({UMS:'assets/ums-hero.png',SMS:'assets/sms-hero.png',LMS:'assets/lms-hero-v4.png',TestGUARD:'assets/testguard-hero.png'})[p.abbr],
+        src: ((window.__resources||{})[{UMS:'ums',SMS:'sms',LMS:'lms',TestGUARD:'testguard'}[p.abbr]]) || ({UMS:'assets/ums-hero.png',SMS:'assets/sms-hero.png',LMS:'assets/lms-hero-v5.png',TestGUARD:'assets/testguard-hero.png'})[p.abbr],
         imgStyle:'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .5s ease;will-change:opacity;'
           + (i===ai ? 'opacity:1;z-index:2' : 'opacity:0;z-index:1'),
       })),
