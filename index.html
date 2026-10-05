@@ -609,7 +609,7 @@
                 </div>
                 <div class="amm-col" style="justify-content:center">
                   <a class="amm-mod" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/lms.png" alt="arivoo LMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo LMS</b><small>Learning Management System</small></span></a>
-                  <a class="amm-mod" href="Arivoo%20TestGUARD.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/testguard.png" alt="arivoo TestGUARD" style="width:62px;height:24px"><span class="amm-copy"><b>Arivoo Test guard</b><small>Proctoring System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20TestGUARD.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/testguard-logo.svg" alt="arivoo TestGUARD" style="width:68px;height:24px"><span class="amm-copy"><b>Arivoo Test guard</b><small>Proctoring System</small></span></a>
                 </div>
               </div>
             </div>
@@ -1772,7 +1772,7 @@ class Component extends DCLogic {
         : 'opacity:1;transform:translateY(0) scale(1);transition:opacity .5s ease,transform .55s cubic-bezier(.16,1,.3,1)',
       navProducts: PROD.map((p,i)=>({
         abbr:p.abbr, name:p.name, mark:p.mark, tint:p.tint, accent:p.accent,
-        logo: ({UMS:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png',SMS:'https://arivoo.in/wp-content/uploads/2023/11/Arivo_Buzzed_Rebranding-02-02-1.png',LMS:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png',TestGUARD:'https://arivoo.in/wp-content/uploads/2024/09/arivoo-TestGUARD-5-1.png'})[p.abbr],
+        logo: ({UMS:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png',SMS:'https://arivoo.in/wp-content/uploads/2023/11/Arivo_Buzzed_Rebranding-02-02-1.png',LMS:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png',TestGUARD:'assets/testguard-logo.svg'})[p.abbr],
         href: ({UMS:'Arivoo%20UMS.dc.html',SMS:'Arivoo%20SMS.dc.html',LMS:'Arivoo%20LMS.dc.html',TestGUARD:'Arivoo%20TestGUARD.dc.html'})[p.abbr],
         tag: ({UMS:'Run the entire campus on one system',SMS:'School operations, simplified',LMS:'Deliver, manage & track learning',TestGUARD:'Secure exams with AI proctoring'})[p.abbr],
         go:(e)=>{ this.goProduct(i); this.setState({navOpen:false}); },
