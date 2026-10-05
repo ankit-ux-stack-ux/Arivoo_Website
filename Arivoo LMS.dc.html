@@ -4,35 +4,202 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="assets/mobile.css">
 </head>
 <body>
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="ext-resource-dependency" content="assets/ums-hero.gif" data-resource-id="ums">
-<meta name="ext-resource-dependency" content="assets/sms-hero.png" data-resource-id="sms">
-<meta name="ext-resource-dependency" content="assets/lms-hero.png" data-resource-id="lms">
+<meta name="ext-resource-dependency" content="assets/ums-hero-v2.png" data-resource-id="ums">
+<meta name="ext-resource-dependency" content="assets/sms-hero-v2.png" data-resource-id="sms">
+<meta name="ext-resource-dependency" content="assets/lms-hero-v6.png" data-resource-id="lms">
 <meta name="ext-resource-dependency" content="assets/testguard-hero.png" data-resource-id="testguard">
 <meta name="ext-resource-dependency" content="assets/arivoo-logo.png" data-resource-id="logo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Inter:wght@400;500;600;700;800&amp;family=Public+Sans:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script src="./i18n.js"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Hanken Grotesk','Noto Sans Devanagari','Noto Sans Arabic',system-ui,sans-serif;background:#fbfaf7;color:#14151a;-webkit-font-smoothing:antialiased;line-height:1.5}
   a{color:inherit;text-decoration:none}
-  a:hover{color:#5b21b6}
+  a:hover{color:#3a3d47}
   h1,h2,h3,h4{font-family:'Bricolage Grotesque','Noto Sans Devanagari','Noto Sans Arabic',sans-serif;line-height:1.04;letter-spacing:-0.02em}
-  ::selection{background:#7c3aed;color:#fff}
+  ::selection{background:#14151a;color:#fff}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-  @keyframes lmsPulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,.5)}70%{box-shadow:0 0 0 6px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+  /* why cards: two-column cards, large pastel icon tile beside the copy, on a soft pastel glow */
+  .lwy{position:relative;isolation:isolate}
+  .lwy-grid{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:44px}
+  .lwy-grid::before{content:"";position:absolute;z-index:-1;inset:-40px -60px;pointer-events:none;filter:blur(40px);background:
+      radial-gradient(38% 30% at 50% 50%,rgba(233,213,255,.55),transparent 70%),
+      radial-gradient(34% 40% at 12% 40%,rgba(253,215,228,.45),transparent 70%),
+      radial-gradient(34% 40% at 88% 60%,rgba(207,244,236,.45),transparent 70%)}
+  .lwy-card{display:flex;align-items:flex-start;gap:26px;min-height:176px;padding:36px 44px;background:#fff;border-radius:24px;box-shadow:0 1px 2px rgba(20,21,26,.03),0 12px 32px -18px rgba(20,21,26,.12);transition:transform .25s,box-shadow .25s}
+  .lwy-card:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(20,21,26,.03),0 22px 44px -20px rgba(20,21,26,.2)}
+  .lwy-icon{flex:none;width:62px;height:62px;border-radius:12px;display:grid;place-items:center}
+  .lwy-copy{min-width:0}
+  .lwy-title{font-size:20px;font-weight:700;line-height:1.2;color:#14151a}
+  .lwy-body{font-size:15.5px;line-height:1.7;color:#5b5f6b;margin-top:10px;text-wrap:pretty}
+  @media (max-width:760px){ .lwy-grid{grid-template-columns:1fr;gap:16px} .lwy-card{padding:26px 24px;gap:18px;min-height:0} .lwy-icon{width:52px;height:52px} }
+  /* platform tour carousel */
+  .lfc-tabs{max-width:1240px;margin:34px auto 0;padding:0 32px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;scrollbar-width:none}
+  .lfc-tabs::-webkit-scrollbar{display:none}
+  .lfc-view{--fc-w:min(1121px,calc(100vw - 120px));--fc-gap:39px;overflow:hidden;margin-top:30px;padding:6px 0 18px}
+  .lfc-track{display:flex;align-items:stretch;gap:var(--fc-gap);width:max-content;position:relative;left:50%;margin-left:calc(var(--fc-w) / -2);transition:transform .6s cubic-bezier(.22,.8,.24,1)}
+  .lfc-slide{flex:none;width:var(--fc-w);min-height:481px;border-radius:20px;padding:40px 41px;display:grid;grid-template-columns:minmax(0,1fr) 61.6%;gap:9px;align-items:stretch;transition:opacity .4s}
+  .lfc-copy{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-width:0}
+  .lfc-title{font-size:clamp(30px,3.4vw,40px);font-weight:700;line-height:1.08;color:#14151a;text-wrap:balance}
+  .lfc-sum{font-size:15.5px;color:#3a3d47;line-height:1.55;margin-top:14px;max-width:360px;text-wrap:pretty}
+  .lfc-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:22px}
+  .lfc-list li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;font-weight:500;color:#2b2e37;line-height:1.4}
+  .lfc-tick{flex:none;width:14px;font-size:15px;line-height:1.3;text-align:center;color:#4b9d8c}
+  .lfc-more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#14151a;padding:10px 18px;border-radius:11px;border:1.5px solid rgba(20,21,26,.72);transition:background .2s,color .2s,transform .2s}
+  .lfc-more:hover{background:#14151a;color:#fff;transform:translateY(-1px)}
+  .lfc-ctrl{width:min(1121px,calc(100vw - 120px));margin:22px auto 0;display:flex;align-items:center;gap:22px}
+  .lfc-prog{flex:1;height:2px;background:#e4e2dc;position:relative;border-radius:999px}
+  .lfc-prog>div{position:absolute;top:-.5px;height:3px;border-radius:999px;background:#14151a;transition:left .6s cubic-bezier(.22,.8,.24,1)}
+  .lfc-count{font-size:13px;font-weight:600;color:#8a8e99;font-variant-numeric:tabular-nums;min-width:38px;text-align:center}
+  .lfc-arrows{display:flex;gap:15px}
+  .lfc-arrow{width:49px;height:49px;border-radius:999px;border:0;background:#fff;color:#14151a;display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 9px rgba(20,21,26,.09),0 0 0 1px rgba(20,21,26,.04);transition:transform .2s,background .2s,color .2s}
+  .lfc-arrow:hover{background:#14151a;color:#fff;transform:translateY(-1px)}
+  .lfc-arrow:focus-visible,.lfc-more:focus-visible,.lfc-tabs button:focus-visible{outline:2px solid #14151a;outline-offset:2px}
+  .lfc-shot{align-self:center;justify-self:end;display:block;width:calc(100% + 26px);max-width:none;height:auto;margin:-13px}
+  @media (max-width:1000px){
+    .lfc-view{--fc-w:calc(100vw - 72px);--fc-gap:16px}
+    .lfc-ctrl{width:calc(100vw - 72px)}
+    .lfc-slide{grid-template-columns:1fr;gap:30px;padding:32px 28px;min-height:0}
+    .lfc-copy{gap:24px}
+    .lfc-sum{max-width:none}
+  }
+  @media (max-width:760px){
+    .lfc-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:0 20px;-webkit-overflow-scrolling:touch}
+    .lfc-tabs button{flex:none}
+    .lfc-view{--fc-w:calc(100vw - 48px);--fc-gap:12px}
+    .lfc-ctrl{width:calc(100vw - 48px);gap:14px}
+    .lfc-slide{padding:26px 20px;border-radius:18px}
+    .lfc-arrow{width:44px;height:44px}
+  }
+  @media (prefers-reduced-motion:reduce){ .lfc-track,.lfc-prog>div{transition:none} }
+  /* Products mega menu (Figma 4031:22256, 779 x 299) */
+  .amm{display:flex;gap:36px;align-items:flex-start;padding:29px 32px;background:#fff;border-radius:18px;box-shadow:0 12px 32px rgba(34,54,74,.08);overflow:hidden;font-family:'Inter',sans-serif;line-height:normal}
+  .amm a,.amm a:hover{color:inherit}
+  .amm-label{font-weight:600;font-size:11px;letter-spacing:1.1px;text-transform:uppercase;color:rgba(91,92,94,.8);white-space:nowrap}
+  .amm-mods{display:flex;flex-direction:column;gap:34px;height:241px;flex:none}
+  .amm-cols{display:flex;gap:43px;align-items:flex-start;flex:1 0 0}
+  .amm-col{display:flex;flex-direction:column;gap:40px;align-items:flex-start;flex:none}
+  .amm-mod{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  .amm-mod img{display:block;object-fit:cover}
+  .amm-copy{display:flex;flex-direction:column;gap:5px}
+  .amm-copy b{font-weight:600;font-size:14px;line-height:1.05;color:#292a2d}
+  .amm-copy small{font-size:11px;line-height:1.3;color:#727477}
+  .amm-div{flex:none;align-self:stretch;width:1px;background:#ecedee}
+  .amm-ai{display:flex;flex-direction:column;gap:22px;align-self:stretch;width:268px;flex:none}
+  .amm-links{display:flex;flex-direction:column;justify-content:space-between;flex:1 0 0}
+  .amm-link{display:flex;flex-direction:column;gap:6px}
+  .amm-link b{font-weight:600;font-size:14px;line-height:1;color:#292a2d}
+  .amm-link small{font-size:10.5px;line-height:1.45;color:#727477}
+  .amm-hr{display:block;height:1px;width:100%;background:#ecedee}
+  /* hover: soft tint behind the item + title in the brand blue (negative margin keeps the Figma positions) */
+  .amm-mod,.amm-link{margin:-8px -10px;padding:8px 10px;border-radius:10px;transition:background .18s ease}
+  .amm-mod b,.amm-link b{transition:color .18s ease}
+  .amm-mod:hover,.amm-link:hover,.amm-mod:focus-visible,.amm-link:focus-visible{background:#eef5fc;outline:none}
+  .amm-mod:hover b,.amm-link:hover b,.amm-mod:focus-visible b,.amm-link:focus-visible b{color:#087bc1}
+  .amm-link[style*="width"]{box-sizing:content-box}
+  @media (max-width:820px){ .amm{flex-direction:column;gap:22px;padding:24px 22px} .amm-mods{height:auto} .amm-cols{gap:28px} .amm-col{gap:24px;width:auto!important} .amm-div{width:100%;height:1px;align-self:auto} .amm-ai{width:100%} .amm-links{gap:12px} .amm-link{width:auto!important} }
+  /* LMS animated product visual (Figma 4091:3325). Drawn on a 578x478 grid; every px below is converted to --u (1 design px) */
+  .lv{position:relative;width:100%;aspect-ratio:578/478;container-type:inline-size}
+  .lv-s{--u:calc(100cqw / 578);font-size:calc(var(--u)*5);position:absolute;inset:0;font-family:'Inter',sans-serif;line-height:normal;color:#0d1d3c}
+  .lv-s img{display:block;max-width:none}
+  .lv-mock{position:absolute;left:calc(var(--u)*50);top:0;width:calc(var(--u)*511);height:calc(var(--u)*477);border-radius:calc(var(--u)*17);background:#7a62c2;overflow:hidden}
+  .lv-win{position:absolute;left:calc(var(--u)*35);top:calc(var(--u)*46);width:calc(var(--u)*440);height:calc(var(--u)*431);background:#fff;border-radius:calc(var(--u)*15) calc(var(--u)*15) 0 0;overflow:hidden}
+  .lv-tint{position:absolute;left:0;top:0;width:calc(var(--u)*440);height:calc(var(--u)*59);background:linear-gradient(to right,#fff,#d4c5f6)}
+  .lv-logo{position:absolute;left:calc(var(--u)*15);top:calc(var(--u)*13);width:calc(var(--u)*88);height:calc(var(--u)*38);border-radius:calc(var(--u)*8);overflow:hidden}
+  .lv-logo img{width:100%;height:100%;object-fit:cover}
+  .lv-logo::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.18)}
+  .lv-title{position:absolute;left:calc(var(--u)*23);top:calc(var(--u)*87);font-weight:600;font-size:calc(var(--u)*20);letter-spacing:calc(var(--u)*-.4);color:#1f1f1f;white-space:nowrap}
+  .lv-card{position:absolute;overflow:hidden}
+  .lv-tile{display:flex;align-items:center;justify-content:center;flex:none}
+  .lv-h10{font-weight:700;font-size:calc(var(--u)*10);line-height:calc(var(--u)*10.667);letter-spacing:calc(var(--u)*-.1);color:#0d1d3c}
+  .lv-row{display:flex;align-items:center;justify-content:space-between;width:100%;white-space:nowrap}
+  .lv-prog{display:flex;flex-direction:column;width:100%}
+  .lv-bar{position:relative;width:100%;border-radius:calc(var(--u)*15);background:#f0f0f0;overflow:hidden;flex:none}
+  .lv-bar i{position:absolute;left:0;top:0;bottom:0;width:var(--w);border-radius:calc(var(--u)*15)}
+  .lv-rot{position:absolute;display:flex;align-items:center;justify-content:center}
+  .lv-abs{position:absolute}
+
+  .lv-cal{left:calc(var(--u)*23);top:calc(var(--u)*135);width:calc(var(--u)*238);height:calc(var(--u)*76);padding:calc(var(--u)*8);display:flex;gap:calc(var(--u)*8);align-items:center;border-radius:calc(var(--u)*7.333);box-shadow:0 0 calc(var(--u)*4.837) calc(var(--u)*-2.303) #000;background:url("data:image/svg+xml;utf8,<svg viewBox='0 0 238 76' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect width='100%' height='100%' fill='url(%23g)'/><defs><radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(20.468 7.296 -12.376 5.016 42.84 6.08)'><stop stop-color='rgba(233,223,255,1)' offset='0'/><stop stop-color='rgba(247,244,255,1)' offset='0.54'/><stop stop-color='rgba(255,255,255,0.95686)' offset='1'/></radialGradient></defs></svg>") 0 0/100% 100%}
+  .lv-cal-copy{display:flex;flex-direction:column;gap:calc(var(--u)*6);align-items:flex-start;width:calc(var(--u)*142);flex:none}
+  .lv-cal-vis{display:flex;flex:1 0 0;height:100%;align-items:center;justify-content:flex-end;min-width:calc(var(--u)*1)}
+  .lv-cal-ill{position:relative;width:calc(var(--u)*65.333);height:calc(var(--u)*60)}
+
+  .lv-asg{left:calc(var(--u)*279);top:calc(var(--u)*135);padding:calc(var(--u)*9.367);border-radius:calc(var(--u)*8.587);box-shadow:0 0 calc(var(--u)*5.663) calc(var(--u)*-2.697) #000;background:url("data:image/svg+xml;utf8,<svg viewBox='0 0 94.367 150.61' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect width='100%' height='100%' fill='url(%23g)'/><defs><radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(8.1156 14.458 -4.9071 9.94 16.986 12.049)'><stop stop-color='rgba(215,243,238,1)' offset='0'/><stop stop-color='rgba(241,250,248,1)' offset='0.54'/><stop stop-color='rgba(255,255,255,0.95686)' offset='1'/></radialGradient></defs></svg>") 0 0/100% 100%}
+  .lv-asg-body{display:flex;flex-direction:column;gap:calc(var(--u)*7.806);width:calc(var(--u)*75.633)}
+  .lv-asg-ill{position:relative;width:calc(var(--u)*75.633);height:calc(var(--u)*66.694)}
+  .lv-paper-in{position:relative;width:calc(var(--u)*43.317);height:calc(var(--u)*51.912);border-radius:calc(var(--u)*5.157);background:#fff;box-shadow:0 calc(var(--u)*4.125) calc(var(--u)*6.188) rgba(52,92,152,.15);overflow:hidden;transform:rotate(8deg)}
+  .lv-paper-in i{position:absolute;left:calc(var(--u)*10.31);height:calc(var(--u)*3.094);width:var(--lw);border-radius:calc(var(--u)*1.719);background:#a8d9d2}
+  .lv-badge{position:absolute}
+  .lv-pcard{display:flex;flex-direction:column;gap:calc(var(--u)*4.125);padding:calc(var(--u)*5.501);border-radius:calc(var(--u)*6.188);background:rgba(255,255,255,.8);border:calc(var(--u)*.344) solid rgba(255,255,255,.9);width:calc(var(--u)*75.633)}
+
+  .lv-live{left:calc(var(--u)*314);top:calc(var(--u)*343);width:calc(var(--u)*92);height:calc(var(--u)*105);padding:calc(var(--u)*7.399);border-radius:calc(var(--u)*6.783);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*6.166);box-shadow:0 0 calc(var(--u)*4.473) calc(var(--u)*-2.13) #000,0 calc(var(--u)*2.466) calc(var(--u)*7.399) rgba(76,119,166,.07);background:url("data:image/svg+xml;utf8,<svg viewBox='0 0 92 105' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect width='100%' height='100%' fill='url(%23g)'/><defs><radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(7.912 10.08 -4.784 6.93 16.56 8.4)'><stop stop-color='rgba(255,240,220,1)' offset='0'/><stop stop-color='rgba(255,248,241,1)' offset='0.54'/><stop stop-color='rgba(255,255,255,0.95686)' offset='1'/></radialGradient></defs></svg>") 0 0/100% 100%}
+  .lv-live-media{position:relative;flex:none;width:calc(var(--u)*63.202);height:calc(var(--u)*56.727);padding:calc(var(--u)*3.7);border-radius:calc(var(--u)*6.166);background:#fff1e3;overflow:hidden;display:flex}
+  .lv-live-win{position:relative;flex:1;border-radius:calc(var(--u)*4.316);background:#fffefd;box-shadow:0 calc(var(--u)*3.7) calc(var(--u)*5.549) rgba(52,92,152,.15);overflow:hidden;transform:rotate(3deg)}
+  .lv-ctl{position:absolute;top:calc(var(--u)*32.68);width:calc(var(--u)*9.557);height:calc(var(--u)*9.557);border-radius:50%;background:#ffe8d1}
+  .lv-ctl img{position:absolute;left:calc(var(--u)*2.47);top:calc(var(--u)*2.47);width:calc(var(--u)*4.625);height:calc(var(--u)*4.625)}
+
+  .lv-course{left:calc(var(--u)*58);top:calc(var(--u)*269);width:calc(var(--u)*238);height:calc(var(--u)*112.079);display:flex;border-radius:calc(var(--u)*9.824);box-shadow:0 0 calc(var(--u)*6.479) calc(var(--u)*-3.085) #000;background:#fff}
+  .lv-course-copy{display:flex;flex-direction:column;gap:calc(var(--u)*7.144);width:calc(var(--u)*129.493);flex:none;padding:calc(var(--u)*10.717);background:#fff;border-right:calc(var(--u)*.447) solid #dce8f8}
+  .lv-btn{display:flex;align-items:center;justify-content:center;width:calc(var(--u)*108.06);padding:calc(var(--u)*4.465) calc(var(--u)*8.931);border-radius:calc(var(--u)*6);background:#7367f0;filter:drop-shadow(0 calc(var(--u)*.893) calc(var(--u)*.893) rgba(165,163,174,.3));font-family:'Public Sans',sans-serif;font-weight:500;font-size:calc(var(--u)*6.698);line-height:calc(var(--u)*8.038);letter-spacing:calc(var(--u)*.192);color:#fff;white-space:nowrap}
+  .lv-course-vis{flex:1 0 0;min-width:calc(var(--u)*1);height:calc(var(--u)*112.079);padding:calc(var(--u)*8.931);background:#ddebff;display:flex;align-items:center;justify-content:center}
+  .lv-course-ill{position:relative;width:calc(var(--u)*92.878);height:calc(var(--u)*85.287);flex:none}
+
+  .lv-res{left:calc(var(--u)*58);top:calc(var(--u)*389);width:calc(var(--u)*241);height:calc(var(--u)*171.684);padding:calc(var(--u)*11.017);display:flex;flex-direction:column;gap:calc(var(--u)*9.181);border-radius:calc(var(--u)*10.099);box-shadow:0 0 calc(var(--u)*6.661) calc(var(--u)*-3.172) #000;background:url("data:image/svg+xml;utf8,<svg viewBox='0 0 241 171.68' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect width='100%' height='100%' fill='url(%23g)'/><defs><radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(20.726 16.482 -12.532 11.331 43.38 13.735)'><stop stop-color='rgba(217,242,242,1)' offset='0'/><stop stop-color='rgba(241,250,248,1)' offset='0.54'/><stop stop-color='rgba(255,255,255,0.95686)' offset='1'/></radialGradient></defs></svg>") 0 0/100% 100%}
+  .lv-pill{display:flex;align-items:center;gap:calc(var(--u)*3.672);padding:calc(var(--u)*3.672) calc(var(--u)*5.509);border-radius:calc(var(--u)*999);background:#e6f4f5;font-weight:600;font-size:calc(var(--u)*5.509);color:#138d8b;white-space:nowrap}
+  .lv-mini{display:flex;flex-direction:column;gap:calc(var(--u)*5.509);padding:calc(var(--u)*7.345);border-radius:calc(var(--u)*7.345);background:#fff;border:calc(var(--u)*.459) solid #d7e8ea;filter:drop-shadow(0 calc(var(--u)*2.754) calc(var(--u)*2.984) rgba(107,125,153,.1))}
+  .lv-folder{position:relative;width:calc(var(--u)*44.069);height:calc(var(--u)*33.051);border-radius:calc(var(--u)*5.509);background:#74d0d1;box-shadow:0 calc(var(--u)*5.509) calc(var(--u)*8.263) rgba(52,92,152,.15);transform:rotate(6deg)}
+  .lv-folder i{position:absolute;left:0;top:calc(var(--u)*-5.51);width:calc(var(--u)*17.444);height:calc(var(--u)*6.886);border-radius:calc(var(--u)*3.672) calc(var(--u)*3.672) 0 0;background:#85dbdc}
+  .lv-stat{flex:1 0 0;min-width:calc(var(--u)*1);display:flex;flex-direction:column;gap:calc(var(--u)*3.672);padding:calc(var(--u)*6.427);border-radius:calc(var(--u)*7.345);background:#fff;border:calc(var(--u)*.459) solid #d7e8ea;filter:drop-shadow(0 calc(var(--u)*2.754) calc(var(--u)*2.984) rgba(107,125,153,.1));white-space:nowrap}
+  .lv-stat span{font-weight:600;font-size:calc(var(--u)*5.509);color:#6b7d99}
+  .lv-stat b{font-weight:700;font-size:calc(var(--u)*10.099);color:#0d1d3c}
+
+  .lv-person{position:absolute}
+  .lv-face{position:absolute;left:0}
+  .lv-face img{position:absolute}
+  .lv-chip{position:absolute;display:flex;align-items:center;border-radius:calc(var(--u)*5);font-size:calc(var(--u)*12);white-space:nowrap}
+
+  /* ---- motion ---- */
+  @keyframes lv-rise{from{opacity:0;transform:translateY(calc(var(--u)*18)) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes lv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(var(--u)*-5))}}
+  @keyframes lv-fill{from{width:0}to{width:var(--w)}}
+  @keyframes lv-pop{0%{opacity:0;transform:scale(.4)}70%{transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
+  @keyframes lv-line{from{width:0}to{width:var(--lw)}}
+  @keyframes lv-blink{0%,100%{opacity:1}50%{opacity:.25}}
+  @keyframes lv-wave{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  @keyframes lv-tilt{0%,100%{transform:rotate(0) translateY(0)}50%{transform:rotate(-2deg) translateY(calc(var(--u)*-2))}}
+  @keyframes lv-chip{from{opacity:0;transform:translateY(calc(var(--u)*6))}to{opacity:1;transform:none}}
+  .lv-mock{animation:lv-rise .8s cubic-bezier(.2,.8,.2,1) both}
+  .lv-card{--d:.3s;--f:6s;animation:lv-rise .7s cubic-bezier(.2,.8,.2,1) var(--d) both,lv-float var(--f) ease-in-out calc(var(--d) + .7s) infinite}
+  .lv-cal{--d:.25s;--f:6.4s} .lv-asg{--d:.4s;--f:7s} .lv-course{--d:.55s;--f:6.6s} .lv-live{--d:.7s;--f:5.8s} .lv-res{--d:.85s;--f:7.4s}
+  .lv-bar i{animation:lv-fill 1.4s cubic-bezier(.3,.7,.2,1) 1.1s both}
+  .lv-paper-in i{animation:lv-line .5s ease-out both} .lv-paper-in i:nth-child(1){animation-delay:1s} .lv-paper-in i:nth-child(2){animation-delay:1.1s} .lv-paper-in i:nth-child(3){animation-delay:1.2s} .lv-paper-in i:nth-child(4){animation-delay:1.3s}
+  .lv-badge{animation:lv-pop .5s cubic-bezier(.2,.8,.2,1) 1.6s both}
+  .lv-rec{animation:lv-blink 1.2s ease-in-out infinite}
+  .lv-radio{animation:lv-blink 2s ease-in-out .6s infinite}
+  .lv-speak{transform-origin:50% 60%;animation:lv-wave 2.4s ease-in-out infinite}
+  .lv-bob{animation:lv-tilt 5s ease-in-out 1s infinite}
+  .lv-bob2{animation:lv-tilt 4.6s ease-in-out 1.4s infinite}
+  .lv-person{animation:lv-rise .7s cubic-bezier(.2,.8,.2,1) both,lv-float 6.2s ease-in-out infinite}
+  .lv-p1{animation-delay:.9s,1.6s} .lv-p2{animation-delay:1.05s,2s;animation-duration:.7s,7s} .lv-p3{animation-delay:1.2s,2.3s;animation-duration:.7s,5.6s}
+  .lv-chip{animation:lv-chip .5s ease-out 1.5s both}
+  @media (prefers-reduced-motion:reduce){ .lv *,.lv-mock,.lv-card,.lv-person{animation:none!important} }
+  @keyframes lv-fade{from{opacity:0}to{opacity:1}}
+  /* scroll-driven carousel: section pins while scrolling steps through slides */
+  .lfc-pin.on>.lfc-stick{position:sticky;display:flex;flex-direction:column;justify-content:center;padding-top:24px}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
     <rect width="120" height="120" fill="#fbfaf7"/>
-    <rect x="30" y="30" width="60" height="60" rx="16" fill="#7c3aed"/>
+    <rect x="30" y="30" width="60" height="60" rx="16" fill="#14151a"/>
     <text x="60" y="78" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">a</text>
   </svg>
 </template>
@@ -42,11 +209,11 @@
 
 <!-- NAV -->
 <nav style="position:sticky;top:0;z-index:50;background:rgba(251,250,247,.82);backdrop-filter:saturate(180%) blur(14px);box-shadow:0 1px 0 rgba(20,21,26,.06)">
-  <div style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+  <div data-m="nav" style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <a href="Arivoo%20Home.dc.html" style="display:flex;align-items:center">
       <img src="assets/arivoo-logo-powered.png" alt="arivoo" style="height:42px;width:auto;display:block">
     </a>
-    <div style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#3a3d47">
+    <div data-m="nav-r" style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#3a3d47">
       <div style="position:relative" onMouseEnter="{{ hoverOn }}" onMouseLeave="{{ hoverOff }}">
         <a href="Arivoo%20Home.dc.html#products" style="display:flex;align-items:center;gap:6px;padding:24px 0;color:{{ navMenuFg }};transition:color .2s">{{ ui.products }}
           <span style="display:inline-flex;transition:transform .25s;transform:rotate({{ navChevron }})">
@@ -54,29 +221,39 @@
           </span>
         </a>
         <div style="{{ navPanelStyle }}">
-          <div style="background:#fff;border:1px solid #eceae4;border-radius:20px;box-shadow:0 34px 80px -18px rgba(20,21,26,.32);overflow:hidden;padding:28px 30px">
-            <div style="font-size:12px;font-weight:800;letter-spacing:.09em;color:#9a9ea9;text-transform:uppercase">{{ ui.featured }}</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:12px">
-              <sc-for list="{{ navProducts }}" as="p" hint-placeholder-count="4">
-                <a href="{{ p.href }}" onClick="{{ closeNav }}" style="display:flex;align-items:center;gap:13px;padding:12px;border-radius:12px;transition:background .18s" style-hover="background:#f6f5f1">
-                  <span style="flex:none;width:70px;height:46px;border-radius:10px;display:grid;place-items:center;background:#ffffff;padding:0 9px"><img data-src="{{ p.logo }}" alt="{{ p.name }}" style="max-width:100%;max-height:26px;width:auto;height:auto;display:block;object-fit:contain"></span>
-                  <span style="display:flex;flex-direction:column;gap:2px">
-                    <span style="font-size:14.5px;font-weight:700;color:#14151a;line-height:1.15">{{ p.name }}</span>
-                    <span style="font-size:12.5px;font-weight:500;color:#8a8e99;line-height:1.2">{{ p.tag }}</span>
-                  </span>
-                </a>
-              </sc-for>
+          <div class="amm" role="menu">
+            <div class="amm-mods">
+              <div class="amm-label">Platforms</div>
+              <div class="amm-cols">
+                <div class="amm-col" style="width:212px">
+                  <a class="amm-mod" href="Arivoo%20UMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/ums.png" alt="arivoo UMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo UMS</b><small>Run the Entire Campus on One System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20SMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/sms.png" alt="arivoo SMS" style="width:54px;height:24px"><span class="amm-copy"><b>Arivoo SMS</b><small>School Management System</small></span></a>
+                </div>
+                <div class="amm-col" style="justify-content:center">
+                  <a class="amm-mod" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/lms.png" alt="arivoo LMS" style="width:56px;height:24px"><span class="amm-copy"><b>Arivoo LMS</b><small>Learning Management System</small></span></a>
+                  <a class="amm-mod" href="Arivoo%20TestGUARD.dc.html" onClick="{{ closeNav }}"><img loading="lazy" decoding="async" src="assets/menu/testguard.png" alt="arivoo TestGUARD" style="width:62px;height:24px"><span class="amm-copy"><b>Arivoo Test guard</b><small>Proctoring System</small></span></a>
+                </div>
+              </div>
             </div>
-            <div style="margin-top:22px;padding-top:22px;border-top:1px solid #f0efe9;display:flex;align-items:flex-start;gap:14px">
-              <span style="font-family:'Bricolage Grotesque';font-size:40px;font-weight:800;line-height:.7;color:#7c3aed;flex:none">“</span>
-              <p style="font-size:16px;font-weight:600;color:#2b2e37;line-height:1.5;text-wrap:pretty;margin:0">{{ ui.quote }}</p>
+            <i class="amm-div" aria-hidden="true"></i>
+            <div class="amm-ai">
+              <div class="amm-label">AI Modules</div>
+              <div class="amm-links">
+                <a class="amm-link" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}" style="width:260px"><b>AI Attendance</b><small>Save time &amp; elevate practices with your personal teaching assistant</small></a>
+                <i class="amm-hr" aria-hidden="true"></i>
+                <a class="amm-link" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}" style="width:260px"><b>Quiz Creation </b><small>Integrate with your favourite tools</small></a>
+                <i class="amm-hr" aria-hidden="true"></i>
+                <a class="amm-link" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}" style="width:260px"><b>Course Structure </b><small>Secure your school’s data</small></a>
+                <i class="amm-hr" aria-hidden="true"></i>
+                <a class="amm-link" href="Arivoo%20LMS.dc.html" onClick="{{ closeNav }}" style="width:260px"><b>Content Creation</b><small>Switch to Toddle, smoothly</small></a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:14px">
-      <label style="position:relative;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#14151a;cursor:pointer">
+      <label data-m="nav-lang" style="position:relative;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#14151a;cursor:pointer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14151a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>
         <select aria-label="Language" style="appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;color:inherit;cursor:pointer;padding-right:15px;outline:none" value="{{ lang }}" onChange="{{ setLang }}">
           <option value="en">EN</option>
@@ -85,25 +262,163 @@
         </select>
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#14151a" stroke-width="1.6" style="position:absolute;right:0;pointer-events:none"><path d="M2.5 4.5L6 8l3.5-3.5"></path></svg>
       </label>
-      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#7c3aed;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
+      <a data-m="nav-cta" href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#14151a;color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-1px)">{{ ui.bookDemo }} <span style="font-size:16px">→</span></a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<header style="max-width:1240px;margin:0 auto;padding:70px 32px 40px;display:grid;grid-template-columns:1.02fr 0.98fr;gap:56px;align-items:center">
+<header data-m="hero" style="max-width:1240px;margin:0 auto;padding:70px 32px 40px;display:grid;grid-template-columns:minmax(0,480px) minmax(0,1fr);gap:48px;align-items:center">
   <div>
     <img data-src="{{ logo }}" alt="arivoo {{ short }}" style="height:46px;width:auto;display:block">
     <h1 style="font-size:clamp(36px,5vw,58px);font-weight:700;margin-top:22px;text-wrap:balance;line-height:1.02">{{ heroTitle }}</h1>
     <p style="font-size:19px;color:#4b4f5c;margin-top:20px;line-height:1.55;max-width:520px;text-wrap:pretty">{{ heroSub }}</p>
     <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
-      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#7c3aed;color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;box-shadow:0 12px 28px rgba(18,111,184,.28);transition:transform .2s,background .2s" style-hover="background:#0c5896;transform:translateY(-2px)">{{ ui.getDemo }} <span>→</span></a>
-      <a href="#features" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#7c3aed;font-weight:600;font-size:16px;padding:15px 26px;border-radius:13px;border:1.5px solid #d3e3f1;transition:border-color .2s,transform .2s" style-hover="border-color:#7c3aed;transform:translateY(-2px)">{{ ui.viewFeatures }}</a>
+      <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;box-shadow:0 12px 28px rgba(20,21,26,.24);transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ui.getDemo }} <span>→</span></a>
+      <a href="#features" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#14151a;font-weight:600;font-size:16px;padding:15px 26px;border-radius:13px;border:1.5px solid #dcdad3;transition:border-color .2s,transform .2s" style-hover="border-color:#14151a;transform:translateY(-2px)">{{ ui.viewFeatures }}</a>
     </div>
   </div>
   <div style="position:relative">
-    <div style="position:absolute;inset:-9% -6%;border-radius:44px;background:linear-gradient(135deg,{{ accent }}2e,{{ tint }} 70%)"></div>
-    <img data-src="{{ heroImg }}" alt="{{ name }}" style="position:relative;z-index:2;width:100%;height:auto;display:block;border-radius:20px;animation:floaty 7s ease-in-out infinite">
+    <div data-m="hero-vis" role="img" aria-label="{{ name }} dashboard" style="position:relative;z-index:2;width:min(620px, 44vw);max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));aspect-ratio:620/520;display:flex;align-items:center">
+<div class="lv" aria-hidden="true"><div class="lv-s">
+  <div class="lv-mock">
+    <div class="lv-win">
+      <div class="lv-tint"></div>
+      <div class="lv-logo"><img src="assets/lms-viz/logo.png" alt=""></div>
+      <div class="lv-title">Quick Access</div>
+
+      <div class="lv-card lv-cal">
+        <div class="lv-cal-copy">
+          <span class="lv-tile" style="width:calc(var(--u)*24);height:calc(var(--u)*24);border-radius:calc(var(--u)*6.667);background:#e9dfff"><img src="assets/lms-viz/calendar-days.svg" alt="" style="width:calc(var(--u)*9);height:calc(var(--u)*9)"></span>
+          <b class="lv-h10">Calendar</b>
+          <div class="lv-prog" style="gap:calc(var(--u)*3.333)">
+            <div class="lv-bar" style="height:calc(var(--u)*2)"><i style="background:#2951a1;--w:75%"></i></div>
+            <div class="lv-row" style="font-size:calc(var(--u)*4.333)"><span style="font-weight:600;color:#0d1d3c">75% complete</span><span style="color:#6b7d99">3 of 4 Progress</span></div>
+          </div>
+        </div>
+        <div class="lv-cal-vis">
+          <div class="lv-cal-ill">
+            <div class="lv-rot" style="left:calc(var(--u)*8.39);top:calc(var(--u)*7);width:calc(var(--u)*51.594);height:calc(var(--u)*51.304)"><div style="width:calc(var(--u)*46.333);height:calc(var(--u)*46);border-radius:calc(var(--u)*4.667);background:#e4deff;transform:rotate(7deg)"></div></div>
+            <div class="lv-rot lv-bob" style="left:calc(var(--u)*2.16);top:calc(var(--u)*7.33);width:calc(var(--u)*52.912);height:calc(var(--u)*51.132)"><div style="position:relative;width:calc(var(--u)*48.333);height:calc(var(--u)*46.333);transform:rotate(6deg)"><img src="assets/lms-viz/calendar-sheet.svg" alt="" style="position:absolute;left:-12.41%;top:-4.32%;width:124.82%;height:125.9%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lv-card lv-asg">
+        <div class="lv-asg-body">
+          <div class="lv-asg-ill">
+            <div class="lv-rot" style="left:calc(var(--u)*21.48);top:calc(var(--u)*8.59);width:calc(var(--u)*45.774);height:calc(var(--u)*54.919)"><div style="width:calc(var(--u)*38.504);height:calc(var(--u)*49.505);border-radius:calc(var(--u)*4.813);background:#e3f3f0;transform:rotate(9deg)"></div></div>
+            <div class="lv-rot" style="left:calc(var(--u)*15.08);top:calc(var(--u)*6.53);width:calc(var(--u)*47.677);height:calc(var(--u)*55.489)"><div style="width:calc(var(--u)*43.317);height:calc(var(--u)*51.912);border-radius:calc(var(--u)*4.813);background:#f4fbfa;transform:rotate(5deg)"></div></div>
+            <div class="lv-rot lv-paper" style="left:calc(var(--u)*8.59);top:calc(var(--u)*4.81);width:calc(var(--u)*50.12);height:calc(var(--u)*57.435)"><div class="lv-paper-in"><i style="top:calc(var(--u)*14.44);--lw:calc(var(--u)*22.346)"></i><i style="top:calc(var(--u)*22.69);--lw:calc(var(--u)*22.346)"></i><i style="top:calc(var(--u)*30.94);--lw:calc(var(--u)*22.346)"></i><i style="top:calc(var(--u)*39.19);--lw:calc(var(--u)*16.502)"></i></div></div>
+            <img class="lv-badge" src="assets/lms-viz/badge.svg" alt="" style="left:calc(var(--u)*41.6);top:calc(var(--u)*41.6);width:calc(var(--u)*24.75);height:calc(var(--u)*24.75)">
+            <img class="lv-badge" src="assets/lms-viz/check.svg" alt="" style="left:calc(var(--u)*50.2);top:calc(var(--u)*48.13);width:calc(var(--u)*7.563);height:calc(var(--u)*7.563)">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:calc(var(--u)*7.806)">
+            <b style="font-weight:700;font-size:calc(var(--u)*7.682);line-height:1.15;letter-spacing:calc(var(--u)*-.0768);color:#0d1d3c">Assignments</b>
+            <div class="lv-pcard">
+              <div class="lv-row" style="font-size:calc(var(--u)*4.813)"><span style="font-weight:600;color:#0d1d3c">Completion</span><span style="font-weight:700;color:#159c8e">75%</span></div>
+              <div class="lv-bar" style="height:calc(var(--u)*2.063);width:calc(var(--u)*64.632)"><i style="background:#159c8e;--w:75%"></i></div>
+              <div>
+                <div style="display:flex;align-items:center;gap:calc(var(--u)*2.75)"><img src="assets/lms-viz/icon-checked-green.svg" alt="" style="width:calc(var(--u)*8.251);height:calc(var(--u)*8.251)"><span style="font-weight:600;font-size:calc(var(--u)*4.469);color:#159c8e">On track</span></div>
+                <span style="font-size:calc(var(--u)*4.469);color:#6b7d99">3 of 4 tasks completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-card lv-live">
+      <div class="lv-live-media">
+        <div class="lv-rot" style="left:calc(var(--u)*4.19);top:calc(var(--u)*3.7);width:calc(var(--u)*49.337);height:calc(var(--u)*49.051)"><div style="width:calc(var(--u)*46.245);height:calc(var(--u)*45.937);border-radius:calc(var(--u)*4.316);background:#fff1e3;transform:rotate(4deg)"></div></div>
+        <div class="lv-live-win">
+          <img src="assets/lms-viz/radio.svg" alt="" class="lv-abs lv-radio" style="left:calc(var(--u)*35.76);top:calc(var(--u)*2.77);width:calc(var(--u)*5.241);height:calc(var(--u)*5.241)">
+          <img src="assets/lms-viz/status-dot.svg" alt="" class="lv-abs lv-rec" style="left:calc(var(--u)*42.24);top:calc(var(--u)*4.01);width:calc(var(--u)*2.158);height:calc(var(--u)*2.158)">
+          <img src="assets/lms-viz/speaker.svg" alt="" class="lv-abs lv-speak" style="left:calc(var(--u)*7.71);top:calc(var(--u)*11.72);width:calc(var(--u)*38.538);height:calc(var(--u)*17.881)">
+          <span class="lv-ctl" style="left:calc(var(--u)*9.56)"><img src="assets/lms-viz/mic.svg" alt=""></span>
+          <span class="lv-ctl" style="left:calc(var(--u)*23.12)"><img src="assets/lms-viz/video.svg" alt=""></span>
+          <span class="lv-ctl" style="left:calc(var(--u)*36.69)"><img src="assets/lms-viz/camera.svg" alt=""></span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*3.7);width:100%">
+        <b class="lv-h10" style="line-height:1.15">Live Classes</b>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*4.739)">
+          <div class="lv-row"><span style="font-weight:600;font-size:calc(var(--u)*4.739);color:#0d1d3c;width:calc(var(--u)*55)">Session progress</span><span style="font-weight:600;font-size:calc(var(--u)*4.008);color:#e58427">75%</span></div>
+          <div class="lv-bar" style="height:calc(var(--u)*1.85)"><i style="background:#2951a1;--w:75%"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-card lv-course">
+      <div class="lv-course-copy">
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2.679);font-family:'Public Sans',sans-serif;font-weight:700">
+          <span style="font-size:calc(var(--u)*5.358);letter-spacing:calc(var(--u)*.4287);text-transform:uppercase;color:#2d73e8">Course Access</span>
+          <span style="font-size:calc(var(--u)*10);line-height:calc(var(--u)*12.503);color:#0d1d3c">Explore and access your courses anytime, anywhere.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*3.572);font-family:'Public Sans',sans-serif">
+          <div class="lv-row" style="font-size:calc(var(--u)*5.805)"><span style="font-weight:600;color:#0d1d3c">Learning progress</span><span style="font-weight:700;color:#2d73e8">75%</span></div>
+          <div class="lv-bar" style="height:calc(var(--u)*2.679);width:calc(var(--u)*108.06)"><i style="background:#2951a1;--w:75%"></i></div>
+        </div>
+        <span class="lv-btn">Open Course</span>
+      </div>
+      <div class="lv-course-vis">
+        <div class="lv-course-ill">
+          <div class="lv-rot" style="left:calc(var(--u)*30.92);top:calc(var(--u)*3.13);width:calc(var(--u)*54.45);height:calc(var(--u)*59.504)"><div style="width:calc(var(--u)*48.225);height:calc(var(--u)*54.03);border-radius:calc(var(--u)*5.358);background:#bbd3ff;opacity:.72;transform:rotate(7deg)"></div></div>
+          <div class="lv-rot" style="left:calc(var(--u)*15.97);top:calc(var(--u)*15.63);width:calc(var(--u)*65.962);height:calc(var(--u)*62.715)"><div style="width:calc(var(--u)*61.174);height:calc(var(--u)*57.602);border-radius:calc(var(--u)*6.251);background:#d2e2ff;border:calc(var(--u)*.447) solid #bbd2ff;transform:rotate(5deg)"></div></div>
+          <div class="lv-rot lv-bob2" style="left:calc(var(--u)*2.77);top:calc(var(--u)*21.43);width:calc(var(--u)*78.991);height:calc(var(--u)*66.274)"><div style="position:relative;width:calc(var(--u)*73.231);height:calc(var(--u)*58.942);transform:rotate(6deg)"><img src="assets/lms-viz/player.svg" alt="" style="position:absolute;left:-10.98%;top:-4.55%;width:121.96%;height:127.28%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-card lv-res">
+      <div class="lv-row">
+        <div style="display:flex;align-items:center;gap:calc(var(--u)*7.345)">
+          <span class="lv-tile" style="width:calc(var(--u)*25.707);height:calc(var(--u)*25.707);border-radius:calc(var(--u)*7.345);background:#d9f2f2"><img src="assets/lms-viz/folder.svg" alt="" style="width:calc(var(--u)*12.394);height:calc(var(--u)*12.394)"></span>
+          <b style="font-weight:700;font-size:calc(var(--u)*10);line-height:calc(var(--u)*12.853);color:#0d1d3c;white-space:nowrap">Study Resources</b>
+        </div>
+        <span class="lv-pill"><img src="assets/lms-viz/icon-checked-teal.svg" alt="" style="width:calc(var(--u)*7.345);height:calc(var(--u)*7.345)">Ready</span>
+      </div>
+      <div style="display:flex;gap:calc(var(--u)*7.345);width:100%">
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*5.509);width:calc(var(--u)*100.99);flex:none">
+          <div class="lv-mini">
+            <div class="lv-row" style="font-weight:600"><span style="font-size:calc(var(--u)*5.968);color:#0d1d3c">Resource completion</span><span style="font-size:calc(var(--u)*5.509);color:#138d8b">75%</span></div>
+            <div class="lv-bar" style="height:calc(var(--u)*2.754);width:calc(var(--u)*86.301)"><i style="background:#138d8b;--w:75%"></i></div>
+            <span style="font-size:calc(var(--u)*5.509);line-height:calc(var(--u)*8.263);color:#6b7d99">3 of 4 modules are ready for review.</span>
+          </div>
+          <div class="lv-mini">
+            <span style="font-weight:600;font-size:calc(var(--u)*5.968);color:#0d1d3c">Quick actions</span>
+            <div style="display:flex;align-items:center;gap:calc(var(--u)*4.59)"><svg viewBox="0 0 24 24" fill="none" stroke="#138d8b" stroke-width="2.4" style="width:calc(var(--u)*8.263);height:calc(var(--u)*8.263);flex:none"><rect x="2" y="5" width="20" height="17" rx="2"></rect><path d="M2 10h20" stroke-width="5"></path><path d="M7 1v5M17 1v5"></path></svg><span style="font-size:calc(var(--u)*5.968);color:#0d1d3c">Open schedule</span></div>
+            <div style="display:flex;align-items:center;gap:calc(var(--u)*4.59)"><img src="assets/lms-viz/location.svg" alt="" style="width:calc(var(--u)*8.263);height:calc(var(--u)*8.263);flex:none"><span style="font-size:calc(var(--u)*5.968);color:#0d1d3c">Find library room</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*5.509);flex:1 0 0;min-width:0">
+          <div class="lv-mini">
+            <span style="font-weight:600;font-size:calc(var(--u)*5.968);color:#0d1d3c">Resources</span>
+            <div style="display:flex;justify-content:center"><div class="lv-rot lv-bob" style="position:relative;width:calc(var(--u)*47.282);height:calc(var(--u)*37.477)"><div class="lv-folder"><i></i><img src="assets/lms-viz/file-type.svg" alt="" style="position:absolute;left:calc(var(--u)*16.53);top:calc(var(--u)*9.18);width:calc(var(--u)*12.853);height:calc(var(--u)*12.853)"></div></div></div>
+          </div>
+          <div style="display:flex;gap:calc(var(--u)*5.509)">
+            <div class="lv-stat"><span>Notes</span><b>12</b></div>
+            <div class="lv-stat"><span>PDFs</span><b>8</b></div>
+            <div class="lv-stat"><span>Extras</span><b>4</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lv-person lv-p1" style="left:0;top:calc(var(--u)*325);width:calc(var(--u)*105);height:calc(var(--u)*139)">
+    <div class="lv-face" style="top:calc(var(--u)*15);width:calc(var(--u)*105);height:calc(var(--u)*105)"><img src="assets/lms-viz/teacher.png" alt="" style="left:-16.19%;top:-9.52%;width:132.38%;height:132.38%"></div>
+    <span class="lv-chip" style="left:calc(var(--u)*13);top:calc(var(--u)*-20);height:calc(var(--u)*26);padding:0 calc(var(--u)*10);background:#f2d8f0;color:#222">Teachers</span>
+  </div>
+  <div class="lv-person lv-p2" style="left:calc(var(--u)*449);top:calc(var(--u)*93);width:calc(var(--u)*104);height:calc(var(--u)*138)">
+    <div class="lv-face" style="left:calc(var(--u)*4);top:calc(var(--u)*13);width:calc(var(--u)*81);height:calc(var(--u)*81)"><img src="assets/lms-viz/student-1.png" alt="" style="left:-16.35%;top:-9.62%;width:132.7%;height:132.7%"></div>
+    <span class="lv-chip" style="left:calc(var(--u)*-4);top:calc(var(--u)*-15);padding:calc(var(--u)*6) calc(var(--u)*12);background:#b9f193;color:#24541a">Students</span>
+  </div>
+  <div class="lv-person lv-p3" style="left:calc(var(--u)*378);top:calc(var(--u)*3);width:calc(var(--u)*75);height:calc(var(--u)*109)">
+    <div class="lv-face" style="top:calc(var(--u)*15);width:calc(var(--u)*75);height:calc(var(--u)*75)"><img src="assets/lms-viz/student-2.png" alt="" style="left:-22.67%;top:-13.33%;width:145.33%;height:145.33%"></div>
+  </div>
+</div></div>
+    </div>
   </div>
 </header>
 
@@ -114,7 +429,7 @@
     <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.seeInAction }}</div>
     <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;margin-top:14px;text-wrap:balance">{{ videoHeading }}</h2>
   </div>
-  <div style="position:relative;margin-top:40px;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(18,111,184,.18);background:#000;aspect-ratio:16/9">
+  <div style="position:relative;margin-top:40px;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(20,21,26,.18);background:#000;aspect-ratio:16/9">
     <sc-if value="{{ videoPlaying }}" hint-placeholder-val="{{ false }}">
       <iframe src="{{ videoSrc }}" title="{{ name }} video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
     </sc-if>
@@ -132,109 +447,71 @@
 </section>
 </sc-if>
 
-<!-- ROLES -->
-<section style="max-width:1240px;margin:96px auto 0;padding:0 32px">
-  <div style="text-align:center">
-    <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.builtForEveryone }}</div>
-    <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;margin-top:14px;text-wrap:balance">{{ rolesHeading }}</h2>
+<!-- PLATFORM TOUR (feature carousel) -->
+<section id="platform" style="margin:96px auto 0">
+  <div id="lfc-pin" class="lfc-pin"><div id="lfc-stick" class="lfc-stick">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px;text-align:center">
+    <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;text-wrap:balance">{{ fcHeading }}</h2>
   </div>
-  <div style="max-width:1080px;margin:40px auto 0">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-      <button type="button" onClick="{{ role0.go }}" onMouseEnter="{{ role0.go }}" style="{{ role0.tabStyle }}">
-        <span style="{{ role0.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2z"></path><path d="M20 5a2 2 0 0 0-2-2h-6v17h6a2 2 0 0 1 2 2z"></path></svg></span>
-        <span style="{{ role0.titleStyle }}">{{ role0.title }}</span>
-        <span style="{{ role0.chevStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
-      </button>
-      <button type="button" onClick="{{ role1.go }}" onMouseEnter="{{ role1.go }}" style="{{ role1.tabStyle }}">
-        <span style="{{ role1.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"></path><path d="M14 3v5h5"></path><path d="M9 15l2 2 4-4"></path></svg></span>
-        <span style="{{ role1.titleStyle }}">{{ role1.title }}</span>
-        <span style="{{ role1.chevStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
-      </button>
-      <button type="button" onClick="{{ role2.go }}" onMouseEnter="{{ role2.go }}" style="{{ role2.tabStyle }}">
-        <span style="{{ role2.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><path d="M7.5 13h3M7.5 16.5h6"></path></svg></span>
-        <span style="{{ role2.titleStyle }}">{{ role2.title }}</span>
-        <span style="{{ role2.chevStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
-      </button>
-    </div>
-
-    <div style="background:#fff;border:1.5px solid #eceae4;border-radius:22px;padding:30px 32px;margin-top:18px;box-shadow:0 24px 60px rgba(20,21,26,.07)">
-      <div style="display:flex;align-items:center;gap:16px">
-        <span style="{{ activeRole.bigIconStyle }}">
-          <sc-if value="{{ activeRole.isCourse }}" hint-placeholder-val="{{ true }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2z"></path><path d="M20 5a2 2 0 0 0-2-2h-6v17h6a2 2 0 0 1 2 2z"></path></svg></sc-if>
-          <sc-if value="{{ activeRole.isExam }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"></path><path d="M14 3v5h5"></path><path d="M9 15l2 2 4-4"></path></svg></sc-if>
-          <sc-if value="{{ activeRole.isRoutine }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><path d="M7.5 13h3M7.5 16.5h6"></path></svg></sc-if>
-        </span>
-        <div style="min-width:0">
-          <div style="font-family:'Bricolage Grotesque';font-size:24px;font-weight:700">{{ activeRole.title }}</div>
-          <p style="font-size:14.5px;color:#5b5f6b;margin-top:4px;max-width:520px;line-height:1.5;text-wrap:pretty">{{ activeRole.body }}</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 0.9fr;gap:26px;margin-top:26px">
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <div style="font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#9a9ea9">What you can do</div>
-          <sc-for list="{{ activeRole.caps }}" as="c" hint-placeholder-count="4">
-            <div style="display:flex;align-items:flex-start;gap:11px">
-              <span style="flex:none;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:{{ tint }};color:{{ accent }};margin-top:1px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span>
-              <span style="font-size:14.5px;color:#2b2e37;font-weight:500;line-height:1.4">{{ c.t }}</span>
+  <div id="lfc-tabs" class="lfc-tabs" role="tablist" aria-label="{{ fcHeading }}">
+    <sc-for list="{{ fcTabs }}" as="t" hint-placeholder-count="4">
+      <button type="button" role="tab" id="{{ t.tabId }}" aria-selected="{{ t.selected }}" aria-controls="{{ t.panelId }}" onClick="{{ t.go }}" style="{{ t.style }}">{{ t.label }}</button>
+    </sc-for>
+  </div>
+  <div id="lfc-view" class="lfc-view" dir="ltr">
+    <div class="lfc-track" style="{{ fcTrackStyle }}">
+      <sc-for list="{{ fcSlides }}" as="s" hint-placeholder-count="4">
+        <article class="lfc-slide" id="{{ s.panelId }}" role="tabpanel" aria-labelledby="{{ s.tabId }}" aria-hidden="{{ s.hidden }}" onClick="{{ s.go }}" style="{{ s.style }}">
+          <div class="lfc-copy">
+            <div>
+              <h3 class="lfc-title">{{ s.title }}</h3>
+              <p class="lfc-sum">{{ s.summary }}</p>
+              <ul class="lfc-list">
+                <sc-for list="{{ s.points }}" as="pt" hint-placeholder-count="4">
+                  <li><span class="lfc-tick" aria-hidden="true">{{ pt.icon }}</span><span>{{ pt.text }}</span></li>
+                </sc-for>
+              </ul>
             </div>
-          </sc-for>
-        </div>
+            <a class="lfc-more" href="Arivoo%20Book%20a%20Demo.dc.html" tabindex="{{ s.tab }}">{{ fcLearnMore }} <span aria-hidden="true">→</span></a>
+          </div>
 
-        <div style="border:1px solid #eceae4;border-radius:16px;overflow:hidden;background:#fbfbf9;align-self:start">
-          <div style="display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid #f0efe9">
-            <span style="width:9px;height:9px;border-radius:50%;background:#ff5f57"></span>
-            <span style="width:9px;height:9px;border-radius:50%;background:#febc2e"></span>
-            <span style="width:9px;height:9px;border-radius:50%;background:#28c840"></span>
-            <span style="margin-left:8px;font-size:12px;font-weight:600;color:#9a9ea9">{{ activeRole.screen }}</span>
-          </div>
-          <div style="padding:14px;display:flex;flex-direction:column;gap:10px">
-            <sc-for list="{{ activeRole.rows }}" as="row" hint-placeholder-count="3">
-              <div style="background:#fff;border:1px solid #f0efe9;border-radius:11px;padding:11px 13px">
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
-                  <span style="font-size:12.5px;color:#8b8f9a;font-weight:600">{{ row.label }}</span>
-                  <span style="display:inline-flex;align-items:center;gap:6px;font-family:'Bricolage Grotesque';font-size:13px;font-weight:800;color:{{ row.color }}"><sc-if value="{{ row.live }}" hint-placeholder-val="{{ false }}"><span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};animation:lmsPulse 1.6s infinite"></span></sc-if>{{ row.val }}</span>
-                </div>
-                <sc-if value="{{ row.hasBar }}" hint-placeholder-val="{{ false }}">
-                  <div style="height:6px;border-radius:100px;background:{{ tint }};margin-top:9px;overflow:hidden"><div style="height:100%;border-radius:100px;background:{{ accent }};width:{{ row.pct }}"></div></div>
-                </sc-if>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;padding-top:22px;border-top:1px solid #f0efe9">
-        <sc-for list="{{ activeRole.stats }}" as="s" hint-placeholder-count="3">
-          <div style="background:{{ tint }};border-radius:14px;padding:16px 18px">
-            <div style="font-family:'Bricolage Grotesque';font-size:30px;font-weight:800;color:{{ accent }};line-height:1">{{ s.display }}</div>
-            <div style="font-size:12.5px;color:#5b5f6b;font-weight:600;margin-top:7px">{{ s.label }}</div>
-          </div>
-        </sc-for>
-      </div>
+          <img class="lfc-shot" data-src="{{ s.img }}" alt="{{ s.alt }}">
+        </article>
+      </sc-for>
     </div>
   </div>
+  <div class="lfc-ctrl">
+    <div class="lfc-prog" aria-hidden="true"><div style="{{ fcThumbStyle }}"></div></div>
+    <span class="lfc-count" aria-live="polite">{{ fcCount }}</span>
+    <div class="lfc-arrows">
+      <button type="button" class="lfc-arrow" aria-label="Previous feature" onClick="{{ fcPrev }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+      <button type="button" class="lfc-arrow" aria-label="Next feature" onClick="{{ fcNext }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+    </div>
+  </div>
+  </div></div>
 </section>
 
 <!-- WHY -->
-<section style="max-width:1240px;margin:100px auto 0;padding:0 32px">
+<section class="lwy" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
   <div style="text-align:center">
     <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ whyLabel }}</div>
     <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:700;margin-top:14px;text-wrap:balance">{{ whyHeading }}</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px">
+  <div class="lwy-grid">
     <sc-for list="{{ whyCards }}" as="w" hint-placeholder-count="6">
-      <div style="background:#fff;border:1px solid #eceae4;border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,border-color .2s" style-hover="transform:translateY(-4px);border-color:#d9d6cc">
-        <span style="width:58px;height:58px;border-radius:16px;flex:none;display:grid;place-items:center;background:{{ w.tint }};color:{{ w.accent }}">
-          <sc-if value="{{ w.is0 }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M16 11l2 2 4-4"></path></svg></sc-if>
-          <sc-if value="{{ w.is1 }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"></rect><path d="M16 10l6-3v10l-6-3"></path><circle cx="9" cy="12" r="2.4"></circle></svg></sc-if>
-          <sc-if value="{{ w.is2 }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h7M15 18h5"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="13" cy="18" r="2"></circle></svg></sc-if>
-          <sc-if value="{{ w.is3 }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"></path><path d="M14 3v5h5"></path><path d="M9 15l2 2 4-4"></path></svg></sc-if>
-          <sc-if value="{{ w.is4 }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><path d="M7.5 13h3M7.5 16.5h6"></path></svg></sc-if>
-          <sc-if value="{{ w.is5 }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 14l4-4 3 3 5-6"></path><path d="M19 7v3h-3"></path></svg></sc-if>
+      <div class="lwy-card">
+        <span class="lwy-icon" style="background:{{ w.bg }};color:{{ w.ink }}">
+          <sc-if value="{{ w.is0 }}" hint-placeholder-val="{{ true }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M16 11l2 2 4-4"></path></svg></sc-if>
+          <sc-if value="{{ w.is1 }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"></rect><path d="M16 10l6-3v10l-6-3"></path><circle cx="9" cy="12" r="2.4"></circle></svg></sc-if>
+          <sc-if value="{{ w.is2 }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h7M15 18h5"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="13" cy="18" r="2"></circle></svg></sc-if>
+          <sc-if value="{{ w.is3 }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"></path><path d="M14 3v5h5"></path><path d="M9 15l2 2 4-4"></path></svg></sc-if>
+          <sc-if value="{{ w.is4 }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><path d="M7.5 13h3M7.5 16.5h6"></path></svg></sc-if>
+          <sc-if value="{{ w.is5 }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 14l4-4 3 3 5-6"></path><path d="M19 7v3h-3"></path></svg></sc-if>
         </span>
-        <div style="font-family:'Bricolage Grotesque';font-size:18px;font-weight:700">{{ w.title }}</div>
-        <p style="font-size:14.5px;color:#5b5f6b;line-height:1.5;text-wrap:pretty">{{ w.body }}</p>
+        <div class="lwy-copy">
+          <h3 class="lwy-title">{{ w.title }}</h3>
+          <p class="lwy-body">{{ w.body }}</p>
+        </div>
       </div>
     </sc-for>
   </div>
@@ -259,15 +536,15 @@
 
 <!-- CTA -->
 <section id="demo" style="max-width:1240px;margin:110px auto 0;padding:0 32px">
-  <div style="background:linear-gradient(135deg,#7c3aed,#5b21b6);border-radius:30px;padding:72px 56px;text-align:center;color:#fff;position:relative;overflow:hidden">
-    <div style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(255,255,255,.14);border-radius:50%"></div>
-    <div style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(255,255,255,.14);border-radius:50%"></div>
+  <div style="background:#f0efe9;border-radius:30px;padding:72px 56px;text-align:center;color:#14151a;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-60px;left:-40px;width:320px;height:320px;border:1px solid rgba(20,21,26,.08);border-radius:50%"></div>
+    <div style="position:absolute;bottom:-90px;right:-30px;width:280px;height:280px;border:1px solid rgba(20,21,26,.08);border-radius:50%"></div>
     <div style="position:relative">
       <h2 style="font-size:clamp(30px,4vw,48px);font-weight:700;text-wrap:balance;max-width:720px;margin-inline:auto">{{ ctaTitle }}</h2>
-      <p style="font-size:18px;color:rgba(255,255,255,.82);margin-top:16px;max-width:540px;margin-inline:auto">{{ ctaSub }}</p>
+      <p style="font-size:18px;color:#5b5f6b;margin-top:16px;max-width:540px;margin-inline:auto">{{ ctaSub }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:34px">
-        <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#7c3aed;font-weight:700;font-size:16px;padding:15px 30px;border-radius:13px;transition:transform .2s" style-hover="transform:translateY(-2px)">{{ ui.requestDemo }} <span>→</span></a>
-        <a href="Arivoo%20Home.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;border:1px solid rgba(255,255,255,.28);transition:background .2s" style-hover="background:rgba(255,255,255,.2)">{{ ui.exploreAll }}</a>
+        <a href="Arivoo%20Book%20a%20Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#14151a;color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:13px;transition:transform .2s,background .2s" style-hover="background:#3a3d47;transform:translateY(-2px)">{{ ui.requestDemo }} <span>→</span></a>
+        <a href="Arivoo%20Home.dc.html" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#14151a;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;border:1px solid #dcdad3;transition:background .2s" style-hover="background:#f6f5f1">{{ ui.exploreAll }}</a>
       </div>
     </div>
   </div>
@@ -276,7 +553,7 @@
 <!-- FOOTER -->
 <footer style="background:#0b0c10;color:#fff;margin-top:110px">
   <div style="max-width:1240px;margin:0 auto;padding:76px 32px 0">
-    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px">
+    <div data-m="foot" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px">
       <div>
         <img src="assets/arivoo-mark.png" alt="arivoo — powered by Adamas Tech Consulting" style="height:42px;width:auto;display:block">
         <p style="font-size:14px;color:#8a8f9c;margin-top:18px;max-width:260px;line-height:1.6;text-wrap:pretty">Education management, unified. A product of Adamas Tech Consulting.</p>
@@ -353,41 +630,62 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { navOpen:false, roleActive:0, statNums:[0,0,0], lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
-  _statTargets = [[32,860,12],[18,94,3],[24,6,98]];
-  componentDidMount(){ this._applyImgs(); this._applyDir(); this._animStats(0); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
-  selectRole(i){ if(i===this.state.roleActive) return; this.setState({roleActive:i}); this._animStats(i); }
-  _animStats(i){
-    if(this._raf) cancelAnimationFrame(this._raf);
-    const targets=this._statTargets[i]||[0,0,0];
-    const start=(typeof performance!=='undefined'?performance.now():Date.now()), dur=850;
-    const tick=(now)=>{
-      const p=Math.min(1,(now-start)/dur), e=1-Math.pow(1-p,3);
-      this.setState({statNums:targets.map(t=>t*e)});
-      if(p<1) this._raf=requestAnimationFrame(tick);
+  state = { navOpen:false, fcActive:0, lang:(function(){ try{ return localStorage.getItem('arivoo_lang')||'en'; }catch(e){ return 'en'; } })() };
+  componentDidMount(){ this._applyImgs(); this._applyDir(); this._bindCarousel(); this._fcPin(); setTimeout(()=>this._fcLayout&&this._fcLayout(),400); window.addEventListener("load",()=>this._fcLayout&&this._fcLayout()); if(this.state.lang!=='en') setTimeout(()=>this.forceUpdate(),0); }
+  // ---- platform tour carousel ----
+  fcGo(i){ const n=this._fcCount||1; const next=((i%n)+n)%n; if(next===this.state.fcActive) return; if(this._fcSeek) this._fcSeek(next); this.setState({fcActive:next}, ()=>this._fcScrollTab()); }
+  _fcPin(){ try{
+    const pin=document.getElementById('lfc-pin'), st=document.getElementById('lfc-stick'); if(!pin||!st) return;
+    const nav=document.querySelector('nav'); const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const layout=()=>{
+      const n=this._fcCount||1, vh=window.innerHeight, navH=nav?nav.offsetHeight:0;
+      pin.classList.remove('on'); pin.style.height=''; st.style.top=''; st.style.minHeight='';
+      const h=st.offsetHeight;
+      if(reduce || n<2 || window.innerWidth<900 || h>vh+120){ this._fcPinOn=false; return; }
+      this._fcPinOn=true; pin.classList.add('on');
+      st.style.minHeight=(vh-navH)+'px'; st.style.top=navH+'px';
+      this._fcStep=Math.round(vh*0.6);
+      pin.style.height=(vh-navH+n*this._fcStep)+'px';
     };
-    this._raf=requestAnimationFrame(tick);
-  }
+    this._fcSync=()=>{ if(!this._fcPinOn||this._fcLock) return;
+      const n=this._fcCount||1, navH=nav?nav.offsetHeight:0, y=navH-pin.getBoundingClientRect().top;
+      const i=Math.max(0,Math.min(n-1,Math.floor(y/this._fcStep)));
+      if(i!==this.state.fcActive) this.setState({fcActive:i}, ()=>this._fcScrollTab()); };
+    this._fcSeek=(i)=>{ if(!this._fcPinOn) return false;
+      const navH=nav?nav.offsetHeight:0, top=pin.getBoundingClientRect().top+window.scrollY-navH;
+      this._fcLock=true; clearTimeout(this._fcLockT); this._fcLockT=setTimeout(()=>{ this._fcLock=false; },900);
+      window.scrollTo({top:top+i*this._fcStep+Math.round(this._fcStep*0.15), behavior:'smooth'}); return true; };
+    this._fcLayout=()=>{ layout(); this._fcSync(); };
+    window.addEventListener('scroll',this._fcSync,{passive:true});
+    window.addEventListener('resize',this._fcLayout);
+    layout(); this._fcSync();
+  }catch(e){} }
+  _fcScrollTab(){ try{ const bar=document.getElementById('lfc-tabs'); const tab=document.getElementById('lfc-tab-'+this.state.fcActive); if(!bar||!tab||bar.scrollWidth<=bar.clientWidth) return; bar.scrollTo({left:tab.offsetLeft-(bar.clientWidth-tab.offsetWidth)/2, behavior:'smooth'}); }catch(e){} }
+  _bindCarousel(){ try{
+    const v=document.getElementById('lfc-view'); if(!v) return;
+    let x0=null, y0=null;
+    v.addEventListener('touchstart',e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; },{passive:true});
+    v.addEventListener('touchend',e=>{ if(x0===null) return; const t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0; x0=null;
+      if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.2) this.fcGo(this.state.fcActive+(dx<0?1:-1)); },{passive:true});
+    const tabs=document.getElementById('lfc-tabs');
+    if(tabs) tabs.addEventListener('keydown',e=>{ if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return; e.preventDefault();
+      const rtl=document.documentElement.getAttribute('dir')==='rtl'; const step=(e.key==='ArrowRight')!==rtl?1:-1;
+      this.fcGo(this.state.fcActive+step); setTimeout(()=>{ const t=document.getElementById('lfc-tab-'+this.state.fcActive); if(t) t.focus(); },0); });
+  }catch(e){} }
   _applyDir(){ try{ var rtl=this.state.lang==='ar'; document.documentElement.setAttribute('dir', rtl?'rtl':'ltr'); document.documentElement.setAttribute('lang', this.state.lang); }catch(e){} }
   setLang(l){ try{ localStorage.setItem('arivoo_lang', l); }catch(e){} this.setState({lang:l}, ()=>this._applyDir()); }
   componentDidUpdate(){ this._applyImgs(); }
-  _applyImgs(){ try{ document.querySelectorAll('img[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v) el.setAttribute('src', v); }); }catch(e){} }
+  _applyImgs(){ try{ const vh=window.innerHeight*1.5; document.querySelectorAll('img[data-src]').forEach(el=>{ const v=el.getAttribute('data-src'); if(v && el.getAttribute('src')!==v){ if(!el.hasAttribute('loading')){ el.decoding='async'; if(el.getBoundingClientRect().top>vh) el.loading='lazy'; } el.setAttribute('src', v); } }); }catch(e){} }
 
   renderVals(){
     const P = {
       name:'Learning Management System', short:'LMS', mark:'L',
-      accent:'#7c3aed', tint:'#f1ecfd', logo:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png',
-      heroImg:(window.__resources&&window.__resources.lms)||'assets/lms-hero.png',
+      accent:'#14151a', tint:'#f0efe9', logo:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png',
+      heroImg:(window.__resources&&window.__resources.lms)||'assets/lms-hero-v6.png',
       heroTitle:'Deliver, manage and track learning.',
       heroSub:'Courses, exams and routines in one place — with AI-powered attendance and class recordings for flexible, effective learning.',
       videoId:'Wk3wm9ZaB30',
       videoHeading:'Watch arivoo LMS in action.',
-      rolesHeading:"What's inside arivoo LMS.",
-      roles:[
-        {mark:'C', title:'Courses', body:'Scheduling, assignments, resources and student tracking for a well-organised learning environment.'},
-        {mark:'E', title:'Exams', body:'Scheduling, templates and analytics for an efficient, organised assessment process.'},
-        {mark:'R', title:'Routines', body:'Create, track and adjust routines for an organised and productive workflow.'},
-      ],
       whyHeading:'Why educators choose arivoo LMS.',
       why:[
         {title:'AI-powered attendance', body:'Automate roll calls, prevent errors and get real-time attendance insights.'},
@@ -403,9 +701,9 @@ class Component extends DCLogic {
     };
 
     const navProducts = [
-      {name:'University Management System', mark:'U', logo:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png', tint:'#e4f0f9', accent:'#7c3aed', tag:'Run the entire campus on one system', href:'Arivoo%20UMS.dc.html'},
+      {name:'University Management System', mark:'U', logo:'https://arivoo.in/wp-content/uploads/2023/11/arivoo-ums-logo.png', tint:'#f0efe9', accent:'#14151a', tag:'Run the entire campus on one system', href:'Arivoo%20UMS.dc.html'},
       {name:'School Management System', mark:'S', logo:'https://arivoo.in/wp-content/uploads/2023/11/Arivo_Buzzed_Rebranding-02-02-1.png', tint:'#e6f6ef', accent:'#1f9d6b', tag:'School operations, simplified', href:'Arivoo%20SMS.dc.html'},
-      {name:'Learning Management System', mark:'L', logo:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png', tint:'#f1ecfd', accent:'#7c3aed', tag:'Deliver, manage & track learning', href:'Arivoo%20LMS.dc.html'},
+      {name:'Learning Management System', mark:'L', logo:'https://arivoo.in/wp-content/uploads/2023/10/Frame-15.png', tint:'#f0efe9', accent:'#14151a', tag:'Deliver, manage & track learning', href:'Arivoo%20LMS.dc.html'},
       {name:'TestGUARD — Online Assessment', mark:'T', logo:'https://arivoo.in/wp-content/uploads/2024/09/arivoo-TestGUARD-5-1.png', tint:'#eceefe', accent:'#6366f1', tag:'Secure exams with AI proctoring', href:'Arivoo%20TestGUARD.dc.html'},
     ];
 
@@ -419,61 +717,60 @@ class Component extends DCLogic {
     const whyLabel = ui.whyPrefix + ' ' + P.short;
     const ctaSub = (ui.ctaSubTmpl||'').replace('{name}', LP.name);
     const whySrc = (LP.why||P.why||[]);
-    const whyColors = [
-      {tint:'#fde7ef', accent:'#d6336c'},
-      {tint:'#d9f5ef', accent:'#12866f'},
-      {tint:'#fdecd1', accent:'#b46a11'},
-      {tint:'#ece9fd', accent:'#6d28d9'},
-      {tint:'#e4f0f9', accent:'#126FB8'},
-      {tint:'#e6f6ef', accent:'#1f9d6b'},
-    ];
-    const whyCards = whySrc.map((w,i)=>({ title:w.title, body:w.body, is0:i===0, is1:i===1, is2:i===2, is3:i===3, is4:i===4, is5:i===5, tint:whyColors[i%whyColors.length].tint, accent:whyColors[i%whyColors.length].accent }));
+    // pastel tile + icon colour per card, following the reference
+    const whyTones = [['#fdd9e2','#e5537a'],['#c8f3e7','#12876a'],['#fdeaa8','#c77d06'],['#e7e3fd','#5b4fd6'],['#dcecfd','#1f6fd1'],['#ffe2cf','#d9651f']];
+    const whyCards = whySrc.map((w,i)=>({ title:w.title, body:w.body, bg:whyTones[i%6][0], ink:whyTones[i%6][1], is0:i===0, is1:i===1, is2:i===2, is3:i===3, is4:i===4, is5:i===5 }));
 
-    // ---- interactive roles explorer ----
-    const rolesL = (LP.roles||P.roles||[]);
-    const roleMeta = [
-      { caps:['Schedule courses, sections & lessons','Attach assignments, quizzes & resources','Track student progress in real time','Assign teachers and manage content'],
-        screen:'Course builder',
-        rows:[['Course setup','Complete',P.accent,false,false,''],['Content uploaded','78%','#14151a',false,true,'78%'],['Students enrolled','Live',P.accent,true,false,'']],
-        stats:[{suffix:'',label:'Active courses'},{suffix:'',label:'Resources shared'},{suffix:'',label:'Sections running'}] },
-      { caps:['Build exams from reusable templates','Schedule with flexible configurations','Auto-grade and publish results','Read analytics on every question'],
-        screen:'Exam analytics',
-        rows:[['Papers graded','100%',P.accent,false,true,'100%'],['Average score','94%','#14151a',false,true,'94%'],['Live exams','Now',P.accent,true,false,'']],
-        stats:[{suffix:'',label:'Exam templates'},{suffix:'%',label:'Auto-graded'},{suffix:'',label:'Result sets published'}] },
-      { caps:['Create routines for courses & sections','Assign teachers to each slot','Adjust and reshuffle in seconds','Sync events to every calendar'],
-        screen:'Weekly routine',
-        rows:[['This week','Mon–Sat','#14151a',false,false,''],['Slots filled','96%','#14151a',false,true,'96%'],['Live classes','2 now',P.accent,true,false,'']],
-        stats:[{suffix:'',label:'Weekly slots'},{suffix:'',label:'Reschedules needed'},{suffix:'%',label:'Timetable coverage'}] },
-    ];
-    const ra = this.state.roleActive||0;
-    const nums = this.state.statNums||[0,0,0];
-    const mkTab = (i)=>{ const on=(i===ra); return {
-      title:(rolesL[i]&&rolesL[i].title)||'',
-      go:()=>this.selectRole(i),
-      tabStyle:'display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;border-radius:16px;padding:15px 16px;transition:all .22s;'+(on?('background:'+P.tint+';border:1.5px solid '+P.accent+';box-shadow:0 14px 30px '+P.accent+'22'):'background:#fff;border:1.5px solid #eceae4'),
-      iconStyle:'width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;transition:all .22s;'+(on?('background:'+P.accent+';color:#fff'):('background:'+P.tint+';color:'+P.accent)),
-      titleStyle:'font-family:\'Bricolage Grotesque\';font-size:16px;font-weight:700;color:#14151a;flex:1;min-width:0',
-      chevStyle:'flex:none;transition:all .22s;color:'+(on?P.accent:'#c2c5cd')+';transform:translateX('+(on?'0':'-5px')+');opacity:'+(on?'1':'0'),
-    }; };
-    const role0=mkTab(0), role1=mkTab(1), role2=mkTab(2);
-    const am = roleMeta[ra]||roleMeta[0];
-    const activeRole = {
-      title:(rolesL[ra]&&rolesL[ra].title)||'',
-      body:(rolesL[ra]&&rolesL[ra].body)||'',
-      screen:am.screen,
-      isCourse:ra===0, isExam:ra===1, isRoutine:ra===2,
-      caps:am.caps.map(c=>({t:c})),
-      rows:am.rows.map(r=>({label:r[0], val:r[1], color:r[2], live:r[3], hasBar:r[4], pct:r[5]})),
-      stats:am.stats.map((s,i)=>({label:s.label, display:Math.round(nums[i]||0)+(s.suffix||'')})),
-      bigIconStyle:'width:58px;height:58px;border-radius:16px;flex:none;display:grid;place-items:center;background:'+P.tint+';color:'+P.accent,
+    // ---- platform tour carousel ----
+    const FC = {
+      heading:'One platform for all your teaching & learning workflows',
+      learnMore:'Learn More',
+      points:['Customisable templates for every reporting need','Seamless gradebook and portfolios integration','AI-led evidence-based comments in seconds','Pre-built transcripts that adapt to your context'],
+      slides:[
+        { tab:'Class Recording', title:'Class Recordings', bg:'#cfeaf7', img:'assets/lms-tour-recording.png',
+          alt:'Arivoo LMS class recording player with a list of other recorded classes',
+          summary:'The Class Recordings module provides students with access to recorded lectures and class sessions, enabling flexible learning and review. Easily revisit lessons, reinforce understanding, and stay updated with course material.' },
+        { tab:'Configure Exams', title:'Configure Exams', bg:'#ded4f6', img:'assets/lms-tour-exams.png',
+          alt:'Arivoo LMS exam configuration form for a Computer Science mid-term',
+          summary:'Streamline exam creation by assigning it to a designated course with multiple configurations as per your need.' },
+        { tab:'Customise Courses', title:'Customise Courses', bg:'#bcede2', img:'assets/lms-tour-courses.png',
+          alt:'Arivoo LMS course list with sections and assigned teachers',
+          summary:'Create new courses, establish sections, and assign teachers in it. Teachers can subsequently create content for their respective students' },
+        { tab:'Organise Routine', title:'Organise Routine', bg:'#f6ebd4', img:'assets/lms-tour-routine.png',
+          alt:'Arivoo LMS monthly routine calendar',
+          summary:'Efficiently create new routines for courses and sections, then assign teachers to facilitate an organized and effective learning process.' },
+      ],
     };
+    const FCL = Object.assign({}, FC, (I18.pages&&I18.pages[pageKey]&&I18.pages[pageKey][lang]&&I18.pages[pageKey][lang].tour)||{});
+    const fcN = FCL.slides.length; this._fcCount = fcN;
+    const fa = Math.min(this.state.fcActive||0, fcN-1);
+    const fcTabs = FCL.slides.map((sl,i)=>{ const on=i===fa; return {
+      label:sl.tab, tabId:'lfc-tab-'+i, panelId:'lfc-panel-'+i, selected:on?'true':'false', go:()=>this.fcGo(i),
+      style:'flex:none;cursor:pointer;font:inherit;font-size:13px;line-height:1.2;white-space:nowrap;padding:9px 12px;border-radius:4px;border:0;transition:background .2s,color .2s;'
+        +(on?('background:'+sl.bg+';color:#17494a;font-weight:600'):'background:#f8f8f8;color:#6f7174;font-weight:500'),
+    }; });
+    const fcIcons = ['⌗','♙','▦','≡'];
+    const fcSlides = FCL.slides.map((sl,i)=>{ const on=i===fa; return {
+      title:sl.title, summary:sl.summary, img:sl.img, alt:sl.alt,
+      points:(sl.points||FCL.points).map((t,j)=>({text:t, icon:fcIcons[j%fcIcons.length]})),
+      tabId:'lfc-tab-'+i, panelId:'lfc-panel-'+i, hidden:on?'false':'true', tab:on?'0':'-1',
+      go:()=>{ if(!on) this.fcGo(i); },
+      style:'background:'+sl.bg+';'+(on?'':'cursor:pointer'),
+    }; });
+    const fcVals = {
+      fcHeading:FCL.heading, fcLearnMore:FCL.learnMore, fcTabs, fcSlides,
+      fcTrackStyle:'transform:translateX(calc('+(-fa)+' * (var(--fc-w) + var(--fc-gap))))',
+      fcThumbStyle:'width:'+(100/fcN)+'%;left:'+(fa*100/fcN)+'%',
+      fcCount:(fa+1)+' / '+fcN,
+      fcPrev:()=>this.fcGo(fa-1), fcNext:()=>this.fcGo(fa+1),
+    };
+
     return Object.assign({}, LP, {
       navProducts: navProductsL,
       whyCards,
-      role0, role1, role2, activeRole,
+      ...fcVals,
       ui, whyLabel, ctaSub, lang,
       setLang:(e)=>this.setLang(e.target.value),
-      rolesCols: P.roles.length,
       videoSrc: P.videoId ? ('https://www.youtube-nocookie.com/embed/'+P.videoId+'?rel=0&modestbranding=1&autoplay=1&playsinline=1') : '',
       videoThumb: P.videoId ? ('https://img.youtube.com/vi/'+P.videoId+'/hqdefault.jpg') : '',
       videoPlaying: !!this.state.videoPlaying,
@@ -482,14 +779,13 @@ class Component extends DCLogic {
       hoverOn: ()=>this.setState({navOpen:true}),
       hoverOff: ()=>this.setState({navOpen:false}),
       closeNav: ()=>this.setState({navOpen:false}),
-      navMenuFg: this.state.navOpen ? '#7c3aed' : '#3a3d47',
+      navMenuFg: this.state.navOpen ? '#14151a' : '#3a3d47',
       navChevron: this.state.navOpen ? '180deg' : '0deg',
-      navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(720px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
+      navPanelStyle: 'position:fixed;left:50%;top:56px;width:min(819px,94vw);z-index:60;padding-top:12px;transition:opacity .22s ease,transform .22s ease;transform-origin:top center;'
         + (this.state.navOpen ? 'opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto' : 'opacity:0;transform:translateX(-50%) translateY(-6px);pointer-events:none'),
     });
   }
 }
 </script>
-<script src="./chatbot-widget.js"></script>
 </body>
 </html>
