@@ -54,6 +54,115 @@
   .amm-mod:hover b,.amm-link:hover b,.amm-mod:focus-visible b,.amm-link:focus-visible b{color:#087bc1}
   .amm-link[style*="width"]{box-sizing:content-box}
   @media (max-width:820px){ .amm{flex-direction:column;gap:22px;padding:24px 22px} .amm-mods{height:auto} .amm-cols{gap:28px} .amm-col{gap:24px;width:auto!important} .amm-div{width:100%;height:1px;align-self:auto} .amm-ai{width:100%} .amm-links{gap:12px} .amm-link{width:auto!important} }
+
+  /* TestGUARD hero visual — animated build of Figma 4110:3395 (proctoring dashboard mockup) */
+  .tv{position:relative;width:100%;aspect-ratio:520/495;container-type:inline-size}
+  .tv-s{--u:calc(100cqw / 520);position:absolute;inset:0;font-family:'Inter',sans-serif;line-height:normal;color:#0a193f}
+  .tv-s img{display:block;max-width:none}
+  .tv-mock{position:absolute;left:0;top:0;width:calc(var(--u)*511);height:calc(var(--u)*478);border-radius:calc(var(--u)*16.5);background:#14171a;overflow:hidden;animation:tv-rise .8s cubic-bezier(.2,.8,.2,1) both}
+  .tv-win{position:absolute;left:calc(var(--u)*70);top:calc(var(--u)*47);width:calc(var(--u)*441);height:calc(var(--u)*430);background:#fff;overflow:hidden}
+  .tv-tint{position:absolute;left:0;top:0;width:100%;height:calc(var(--u)*58);background:linear-gradient(to right,#fff,#bdd9e6)}
+  .tv-logo{position:absolute;left:calc(var(--u)*25);top:calc(var(--u)*15);display:flex;flex-direction:column;gap:calc(var(--u)*3);align-items:flex-start}
+  .tv-logo b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:calc(var(--u)*13);letter-spacing:calc(var(--u)*-.4);color:#14171a}
+  .tv-logo-rule{display:flex;align-items:center;gap:calc(var(--u)*4)}
+  .tv-logo-rule i{width:calc(var(--u)*40);height:calc(var(--u)*.6);background:#14171a;display:block;flex:none}
+  .tv-logo-rule span{font-size:calc(var(--u)*5);letter-spacing:calc(var(--u)*.6);text-transform:uppercase;color:#45484c;white-space:nowrap}
+
+  .tv-card{position:absolute;overflow:hidden;--d:.3s;--f:6s;animation:tv-rise .7s cubic-bezier(.2,.8,.2,1) var(--d) both,tv-float var(--f) ease-in-out calc(var(--d) + .7s) infinite}
+
+  .tv-cand{--d:.35s;--f:6.2s;left:calc(var(--u)*41);top:calc(var(--u)*150);width:calc(var(--u)*307);height:calc(var(--u)*272);background:rgba(255,255,255,.95);border:calc(var(--u)*.6) solid #e6f1ff;border-radius:calc(var(--u)*10);box-shadow:0 calc(var(--u)*4) calc(var(--u)*13) rgba(92,160,215,.12);padding:calc(var(--u)*8);display:flex;flex-direction:column;gap:calc(var(--u)*8)}
+  .tv-chead{display:flex;align-items:center;gap:calc(var(--u)*8);width:100%;flex:none}
+  .tv-avatar{width:calc(var(--u)*30);height:calc(var(--u)*30);border-radius:50%;overflow:hidden;flex:none;background:#d6c2c2}
+  .tv-avatar img{width:100%;height:100%;object-fit:cover}
+  .tv-id{display:flex;flex-direction:column;gap:calc(var(--u)*1.5);flex:none}
+  .tv-id b{font-weight:600;font-size:calc(var(--u)*6.2);color:#0a193f;white-space:nowrap}
+  .tv-id span{font-size:calc(var(--u)*5.4);color:#758bb7;white-space:nowrap}
+  .tv-active{display:flex;align-items:center;gap:calc(var(--u)*3);padding:calc(var(--u)*2.6) calc(var(--u)*5.6);border-radius:999px;background:#eaf9f5;flex:none}
+  .tv-active i{width:calc(var(--u)*3.6);height:calc(var(--u)*3.6);border-radius:50%;background:#19c08c;display:block}
+  .tv-active span{font-size:calc(var(--u)*4.4);color:#159c87;font-weight:600;white-space:nowrap}
+  .tv-elapsed{display:flex;flex-direction:column;gap:calc(var(--u)*1);flex:1 0 0;padding-left:calc(var(--u)*10);min-width:0}
+  .tv-elapsed span{font-size:calc(var(--u)*4.9);color:#758bb7;white-space:nowrap}
+  .tv-elapsed b{font-size:calc(var(--u)*7.2);font-weight:700;color:#0a193f;white-space:nowrap}
+  .tv-dots{width:calc(var(--u)*3);height:calc(var(--u)*3);border-radius:50%;background:#9aa5bd;flex:none;box-shadow:0 calc(var(--u)*5) 0 #9aa5bd,0 calc(var(--u)*-5) 0 #9aa5bd}
+
+  .tv-views{display:flex;gap:calc(var(--u)*5.6);height:calc(var(--u)*150);background:#eff5fa;border-radius:calc(var(--u)*6.1);padding:calc(var(--u)*4.1);flex:none}
+  .tv-cam{position:relative;width:calc(var(--u)*194);height:calc(var(--u)*142);border-radius:calc(var(--u)*4.1);overflow:hidden;flex:none;background:#000}
+  .tv-cam img{width:100%;height:100%;object-fit:cover}
+  .tv-live{position:absolute;left:calc(var(--u)*6);top:calc(var(--u)*7);display:flex;align-items:center;gap:calc(var(--u)*3);background:#fff;border-radius:999px;padding:calc(var(--u)*3) calc(var(--u)*5)}
+  .tv-live i{width:calc(var(--u)*4);height:calc(var(--u)*4);border-radius:50%;background:#ff514a;display:block;animation:tv-blink 1.2s ease-in-out infinite}
+  .tv-live span{font-size:calc(var(--u)*5.6);font-weight:600;color:#ff514a}
+  .tv-facedet{position:absolute;left:calc(var(--u)*5);bottom:calc(var(--u)*4);display:flex;align-items:center;gap:calc(var(--u)*2.5);background:rgba(12,19,31,.73);border-radius:calc(var(--u)*3);padding:calc(var(--u)*2) calc(var(--u)*3.6)}
+  .tv-facedet i{width:calc(var(--u)*3.6);height:calc(var(--u)*3.6);border-radius:50%;background:#2fd6a0;display:block}
+  .tv-facedet span{font-size:calc(var(--u)*4.1);color:#fff;font-weight:500;white-space:nowrap}
+
+  .tv-thumbs{display:flex;flex-direction:column;gap:calc(var(--u)*5.1);width:calc(var(--u)*84);flex:none}
+  .tv-thumb{position:relative;width:100%;height:calc(var(--u)*43);border-radius:calc(var(--u)*3.6);overflow:hidden;background:#000}
+  .tv-thumb img{width:100%;height:100%;object-fit:cover;opacity:.9}
+  .tv-thumb span{position:absolute;left:calc(var(--u)*5);bottom:calc(var(--u)*3.6);display:flex;align-items:center;gap:calc(var(--u)*2.5);background:rgba(12,19,31,.73);border-radius:calc(var(--u)*3);padding:calc(var(--u)*2) calc(var(--u)*3.6);font-size:calc(var(--u)*4.1);color:#fff;font-weight:500;white-space:nowrap}
+
+  .tv-metrics{display:flex;gap:calc(var(--u)*7.2);flex:1 0 0;min-height:0}
+  .tv-metric{flex:1 0 0;min-width:0;background:#f6f9fd;border-radius:calc(var(--u)*7.7);padding:calc(var(--u)*7.2);display:flex;flex-direction:column;gap:calc(var(--u)*3.6);justify-content:center}
+  .tv-metric.on{background:#f0f9fb}
+  .tv-mtile{width:calc(var(--u)*20.5);height:calc(var(--u)*20.5);border-radius:calc(var(--u)*5.1);display:flex;align-items:center;justify-content:center;flex:none}
+  .tv-mtile svg{width:calc(var(--u)*10.2);height:calc(var(--u)*10.2)}
+  .tv-metric b{font-size:calc(var(--u)*5.6);font-weight:500;color:#0a193f;white-space:nowrap}
+  .tv-metric span{font-size:calc(var(--u)*5.6);color:#627a9e;white-space:nowrap}
+  .tv-metric span.ok{color:#075563}
+
+  .tv-alerts{--d:.55s;--f:6.6s;left:calc(var(--u)*356);top:calc(var(--u)*149);width:calc(var(--u)*137);height:calc(var(--u)*118);background:rgba(255,255,255,.96);border:calc(var(--u)*.5) solid #e5f1ff;border-radius:calc(var(--u)*8.3);box-shadow:0 calc(var(--u)*3.3) calc(var(--u)*11) rgba(92,160,215,.12);padding:calc(var(--u)*7.5) calc(var(--u)*9) calc(var(--u)*6.7);display:flex;flex-direction:column;gap:calc(var(--u)*5)}
+  .tv-ahead{display:flex;align-items:center;gap:calc(var(--u)*8);flex:none}
+  .tv-aicon{width:calc(var(--u)*11.3);height:calc(var(--u)*11.3);border-radius:50%;background:linear-gradient(135deg,#ff8c75,#ff5449);display:flex;align-items:center;justify-content:center;flex:none;color:#fff}
+  .tv-aicon svg{width:calc(var(--u)*6.7);height:calc(var(--u)*6.7)}
+  .tv-ahead b{flex:1 0 0;font-size:calc(var(--u)*5.8);font-weight:600;color:#0a193f;min-width:0}
+  .tv-ahead svg{width:calc(var(--u)*5.8);height:calc(var(--u)*5.8);color:#9aa5bd;flex:none}
+  .tv-arow{display:flex;align-items:center;gap:calc(var(--u)*7);padding-top:calc(var(--u)*6);border-top:calc(var(--u)*.4) solid #eef3f9}
+  .tv-athumb{width:calc(var(--u)*19);height:calc(var(--u)*19);border-radius:calc(var(--u)*3.3);overflow:hidden;flex:none}
+  .tv-athumb img{width:100%;height:100%;object-fit:cover}
+  .tv-adet{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:calc(var(--u)*1.5)}
+  .tv-adet b{font-weight:400;font-size:calc(var(--u)*4.6);color:#0a193f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  .tv-adet span{font-size:calc(var(--u)*4.2);color:#758bb7;white-space:nowrap}
+  .tv-asev{flex:none;font-size:calc(var(--u)*4.4);font-weight:600;padding:calc(var(--u)*1.7) calc(var(--u)*5);border-radius:999px;white-space:nowrap}
+  .tv-asev.high{background:#fff1f1;color:#ff514a}
+  .tv-asev.med{background:#fff4e8;color:#f17a13}
+
+  .tv-insights{--d:.7s;--f:7s;left:calc(var(--u)*359);top:calc(var(--u)*273);width:calc(var(--u)*137);height:calc(var(--u)*151);background:rgba(255,255,255,.96);border:calc(var(--u)*.5) solid #e5f1ff;border-radius:calc(var(--u)*8.3);box-shadow:0 calc(var(--u)*3.3) calc(var(--u)*11) rgba(92,160,215,.12);padding:calc(var(--u)*6.7) calc(var(--u)*9.2) calc(var(--u)*6.3);display:flex;flex-direction:column;gap:calc(var(--u)*7.5)}
+  .tv-ihead{display:flex;align-items:center;gap:calc(var(--u)*6.7);flex:none}
+  .tv-iicon{width:calc(var(--u)*13.3);height:calc(var(--u)*13.3);border-radius:calc(var(--u)*3.3);background:linear-gradient(135deg,#d3e0ff,#eae9ff);display:flex;align-items:center;justify-content:center;flex:none;color:#4a5fd9}
+  .tv-iicon svg{width:calc(var(--u)*6.7);height:calc(var(--u)*6.7)}
+  .tv-ihead b{flex:1 0 0;font-size:calc(var(--u)*5.6);font-weight:600;color:#0a193f;min-width:0}
+  .tv-ihead svg{width:calc(var(--u)*5.8);height:calc(var(--u)*5.8);color:#9aa5bd;flex:none}
+  .tv-acc{display:flex;align-items:center;gap:calc(var(--u)*8.3);flex:none}
+  .tv-ring{width:calc(var(--u)*28.3);height:calc(var(--u)*28.3);flex:none;position:relative}
+  .tv-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+  .tv-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*5.4);font-weight:600;color:#095568}
+  .tv-ring-prog{stroke-dasharray:97.4;stroke-dashoffset:97.4;animation:tv-ringfill 1.4s cubic-bezier(.3,.7,.2,1) 1.3s both}
+  .tv-accd{display:flex;flex-direction:column;gap:calc(var(--u)*2.5);min-width:0}
+  .tv-accd b{font-size:calc(var(--u)*5);font-weight:500;color:#0a193f;white-space:nowrap}
+  .tv-accd span{font-size:calc(var(--u)*4.4);color:#758bb7;white-space:nowrap}
+  .tv-engine{display:flex;align-items:center;gap:calc(var(--u)*5.4);padding-top:calc(var(--u)*4.5);border-top:calc(var(--u)*.4) solid #ecf2fa}
+  .tv-eicon{width:calc(var(--u)*13.3);height:calc(var(--u)*13.3);border-radius:calc(var(--u)*3.3);background:linear-gradient(135deg,#eae9ff,#f5f4ff);display:flex;align-items:center;justify-content:center;flex:none;color:#5b4fd6}
+  .tv-eicon svg{width:calc(var(--u)*6.7);height:calc(var(--u)*6.7)}
+  .tv-engine .lbl{flex:1 0 0;font-size:calc(var(--u)*4.2);color:#0a193f;min-width:0}
+  .tv-estat{display:flex;align-items:center;gap:calc(var(--u)*2.5);flex:none}
+  .tv-estat span{font-size:calc(var(--u)*4.2);color:#159c87;font-weight:500;white-space:nowrap}
+  .tv-estat i{width:calc(var(--u)*3);height:calc(var(--u)*3);border-radius:50%;background:#19c08c;display:block;animation:tv-pulse 1.8s ease-in-out infinite}
+
+  .tv-badge{background:#fff;border-radius:calc(var(--u)*8);padding:calc(var(--u)*7.5) calc(var(--u)*8) calc(var(--u)*7);display:flex;flex-direction:column;gap:calc(var(--u)*3.5);box-shadow:0 calc(var(--u)*3) calc(var(--u)*5) rgba(0,0,0,.14)}
+  .tv-badge b{font-size:calc(var(--u)*6);font-weight:700;color:#0a193f;white-space:nowrap}
+  .tv-bicon{width:calc(var(--u)*18);height:calc(var(--u)*18);border-radius:calc(var(--u)*4.5);display:flex;align-items:center;justify-content:center;flex:none}
+  .tv-bicon svg{width:calc(var(--u)*9);height:calc(var(--u)*9)}
+  .tv-b1{--d:.9s;--f:5.6s;left:calc(var(--u)*54);top:calc(var(--u)*109);width:calc(var(--u)*83)}
+  .tv-b1 .tv-bicon{background:linear-gradient(135deg,#cdd9ff,#eef1ff);color:#2d5bd9}
+  .tv-b2{--d:1.05s;--f:6.2s;left:calc(var(--u)*20);top:calc(var(--u)*419);width:calc(var(--u)*96)}
+  .tv-b2 .tv-bicon{background:linear-gradient(135deg,#e1d9ff,#f3efff);color:#6d49d9}
+  .tv-b3{--d:1.2s;--f:5.9s;left:calc(var(--u)*306);top:calc(var(--u)*418);width:calc(var(--u)*96)}
+  .tv-b3 .tv-bicon{background:linear-gradient(135deg,#c9f1ec,#eafbf8);color:#0f9e85}
+
+  @keyframes tv-rise{from{opacity:0;transform:translateY(calc(var(--u)*18)) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes tv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(var(--u)*-5))}}
+  @keyframes tv-blink{0%,100%{opacity:1}50%{opacity:.3}}
+  @keyframes tv-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:.6}}
+  @keyframes tv-ringfill{from{stroke-dashoffset:97.4}to{stroke-dashoffset:1.95}}
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -138,8 +247,94 @@
     </div>
   </div>
   <div style="position:relative">
-    <div style="position:absolute;inset:-9% -6%;border-radius:44px;background:linear-gradient(135deg,{{ accent }}2e,{{ tint }} 70%)"></div>
-    <img data-src="{{ heroImg }}" alt="{{ name }}" style="position:relative;z-index:2;width:100%;height:auto;display:block;border-radius:20px;animation:floaty 7s ease-in-out infinite">
+    <div data-m="hero-vis" role="img" aria-label="{{ name }} proctoring dashboard" style="position:relative;z-index:2;width:min(620px, 44vw);max-width:calc(100% + 16px + max(0px, (100vw - 1240px) / 2));aspect-ratio:520/495;display:flex;align-items:center">
+<div class="tv" aria-hidden="true"><div class="tv-s">
+
+  <div class="tv-mock">
+    <div class="tv-win">
+      <div class="tv-tint"></div>
+      <div class="tv-logo"><b>arivoo</b><div class="tv-logo-rule"><i></i><span>Test Guard</span></div></div>
+    </div>
+  </div>
+
+  <div class="tv-card tv-cand">
+    <div class="tv-chead">
+      <div class="tv-avatar"><img src="assets/sms-viz/student.png" alt=""></div>
+      <div class="tv-id"><b>Priya Sharma</b><span>Candidate ID: PX0347</span></div>
+      <div class="tv-active"><i></i><span>Active</span></div>
+      <div class="tv-elapsed"><span>Time Elapsed</span><b>32:14</b></div>
+      <div class="tv-dots"></div>
+    </div>
+    <div class="tv-views">
+      <div class="tv-cam">
+        <img src="assets/sms-viz/student.png" alt="">
+        <div class="tv-live"><i></i><span>LIVE</span></div>
+        <div class="tv-facedet"><i></i><span>Face detected</span></div>
+      </div>
+      <div class="tv-thumbs">
+        <div class="tv-thumb"><img src="assets/sms-viz/student.png" alt=""><span>Desk View</span></div>
+        <div class="tv-thumb"><img src="assets/sms-viz/student.png" alt=""><span>Secondary Camera</span></div>
+        <div class="tv-thumb"><img src="assets/sms-viz/student.png" alt=""><span>Screen Activity</span></div>
+      </div>
+    </div>
+    <div class="tv-metrics">
+      <div class="tv-metric on"><span class="tv-mtile" style="background:linear-gradient(135deg,#d5f0f3,#eefaf9);color:#0f8a92"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h2"></path><path d="M16 4h2a2 2 0 0 1 2 2v2"></path><path d="M20 16v2a2 2 0 0 1-2 2h-2"></path><path d="M8 20H6a2 2 0 0 1-2-2v-2"></path><path d="M9 15a3 3 0 0 0 6 0"></path><circle cx="9" cy="10" r=".6" fill="currentColor"></circle><circle cx="15" cy="10" r=".6" fill="currentColor"></circle></svg></span>
+        <b>Face</b><span class="ok">Verified</span>
+      </div>
+      <div class="tv-metric"><span class="tv-mtile" style="background:linear-gradient(135deg,#dceaff,#eef4ff);color:#2d5bd9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></span>
+        <b>Tab Switches</b><span>0 Detected</span>
+      </div>
+      <div class="tv-metric"><span class="tv-mtile" style="background:linear-gradient(135deg,#e0f1f1,#f0faf9);color:#1b8a86"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+        <b>Multiple Faces</b><span>Not Detected</span>
+      </div>
+      <div class="tv-metric"><span class="tv-mtile" style="background:linear-gradient(135deg,#e0f1f1,#f0faf9);color:#1b8a86"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h8M8 9h2"></path></svg></span>
+        <b>Cheating Attempts</b><span>0 Detected</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tv-card tv-alerts">
+    <div class="tv-ahead">
+      <span class="tv-aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><path d="M12 9v4M12 17h.01"></path></svg></span>
+      <b>Recent Alerts</b>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+    </div>
+    <div class="tv-arow"><div class="tv-athumb"><img src="assets/sms-viz/student.png" alt=""></div><div class="tv-adet"><b>Multiple faces detected</b><span>10:24 AM · Priya Sharma</span></div><span class="tv-asev high">High</span></div>
+    <div class="tv-arow"><div class="tv-athumb"><img src="assets/sms-viz/student.png" alt=""></div><div class="tv-adet"><b>Tab switch detected</b><span>10:17 AM · Rohit Mehta</span></div><span class="tv-asev med">Medium</span></div>
+    <div class="tv-arow"><div class="tv-athumb"><img src="assets/sms-viz/student.png" alt=""></div><div class="tv-adet"><b>Looking away from screen</b><span>10:12 AM · Sneha Kapoor</span></div><span class="tv-asev med">Medium</span></div>
+  </div>
+
+  <div class="tv-card tv-insights">
+    <div class="tv-ihead">
+      <span class="tv-iicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.5 9.6l-4.7 1.7L12 16.2l-1.8-4.9L5.5 9.6l4.7-1.7L12 3z"></path><path d="M19 14l.9 2.4L22 17.2l-2.1.8L19 20l-.9-2.4L16 16.8l2.1-.8L19 14z"></path></svg></span>
+      <b>Auto Proctoring Insights</b>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+    </div>
+    <div class="tv-acc">
+      <div class="tv-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#e7eef9" stroke-width="3"></circle><circle class="tv-ring-prog" cx="18" cy="18" r="15.5" fill="none" stroke="#1f9d6b" stroke-width="3" stroke-linecap="round"></circle></svg><b>98%</b></div>
+      <div class="tv-accd"><b>Monitoring Accuracy</b><span>Based on AI analysis</span></div>
+    </div>
+    <div class="tv-engine"><span class="tv-eicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h2"></path><path d="M16 4h2a2 2 0 0 1 2 2v2"></path><path d="M20 16v2a2 2 0 0 1-2 2h-2"></path><path d="M8 20H6a2 2 0 0 1-2-2v-2"></path><path d="M9 15a3 3 0 0 0 6 0"></path><circle cx="9" cy="10" r=".6" fill="currentColor"></circle><circle cx="15" cy="10" r=".6" fill="currentColor"></circle></svg></span><span class="lbl">Face recognition</span><div class="tv-estat"><span>Active</span><i></i></div></div>
+    <div class="tv-engine"><span class="tv-eicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="6.5" width="11" height="11" rx="1.2" transform="rotate(45 12 12)"></rect></svg></span><span class="lbl">Behaviour analysis</span><div class="tv-estat"><span>Active</span><i></i></div></div>
+    <div class="tv-engine"><span class="tv-eicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path><path d="M7.5 10l2.2 2.2L16 8.5"></path></svg></span><span class="lbl">Screen &amp; tab activity</span><div class="tv-estat"><span>Active</span><i></i></div></div>
+    <div class="tv-engine"><span class="tv-eicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3H9z"></path><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 13.5l2 2 4-4.5"></path></svg></span><span class="lbl">Cheating detection</span><div class="tv-estat"><span>Active</span><i></i></div></div>
+  </div>
+
+  <div class="tv-card tv-badge tv-b1">
+    <span class="tv-bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg></span>
+    <b>Live Proctoring</b>
+  </div>
+  <div class="tv-card tv-badge tv-b2">
+    <span class="tv-bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></span>
+    <b>Remote Accessibility</b>
+  </div>
+  <div class="tv-card tv-badge tv-b3">
+    <span class="tv-bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.5 9.6l-4.7 1.7L12 16.2l-1.8-4.9L5.5 9.6l4.7-1.7L12 3z"></path><path d="M19 14l.9 2.4L22 17.2l-2.1.8L19 20l-.9-2.4L16 16.8l2.1-.8L19 14z"></path></svg></span>
+    <b>Auto Proctoring</b>
+  </div>
+
+</div></div>
+    </div>
   </div>
 </header>
 
