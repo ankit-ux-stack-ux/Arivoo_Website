@@ -447,7 +447,7 @@
     </div>
     <div class="kmc-grid">
       <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
-        <a class="kmc" href="Arivoo%20Book%20a%20Demo.dc.html" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+        <div class="kmc" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
           <span class="kmc-eye">{{ k.tag }}</span>
           <div class="kmc-head">
             <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
@@ -457,8 +457,7 @@
           <div class="kmc-mods">
             <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
           </div>
-          <span class="kmc-go"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><rect x="1" y="8" width="2.2" height="2.2" opacity=".45"></rect><rect x="5" y="2.5" width="2.6" height="2.6"></rect><rect x="8" y="5.2" width="2.6" height="2.6"></rect><rect x="11" y="7.7" width="2.6" height="2.6"></rect><rect x="8" y="10.2" width="2.6" height="2.6"></rect><rect x="5" y="12.9" width="2.6" height="2.6"></rect></svg><b>More</b></span>
-        </a>
+        </div>
       </sc-for>
     </div>
   </div>
