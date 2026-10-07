@@ -176,6 +176,14 @@
   @keyframes uv-show{from{opacity:0}to{opacity:1}}
   /* scroll-driven carousel: section pins while scrolling steps through slides */
   .lfc-pin.on>.lfc-stick{position:sticky;display:flex;flex-direction:column;justify-content:center;padding-top:24px}
+  /* life-cycle wheel: heading + wheel pinned together so both stay in view */
+  .lc-stick{position:sticky;top:0;min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:96px;padding:88px 84px 24px 40px;border-radius:32px;box-sizing:border-box}
+  .lc-wheel{width:min(560px,calc(100vh - 130px),48vw)}
+  @media (max-width:1000px){
+    .lc-stick{grid-template-columns:minmax(0,1fr);justify-items:center;gap:18px;padding:84px 16px 16px;text-align:center}
+    .lc-copy p{margin-inline:auto}
+    .lc-wheel{width:min(560px,92vw,calc(100vh - 330px));min-width:280px}
+  }
 </style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" data-bg-color="#fbfaf7">
@@ -377,16 +385,15 @@
 </section>
 
 <!-- STUDENT LIFE CYCLE (interactive wheel) -->
-<section id="features" data-life-root style="max-width:1120px;margin:110px auto 0;padding:0 32px">
-  <div style="text-align:center">
-    <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
-    <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:760px;margin-inline:auto">{{ moduleHeading }}</h2>
-    <p style="font-size:17px;color:#5b5f6b;margin-top:14px;max-width:560px;margin-inline:auto;text-wrap:pretty">{{ lifeSub }}</p>
-  </div>
-
-  <div data-life-track style="position:relative;height:320vh;margin-top:34px">
-    <div style="position:sticky;top:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px 0;{{ sectionBg }};border-radius:32px">
-    <div style="position:relative;width:min(560px,90vw);aspect-ratio:1">
+<section id="features" data-life-root style="max-width:1240px;margin:110px auto 0;padding:0 32px">
+  <div data-life-track style="position:relative;height:320vh">
+    <div class="lc-stick" style="{{ sectionBg }}">
+    <div class="lc-copy">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
+      <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance">{{ moduleHeading }}</h2>
+      <p style="font-size:17px;color:#5b5f6b;margin-top:14px;max-width:440px;text-wrap:pretty">{{ lifeSub }}</p>
+    </div>
+    <div class="lc-wheel" style="position:relative;aspect-ratio:1">
     <svg viewBox="0 0 600 600" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
       <circle cx="300" cy="300" r="252" fill="none" stroke="{{ tint }}" stroke-width="2"></circle>
       <circle data-life-arc cx="300" cy="300" r="252" fill="none" stroke="#14151a" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="{{ arcDash }}" stroke-dashoffset="{{ arcDash }}" transform="rotate(-90 300 300)" style="transition:stroke-dashoffset .18s linear"></circle>
