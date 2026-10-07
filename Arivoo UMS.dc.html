@@ -427,15 +427,6 @@
     </div>
   </div>
 
-  <div style="margin-top:44px;background:{{ tint }};border-radius:24px;padding:34px 40px;text-align:center">
-    <div style="font-size:13px;font-weight:700;color:{{ accent }};letter-spacing:.08em;text-transform:uppercase">{{ opsLabel }}</div>
-    <p style="font-size:15px;color:#5b5f6b;margin-top:8px">{{ opsSub }}</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px">
-      <sc-for list="{{ opsModules }}" as="m" hint-placeholder-count="6">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:11px;padding:10px 16px;font-size:14px;font-weight:600;color:#2b2e37;box-shadow:0 4px 12px rgba(20,21,26,.05)"><span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};flex:none"></span>{{ m }}</span>
-      </sc-for>
-    </div>
-  </div>
 </section>
 
 <!-- MODULES (grouped cards) -->
@@ -458,6 +449,19 @@
             <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span class="kmc-chip">{{ m }}</span></sc-for>
           </div>
         </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ALWAYS ON (operations modules) -->
+<section style="max-width:1240px;margin:56px auto 0;padding:0 32px">
+  <div style="background:{{ tint }};border-radius:24px;padding:34px 40px;text-align:center">
+    <div style="font-size:13px;font-weight:700;color:{{ accent }};letter-spacing:.08em;text-transform:uppercase">{{ opsLabel }}</div>
+    <p style="font-size:15px;color:#5b5f6b;margin-top:8px">{{ opsSub }}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px">
+      <sc-for list="{{ opsModules }}" as="m" hint-placeholder-count="6">
+        <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:11px;padding:10px 16px;font-size:14px;font-weight:600;color:#2b2e37;box-shadow:0 4px 12px rgba(20,21,26,.05)"><span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};flex:none"></span>{{ m }}</span>
       </sc-for>
     </div>
   </div>
