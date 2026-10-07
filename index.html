@@ -1513,31 +1513,27 @@ class Component extends DCLogic {
           });
         };
         window.addEventListener('scroll', this._onProd, { passive:true });
-        // one product per swipe: wheel/trackpad gestures inside the pinned stage step exactly one product,
-        // so fast flicks can't skip any (momentum from the same gesture is swallowed)
-        let lastWheel=0, consumed=false, lockUntil=0;
+        // one product per step: while pinned, a wheel/trackpad scroll moves exactly one product and the
+        // page holds for a short beat (so fast flicks can't skip products). Never blocks at the ends, and
+        // the hold always expires, so continuous trackpad streams can't lock the page.
+        let lockUntil=0;
         this._onProdWheel=(e)=>{
-          if(window.innerWidth<=900 || e.ctrlKey) return;
+          if(window.innerWidth<=900 || e.ctrlKey || Math.abs(e.deltaX)>Math.abs(e.deltaY)) return;
           const track=document.querySelector('[data-prod-track]'); if(!track) return;
           const N=steps.length, vh=window.innerHeight, total=track.offsetHeight-vh; if(total<=0) return;
           const top=track.getBoundingClientRect().top+window.scrollY, y=window.scrollY, stepH=total/N;
-          const now=performance.now(), gap=now-lastWheel; lastWheel=now;
-          if(gap>220) consumed=false;
           const dir=e.deltaY>0?1:(e.deltaY<0?-1:0); if(!dir) return;
-          const inside = y>=top-2 && y<=top+total+2;
-          const target=(i)=>top+(i+0.35)*stepH;
-          const go=(i)=>{ e.preventDefault(); consumed=true; lockUntil=now+520; window.scrollTo({top:target(i),behavior:'smooth'}); };
-          // entering the stage fast from above / below: land on the first / last product
-          if(!inside){
-            if(dir>0 && y<top && y+Math.abs(e.deltaY)*1.2>=top-vh*0.15) return go(0);
-            if(dir<0 && y>top+total && y-Math.abs(e.deltaY)*1.2<=top+total+vh*0.15) return go(N-1);
-            return;
-          }
+          const now=performance.now();
+          if(y<top-2 || y>top+total+2) return;                       // outside the stage: normal scrolling
           const cur=Math.max(0,Math.min(N-1,Math.floor((y-top)/stepH)));
-          const next=cur+dir;
-          if(next<0 || next>N-1){ if(now<lockUntil || consumed){ e.preventDefault(); } return; }  // leave the stage on a fresh gesture
-          if(now<lockUntil || consumed){ e.preventDefault(); return; }
-          go(next);
+          const settle=top+(cur+0.35)*stepH;
+          // just arrived in this product's slot (e.g. entering the section): settle on it first
+          const next = (dir>0 && y<settle-4) || (dir<0 && y>settle+4) ? cur : cur+dir;
+          if(next<0 || next>N-1){ if(now<lockUntil) e.preventDefault(); return; }  // first/last product: brief hold, then the page scrolls on
+          e.preventDefault();
+          if(now<lockUntil) return;                                   // short hold after each step
+          lockUntil=now+700;
+          window.scrollTo({top:top+(next+0.35)*stepH, behavior:'smooth'});
         };
         window.addEventListener('wheel', this._onProdWheel, { passive:false });
         window.addEventListener('resize', this._onProd);
