@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/kmc.css">
 </head>
 <body>
 <x-dc>
@@ -437,6 +438,30 @@
   </div>
 </section>
 
+<!-- MODULES (grouped cards) -->
+<section id="modules" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
+  <div style="text-align:center">
+    <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">All modules</div>
+    <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:720px;margin-inline:auto">Every module, grouped by what it does.</h2>
+  </div>
+  <div class="kmc-grid">
+    <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
+      <a class="kmc" href="Arivoo%20Book%20a%20Demo.dc.html" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+        <span class="kmc-eye">{{ k.tag }}</span>
+        <div class="kmc-head">
+          <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
+          <h3>{{ k.title }}</h3>
+        </div>
+        <p class="kmc-desc">{{ k.desc }}</p>
+        <div class="kmc-mods">
+          <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
+        </div>
+        <span class="kmc-go"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><rect x="1" y="8" width="2.2" height="2.2" opacity=".45"></rect><rect x="5" y="2.5" width="2.6" height="2.6"></rect><rect x="8" y="5.2" width="2.6" height="2.6"></rect><rect x="11" y="7.7" width="2.6" height="2.6"></rect><rect x="8" y="10.2" width="2.6" height="2.6"></rect><rect x="5" y="12.9" width="2.6" height="2.6"></rect></svg><b>More</b></span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="demo" style="max-width:1240px;margin:110px auto 0;padding:0 32px">
   <div style="background:#f0efe9;border-radius:30px;padding:72px 56px;text-align:center;color:#14151a;position:relative;overflow:hidden">
@@ -781,7 +806,10 @@ class Component extends DCLogic {
       is0:i===0, is1:i===1, is2:i===2, is3:i===3, is4:i===4, is5:i===5,
     }));
 
+    const KMT = [['#fdd9e2','#e5537a'],['#c8f3e7','#12876a'],['#fdeaa8','#c77d06'],['#e7e3fd','#5b4fd6'],['#dcecfd','#1f6fd1']];
+    const kmCards = [{"tag": "Admissions", "title": "Admissions & finance", "desc": "Take applicants from registration to enrolment and keep fees and accounts reconciled.", "iconA": "M3 7a2 2 0 0 1 2-2h14v14H5a2 2 0 0 1-2-2z", "iconB": "M3 9h18M16 14h.01", "mods": ["Admission & Registration", "Fee Management", "Financial Accounting"]}, {"tag": "Academics", "title": "Academics & examinations", "desc": "Plan the academic calendar, run pre- and post-exam workflows and handle scrutiny requests.", "iconA": "M9 3h6v3H9zM8 4.5H6a1 1 0 0 0-1 1V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5.5a1 1 0 0 0-1-1h-2", "iconB": "M9 14l2 2 4-4", "mods": ["Academic Management", "Examination (Pre & Post)", "Scrutiny"]}, {"tag": "Graduation", "title": "Certificates & alumni", "desc": "Issue certificates, run convocation and stay connected with graduates through the alumni portal.", "iconA": "M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z", "iconB": "M8.2 13.9 7 22l5-3 5 3-1.2-8.1", "mods": ["Certificate Management", "Convocation", "Alumni Portal"]}, {"tag": "Campus", "title": "Campus services", "desc": "Manage the library, hostels and placement drives from the same student record.", "iconA": "M4 21V6l8-3 8 3v15", "iconB": "M9 21v-5h6v5M9 9h.01M15 9h.01M9 12.5h.01M15 12.5h.01", "mods": ["Library Management", "Hostel Management", "Placement Cell"]}, {"tag": "People", "title": "Staff & self-service", "desc": "Handle HR and payroll, and give students and employees one portal for everything they need.", "iconA": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8", "iconB": "M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", "mods": ["HRMS & Payroll", "Student & Employee Portal"]}].map((c,i)=>Object.assign({}, c, { bg:KMT[i%5][0], ink:KMT[i%5][1] }));
     return Object.assign({}, LP, {
+      kmCards,
       navProducts: navProductsL,
       whyCards,
       ...fcVals,

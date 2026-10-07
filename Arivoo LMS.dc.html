@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/kmc.css">
 </head>
 <body>
 <x-dc>
@@ -519,18 +520,25 @@
 
 <!-- MODULES -->
 <section id="features" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
-  <div style="background:{{ tint }};border-radius:28px;padding:56px 48px">
-    <div style="text-align:center">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
-      <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:720px;margin-inline:auto">{{ moduleHeading }}</h2>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:36px">
-      <sc-for list="{{ modules }}" as="m" hint-placeholder-count="14">
-        <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:12px;padding:12px 18px;font-size:14.5px;font-weight:600;color:#2b2e37;box-shadow:0 4px 14px rgba(20,21,26,.05)">
-          <span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};flex:none"></span>{{ m }}
+  <div style="text-align:center">
+    <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
+    <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:720px;margin-inline:auto">{{ moduleHeading }}</h2>
+  </div>
+  <div class="kmc-grid">
+    <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
+      <a class="kmc" href="Arivoo%20Book%20a%20Demo.dc.html" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+        <span class="kmc-eye">{{ k.tag }}</span>
+        <div class="kmc-head">
+          <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
+          <h3>{{ k.title }}</h3>
         </div>
-      </sc-for>
-    </div>
+        <p class="kmc-desc">{{ k.desc }}</p>
+        <div class="kmc-mods">
+          <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
+        </div>
+        <span class="kmc-go"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><rect x="1" y="8" width="2.2" height="2.2" opacity=".45"></rect><rect x="5" y="2.5" width="2.6" height="2.6"></rect><rect x="8" y="5.2" width="2.6" height="2.6"></rect><rect x="11" y="7.7" width="2.6" height="2.6"></rect><rect x="8" y="10.2" width="2.6" height="2.6"></rect><rect x="5" y="12.9" width="2.6" height="2.6"></rect></svg><b>More</b></span>
+      </a>
+    </sc-for>
   </div>
 </section>
 
@@ -765,7 +773,10 @@ class Component extends DCLogic {
       fcPrev:()=>this.fcGo(fa-1), fcNext:()=>this.fcGo(fa+1),
     };
 
+    const KMT = [['#fdd9e2','#e5537a'],['#c8f3e7','#12876a'],['#fdeaa8','#c77d06'],['#e7e3fd','#5b4fd6'],['#dcecfd','#1f6fd1']];
+    const kmCards = [{"tag": "Setup", "title": "Accounts & programmes", "desc": "Onboard every learner and teacher with the right roles, and structure your programmes from day one.", "iconA": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8", "iconB": "M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", "mods": ["Accounts", "Roles & Permissions", "Programmes"]}, {"tag": "Content", "title": "Courses & content", "desc": "Build courses, publish material and keep recorded classes and library resources in one place.", "iconA": "M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z", "iconB": "M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z", "mods": ["Course & Content", "Class Recordings", "Library"]}, {"tag": "Classroom", "title": "Live teaching & schedules", "desc": "Run live classes and keep routines and events organised for every batch.", "iconA": "M15 10l5-3v10l-5-3", "iconB": "M3 6h12v12H3z", "mods": ["Live Classes", "Routines & Events"]}, {"tag": "Assessment", "title": "Exams & assignments", "desc": "Set exams, quizzes and assignments, then grade them without the spreadsheets.", "iconA": "M9 3h6v3H9zM8 4.5H6a1 1 0 0 0-1 1V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5.5a1 1 0 0 0-1-1h-2", "iconB": "M9 14l2 2 4-4", "mods": ["Examination", "Assignments & Quizzes"]}, {"tag": "Insights", "title": "Progress & analytics", "desc": "Track every learner's progress and turn activity into reports leaders can act on.", "iconA": "M3 20h18", "iconB": "M6 20V11M11 20V5M16 20v-8", "mods": ["Progress Tracking", "Analytics & Reporting"]}].map((c,i)=>Object.assign({}, c, { bg:KMT[i%5][0], ink:KMT[i%5][1] }));
     return Object.assign({}, LP, {
+      kmCards,
       navProducts: navProductsL,
       whyCards,
       ...fcVals,

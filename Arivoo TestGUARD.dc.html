@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/kmc.css">
 </head>
 <body>
 <x-dc>
@@ -395,18 +396,25 @@
 
 <!-- MODULES -->
 <section id="features" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
-  <div style="background:{{ tint }};border-radius:28px;padding:56px 48px">
-    <div style="text-align:center">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
-      <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:720px;margin-inline:auto">{{ moduleHeading }}</h2>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:36px">
-      <sc-for list="{{ modules }}" as="m" hint-placeholder-count="14">
-        <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:12px;padding:12px 18px;font-size:14.5px;font-weight:600;color:#2b2e37;box-shadow:0 4px 14px rgba(20,21,26,.05)">
-          <span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};flex:none"></span>{{ m }}
+  <div style="text-align:center">
+    <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
+    <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:720px;margin-inline:auto">{{ moduleHeading }}</h2>
+  </div>
+  <div class="kmc-grid">
+    <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
+      <a class="kmc" href="Arivoo%20Book%20a%20Demo.dc.html" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+        <span class="kmc-eye">{{ k.tag }}</span>
+        <div class="kmc-head">
+          <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
+          <h3>{{ k.title }}</h3>
         </div>
-      </sc-for>
-    </div>
+        <p class="kmc-desc">{{ k.desc }}</p>
+        <div class="kmc-mods">
+          <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
+        </div>
+        <span class="kmc-go"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><rect x="1" y="8" width="2.2" height="2.2" opacity=".45"></rect><rect x="5" y="2.5" width="2.6" height="2.6"></rect><rect x="8" y="5.2" width="2.6" height="2.6"></rect><rect x="11" y="7.7" width="2.6" height="2.6"></rect><rect x="8" y="10.2" width="2.6" height="2.6"></rect><rect x="5" y="12.9" width="2.6" height="2.6"></rect></svg><b>More</b></span>
+      </a>
+    </sc-for>
   </div>
 </section>
 
@@ -560,7 +568,10 @@ class Component extends DCLogic {
     const tones = [['#fdd9e2','#e5537a'],['#c8f3e7','#12876a'],['#fdeaa8','#c77d06'],['#e7e3fd','#5b4fd6'],['#dcecfd','#1f6fd1'],['#ffe2cf','#d9651f']];
     const toCards = (list)=>(list||[]).map((x,i)=>({ title:x.title, body:x.body, bg:tones[i%6][0], ink:tones[i%6][1], is0:i===0, is1:i===1, is2:i===2, is3:i===3, is4:i===4, is5:i===5 }));
     const roleCards = toCards(LP.roles||P.roles), whyCards = toCards(LP.why||P.why);
+    const KMT = [['#fdd9e2','#e5537a'],['#c8f3e7','#12876a'],['#fdeaa8','#c77d06'],['#e7e3fd','#5b4fd6'],['#dcecfd','#1f6fd1']];
+    const kmCards = [{"tag": "Proctoring", "title": "AI proctoring", "desc": "Track eye and head movement and listen for background audio to flag suspicious behaviour in real time.", "iconA": "M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z", "iconB": "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z", "mods": ["Eye Movement Tracking", "Head Movement Tracking", "Audio Recognition"]}, {"tag": "Identity", "title": "Identity & environment", "desc": "Verify every candidate's identity and scan the room before the exam starts.", "iconA": "M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2", "iconB": "M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01", "mods": ["Face Recognition", "Identity Verification", "Environmental Scanning"]}, {"tag": "Authoring", "title": "Questions & exam setup", "desc": "Build question banks with every question type and configure each exam down to the last rule.", "iconA": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z", "iconB": "M14 2v6h6M8 13h8M8 17h5", "mods": ["Question Bank", "Multiple Question Types", "Exam Configuration"]}, {"tag": "Evaluation", "title": "Grading & evaluation", "desc": "Auto-grade objective answers and evaluate subjective responses in one workflow.", "iconA": "M22 11.1V12a10 10 0 1 1-5.9-9.1", "iconB": "M22 4 12 14l-3-3", "mods": ["Grading System", "Subjective Evaluation"]}, {"tag": "Insights", "title": "Analytics & reporting", "desc": "See results, integrity flags and trends across every exam you run.", "iconA": "M3 20h18", "iconB": "M6 20V11M11 20V5M16 20v-8", "mods": ["Analytics & Reporting"]}].map((c,i)=>Object.assign({}, c, { bg:KMT[i%5][0], ink:KMT[i%5][1] }));
     return Object.assign({}, LP, {
+      kmCards,
       navProducts: navProductsL,
       roleCards, whyCards,
       ui, whyLabel, ctaSub, lang,

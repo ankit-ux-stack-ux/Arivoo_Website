@@ -1,0 +1,37 @@
+/* Key-module cards, shared by the product pages.
+   Bento rows of 2 then 3 cards; pastel icon tile per card (--bg / --ink set inline). */
+.kmc-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;margin-top:44px;text-align:left}
+.kmc{grid-column:span 2;position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;min-height:310px;padding:30px 30px 28px;background:#fff;border:1px solid #eceae4;border-radius:22px;color:#14151a;text-decoration:none;transition:border-color .25s,transform .25s,box-shadow .25s}
+.kmc:nth-child(5n+1),.kmc:nth-child(5n+2){grid-column:span 3}
+.kmc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:65%;z-index:-1;background:linear-gradient(to top,var(--bg),rgba(255,255,255,0));opacity:0;transition:opacity .3s}
+.kmc:hover,.kmc:focus-visible{border-color:#d9d6cc;transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,21,26,.08);outline:none}
+.kmc:hover::after,.kmc:focus-visible::after{opacity:.6}
+.kmc-eye{font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#5b5f6b}
+.kmc-head{display:flex;align-items:center;gap:16px;margin-top:20px}
+.kmc-ico{position:relative;flex:none;width:54px;height:54px;border-radius:12px;display:grid;place-items:center;background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ink) 30%,transparent)}
+.kmc-ico i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ink);opacity:.5}
+.kmc-ico i:nth-child(1){left:5px;top:5px}
+.kmc-ico i:nth-child(2){right:5px;top:5px}
+.kmc-ico i:nth-child(3){left:5px;bottom:5px}
+.kmc-ico i:nth-child(4){right:5px;bottom:5px}
+.kmc h3{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(20px,2vw,24px);font-weight:700;line-height:1.15;color:#14151a;text-wrap:balance}
+.kmc-desc{font-size:15.5px;color:#5b5f6b;line-height:1.6;margin-top:16px;max-width:600px;text-wrap:pretty}
+.kmc-mods{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:22px;padding-right:72px}
+.kmc-mods span{font-size:12.5px;font-weight:600;color:#2b2e37;background:#f6f5f1;border:1px solid #efede7;padding:6px 11px;border-radius:999px;white-space:nowrap}
+.kmc-go{position:absolute;right:24px;bottom:24px;display:flex;align-items:center;gap:0;height:48px;padding:0 13px;border-radius:12px;background:#fff;color:var(--ink);box-shadow:0 0 0 1px #e4e2dc,0 6px 16px rgba(20,21,26,.08);transition:gap .3s,padding .3s}
+.kmc-go svg{flex:none}
+.kmc-go b{max-width:0;overflow:hidden;white-space:nowrap;font-size:15px;font-weight:600;color:#14151a;transition:max-width .3s}
+.kmc:hover .kmc-go,.kmc:focus-visible .kmc-go{gap:8px;padding:0 16px}
+.kmc:hover .kmc-go b,.kmc:focus-visible .kmc-go b{max-width:60px}
+
+@media (max-width:900px){
+  .kmc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kmc,.kmc:nth-child(5n+1),.kmc:nth-child(5n+2){grid-column:span 1}
+  .kmc:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media (max-width:640px){
+  .kmc-grid{grid-template-columns:minmax(0,1fr);gap:14px;margin-top:32px}
+  .kmc{min-height:0;padding:24px 22px 22px}
+  .kmc-go{right:18px;bottom:18px;height:44px}
+}
+@media (prefers-reduced-motion:reduce){ .kmc,.kmc::after,.kmc-go,.kmc-go b{transition:none} }

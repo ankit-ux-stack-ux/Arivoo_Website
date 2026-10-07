@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/kmc.css">
 </head>
 <body>
 <x-dc>
@@ -451,28 +452,23 @@
     <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance;max-width:720px;margin-inline:auto">{{ moduleHeading }}</h2>
     <p style="font-size:17px;color:#5b5f6b;margin-top:14px;max-width:560px;margin-inline:auto;text-wrap:pretty">{{ hSub }}</p>
   </div>
-  <div style="max-width:1240px;margin:44px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px">
-    <sc-for list="{{ modCards }}" as="pnl" hint-placeholder-count="6">
-      <div style="background:#fff;border:1px solid #eceae4;border-radius:20px;padding:26px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s" style-hover="transform:translateY(-4px);border-color:#d9d6cc;box-shadow:0 14px 34px rgba(20,21,26,.07)">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-          <span style="width:62px;height:62px;border-radius:12px;flex:none;display:grid;place-items:center;background:{{ pnl.bg }};color:{{ pnl.ink }}">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ pnl.iconA }}"></path><path d="{{ pnl.iconB }}"></path></svg>
-          </span>
-          <span style="font-family:'Bricolage Grotesque';font-size:30px;font-weight:700;line-height:1;color:#ecebe6">{{ pnl.n }}</span>
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+  <div class="kmc-grid">
+    <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
+      <a class="kmc" href="Arivoo%20Book%20a%20Demo.dc.html" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+        <span class="kmc-eye">{{ k.tag }}</span>
+        <div class="kmc-head">
+          <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
+          <h3>{{ k.title }}</h3>
         </div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ pnl.ink }};margin-top:20px">{{ pnl.tag }}</div>
-        <h3 style="font-family:'Bricolage Grotesque';font-size:21px;font-weight:700;margin-top:6px;color:#14151a;text-wrap:balance">{{ pnl.cat }}</h3>
-        <p style="font-size:14.5px;color:#5b5f6b;margin-top:8px;line-height:1.5;text-wrap:pretty">{{ pnl.desc }}</p>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:20px">
-          <div style="height:1px;background:#f0eee9;margin-bottom:6px"></div>
-          <sc-for list="{{ pnl.mods }}" as="m" hint-placeholder-count="3">
-            <div style="display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:500;color:#2b2e37">
-              <span style="width:22px;height:22px;border-radius:7px;flex:none;display:grid;place-items:center;background:{{ pnl.bg }};color:{{ pnl.ink }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>{{ m }}
-            </div>
-          </sc-for>
+        <p class="kmc-desc">{{ k.desc }}</p>
+        <div class="kmc-mods">
+          <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
         </div>
-      </div>
+        <span class="kmc-go"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><rect x="1" y="8" width="2.2" height="2.2" opacity=".45"></rect><rect x="5" y="2.5" width="2.6" height="2.6"></rect><rect x="8" y="5.2" width="2.6" height="2.6"></rect><rect x="11" y="7.7" width="2.6" height="2.6"></rect><rect x="8" y="10.2" width="2.6" height="2.6"></rect><rect x="5" y="12.9" width="2.6" height="2.6"></rect></svg><b>More</b></span>
+      </a>
     </sc-for>
+  </div>
   </div>
 </section>
 
@@ -645,7 +641,7 @@ class Component extends DCLogic {
       ],
       moduleHeading:'Key modules to run your school end to end.',
       modules:['Pre-Admission Management','Student Admission Management','Fee & Due Management','Transport Tracking System','Student Information Management','User Role & Access Management','Lesson Plan','Graphic Analytical Reports','Calendar & Event Management','Routine Management','Attendance Management','Log Book','Result & Grading','Exam Management','Notifications & Alerts','Homework & Assignment'],
-      hSub:'Scroll across a school day — every module, grouped by what it does.',
+      hSub:'Every module, grouped by what it does.',
       panels:[
         {n:'01', tag:'Intake', cat:'Admissions', desc:'From first enquiry to a confirmed seat, without the paper chase.', iconA:'M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4', iconB:'M10 17l5-5-5-5M15 12H3', mods:['Pre-Admission Management','Student Admission Management']},
         {n:'02', tag:'Money & buses', cat:'Fees & transport', desc:'Fees collected, dues tracked and every bus accounted for.', iconA:'M3 6h18v12H3z', iconB:'M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M6.5 9.5h.01M17.5 14.5h.01', mods:['Fee & Due Management','Transport Tracking System']},
@@ -681,7 +677,6 @@ class Component extends DCLogic {
       is0:i===0, is1:i===1, is2:i===2, is3:i===3, is4:i===4, is5:i===5,
     }));
 
-    const modCards = (LP.panels||[]).map((p,i)=>Object.assign({}, p, { bg:whyTones[i%6][0], ink:whyTones[i%6][1] }));
 
     // ---- roles carousel (same pattern as the LMS platform tour) ----
     const IC = {
@@ -740,9 +735,12 @@ class Component extends DCLogic {
       fcPrev:()=>this.fcGo(fa-1), fcNext:()=>this.fcGo(fa+1),
     };
 
+    const KMT = [['#fdd9e2','#e5537a'],['#c8f3e7','#12876a'],['#fdeaa8','#c77d06'],['#e7e3fd','#5b4fd6'],['#dcecfd','#1f6fd1']];
+    const kmCards = [{"tag": "Intake", "title": "Admissions", "desc": "From first enquiry to a confirmed seat, without the paper chase.", "iconA": "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", "iconB": "M10 17l5-5-5-5M15 12H3", "mods": ["Pre-Admission Management", "Student Admission Management"]}, {"tag": "Money & buses", "title": "Fees & transport", "desc": "Fees collected, dues tracked and every bus accounted for.", "iconA": "M3 6h18v12H3z", "iconB": "M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M6.5 9.5h.01M17.5 14.5h.01", "mods": ["Fee & Due Management", "Transport Tracking System"]}, {"tag": "Records", "title": "Students & access", "desc": "One profile per child, and the right access for every role.", "iconA": "M4 4h16v16H4z", "iconB": "M12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4M8.5 16a3.5 3.5 0 0 1 7 0", "mods": ["Student Information Management", "User Role & Access Management", "Log Book"]}, {"tag": "Classroom", "title": "Teaching & planning", "desc": "Lessons, homework and the school calendar kept in sync.", "iconA": "M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z", "iconB": "M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z", "mods": ["Lesson Plan", "Homework & Assignment", "Routine Management", "Calendar & Event Management"]}, {"tag": "Assessment", "title": "Exams & insights", "desc": "Daily attendance, exams and report cards, with live dashboards and alerts that keep everyone in the loop.", "iconA": "M4 4h16v16H4z", "iconB": "M8 12.5l2.5 2.5 5-5.5", "mods": ["Attendance Management", "Exam Management", "Result & Grading", "Graphic Analytical Reports", "Notifications & Alerts"]}].map((c,i)=>Object.assign({}, c, { bg:KMT[i%5][0], ink:KMT[i%5][1] }));
     return Object.assign({}, LP, {
+      kmCards,
       navProducts: navProductsL,
-      whyCards, modCards,
+      whyCards,
       ...fcVals,
       ui, whyLabel, ctaSub, lang,
       setLang:(e)=>this.setLang(e.target.value),
