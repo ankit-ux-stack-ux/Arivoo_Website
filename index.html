@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/mobile.css?v=2">
 </head>
 <body>
 <x-dc>
@@ -592,6 +592,7 @@
       <img src="assets/arivoo-logo-powered.png" alt="arivoo — powered by Adamas Tech Consulting" style="height:42px;width:auto;display:block">
     </a>
     <div data-m="nav-r" style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#3a3d47">
+      <a data-m="nav-x" href="Arivoo%20Home.dc.html" style="padding:24px 0;transition:color .2s;color:#14151a;font-weight:600" style-hover="color:#14151a">Home</a>
       <div style="position:relative" onMouseEnter="{{ hoverOn }}" onMouseLeave="{{ hoverOff }}">
         <a href="#products" style="display:flex;align-items:center;gap:6px;padding:24px 0;color:{{ navMenuFg }};transition:color .2s">{{ ui.products }}
           <span style="display:inline-flex;transition:transform .25s;transform:rotate({{ navChevron }})">
@@ -629,6 +630,8 @@
           </div>
         </div>
       </div>
+          <a data-m="nav-x" href="Arivoo%20Solutions.dc.html" style="padding:24px 0;transition:color .2s;color:#3a3d47" style-hover="color:#14151a">Solutions</a>
+      <a data-m="nav-x" href="Arivoo%20About.dc.html" style="padding:24px 0;transition:color .2s;color:#3a3d47" style-hover="color:#14151a">About us</a>
     </div>
     <div style="display:flex;align-items:center;gap:14px">
       <label data-m="nav-lang" style="position:relative;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#14151a;cursor:pointer">
@@ -1368,7 +1371,7 @@
           <div style="font-size:13px;font-weight:700;color:#f3f4f6">{{ col.head }}</div>
           <div style="display:flex;flex-direction:column;gap:13px;margin-top:18px">
             <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
-              <a href="#top" style="font-size:14.5px;color:#9297a3;font-weight:500;transition:color .2s;width:fit-content" style-hover="color:#ffffff">{{ l }}</a>
+              <a href="{{ l.href }}" style="font-size:14.5px;color:#9297a3;font-weight:500;transition:color .2s;width:fit-content" style-hover="color:#ffffff">{{ l.t }}</a>
             </sc-for>
           </div>
         </div>
@@ -1894,6 +1897,8 @@ class Component extends DCLogic {
     if(homeTr.statsLabels) RV.stats.forEach((st,i)=>{ if(homeTr.statsLabels[i]) st.label = homeTr.statsLabels[i]; });
     if(homeTr.offices) RV.offices = homeTr.offices;
     if(homeTr.footerCols) RV.footerCols.forEach((c,i)=>{ if(homeTr.footerCols[i]){ c.head=homeTr.footerCols[i].head; c.links=homeTr.footerCols[i].links; } });
+    { const FH=[['Arivoo%20UMS.dc.html','Arivoo%20SMS.dc.html','Arivoo%20LMS.dc.html','Arivoo%20TestGUARD.dc.html'],['Arivoo%20About.dc.html','Arivoo%20About.dc.html','#top','#top'],['Arivoo%20Book%20a%20Demo.dc.html','#top','#top','#top']];
+      RV.footerCols = RV.footerCols.map((c,i)=>Object.assign({}, c, { links:c.links.map((l,j)=>({ t:l, href:(FH[i]&&FH[i][j])||'#top' })) })); }
     RV.navProducts.forEach((p,i)=>{ if(uiT.navProducts&&uiT.navProducts[i]){ p.name=uiT.navProducts[i].name; p.tag=uiT.navProducts[i].tag; } });
     RV.ui = ui; RV.lang = lang; RV.setLang = (e)=>this.setLang(e.target.value);
     RV.heroLead = homeTr.heroLead || 'Run your whole institution on ';

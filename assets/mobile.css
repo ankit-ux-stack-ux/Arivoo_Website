@@ -62,3 +62,5 @@
 @media (max-width:359px){
   [data-m=nav-lang]{display:none!important}
 }
+/* extra top-bar links (Home, Solutions, About us) hide where the bar gets tight */
+@media (max-width:1000px){ [data-m=nav-x]{display:none!important} }
