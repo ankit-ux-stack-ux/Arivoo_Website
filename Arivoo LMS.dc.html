@@ -493,6 +493,31 @@
   </div></div>
 </section>
 
+<!-- MODULES -->
+<section id="features" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
+  <div class="kmc-band">
+    <div class="kmc-top">
+      <div class="kmc-kicker">{{ ui.keyModules }}</div>
+      <h2 class="kmc-title">{{ moduleHeading }}</h2>
+    </div>
+    <div class="kmc-grid">
+      <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
+        <div class="kmc" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+          <span class="kmc-eye">{{ k.tag }}</span>
+          <div class="kmc-head">
+            <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
+            <h3>{{ k.title }}</h3>
+          </div>
+          <p class="kmc-desc">{{ k.desc }}</p>
+          <div class="kmc-mods">
+            <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
 <!-- WHY (Figma 4133:3596) -->
 <section style="max-width:1240px;margin:100px auto 0;padding:0 32px">
   <div style="text-align:center">
@@ -523,31 +548,6 @@
     <div class="wx-card">
       <div class="wx-ill"><div class="wx-s" style="--t:#fff4ed;--a:#d86b36"><i class="wx-gv" style="left:calc(var(--u)*72)"></i><i class="wx-gv" style="left:calc(var(--u)*182)"></i><i class="wx-gv" style="left:calc(var(--u)*292)"></i><i class="wx-gv" style="left:calc(var(--u)*402)"></i><i class="wx-gv" style="left:calc(var(--u)*512)"></i><i class="wx-gh" style="top:calc(var(--u)*74)"></i><i class="wx-gh" style="top:calc(var(--u)*152)"></i><i class="wx-gh" style="top:calc(var(--u)*230)"></i><div class="wx-ui"><div class="wx-bar"><span class="wx-dots"><i></i><i></i><i></i></span><span class="wx-view">Programme insights</span></div><div class="wx-col" style="gap:calc(var(--u)*12);padding:calc(var(--u)*14) calc(var(--u)*22) 0"><div class="wx-row" style="justify-content:space-between;align-items:center"><b class="wx-h">Student progress</b><span class="wx-pill"><b>This term⌄</b></span></div><div class="wx-row" style="gap:calc(var(--u)*24)"><div class="wx-col" style="width:calc(var(--u)*148);flex:none;gap:calc(var(--u)*8);white-space:nowrap"><b style="font-size:calc(var(--u)*11)">Foundation programme</b><span class="wx-row" style="gap:calc(var(--u)*5);align-items:baseline"><b class="wx-num" style="font-size:calc(var(--u)*28);line-height:1.4;color:var(--a)">84%</b><span style="font-size:calc(var(--u)*9);color:#8b929e">complete</span></span><span class="wx-pill"><b>↑ 12% this month</b></span><span class="wx-row" style="gap:calc(var(--u)*5)"><span class="wx-pill"><b>Grade 8</b></span><span class="wx-pill"><b>STEM</b></span></span></div><div class="wx-col" style="flex:1 0 0;min-width:0;gap:calc(var(--u)*11)"><div class="wx-col" style="gap:calc(var(--u)*5);align-self:stretch"><div class="wx-row" style="justify-content:space-between;white-space:nowrap"><span style="font-size:calc(var(--u)*10)">Mathematics</span><span style="font-size:calc(var(--u)*9);color:var(--a)">92% · On track</span></div><div style="height:calc(var(--u)*5);border-radius:calc(var(--u)*3);background:var(--t);overflow:hidden"><i class="wx-prog" style="display:block;width:calc(var(--u)*266.8);height:calc(var(--u)*5);border-radius:calc(var(--u)*3);background:#fce1cf"></i></div></div><div class="wx-col" style="gap:calc(var(--u)*5);align-self:stretch"><div class="wx-row" style="justify-content:space-between;white-space:nowrap"><span style="font-size:calc(var(--u)*10)">Science</span><span style="font-size:calc(var(--u)*9);color:var(--a)">86% · On track</span></div><div style="height:calc(var(--u)*5);border-radius:calc(var(--u)*3);background:var(--t);overflow:hidden"><i class="wx-prog" style="display:block;width:calc(var(--u)*249.4);height:calc(var(--u)*5);border-radius:calc(var(--u)*3);background:#fce1cf"></i></div></div><div class="wx-col" style="gap:calc(var(--u)*5);align-self:stretch"><div class="wx-row" style="justify-content:space-between;white-space:nowrap"><span style="font-size:calc(var(--u)*10)">Language arts</span><span style="font-size:calc(var(--u)*9);color:var(--a)">74% · In progress</span></div><div style="height:calc(var(--u)*5);border-radius:calc(var(--u)*3);background:var(--t);overflow:hidden"><i class="wx-prog" style="display:block;width:calc(var(--u)*214.6);height:calc(var(--u)*5);border-radius:calc(var(--u)*3);background:#fce1cf"></i></div></div></div></div></div></div><div class="wx-hl"><span class="wx-hl-ic"><span class="wx-i" style="width:calc(var(--u)*16);height:calc(var(--u)*16)"><svg viewBox="0 0 16 16" fill="none"><path d="M7.99923 10.6667V14M10.6661 9.33333V14M13.333 6.66667V14M14.6664 2L8.90197 7.764C8.871 7.79504 8.83422 7.81967 8.79372 7.83647C8.75322 7.85328 8.7098 7.86193 8.66595 7.86193C8.6221 7.86193 8.57869 7.85328 8.53819 7.83647C8.49769 7.81967 8.4609 7.79504 8.42993 7.764L6.23509 5.56933C6.17258 5.50684 6.0878 5.47174 5.9994 5.47174C5.91101 5.47174 5.82623 5.50684 5.76372 5.56933L1.33203 10M2.66547 12V14M5.33235 9.33333V14" stroke="#D86B36" stroke-width="1.6" stroke-linecap="round"/></svg></span></span><span class="wx-hl-tx lh14"><b>Every milestone. A clearer picture.</b><span>Flexible tags, meaningful progress</span></span><span class="wx-i" style="width:calc(var(--u)*14);height:calc(var(--u)*14)"><svg viewBox="0 0 14 14" fill="none"><path d="M9.91638 9.91638V4.08398H4.08398M9.91638 4.08398L4.08398 9.91638" stroke="#8B929E" stroke-width="1.6" stroke-linecap="round"/></svg></span></div></div></div>
       <div class="wx-txt"><h3>Progress monitoring</h3><p>Programme creation with flexible tagging to monitor student progress.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MODULES -->
-<section id="features" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
-  <div class="kmc-band">
-    <div class="kmc-top">
-      <div class="kmc-kicker">{{ ui.keyModules }}</div>
-      <h2 class="kmc-title">{{ moduleHeading }}</h2>
-    </div>
-    <div class="kmc-grid">
-      <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
-        <div class="kmc" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
-          <span class="kmc-eye">{{ k.tag }}</span>
-          <div class="kmc-head">
-            <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
-            <h3>{{ k.title }}</h3>
-          </div>
-          <p class="kmc-desc">{{ k.desc }}</p>
-          <div class="kmc-mods">
-            <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
-          </div>
-        </div>
-      </sc-for>
     </div>
   </div>
 </section>
