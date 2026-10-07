@@ -78,3 +78,10 @@
 @keyframes wx-growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .wx-prog{transform-origin:0 50%}
 .wx-card.wx-in .wx-prog{animation:wx-growx .9s cubic-bezier(.2,.8,.2,1) .35s both}
+/* TestGUARD extras: activity trace draws in, face-detection box pulses */
+@keyframes wx-draw{from{stroke-dashoffset:320}to{stroke-dashoffset:0}}
+@keyframes wx-scan{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.06)}}
+.wx-trace{stroke-dasharray:320}
+.wx-card.wx-in .wx-trace{animation:wx-draw 1.4s ease-out .45s both}
+.wx-scan{animation:wx-scan 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){ .wx-trace,.wx-scan{animation:none!important;stroke-dasharray:none} }
