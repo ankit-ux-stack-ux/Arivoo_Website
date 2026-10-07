@@ -85,3 +85,11 @@
 .wx-card.wx-in .wx-trace{animation:wx-draw 1.4s ease-out .45s both}
 .wx-scan{animation:wx-scan 2.4s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){ .wx-trace,.wx-scan{animation:none!important;stroke-dasharray:none} }
+/* Home "Why arivoo" extras: integration wires draw in, sync icon turns once */
+@keyframes wx-wire{from{stroke-dashoffset:560}to{stroke-dashoffset:0}}
+@keyframes wx-spin{from{transform:rotate(-180deg)}to{transform:none}}
+.wx-wire{stroke-dasharray:560}
+.wx-card.wx-in .wx-wire{animation:wx-wire 1.5s ease-out .45s both}
+.wx-spin{transform-origin:50% 50%}
+.wx-card.wx-in .wx-spin{animation:wx-spin .9s cubic-bezier(.2,.8,.2,1) .6s both}
+@media (prefers-reduced-motion:reduce){ .wx-wire,.wx-spin{animation:none!important;stroke-dasharray:none} }
