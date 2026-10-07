@@ -176,6 +176,12 @@
   @keyframes uv-show{from{opacity:0}to{opacity:1}}
   /* scroll-driven carousel: section pins while scrolling steps through slides */
   .lfc-pin.on>.lfc-stick{position:sticky;display:flex;flex-direction:column;justify-content:center;padding-top:24px}
+  .lc-mods{display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;margin-top:26px;max-width:470px;min-height:196px}
+  .lc-mod{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;line-height:1.2}
+  .lc-mod i{width:6px;height:6px;border-radius:50%;flex:none}
+  @keyframes lc-pop{0%{opacity:0;transform:translateY(8px) scale(.9)}100%{opacity:1;transform:none}}
+  @media (max-width:1199px){ .lc-mods{display:none} }
+  @media (prefers-reduced-motion:reduce){ .lc-mod{animation:none!important} }
   /* life-cycle wheel: heading + wheel pinned together so both stay in view */
   .lc-stick{position:sticky;top:0;min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:96px;padding:88px 84px 24px 40px;border-radius:32px;box-sizing:border-box}
   .lc-wheel{width:min(560px,calc(100vh - 130px),48vw)}
@@ -392,6 +398,9 @@
       <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ ui.keyModules }}</div>
       <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:14px;text-wrap:balance">{{ moduleHeading }}</h2>
       <p style="font-size:17px;color:#5b5f6b;margin-top:14px;max-width:440px;text-wrap:pretty">{{ lifeSub }}</p>
+      <div class="lc-mods" aria-live="polite">
+        <sc-for list="{{ lifeAdded }}" as="m" hint-placeholder-count="2"><span class="lc-mod" style="{{ m.style }}"><i style="{{ m.dot }}"></i>{{ m.name }}</span></sc-for>
+      </div>
     </div>
     <div class="lc-wheel" style="position:relative;aspect-ratio:1">
     <svg viewBox="0 0 600 600" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
@@ -745,6 +754,11 @@ class Component extends DCLogic {
     const arcDash = C.toFixed(2);
     const sectionBg = 'background:radial-gradient(40% 36% at 50% 50%, rgba(233,213,255,.55), transparent 72%), radial-gradient(36% 42% at 18% 40%, rgba(253,215,228,.5), transparent 72%), radial-gradient(36% 42% at 82% 62%, rgba(207,244,236,.55), transparent 72%), #fbfbf9';
     const progressPct = (active/(N-1)*100).toFixed(1);
+    // modules collected so far: every stage up to the active one, newest stage pops in
+    const lifeAdded = [];
+    stagesSrc.slice(0, active+1).forEach((st,i)=>{ const t=lifeTones[i%7]; (st.mods||[]).forEach((m,j)=>lifeAdded.push({ name:m,
+      style:'background:'+t[0]+';color:'+t[1]+(i===active ? ';animation:lc-pop .45s cubic-bezier(.2,.8,.2,1) '+(j*0.08)+'s both' : ''),
+      dot:'background:'+t[1] })); });
     const activeStage = Object.assign({}, stagesSrc[active], {
       step:String(active+1).padStart(2,'0'),
       status:statuses[active],
@@ -825,7 +839,7 @@ class Component extends DCLogic {
       navProducts: navProductsL,
       whyCards,
       ...fcVals,
-      lifeNodes, arcDash, activeStage, sectionBg, persona:(LP.persona||P.persona),
+      lifeNodes, lifeAdded, arcDash, activeStage, sectionBg, persona:(LP.persona||P.persona),
       ui, whyLabel, ctaSub, lang,
       setLang:(e)=>this.setLang(e.target.value),
       rolesCols: P.roles.length,
