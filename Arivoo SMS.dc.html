@@ -496,6 +496,32 @@
   </div></div>
 </section>
 
+<!-- MODULES (grouped grid) -->
+<section id="features" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
+  <div class="kmc-band">
+    <div class="kmc-top">
+      <div class="kmc-kicker">{{ ui.keyModules }}</div>
+      <h2 class="kmc-title">{{ moduleHeading }}</h2>
+      <p class="kmc-sub">{{ hSub }}</p>
+    </div>
+    <div class="kmc-grid">
+      <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
+        <div class="kmc" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
+          <span class="kmc-eye">{{ k.tag }}</span>
+          <div class="kmc-head">
+            <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
+            <h3>{{ k.title }}</h3>
+          </div>
+          <p class="kmc-desc">{{ k.desc }}</p>
+          <div class="kmc-mods">
+            <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
 <!-- WHY (Figma 4133:3427) -->
 <section style="max-width:1240px;margin:100px auto 0;padding:0 32px">
   <div style="text-align:center">
@@ -526,32 +552,6 @@
     <div class="wx-card">
       <div class="wx-ill"><div class="wx-s" style="--t:#fff4ed;--a:#d86b36"><i class="wx-gv" style="left:calc(var(--u)*72)"></i><i class="wx-gv" style="left:calc(var(--u)*182)"></i><i class="wx-gv" style="left:calc(var(--u)*292)"></i><i class="wx-gv" style="left:calc(var(--u)*402)"></i><i class="wx-gv" style="left:calc(var(--u)*512)"></i><i class="wx-gh" style="top:calc(var(--u)*74)"></i><i class="wx-gh" style="top:calc(var(--u)*152)"></i><i class="wx-gh" style="top:calc(var(--u)*230)"></i><div class="wx-ui"><div class="wx-bar"><span class="wx-dots"><i></i><i></i><i></i></span><span class="wx-view">Campus network</span></div><div class="wx-col" style="gap:calc(var(--u)*13);padding:calc(var(--u)*14) calc(var(--u)*22) 0"><div class="wx-row" style="justify-content:space-between;align-items:center"><b class="wx-h">One connected institution</b><span class="wx-pill"><span class="wx-i" style="width:calc(var(--u)*12);height:calc(var(--u)*12)"><svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#D86B36" stroke-width="1.6" stroke-linecap="round"/></svg></span><b>All campuses</b></span></div><div class="wx-row" style="gap:calc(var(--u)*12)"><div class="wx-camp on"><div class="wx-row" style="justify-content:space-between;align-items:center"><span class="wx-i" style="width:calc(var(--u)*23);height:calc(var(--u)*23)"><svg viewBox="0 0 23 23" fill="none"><path d="M13.4169 20.1251V17.2501C13.4169 16.7418 13.215 16.2543 12.8555 15.8949C12.496 15.5354 12.0085 15.3335 11.5001 15.3335C10.9917 15.3335 10.5042 15.5354 10.1447 15.8949C9.78525 16.2543 9.5833 16.7418 9.5833 17.2501V20.1251M17.2506 4.79192V20.1251M3.83284 5.75021L10.6433 2.11816C10.9094 1.98522 11.2027 1.91602 11.5001 1.91602C11.7975 1.91602 12.0909 1.98522 12.3569 2.11816L19.1674 5.75021M5.74966 10.5419L2.37605 12.5994C2.2356 12.6849 2.11951 12.8051 2.03894 12.9484C1.95838 13.0917 1.91604 13.2534 1.91602 13.4178V18.2085C1.91602 18.7168 2.11797 19.2043 2.47744 19.5637C2.83691 19.9232 3.32446 20.1251 3.83284 20.1251H19.1674C19.6758 20.1251 20.1633 19.9232 20.5228 19.5637C20.8823 19.2043 21.0842 18.7168 21.0842 18.2085V13.4168C21.084 13.2526 21.0416 13.0911 20.9611 12.948C20.8805 12.8048 20.7645 12.6848 20.6242 12.5994L17.2506 10.5419M5.74966 4.79192V20.1251M13.4169 8.62522C13.4169 9.68376 12.5587 10.5419 11.5001 10.5419C10.4415 10.5419 9.5833 9.68376 9.5833 8.62522C9.5833 7.56669 10.4415 6.70857 11.5001 6.70857C12.5587 6.70857 13.4169 7.56669 13.4169 8.62522Z" stroke="#D86B36" stroke-width="1.6" stroke-linecap="round"/></svg></span><i style="width:calc(var(--u)*5);height:calc(var(--u)*5);border-radius:50%;background:var(--a)"></i></div><b style="font-weight:500;font-size:calc(var(--u)*10);color:var(--a)">Main campus</b><span class="wx-col" style="gap:calc(var(--u)*2)"><b class="wx-num" style="font-size:calc(var(--u)*21)">1,240</b><span style="font-size:calc(var(--u)*8);color:#8b929e">Students · 86 staff</span></span></div><div class="wx-camp"><div class="wx-row" style="justify-content:space-between;align-items:center"><span class="wx-i" style="width:calc(var(--u)*23);height:calc(var(--u)*23)"><svg viewBox="0 0 23 23" fill="none"><path d="M13.4169 20.1251V17.2501C13.4169 16.7418 13.215 16.2543 12.8555 15.8949C12.496 15.5354 12.0085 15.3335 11.5001 15.3335C10.9917 15.3335 10.5042 15.5354 10.1447 15.8949C9.78525 16.2543 9.5833 16.7418 9.5833 17.2501V20.1251M17.2506 4.79192V20.1251M3.83284 5.75021L10.6433 2.11816C10.9094 1.98522 11.2027 1.91602 11.5001 1.91602C11.7975 1.91602 12.0909 1.98522 12.3569 2.11816L19.1674 5.75021M5.74966 10.5419L2.37605 12.5994C2.2356 12.6849 2.11951 12.8051 2.03894 12.9484C1.95838 13.0917 1.91604 13.2534 1.91602 13.4178V18.2085C1.91602 18.7168 2.11797 19.2043 2.47744 19.5637C2.83691 19.9232 3.32446 20.1251 3.83284 20.1251H19.1674C19.6758 20.1251 20.1633 19.9232 20.5228 19.5637C20.8823 19.2043 21.0842 18.7168 21.0842 18.2085V13.4168C21.084 13.2526 21.0416 13.0911 20.9611 12.948C20.8805 12.8048 20.7645 12.6848 20.6242 12.5994L17.2506 10.5419M5.74966 4.79192V20.1251M13.4169 8.62522C13.4169 9.68376 12.5587 10.5419 11.5001 10.5419C10.4415 10.5419 9.5833 9.68376 9.5833 8.62522C9.5833 7.56669 10.4415 6.70857 11.5001 6.70857C12.5587 6.70857 13.4169 7.56669 13.4169 8.62522Z" stroke="#D86B36" stroke-width="1.6" stroke-linecap="round"/></svg></span><i style="width:calc(var(--u)*5);height:calc(var(--u)*5);border-radius:50%;background:var(--a)"></i></div><b style="font-weight:500;font-size:calc(var(--u)*10);">North campus</b><span class="wx-col" style="gap:calc(var(--u)*2)"><b class="wx-num" style="font-size:calc(var(--u)*21)">760</b><span style="font-size:calc(var(--u)*8);color:#8b929e">Students · 54 staff</span></span></div><div class="wx-camp"><div class="wx-row" style="justify-content:space-between;align-items:center"><span class="wx-i" style="width:calc(var(--u)*23);height:calc(var(--u)*23)"><svg viewBox="0 0 23 23" fill="none"><path d="M13.4169 20.1251V17.2501C13.4169 16.7418 13.215 16.2543 12.8555 15.8949C12.496 15.5354 12.0085 15.3335 11.5001 15.3335C10.9917 15.3335 10.5042 15.5354 10.1447 15.8949C9.78525 16.2543 9.5833 16.7418 9.5833 17.2501V20.1251M17.2506 4.79192V20.1251M3.83284 5.75021L10.6433 2.11816C10.9094 1.98522 11.2027 1.91602 11.5001 1.91602C11.7975 1.91602 12.0909 1.98522 12.3569 2.11816L19.1674 5.75021M5.74966 10.5419L2.37605 12.5994C2.2356 12.6849 2.11951 12.8051 2.03894 12.9484C1.95838 13.0917 1.91604 13.2534 1.91602 13.4178V18.2085C1.91602 18.7168 2.11797 19.2043 2.47744 19.5637C2.83691 19.9232 3.32446 20.1251 3.83284 20.1251H19.1674C19.6758 20.1251 20.1633 19.9232 20.5228 19.5637C20.8823 19.2043 21.0842 18.7168 21.0842 18.2085V13.4168C21.084 13.2526 21.0416 13.0911 20.9611 12.948C20.8805 12.8048 20.7645 12.6848 20.6242 12.5994L17.2506 10.5419M5.74966 4.79192V20.1251M13.4169 8.62522C13.4169 9.68376 12.5587 10.5419 11.5001 10.5419C10.4415 10.5419 9.5833 9.68376 9.5833 8.62522C9.5833 7.56669 10.4415 6.70857 11.5001 6.70857C12.5587 6.70857 13.4169 7.56669 13.4169 8.62522Z" stroke="#D86B36" stroke-width="1.6" stroke-linecap="round"/></svg></span><i style="width:calc(var(--u)*5);height:calc(var(--u)*5);border-radius:50%;background:var(--a)"></i></div><b style="font-weight:500;font-size:calc(var(--u)*10);">City campus</b><span class="wx-col" style="gap:calc(var(--u)*2)"><b class="wx-num" style="font-size:calc(var(--u)*21)">480</b><span style="font-size:calc(var(--u)*8);color:#8b929e">Students · 32 staff</span></span></div></div></div></div><div class="wx-hl"><span class="wx-hl-ic"><span class="wx-i" style="width:calc(var(--u)*16);height:calc(var(--u)*16)"><svg viewBox="0 0 16 16" fill="none"><path d="M3.33317 10.6671V8.66693C3.33317 8.4901 3.40341 8.32052 3.52845 8.19549C3.65348 8.07045 3.82306 8.00021 3.99989 8.00021H12.0005C12.1774 8.00021 12.3469 8.07045 12.472 8.19549C12.597 8.32052 12.6672 8.4901 12.6672 8.66693V10.6671M8.00021 8.00021V5.33333M11.3338 10.6671H14.0007C14.3689 10.6671 14.6674 10.9656 14.6674 11.3338V14.0007C14.6674 14.3689 14.3689 14.6674 14.0007 14.6674H11.3338C10.9656 14.6674 10.6671 14.3689 10.6671 14.0007V11.3338C10.6671 10.9656 10.9656 10.6671 11.3338 10.6671ZM1.99973 10.6671H4.66661C5.03483 10.6671 5.33333 10.9656 5.33333 11.3338V14.0007C5.33333 14.3689 5.03483 14.6674 4.66661 14.6674H1.99973C1.63151 14.6674 1.33301 14.3689 1.33301 14.0007V11.3338C1.33301 10.9656 1.63151 10.6671 1.99973 10.6671ZM6.66677 1.33301H9.33365C9.70187 1.33301 10.0004 1.63151 10.0004 1.99973V4.66661C10.0004 5.03483 9.70187 5.33333 9.33365 5.33333H6.66677C6.29855 5.33333 6.00005 5.03483 6.00005 4.66661V1.99973C6.00005 1.63151 6.29855 1.33301 6.66677 1.33301Z" stroke="#D86B36" stroke-width="1.6" stroke-linecap="round"/></svg></span></span><span class="wx-hl-tx"><b>Many campuses. One clear view.</b><span>Central oversight, local flexibility</span></span><span class="wx-i" style="width:calc(var(--u)*14);height:calc(var(--u)*14)"><svg viewBox="0 0 14 14" fill="none"><path d="M9.91638 9.91638V4.08398H4.08398M9.91638 4.08398L4.08398 9.91638" stroke="#8B929E" stroke-width="1.6" stroke-linecap="round"/></svg></span></div></div></div>
       <div class="wx-txt"><h3>Multi-campus ready</h3><p>Grow without the complexity. Manage multiple campuses from one dashboard, with shared oversight and campus-level control.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MODULES (grouped grid) -->
-<section id="features" style="max-width:1240px;margin:100px auto 0;padding:0 32px">
-  <div class="kmc-band">
-    <div class="kmc-top">
-      <div class="kmc-kicker">{{ ui.keyModules }}</div>
-      <h2 class="kmc-title">{{ moduleHeading }}</h2>
-      <p class="kmc-sub">{{ hSub }}</p>
-    </div>
-    <div class="kmc-grid">
-      <sc-for list="{{ kmCards }}" as="k" hint-placeholder-count="5">
-        <div class="kmc" style="--bg:{{ k.bg }};--ink:{{ k.ink }}">
-          <span class="kmc-eye">{{ k.tag }}</span>
-          <div class="kmc-head">
-            <span class="kmc-ico" aria-hidden="true"><i></i><i></i><i></i><i></i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconA }}"></path><path d="{{ k.iconB }}"></path></svg></span>
-            <h3>{{ k.title }}</h3>
-          </div>
-          <p class="kmc-desc">{{ k.desc }}</p>
-          <div class="kmc-mods">
-            <sc-for list="{{ k.mods }}" as="m" hint-placeholder-count="3"><span>{{ m }}</span></sc-for>
-          </div>
-        </div>
-      </sc-for>
     </div>
   </div>
 </section>
