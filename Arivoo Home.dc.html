@@ -1767,9 +1767,9 @@ class Component extends DCLogic {
     const problemWords = _pw.map((t,i)=>({ t, accent: (lang==='en' ? (t.indexOf('one')===0 ? '1' : '0') : (i===_pw.length-1 ? '1' : '0')) }));
 
     const VT = [
-      {company:'City Engineering College', caption:'Five tools retired — admissions, fees & exams on one record', poster:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80', src:((window.__resources||{}).vidNeotia||'assets/neotia-testimonial-v2.mp4'), youtube:'y-ASXdoMPk0'},
-      {company:'Serampore College', caption:'Parents track attendance and pay fees from their phones', poster:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80', src:((window.__resources||{}).vidDps||'assets/dps-testimonial-v2.mp4'), youtube:'kqGoydegp5Q'},
-      {company:'RCC Institute of IT', caption:'Semester exams run online with AI proctoring', poster:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=900&q=80', src:''},
+      {company:'City Engineering College', caption:'Five tools retired — admissions, fees & exams on one record', poster:'assets/testi/city-engineering.jpg', src:((window.__resources||{}).vidNeotia||'assets/neotia-testimonial-v2.mp4'), youtube:'y-ASXdoMPk0'},
+      {company:'Serampore College', caption:'Parents track attendance and pay fees from their phones', poster:'assets/testi/serampore.jpg', src:((window.__resources||{}).vidDps||'assets/dps-testimonial-v2.mp4'), youtube:'kqGoydegp5Q'},
+      {company:'RCC Institute of IT', caption:'Semester exams run online with AI proctoring', poster:'assets/testi/rcciit.jpg', src:''},
     ];
     this._testiN = VT.length;
     const _ti = this.state.testiActive % VT.length;
