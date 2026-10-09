@@ -37,7 +37,9 @@
     '.olli-btn{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:block;padding:0;border:0;background:none;cursor:pointer;pointer-events:auto;-webkit-tap-highlight-color:transparent}' +
     '.olli-btn:focus-visible{outline:2px solid #2877d7;outline-offset:4px;border-radius:12px}' +
     '.olli-img{display:block;height:auto;transform-origin:50% 100%;user-select:none;-webkit-user-drag:none;pointer-events:none}' +
-    '.olli-flip .olli-img{transform:scaleX(-1)}' +
+    /* the art faces right; mirror it so Olli looks into the page (independent `scale` so it composes with the pose animations) */
+    '.olli-img,.olli-peek img{scale:-1 1}.olli-flip .olli-img{scale:1 1}' +
+    ':root[dir=rtl] .olli-img,:root[dir=rtl] .olli-peek img{scale:1 1}:root[dir=rtl] .olli-flip .olli-img{scale:-1 1}' +
     '.olli-shadow{position:absolute;left:50%;bottom:-3px;width:62%;height:9px;margin-left:-31%;border-radius:50%;background:radial-gradient(closest-side,rgba(20,30,60,.22),rgba(20,30,60,0));transition:opacity .3s,transform .3s}' +
     '.olli-air .olli-shadow{opacity:0;transform:scale(.4)}' +
     '@keyframes olli-breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.02,.985)}}' +
@@ -213,7 +215,7 @@
       { duration: 900, easing: 'cubic-bezier(.2,.7,.3,1)' }, function () { stopLoop(); cls(''); setPose('land'); setTimeout(function () { to('wave', 'wave', '', 1000, function () { idle(); greet(); }); }, 260); });
   }
   function walkIn() {
-    state = 'arrive'; cls('olli-flip'); loop(['walk1', 'walk2', 'walk3', 'walk4'], 150);
+    state = 'arrive'; cls(''); loop(['walk1', 'walk2', 'walk3', 'walk4'], 150);
     anim([{ transform: 'translateX(150px)' }, { transform: 'translateX(0)' }], { duration: 1600, easing: 'linear' },
       function () { stopLoop(); to('wave', 'wave', '', 1100, function () { idle(); greet(); }); });
   }
